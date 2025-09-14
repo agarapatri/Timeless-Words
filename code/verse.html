@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verse — TimelessWords</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div class="mini-header">
+      <div class="container"><span class="brand">TimelessWords</span><a href="search.html">Deep Search</a></div>
+    </div>
+
+    <main class="container verse-page">
+      <nav class="crumbs" id="crumbs"></nav>
+      <h1 id="ref" class="verse-ref"></h1>
+
+      <section class="verse-block">
+        <h2>Sanskrit (Devanāgarī)</h2>
+        <pre id="devanagari" class="devanagari"></pre>
+      </section>
+      <section class="verse-block">
+        <h2>Sanskrit (IAST)</h2>
+        <pre id="iast" class="iast"></pre>
+      </section>
+      <section class="verse-block">
+        <h2>Word-for-word</h2>
+        <ul id="wfw" class="wfw"></ul>
+      </section>
+      <section class="verse-block">
+        <h2>Translation</h2>
+        <p id="translation" class="translation"></p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+      </div>
+    </footer>
+
+    <script src="assets/data-bundle.js"></script>
+    <script src="assets/app.js?v=3"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', async () => {
+        const p = new URLSearchParams(location.search);
+        const id = p.get('book');
+        const c = p.get('c');
+        const vnum = p.get('v');
+        try {
+          const library = await window.Library.loadLibrary();
+          const meta = library.find(b => b.id === id) || library[0];
+          const rows = await window.Library.loadBookRows(meta.id);
+
+          const row = rows.find(r => String(r.chapter) === String(c) && String(r.verse) === String(vnum)) || rows[0];
+          const chapNum = row ? row.chapter : c || '';
+          const verseNum = row ? row.verse : vnum || '';
+
+          document.getElementById('ref').textContent = `${(meta.id || '').toUpperCase()} ${chapNum}.${verseNum}`.replace(/\.$/, '');
+
+          const crumbs = document.getElementById('crumbs');
+          crumbs.innerHTML = `
+            <a href="index.html">TimelessWords</a>
+            <span>›</span>
+            <a href="book.html?book=${encodeURIComponent(meta.id)}">${meta.title}</a>
+            <span>›</span>
+            <span>Chapter ${chapNum}</span>
+          `;
+
+          document.getElementById('devanagari').textContent = (row && (row.original_sanskrit || row.devanagari)) || '';
+          document.getElementById('iast').textContent = (row && (row.iast_transliteration || row.iast)) || '';
+
+          const wfw = document.getElementById('wfw');
+          wfw.innerHTML = '';
+          const pairs = (row && row.word_by_word) || [];
+          pairs.forEach(pair => {
+            const [sk, en] = Array.isArray(pair) ? pair : [pair?.sanskrit, pair?.english];
+            if (!sk && !en) return;
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="sk">${sk || ''}</span> &mdash; <span class="en">${en || ''}</span>`;
+            wfw.appendChild(li);
+          });
+          document.getElementById('translation').textContent = (row && (row.translation_en || row.translation)) || '';
+        } catch (err) {
+          console.error('Verse load error', err);
+        }
+      });
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,127 @@
+{
+  "books": [
+    {
+      "id": "sp",
+      "short": "SP",
+      "title": "Shiva Puran",
+      "author": "Unknown",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chapter 1",
+          "verses": [
+            {
+              "number": 1,
+              "ref": "1.1",
+              "devanagari": "namo'stu nīlakaṇṭhāya sahasrākṣāya śambhave\nkāraṇāya namastubhyaṁ kāraṇānāṁ ca kāraṇe",
+              "iast": "namo ’stu nīlakaṇṭhāya sahasrākṣāya śambhave\nkāraṇāya namas tubhyaṁ kāraṇānāṁ ca kāraṇe",
+              "word_by_word": [
+                { "sanskrit": "namaḥ", "english": "obeisance" },
+                { "sanskrit": "nīlakaṇṭha", "english": "blue-throated one (Śiva)" }
+              ],
+              "translation": "Obeisance to the blue-throated Lord Śambhu, the thousand-eyed, the cause of all causes."
+            },
+            {
+              "number": 2,
+              "ref": "1.2",
+              "devanagari": "yasya prasādāt sarvasya prasādaḥ syāt prabhoḥ sadā\nyasya krodhād bhayaṁ sarvam tasmai śambhave namaḥ",
+              "iast": "yasya prasādāt sarvasya prasādaḥ syāt prabhoḥ sadā\nyasya krodhād bhayaṁ sarvaṁ tasmai śambhave namaḥ",
+              "word_by_word": [
+                { "sanskrit": "prasādāt", "english": "by grace" }
+              ],
+              "translation": "By whose grace everyone prospers, by whose anger all are struck with fear—to that Lord Śambhu I bow."
+            },
+            {
+              "number": 3,
+              "ref": "1.3",
+              "devanagari": "sarvajñaṁ sarvakartāraṁ sarvāntaryāmiṇaṁ prabhum\nśaṅkaraṁ śaśiśekharaṁ vande śarvaṁ umāpatiṁ",
+              "iast": "sarvajñaṁ sarva-kartāraṁ sarvāntaryāmiṇaṁ prabhum\nśaṅkaraṁ śaśi-śekharaṁ vande śarvaṁ umāpatiṁ",
+              "word_by_word": [
+                { "sanskrit": "sarvajñam", "english": "all-knowing" },
+                { "sanskrit": "sarvakartāram", "english": "creator of all" }
+              ],
+              "translation": "I bow to Śaṅkara, the all-knowing Lord, the doer of all, the inner controller, adorned with the moon, Śarva, the consort of Umā."
+            },
+            {
+              "number": 4,
+              "ref": "1.4",
+              "devanagari": "namaḥ śivāya śāntāya jagatāṁ pataye namaḥ\nnamo rudrāya bhadrāya bhavāya paramātmane",
+              "iast": "namaḥ śivāya śāntāya jagatāṁ pataye namaḥ\nnamo rudrāya bhadrāya bhavāya paramātmane",
+              "word_by_word": [
+                { "sanskrit": "namaḥ", "english": "obeisance" },
+                { "sanskrit": "śivāya", "english": "to Śiva" }
+              ],
+              "translation": "Obeisance to Śiva, the tranquil, the Lord of the worlds; obeisance to Rudra, the auspicious, the origin of being, the Supreme Self."
+            },
+            {
+              "number": 5,
+              "ref": "1.5",
+              "devanagari": "namaste śūlapāṇaye paśūnāṁ pataye namaḥ\nnamo nīlakaṇṭhāya vyomāntāya namo namaḥ",
+              "iast": "namas te śūla-pāṇaye paśūnāṁ pataye namaḥ\nnamo nīlakaṇṭhāya vyomāntāya namo namaḥ",
+              "word_by_word": [
+                { "sanskrit": "śūlapāṇi", "english": "trident-handed" },
+                { "sanskrit": "paśūnāṁ pati", "english": "Lord of beings" }
+              ],
+              "translation": "Salutations to the trident-wielding Lord, the master of all beings; to the blue-throated one, vast as the sky, my repeated obeisance."
+            },
+            {
+              "number": 6,
+              "ref": "1.6",
+              "devanagari": "vande rudraṁ virūpākṣaṁ bhīmaṁ sarvārtha-sādhakam\nmahādevaṁ mahātmānaṁ mahāpuruṣa-lakṣaṇam",
+              "iast": "vande rudraṁ virūpākṣaṁ bhīmaṁ sarvārtha-sādhakam\nmahādevaṁ mahātmānaṁ mahāpuruṣa-lakṣaṇam",
+              "word_by_word": [
+                { "sanskrit": "rudram", "english": "Rudra" },
+                { "sanskrit": "mahādevaṁ", "english": "great god" }
+              ],
+              "translation": "I bow to Rudra, the wide-eyed, the fearsome fulfiller of all aims, Mahādeva, the great soul, bearing the marks of the Supreme Person."
+            },
+            {
+              "number": 7,
+              "ref": "1.7",
+              "devanagari": "devadevaṁ jagannāthaṁ viśvarūpaṁ sanātanam\nśaśāṅkamauliṁ śarvaṁ ca tryambakaṁ vṛṣabhadhvajam",
+              "iast": "deva-devaṁ jagannāthaṁ viśvarūpaṁ sanātanam\nśaśāṅka-mauliṁ śarvaṁ ca tryambakaṁ vṛṣabhadhvajam",
+              "word_by_word": [
+                { "sanskrit": "devadevam", "english": "god of gods" },
+                { "sanskrit": "jagannātham", "english": "Lord of the world" }
+              ],
+              "translation": "Lord of lords, Lord of the universe, of eternal cosmic form, adorned with the moon, Śarva, three-eyed, bearing the bull-banner."
+            },
+            {
+              "number": 8,
+              "ref": "1.8",
+              "devanagari": "namaḥ kālākāya bhīmāya kapardine pinākine\nvyomakeśāya rudrāya namo nityāya śūline",
+              "iast": "namaḥ kālākāya bhīmāya kapardine pinākine\nvyomakeśāya rudrāya namo nityāya śūline",
+              "word_by_word": [
+                { "sanskrit": "kālākāya", "english": "black-bodied" },
+                { "sanskrit": "śūline", "english": "wielder of the spear" }
+              ],
+              "translation": "Obeisance to the dark-bodied, fearsome, matted-haired Lord, bearer of the bow Pināka, Rudra with sky-like hair, eternal, spear-armed."
+            },
+            {
+              "number": 9,
+              "ref": "1.9",
+              "devanagari": "namas te ’stu mahābhāga mahākāya mahādyute\nmahādeva mahātmānaṁ mahāpuruṣa viśruta",
+              "iast": "namas te ’stu mahābhāga mahākāya mahādyute\nmahādeva mahātmānaṁ mahāpuruṣa viśruta",
+              "word_by_word": [
+                { "sanskrit": "mahākāya", "english": "vast-bodied" },
+                { "sanskrit": "mahādyute", "english": "greatly radiant" }
+              ],
+              "translation": "Salutations to you, O greatly fortunate one, of vast body, of great radiance, Mahādeva, exalted great-souled, renowned Supreme Person."
+            },
+            {
+              "number": 10,
+              "ref": "1.10",
+              "devanagari": "rudraṁ paśupatiṁ devaṁ lokānāṁ hitakārakam\nśivam īśānaṁ īśānaṁ vande bhava-bhayāpaham",
+              "iast": "rudraṁ paśupatiṁ devaṁ lokānāṁ hita-kārakam\nśivam īśānaṁ īśānaṁ vande bhava-bhayāpaham",
+              "word_by_word": [
+                { "sanskrit": "paśupati", "english": "lord of beings" },
+                { "sanskrit": "bhava-bhaya-apaham", "english": "remover of fear of rebirth" }
+              ],
+              "translation": "I bow to Rudra, Paśupati, the god who works for the welfare of beings, Śiva, the supreme ruler, destroyer of the fear of worldly existence."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

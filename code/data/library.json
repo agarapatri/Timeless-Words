@@ -1,0 +1,17 @@
+[
+  {
+    "id": "vp",
+    "file": "vishnu_puran.json",
+    "title": "Vishnu Puran",
+    "author": "Unknown",
+    "image": ""
+  },
+  {
+    "id": "sp",
+    "file": "shiva_puran.json",
+    "title": "Shiva Puran",
+    "author": "Unknown",
+    "image": ""
+  }
+]
+

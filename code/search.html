@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search — TimelessWords</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div class="mini-header">
+      <div class="container"><span class="brand">TimelessWords</span><a class="active" href="search.html">Deep Search</a></div>
+    </div>
+
+    <main class="container search-page">
+      <a class="back-link" href="index.html">← Back</a>
+      <h1 class="title">Deep Search</h1>
+
+      <div class="search-layout">
+        <section class="search-main">
+          <form id="filters" class="filters" onsubmit="return false;">
+            <div class="filter" style="grid-column: span 12;">
+              <input id="q" type="search" placeholder="Search verses, translations…" aria-label="Deep search">
+            </div>
+            <div class="chipbar" id="chipbar">
+              <button type="button" class="active" data-scope="title" aria-pressed="true">Title</button>
+              <button type="button" class="active" data-scope="author" aria-pressed="true">Author</button>
+              <button type="button" class="active" data-scope="deva" aria-pressed="true">Devanāgarī</button>
+              <button type="button" class="active" data-scope="iast" aria-pressed="true">IAST</button>
+              <button type="button" class="active" data-scope="trans" aria-pressed="true">Translation</button>
+              <button type="button" class="active" data-scope="wfw" aria-pressed="true">Word‑for‑word</button>
+            </div>
+          </form>
+          <div id="resultsInfo" class="results-info" aria-live="polite"></div>
+          <ol id="results" class="results-list" aria-live="polite"></ol>
+        </section>
+        <aside class="search-side">
+          <div class="filter">
+            <label>Filter by specific books</label>
+            <div id="fBooks" class="checklist" role="group" aria-label="Books"></div>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+      </div>
+    </footer>
+
+    
+
+    <script src="assets/data-bundle.js"></script>
+    <script src="assets/app.js?v=3"></script>
+    <script src="assets/search.js"></script>
+  </body>
+  </html>

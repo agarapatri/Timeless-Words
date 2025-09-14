@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book — TimelessWords</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div class="mini-header">
+      <div class="container"><span class="brand">TimelessWords</span><a href="search.html">Deep Search</a></div>
+    </div>
+
+    <main class="container book-page">
+      <a class="crumb" href="index.html">TimelessWords</a>
+      <h1 id="bookTitle" class="title"></h1>
+      <p id="bookMeta" class="muted"></p>
+
+      <div id="chapters" class="chapters"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+      </div>
+    </footer>
+
+    
+
+    <script src="assets/data-bundle.js"></script>
+    <script src="assets/app.js?v=3"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', async () => {
+        const params = new URLSearchParams(location.search);
+        const id = params.get('book');
+        const library = await window.Library.loadLibrary();
+        const meta = library.find(b => b.id === id) || library[0];
+        document.getElementById('bookTitle').textContent = meta.title || '';
+        document.getElementById('bookMeta').textContent = `Author: ${meta.author || ''}`;
+
+        // Load flat rows and group by chapter to ensure all verses show
+        const rows = await window.Library.loadBookRows(meta.id);
+        const byChapter = new Map();
+        rows.forEach(r => {
+          const chKey = String(r.chapter);
+          if (!byChapter.has(chKey)) byChapter.set(chKey, []);
+          byChapter.get(chKey).push(r);
+        });
+        const chaptersArr = Array.from(byChapter.entries())
+          .map(([num, arr]) => ({ number: num, verses: arr.sort((a,b)=>Number(a.verse)-Number(b.verse)) }))
+          .sort((a,b)=>Number(a.number)-Number(b.number));
+
+        const container = document.getElementById('chapters');
+        chaptersArr.forEach(ch => {
+          const wrap = document.createElement('section');
+          wrap.className = 'chapter';
+          const header = document.createElement('button');
+          header.className = 'chapter-toggle';
+          header.type = 'button';
+          header.textContent = `Chapter ${ch.number}: Chapter ${ch.number}`;
+          const body = document.createElement('div');
+          body.className = 'chapter-body';
+          const list = document.createElement('ol');
+          list.className = 'verse-list';
+          ch.verses.forEach(v => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            const ref = `${ch.number}.${v.verse}`;
+            a.href = `verse.html?book=${encodeURIComponent(meta.id)}&c=${encodeURIComponent(ch.number)}&v=${encodeURIComponent(v.verse)}`;
+            const preview = (v.translation_en || v.translation || '').slice(0,140);
+            a.innerHTML = `<span class="ref">${ref}</span> <span class="t">${preview}${preview.length===140?'…':''}</span>`;
+            li.appendChild(a);
+            list.appendChild(li);
+          });
+          body.appendChild(list);
+          wrap.append(header, body);
+          container.appendChild(wrap);
+          header.addEventListener('click', () => wrap.classList.toggle('open'));
+        });
+      });
+    </script>
+  </body>
+  </html>

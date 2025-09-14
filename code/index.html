@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timeless Words</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div class="mini-header">
+      <div class="container"><span class="brand">Timeless Words</span><a href="search.html">Deep Search</a></div>
+    </div>
+
+    <main class="container home">
+      <section class="hero">
+        <div class="hero-top">
+          <div>
+            <h1 class="title">Timeless Words</h1>
+            <div class="muted">Collection of Vedic texts</div>
+          </div>
+          <a class="btn btn-outline thin" href="search.html" aria-label="Go to Deep Search">
+            <span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span>
+            Deep Search
+          </a>
+        </div>
+
+         <!-- Banner Section -->
+        <section class="banner">
+          <img src="assets/banner.png" alt="Banner" class="banner-img">
+        </section>
+
+        <form class="search-bar home-filter" action="#" id="homeFilterForm">
+          <input id="homeFilterInput" type="search" name="q" placeholder="Filter library by title or author…" aria-label="Filter library">
+        </form>
+      </section>
+      <section>
+        <h2 class="section-title">Books <span id="booksCount" class="count"></span></h2>
+        <div id="booksGrid" class="books-grid" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+      </div>
+    </footer>
+
+    
+
+    <script src="assets/data-bundle.js"></script>
+    <script src="assets/app.js?v=3"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', async () => {
+        const library = await window.Library.loadLibrary();
+        const grid = document.getElementById('booksGrid');
+        const booksCount = document.getElementById('booksCount');
+        const input = document.getElementById('homeFilterInput');
+
+        function initialsFromTitle(title) {
+          const words = (title || '').trim().split(/\s+/).filter(Boolean);
+          if (!words.length) return '';
+          return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+        }
+
+        function render(list) {
+          grid.innerHTML = '';
+          (list || []).forEach(b => {
+            const card = document.createElement('a');
+            card.className = 'book-card';
+            card.href = `book.html?book=${encodeURIComponent(b.id)}`;
+            const initials = initialsFromTitle(b.title);
+            const coverClass = b.image ? 'cover has-image' : 'cover';
+            const style = b.image ? `style="background-image:url('${b.image}')"` : '';
+            card.innerHTML = `
+              <div class="${coverClass}" ${style} aria-hidden="true">${initials}</div>
+              <div class="meta">
+                <div class="book-title">${b.title}</div>
+                <div class="book-sub">${b.author || ''}</div>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+          if (booksCount) booksCount.textContent = `(${list.length})`;
+        }
+
+        function filter(term) {
+          const t = (term || '').toLowerCase();
+          if (!t) return render(library);
+          const list = library.filter(b => (
+            (b.title||'').toLowerCase().includes(t) ||
+            (b.author||'').toLowerCase().includes(t)
+          ));
+          render(list);
+        }
+
+        render(library);
+        input.addEventListener('input', () => filter(input.value));
+        document.getElementById('homeFilterForm').addEventListener('submit', (e) => { e.preventDefault(); filter(input.value); });
+      });
+    </script>
+  </body>
+  </html>

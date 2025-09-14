@@ -1,0 +1,139 @@
+{
+  "books": [
+    {
+      "id": "vp",
+      "short": "VP",
+      "title": "Viṣṇu Purāṇa",
+      "author": "Unknown",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chapter 1",
+          "verses": [
+            {
+              "number": 1,
+              "ref": "1.1",
+              "devanagari": "oṁ namo bhagavate vāsudevāya\njanmādy asya yataḥ sṛṣṭi-sthiti-layāḥ\nsatyasya jñānānandasya brahmaṇaḥ\nparamātmanaḥ",
+              "iast": "oṁ namo bhagavate vāsudevāya\njanmādy asya yataḥ sṛṣṭi-sthiti-layāḥ\nsatyasya jñānānandasya brahmaṇaḥ\nparamātmanaḥ",
+              "word_by_word": [
+                { "sanskrit": "oṁ", "english": "sacred syllable" },
+                { "sanskrit": "namo", "english": "obeisance" },
+                { "sanskrit": "bhagavate", "english": "unto the Lord" },
+                { "sanskrit": "vāsudevāya", "english": "Vāsudeva (Kṛṣṇa)" }
+              ],
+              "translation": "Om! I bow to the blessed Lord Vāsudeva, the Supreme Self, from whom arise creation, preservation, and dissolution, who is truth, knowledge, and bliss."
+            },
+            {
+              "number": 2,
+              "ref": "1.2",
+              "devanagari": "viṣṇoḥ paramaṁ rūpaṁ sattvarūpaṁ sanātanam\nśuddhaṁ sac-cid-ānandaṁ yad brahma paramaṁ viduḥ",
+              "iast": "viṣṇoḥ paramaṁ rūpaṁ sattva-rūpaṁ sanātanam\nśuddhaṁ sac-cid-ānandaṁ yad brahma paramaṁ viduḥ",
+              "word_by_word": [
+                { "sanskrit": "viṣṇoḥ", "english": "of Viṣṇu" },
+                { "sanskrit": "paramam", "english": "supreme" },
+                { "sanskrit": "rūpam", "english": "form" }
+              ],
+              "translation": "The supreme form of Viṣṇu is eternal, pure existence-consciousness-bliss, composed of sattva, which the wise know as the highest Brahman."
+            },
+            {
+              "number": 3,
+              "ref": "1.3",
+              "devanagari": "sa eva sarvabhūtānām ādikartā sanātanaḥ\nvedavedāntaveditvaṁ tena sarvam idaṁ jagat",
+              "iast": "sa eva sarvabhūtānām ādikartā sanātanaḥ\nveda-vedānta-veditvaṁ tena sarvam idaṁ jagat",
+              "word_by_word": [
+                { "sanskrit": "saḥ", "english": "He" },
+                { "sanskrit": "sarvabhūtānām", "english": "of all beings" },
+                { "sanskrit": "ādikartā", "english": "prime creator" }
+              ],
+              "translation": "He alone, eternal, is the prime creator of all beings. Knowing the Veda and Vedānta, He pervades the entire universe."
+            },
+            {
+              "number": 4,
+              "ref": "1.4",
+              "devanagari": "eko vai nārāyaṇa āsīn na brahmā neśānaḥ\nna ca sūryo na ca candraḥ na nakṣatrāṇi",
+              "iast": "eko vai nārāyaṇa āsīn na brahmā neśānaḥ\nna ca sūryo na ca candraḥ na nakṣatrāṇi",
+              "word_by_word": [
+                { "sanskrit": "ekaḥ", "english": "only one" },
+                { "sanskrit": "nārāyaṇaḥ", "english": "Nārāyaṇa" },
+                { "sanskrit": "āsīt", "english": "was" }
+              ],
+              "translation": "In the beginning, only Nārāyaṇa existed—neither Brahmā nor Śiva, nor sun, nor moon, nor stars."
+            },
+            {
+              "number": 5,
+              "ref": "1.5",
+              "devanagari": "na dyaur na pṛthivī nāpo na vāyur na ca vahniḥ\nnāyamaśo na dik tasmād nānyad kiñcid vyavasthitam",
+              "iast": "na dyaur na pṛthivī nāpo na vāyur na ca vahniḥ\nnāyamaśo na dik tasmād nānyad kiñcid vyavasthitam",
+              "word_by_word": [
+                { "sanskrit": "na", "english": "not" },
+                { "sanskrit": "dyaus", "english": "heaven" },
+                { "sanskrit": "pṛthivī", "english": "earth" }
+              ],
+              "translation": "There was no heaven, no earth, no waters, no air, no fire, no quarters of space, nothing else whatsoever."
+            },
+            {
+              "number": 6,
+              "ref": "1.6",
+              "devanagari": "tama evaika evāsīt tadātmānam avīkṣata\nsa āsīt puruṣo viṣṇus tasya śaktiḥ parā parā",
+              "iast": "tama evaika evāsīt tadātmānam avīkṣata\nsa āsīt puruṣo viṣṇus tasya śaktiḥ parā parā",
+              "word_by_word": [
+                { "sanskrit": "tamaḥ", "english": "darkness" },
+                { "sanskrit": "eva", "english": "alone" },
+                { "sanskrit": "āsīt", "english": "was" }
+              ],
+              "translation": "Only darkness existed, contemplating its own nature. That was the Supreme Person, Viṣṇu, with His supreme energy."
+            },
+            {
+              "number": 7,
+              "ref": "1.7",
+              "devanagari": "sa eva sarvabhūtānāṁ kāraṇaṁ prakṛtir hi yā\navyaktā kālarūpeṇa vyaktā vyaktikaraṇy api",
+              "iast": "sa eva sarvabhūtānāṁ kāraṇaṁ prakṛtir hi yā\navyaktā kālarūpeṇa vyaktā vyaktikaraṇy api",
+              "word_by_word": [
+                { "sanskrit": "saḥ", "english": "He" },
+                { "sanskrit": "sarvabhūtānām", "english": "of all beings" },
+                { "sanskrit": "kāraṇam", "english": "cause" }
+              ],
+              "translation": "He is the cause of all beings. His energy, called prakṛti, is unmanifest as time, yet manifests all things."
+            },
+            {
+              "number": 8,
+              "ref": "1.8",
+              "devanagari": "tasyāḥ saṁkṣobhakartā vai viṣṇur eva janārdanaḥ\nsa hi dhātā vidhātā ca lokānāṁ sampravartakaḥ",
+              "iast": "tasyāḥ saṁkṣobhakartā vai viṣṇur eva janārdanaḥ\nsa hi dhātā vidhātā ca lokānāṁ sampravartakaḥ",
+              "word_by_word": [
+                { "sanskrit": "saṁkṣobhakartā", "english": "agitator" },
+                { "sanskrit": "viṣṇuḥ", "english": "Viṣṇu" },
+                { "sanskrit": "janārdanaḥ", "english": "Janārdana" }
+              ],
+              "translation": "It is Janārdana Viṣṇu who agitates that energy, being the creator and sustainer, the mover of all worlds."
+            },
+            {
+              "number": 9,
+              "ref": "1.9",
+              "devanagari": "sa eva dharmakartā ca sa eva paripālakaḥ\nsa eva lokanāthas tu sa eva śaraṇaṁ vibhuḥ",
+              "iast": "sa eva dharmakartā ca sa eva paripālakaḥ\nsa eva lokanāthas tu sa eva śaraṇaṁ vibhuḥ",
+              "word_by_word": [
+                { "sanskrit": "saḥ", "english": "He" },
+                { "sanskrit": "dharma-kartā", "english": "ordainer of dharma" },
+                { "sanskrit": "paripālakaḥ", "english": "protector" }
+              ],
+              "translation": "He is the ordainer of dharma, its protector, the Lord of the worlds, and the refuge of all beings."
+            },
+            {
+              "number": 10,
+              "ref": "1.10",
+              "devanagari": "sarveṣām eva bhūtānāṁ nātho viṣṇur janārdanaḥ\ntasya prasādāt sarveṣu sukhaṁ śāntiś ca jāyate",
+              "iast": "sarveṣām eva bhūtānāṁ nātho viṣṇur janārdanaḥ\ntasya prasādāt sarveṣu sukhaṁ śāntiś ca jāyate",
+              "word_by_word": [
+                { "sanskrit": "sarveṣām", "english": "of all" },
+                { "sanskrit": "bhūtānām", "english": "beings" },
+                { "sanskrit": "nāthaḥ", "english": "Lord" }
+              ],
+              "translation": "Viṣṇu Janārdana is the Lord of all beings. By His grace arise happiness and peace everywhere."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
