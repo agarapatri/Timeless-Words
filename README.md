@@ -1,2 +1,2 @@
-# TimelessWords
-A website for Vedic texts.
+# Timeless Words
+Collection of Vedic texts
