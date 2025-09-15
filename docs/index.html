@@ -67,19 +67,29 @@
             const card = document.createElement('a');
             card.className = 'book-card';
             card.href = `book.html?book=${encodeURIComponent(b.id)}`;
+
             const initials = initialsFromTitle(b.title);
             const coverClass = b.image ? 'cover has-image' : 'cover';
-            const style = b.image ? `style="background-image:url('${b.image}')"` : '';
+            const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
+
+            // Coerce to numbers in case library.json stores them as strings
+            const ch = Number(b.chapters);
+            const vs = Number(b.verses);
+            const stats = (Number.isFinite(ch) && Number.isFinite(vs))
+              ? `${ch} chapters · ${vs} verses`
+              : '';
+
             card.innerHTML = `
-              <div class="${coverClass}" ${style} aria-hidden="true">${initials}</div>
+              <div class="${coverClass}" ${styleAttr} aria-hidden="true">${initials}</div>
               <div class="meta">
                 <div class="book-title">${b.title}</div>
-                <div class="book-sub">${b.author || ''}</div>
+                <div class="book-sub">${b.author || 'Unknown'}</div>
+                ${stats ? `<div class="book-stats">${stats}</div>` : ''}
               </div>
             `;
             grid.appendChild(card);
           });
-          if (booksCount) booksCount.textContent = `(${list.length})`;
+          if (booksCount) booksCount.textContent = `(${(list || []).length})`;
         }
 
         function filter(term) {
