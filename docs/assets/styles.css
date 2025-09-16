@@ -370,3 +370,28 @@ input[type="range"]::-moz-range-thumb     { background: var(--accent); border-co
 input[type="range"],
 input[type="checkbox"],
 input[type="radio"] { accent-color: var(--accent); }
+
+
+/* --- Book detail header --- */
+.book-hero { display:flex; align-items:center; gap:18px; margin-top:12px; }
+.book-cover {
+  width: 136px; height: 160px; border-radius: 14px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(180deg,#eef3f8,#e6ebf3);
+  color:#334155; font-weight: 800; font-size: 44px;
+  border: 1px solid var(--border);
+}
+.book-cover.has-image { background: #ddd; background-size: cover; background-position: center; color: transparent; }
+.book-info .title { margin:0; }
+.book-info .muted { margin-top:6px; }
+
+/* --- Chapter list on the book page --- */
+.chapter-list { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 8px; }
+.chapter-card {
+  display:block; padding:16px; border:1px solid var(--border); border-radius:12px;
+  background: var(--card-bg, var(--bg));
+}
+.chapter-card:hover { background: rgba(0,0,0,.03); }
+html.theme-dark .chapter-card:hover { background: rgba(255,255,255,.04); }
+.chapter-title { font-weight: 700; margin: 0 0 6px; }
+.chapter-sub { font-size: 14px; }

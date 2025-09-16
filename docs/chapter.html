@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter — Timeless Words</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <div class="mini-header">
+      <div class="container">
+        <a class="brand" href="index.html">Timeless Words</a>
+        <a href="search.html">Deep Search</a>
+      </div>
+    </div>
+
+    <main class="container chapter-page">
+      <nav class="crumbs" id="crumbs"></nav>
+      <h1 class="title" id="chapterTitle"></h1>
+      <p class="muted" id="chapterMeta"></p>
+
+      <ol id="verseList" class="results-list"></ol>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+      </div>
+    </footer>
+
+    <script src="assets/data-bundle.js"></script>
+    <script src="assets/app.js?v=3"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', async () => {
+        const p = new URLSearchParams(location.search);
+        const id = p.get('book');
+        const cNum = Number(p.get('c'));
+
+        const library = await window.Library.loadLibrary();
+        const meta = library.find(b => b.id === id) || library[0];
+        const rows = await window.Library.loadBookRows(meta.id);
+
+        const chRows = rows.filter(r => Number(r.chapter) === cNum)
+                           .sort((a,b)=>Number(a.verse)-Number(b.verse));
+
+        // Header
+        document.getElementById('chapterTitle').textContent = `${meta.title} — Chapter ${cNum}`;
+        document.getElementById('chapterMeta').textContent = `${chRows.length} ${chRows.length===1?'verse':'verses'}`;
+
+        // Crumbs
+        const crumbs = document.getElementById('crumbs');
+        crumbs.innerHTML = `
+          <a href="index.html">Timeless Words</a><span>›</span>
+          <a href="book.html?book=${encodeURIComponent(meta.id)}">${meta.title}</a><span>›</span>
+          <span>Chapter ${cNum}</span>
+        `;
+
+        // List translations (each line links to verse.html)
+        const list = document.getElementById('verseList');
+        list.innerHTML = '';
+        chRows.forEach(r => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `verse.html?book=${encodeURIComponent(meta.id)}&c=${encodeURIComponent(cNum)}&v=${encodeURIComponent(r.verse)}`;
+          const snippet = (r.translation_en || r.translation || '').trim();
+          a.innerHTML = `
+            <div class="line"><span class="ref">${meta.id.toUpperCase()} ${cNum}.${r.verse}</span></div>
+            <div class="line">${snippet || ''}</div>
+          `;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>
