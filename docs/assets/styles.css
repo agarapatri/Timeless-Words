@@ -222,3 +222,151 @@ button { border-radius: 999px; }
   font-size: 14px;
   color: var(--muted);
 }
+
+/* Row holding the Deep Search pill and the menu button */
+.hero-actions { display: flex; align-items: center; gap: 10px; }
+
+/* Make the 3-dots button visually match the Deep Search pill */
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 35px; width: 44px;               /* round button */
+  border: 1px solid var(--fg);             /* same border look as the pill */
+  border-radius: 999px;                    /* pill/fully rounded */
+  background: var(--bg); color: var(--fg);
+}
+.icon-btn:hover { background: rgba(0,0,0,0.04); }
+html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
+
+/* Dropdown panel */
+.menu-wrap { position: relative; }
+.menu-panel {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 40;
+  min-width: 260px; padding: 8px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--bg); box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+.menu-item { display:block; padding:8px 10px; border-radius:8px; }
+.menu-item:hover { background: rgba(0,0,0,0.04); }
+html.theme-dark .menu-item:hover { background: rgba(255,255,255,0.06); }
+.menu-item.row { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.menu-item.col { display:flex; flex-direction:column; gap:6px; }
+.menu-sep { height:1px; background: var(--border); margin:6px 0; }
+.row.gap { display:flex; align-items:center; gap:8px; }
+.btn.sm { padding: 4px 8px; font-size: 12px; }
+
+/* Accessible helper */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* MOBILE behavior:
+   - hide the inline Deep Search pill
+   - show the Deep Search item INSIDE the menu (first item) */
+.mobile-only { display: none; }
+@media (max-width: 600px) {
+  .hero-actions .btn-deep { display: none; }   /* pill hidden on mobile */
+  .menu-panel .mobile-only { display: block; } /* menu item shown on mobile */
+}
+
+/* Dark mode (toggle by adding .theme-dark on html) */
+:root { --bg:#fff; --fg:#111; --muted:#6b7280; --border:#e5e7eb; }
+html.theme-dark { --bg:#0b0d0f; --fg:#e5e7eb; --muted:#9aa4af; --border:#26313a; }
+html { background: var(--bg); color: var(--fg); }
+
+/* Typeface toggle (html.font-serif vs default) */
+html.font-serif, html.font-serif body { font-family: Georgia, "Times New Roman", serif; }
+
+/* --- Keep the menu on the far right of the header --- */
+.hero-bar, .hero-top {
+  display: flex;
+  align-items: center;
+}
+
+.hero-title, .title {
+  flex: 1 1 auto;      /* title takes remaining space */
+  min-width: 0;        /* allow shrink */
+}
+
+.hero-actions {
+  margin-left: auto;   /* push actions all the way right */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;           /* same visual spacing; adjust if you used a different gap */
+}
+
+/* Mobile: prevent wrapping, let title truncate so menu stays beside it */
+@media (max-width: 600px) {
+  .hero-bar, .hero-top { flex-wrap: nowrap; }
+  .hero-title, .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+
+/* --- Keep menu on the far right (desktop + mobile) --- */
+.hero-top { display: flex; align-items: center; }
+.hero-top > :first-child { flex: 1 1 auto; min-width: 0; } /* title block flexes */
+.hero-actions { margin-left: auto; flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
+
+@media (max-width: 600px) {
+  .hero-top { flex-wrap: nowrap !important; } /* prevent wrap under subtitle */
+  .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+/* --- Dark Mode: actually flip text color (keep sizes unchanged) --- */
+html.theme-dark { --text: #e5e7eb; }   /* your base uses --text for body color */
+html, body { background: var(--bg); color: var(--text); }  /* ensure both honor vars */
+
+/* === Mobile: pin the menu to the far right next to the title === */
+@media (max-width: 600px) {
+  /* Make the header a positioning context */
+  .hero-top { position: relative; }
+
+  /* Absolutely position the actions on the right */
+  .hero-actions {
+    position: absolute;
+    right: 0;
+    top: 6px;             /* nudge to align with title baseline; tweak if needed */
+  }
+
+  /* Reserve space on the right so the title/subtitle don't sit under the menu */
+  .hero-top > div:first-child { padding-right: 64px; }
+}
+
+/* === Dark Mode: ensure body text turns light === */
+html.theme-dark { --text: #e5e7eb; }   /* your base uses --text for body color */
+body { color: var(--text); }           /* make sure body honors the token */
+
+html.theme-dark {
+  --accent: #e5e7eb;           /* light thumb/fill in dark theme */
+}
+
+/* Apply to checkboxes, radios, ranges, and progress bars */
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress {
+  accent-color: var(--accent);
+}
+
+/* Optional: clearer focus ring (keeps sizes the same) */
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible,
+input[type="range"]:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  outline-offset: 2px;
+}
+
+/* Safari polish (thumb color) — harmless elsewhere */
+input[type="range"]::-webkit-slider-thumb { background: var(--accent); border-color: var(--accent); }
+input[type="range"]::-moz-range-thumb     { background: var(--accent); border-color: var(--accent); }
+
+
+/* Font-size menu layout (matches your screenshot) */
+.menu-panel .menu-row { display: flex; align-items: center; }
+.menu-panel .menu-row.head { justify-content: space-between; }
+#fontSizeCurrent { margin-left: auto; font-weight: 0; color: var(--muted); }
+.menu-panel .menu-row.controls { gap: 10px; }
+#fontSizeRange { flex: 1 1 auto; min-width: 0; }     /* slider fills width */
+#fontSizeReset { flex: 0 0 auto; }                    /* button sits to the right */
+
+/* Make sure the range/checkboxes use your accent color (not default blue) */
+input[type="range"],
+input[type="checkbox"],
+input[type="radio"] { accent-color: var(--accent); }

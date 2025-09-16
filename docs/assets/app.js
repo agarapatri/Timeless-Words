@@ -290,4 +290,150 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   });
+
+  const menuBtn   = document.getElementById('menuBtn');
+  const menuPanel = document.getElementById('menuPanel');
+  if (!menuBtn || !menuPanel) return;
+
+  // ---- menu open/close
+  function openMenu() {
+    menuPanel.hidden = false;
+    menuBtn.setAttribute('aria-expanded', 'true');
+    // position is CSS; focus the first control for a11y
+    const first = menuPanel.querySelector('.menu-item, a, input, button');
+    if (first) first.focus({ preventScroll: true });
+    document.addEventListener('mousedown', onDocClick, true);
+    document.addEventListener('keydown', onKey, true);
+  }
+  function closeMenu() {
+    menuPanel.hidden = true;
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('mousedown', onDocClick, true);
+    document.removeEventListener('keydown', onKey, true);
+  }
+  function onDocClick(e) {
+    if (!menuPanel.contains(e.target) && e.target !== menuBtn) closeMenu();
+  }
+  function onKey(e) {
+    if (e.key === 'Escape') { closeMenu(); menuBtn.focus(); }
+  }
+  menuBtn.addEventListener('click', () => {
+    (menuPanel.hidden ? openMenu : closeMenu)();
+  });
+
+  // After you set up open/close listeners:
+  // menuPanel.addEventListener('click', (e) => {
+  //   const target = e.target.closest('a,button,input,label');
+  //   if (target) {
+  //     // Let the action happen (link, toggle, etc.), then close
+  //     setTimeout(() => {
+  //       if (!menuPanel.hidden) {
+  //         menuPanel.hidden = true;
+  //         menuBtn.setAttribute('aria-expanded', 'false');
+  //       }
+  //     }, 0);
+  //   }
+  // });
+
+  // ---- persisted settings
+  const LS = {
+    get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  };
+
+  // Dark Mode
+  const darkToggle = document.getElementById('darkToggle');
+  const darkInit = LS.get('tw.dark', false);
+  if (darkInit) document.documentElement.classList.add('theme-dark');
+  if (darkToggle) {
+    darkToggle.checked = darkInit;
+    darkToggle.addEventListener('change', () => {
+      document.documentElement.classList.toggle('theme-dark', darkToggle.checked);
+      LS.set('tw.dark', darkToggle.checked);
+    });
+  }
+
+  // ----- Font size (slider + value + reset) -----
+  const DEFAULT_FONT = 16;
+  const root = document.documentElement;
+
+  const rng = document.getElementById('fontSizeRange');
+  const val = document.getElementById('fontSizeVal');
+  const resetBtn = document.getElementById('fontSizeReset');
+
+  if (!rng || !val || !resetBtn) return;
+
+  function getStored() {
+    const v = Number(localStorage.getItem('tw.fontSize'));
+    return Number.isFinite(v) ? v : DEFAULT_FONT;
+    }
+
+  function apply(px) {
+    const v = Math.max(12, Math.min(24, Math.round(px)));
+    root.style.fontSize = v + 'px';
+    val.textContent = String(v);      // shows like 18px (no space)
+    localStorage.setItem('tw.fontSize', String(v));
+  }
+
+  // init
+  const start = getStored();
+  apply(start);
+  rng.value = String(start);
+
+  // live update on slide
+  rng.addEventListener('input', () => {
+    const v = Number(rng.value) || DEFAULT_FONT;
+    apply(v);
+  });
+
+  // reset to default
+  resetBtn.addEventListener('click', () => {
+    apply(DEFAULT_FONT);
+    rng.value = String(DEFAULT_FONT);
+  });
+
+  // Serif / Sans
+  const serifToggle = document.getElementById('serifToggle');
+  const serifInit = !!LS.get('tw.serif', false);
+  document.documentElement.classList.toggle('font-serif', serifInit);
+  if (serifToggle) {
+    serifToggle.checked = serifInit;
+    serifToggle.addEventListener('change', () => {
+      const on = serifToggle.checked;
+      document.documentElement.classList.toggle('font-serif', on);
+      LS.set('tw.serif', on);
+    });
+  }
+
+  // ---- Text to Speech (selection or fallback)
+  const synth = window.speechSynthesis;
+  let utter = null;
+
+  function getSpeakText() {
+    const s = String(window.getSelection?.().toString() || '');
+    if (s.trim()) return s;
+    // fallback: title + subtitle (adjust selectors if you want)
+    const title = document.querySelector('.title,.book-title,h1,h2');
+    const sub   = document.querySelector('.muted,.book-sub');
+    return [title?.textContent || '', sub?.textContent || ''].filter(Boolean).join('. ');
+  }
+  function speak() {
+    const txt = getSpeakText();
+    if (!txt) return;
+    if (utter) synth.cancel();
+    utter = new SpeechSynthesisUtterance(txt);
+    utter.lang = 'en'; // pick a default; change if needed
+    synth.speak(utter);
+  }
+  function pause() { if (synth.speaking && !synth.paused) synth.pause(); }
+  function resume() { if (synth.paused) synth.resume(); }
+  function stop() { synth.cancel(); utter = null; }
+
+  const ttsPlay  = document.getElementById('ttsPlay');
+  const ttsPause = document.getElementById('ttsPause');
+  const ttsStop  = document.getElementById('ttsStop');
+
+  if (ttsPlay)  ttsPlay.addEventListener('click', () => { if (synth.paused) resume(); else speak(); });
+  if (ttsPause) ttsPause.addEventListener('click', pause);
+  if (ttsStop)  ttsStop.addEventListener('click', stop);
 })();
