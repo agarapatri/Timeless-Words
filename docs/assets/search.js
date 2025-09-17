@@ -193,7 +193,7 @@
 
       a.innerHTML = `
         <div class="line">
-          <span class="ref">${book.short || book.title} ${ch.number}.${v.number}</span>
+          <span class="ref notranslate" translate="no">${book.short || book.title} ${ch.number}.${v.number}</span>
         </div>
         ${lines}
       `;

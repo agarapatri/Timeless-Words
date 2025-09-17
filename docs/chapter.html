@@ -64,7 +64,7 @@
           a.href = `verse.html?book=${encodeURIComponent(meta.id)}&c=${encodeURIComponent(cNum)}&v=${encodeURIComponent(r.verse)}`;
           const snippet = (r.translation_en || r.translation || '').trim();
           a.innerHTML = `
-            <div class="line"><span class="ref">${meta.id.toUpperCase()} ${cNum}.${r.verse}</span></div>
+            <div class="line"><span class="ref notranslate" translate="no">${meta.id.toUpperCase()} ${cNum}.${r.verse}</span></div>
             <div class="line">${snippet || ''}</div>
           `;
           li.appendChild(a);

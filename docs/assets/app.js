@@ -353,45 +353,6 @@
     });
   }
 
-  // ----- Font size (slider + value + reset) -----
-  const DEFAULT_FONT = 16;
-  const root = document.documentElement;
-
-  const rng = document.getElementById('fontSizeRange');
-  const val = document.getElementById('fontSizeVal');
-  const resetBtn = document.getElementById('fontSizeReset');
-
-  if (!rng || !val || !resetBtn) return;
-
-  function getStored() {
-    const v = Number(localStorage.getItem('tw.fontSize'));
-    return Number.isFinite(v) ? v : DEFAULT_FONT;
-    }
-
-  function apply(px) {
-    const v = Math.max(12, Math.min(24, Math.round(px)));
-    root.style.fontSize = v + 'px';
-    val.textContent = String(v);      // shows like 18px (no space)
-    localStorage.setItem('tw.fontSize', String(v));
-  }
-
-  // init
-  const start = getStored();
-  apply(start);
-  rng.value = String(start);
-
-  // live update on slide
-  rng.addEventListener('input', () => {
-    const v = Number(rng.value) || DEFAULT_FONT;
-    apply(v);
-  });
-
-  // reset to default
-  resetBtn.addEventListener('click', () => {
-    apply(DEFAULT_FONT);
-    rng.value = String(DEFAULT_FONT);
-  });
-
   // Serif / Sans
   const serifToggle = document.getElementById('serifToggle');
   const serifInit = !!LS.get('tw.serif', false);
@@ -404,6 +365,51 @@
       LS.set('tw.serif', on);
     });
   }
+
+  /* ---------------------------------- */
+
+  // ----- Font size (slider + value + reset) -----
+  const MIN = 14, MAX = 20, DEFAULT = 16;
+  const root = document.documentElement;
+
+  const rng = document.getElementById('fontSizeRange');
+  const lbl = document.getElementById('fontSizeVal');
+  const resetBtn = document.getElementById('fontSizeReset');
+  if (!rng || !lbl) return;
+
+  // clamp + sanitize any previously saved value (kills old 12px saves)
+  const read = () => {
+    const n = Number(localStorage.getItem('tw.fontSize'));
+    return Number.isFinite(n) && n >= MIN && n <= MAX ? Math.round(n) : DEFAULT;
+  };
+
+  const apply = (px) => {
+    const v = Math.max(MIN, Math.min(MAX, Math.round(px)));
+    root.style.fontSize = v + 'px';
+    lbl.textContent = String(v);
+    localStorage.setItem('tw.fontSize', String(v));
+  };
+
+  // init
+  const start = read();
+  rng.min = String(MIN);
+  rng.max = String(MAX);
+  rng.step = '1';
+  rng.value = String(start);
+  apply(start);
+
+  // live update
+  rng.addEventListener('input', () => apply(rng.value));
+
+  // reset to default
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      apply(DEFAULT);
+      rng.value = String(DEFAULT);
+    });
+  }
+
+  /* ---------------------------------- */
 
   // ---- Text to Speech (selection or fallback)
   const synth = window.speechSynthesis;
@@ -436,4 +442,49 @@
   if (ttsPlay)  ttsPlay.addEventListener('click', () => { if (synth.paused) resume(); else speak(); });
   if (ttsPause) ttsPause.addEventListener('click', pause);
   if (ttsStop)  ttsStop.addEventListener('click', stop);
+
+  /* ---------------------------------- */
+
+  // === Google Translate toggle (checkbox) ===
+  const toggle = document.getElementById('gtToggle');
+  if (!toggle) return;
+
+  function isTranslated() {
+    const h = location.hostname;
+    // Covers translate.google.com/translate and googleusercontent proxy
+    return h.includes('translate.google') || h.includes('googleusercontent.com');
+  }
+
+  function originalFromTranslateUrl() {
+    // Most translate URLs carry the original in ?u=
+    const sp = new URLSearchParams(location.search);
+    if (sp.has('u')) {
+      try { return decodeURIComponent(sp.get('u')); } catch { return sp.get('u'); }
+    }
+    // Fallback: if not present, just stay put
+    return location.href;
+  }
+
+  function makeTranslateUrl(orig, tl) {
+    const lang = (tl || (navigator.language || 'en')).split('-')[0];
+    return `https://translate.google.com/translate?sl=auto&tl=${encodeURIComponent(lang)}&u=${encodeURIComponent(orig)}`;
+  }
+
+  // Initialize checkbox state from current URL
+  const translatedNow = isTranslated();
+  toggle.checked = translatedNow;
+
+  toggle.addEventListener('change', () => {
+    const nowTranslated = isTranslated();
+    if (toggle.checked) {
+      // Turn ON translate
+      const orig = nowTranslated ? originalFromTranslateUrl() : location.href;
+      location.href = makeTranslateUrl(orig);
+    } else {
+      // Turn OFF translate -> go back to original URL
+      if (nowTranslated) {
+        location.href = originalFromTranslateUrl();
+      } // else already original; nothing to do
+    }
+  });
 })();

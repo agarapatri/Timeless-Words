@@ -227,13 +227,19 @@ button { border-radius: 999px; }
 .hero-actions { display: flex; align-items: center; gap: 10px; }
 
 /* Make the 3-dots button visually match the Deep Search pill */
-.icon-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  height: 35px; width: 44px;               /* round button */
-  border: 1px solid var(--fg);             /* same border look as the pill */
-  border-radius: 999px;                    /* pill/fully rounded */
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  height: 2.1875rem;             /* 35px -> scales with root font-size */
+  min-width: 2.75rem;            /* 44px minimum; grows if content needs it */
+  padding: 0 .5rem;              /* extra room when content grows */
+  border: 0.0625rem solid var(--fg);  /* 1px -> scalable unit */
+  border-radius: 999px;
   background: var(--bg); color: var(--fg);
+  font: inherit;                 /* scale icon size with site font */
 }
+/* make the dots scale with text size */
+.icon-btn svg{ width: 1.1em; height: 1.1em; }
+
 .icon-btn:hover { background: rgba(0,0,0,0.04); }
 html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
 
@@ -395,3 +401,13 @@ input[type="radio"] { accent-color: var(--accent); }
 html.theme-dark .chapter-card:hover { background: rgba(255,255,255,.04); }
 .chapter-title { font-weight: 700; margin: 0 0 6px; }
 .chapter-sub { font-size: 14px; }
+
+/* External-link icon alignment */
+.link-ext { justify-content: space-between; gap: 10px; }
+.link-ext .ext-icon { flex: 0 0 auto; opacity: .7; }
+
+/* Unified accent for checkbox (shares your range accent if you set --accent) */
+input[type="checkbox"] { accent-color: var(--accent, currentColor); }
+
+.notranslate { /* intentionally not translated by Google */ }
+
