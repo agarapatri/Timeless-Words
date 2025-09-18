@@ -194,7 +194,7 @@ button { border-radius: 999px; }
 /* Deep Search: checkbox color */
 #fBooks input[type="checkbox"],
 .checklist input[type="checkbox"] {
-  accent-color: var(--accent);
+  accent-color: var(--text);
 }
 
 /* Pager controls */
@@ -348,7 +348,7 @@ input[type="checkbox"],
 input[type="radio"],
 input[type="range"],
 progress {
-  accent-color: var(--accent);
+  accent-color: var(--text);
 }
 
 /* Optional: clearer focus ring (keeps sizes the same) */
@@ -360,8 +360,8 @@ input[type="range"]:focus-visible {
 }
 
 /* Safari polish (thumb color) — harmless elsewhere */
-input[type="range"]::-webkit-slider-thumb { background: var(--accent); border-color: var(--accent); }
-input[type="range"]::-moz-range-thumb     { background: var(--accent); border-color: var(--accent); }
+input[type="range"]::-webkit-slider-thumb { background: var(--text); border-color: var(--text); }
+input[type="range"]::-moz-range-thumb     { background: var(--text); border-color: var(--text); }
 
 
 /* Font-size menu layout (matches your screenshot) */
@@ -375,7 +375,7 @@ input[type="range"]::-moz-range-thumb     { background: var(--accent); border-co
 /* Make sure the range/checkboxes use your accent color (not default blue) */
 input[type="range"],
 input[type="checkbox"],
-input[type="radio"] { accent-color: var(--accent); }
+input[type="radio"] { accent-color: var(--text); }
 
 
 /* --- Book detail header --- */
@@ -407,7 +407,7 @@ html.theme-dark .chapter-card:hover { background: rgba(255,255,255,.04); }
 .link-ext .ext-icon { flex: 0 0 auto; opacity: .7; }
 
 /* Unified accent for checkbox (shares your range accent if you set --accent) */
-input[type="checkbox"] { accent-color: var(--accent, currentColor); }
+input[type="checkbox"] { accent-color: var(--text, currentColor); }
 
 .notranslate { /* intentionally not translated by Google */ }
 
@@ -489,3 +489,71 @@ input[type="checkbox"] { accent-color: var(--accent, currentColor); }
 
 /* Anchor for the popover exactly under the icon */
 .help-wrap{ position:relative; display:inline-block; }
+
+/* ----------------------------------------------- */
+/* --- Filter by specific books (right sidebar) — clean, compact, with visible icon --- */
+#fBooks .book-box{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px 10px 4px;             /* tighter container padding */
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* SEARCH */
+#fBooks .filter{
+  position: relative;
+  padding: 2px 0 6px;                /* compact */
+  background: transparent !important;
+  border-bottom: 1px solid var(--border); /* divider under search */
+}
+
+#fBooks .filter input[type="search"],
+#fBooks .filter input[type="text"],
+#fBooks .filter .search-input{
+  display: block;
+  width: 100%;
+  background: #fff !important;       /* white pill */
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 999px;
+  height: 34px;                      /* compact height */
+  padding: 0 10px 0 36px;            /* space for the icon */
+  min-width: 0;
+  font-size:15px;
+}
+#fBooks .filter input::placeholder{ color:#9aa3ad; }
+#fBooks .filter input:focus{
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+}
+
+/* LIST (clean with subtle dividers, tighter rows) */
+#fBooks .checklist{ display:block; padding:0; margin:0; }
+#fBooks .checklist label{
+  display:flex; align-items:center; gap:12px;
+  padding:8px 0;                     /* tighter row spacing */
+  border:0; border-radius:0; background:transparent;
+  cursor:pointer;
+}
+#fBooks .checklist label + label{ border-top:1px solid var(--border); }
+#fBooks .checklist input[type="checkbox"]{ width:18px; height:18px; }
+#fBooks .checklist span{ font-size:15px; }
+
+#fBooks .filter::before{
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: calc(17px); /* centers for 34px input height + 2px top padding */
+  transform: translateY(-50%);
+  width: 18px; height: 18px;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  pointer-events: none;
+  background: url("../icons/search.svg");
+  opacity: .35;
+}
+
+
+
+/* ----------------------------------------------- */

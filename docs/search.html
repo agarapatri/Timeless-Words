@@ -150,9 +150,16 @@
         </section>
         
         <aside class="search-side">
-          <div class="filter">
+          <div class="filter" id="fBooks">
             <label>Filter by specific books</label>
-            <div id="fBooks" class="checklist" role="group" aria-label="Books"></div>
+            <div class="book-box">
+              <!-- put input inside .filter to inherit same rounded style -->
+              <div class="filter">
+                <input type="search" id="bookSearch" placeholder="Search books…" aria-label="Search books">
+              </div>
+
+              <div id="bookChecklist" class="checklist"></div>
+            </div>
           </div>
         </aside>
 

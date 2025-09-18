@@ -69,16 +69,6 @@
     const library = await window.Library.loadLibrary();
     const data = await window.Library.loadAllBooks();
 
-    // Build book checklist
-    const booksSel = document.getElementById('fBooks');
-    library.forEach(b => {
-      const id = `b_${b.id}`;
-      const label = document.createElement('label');
-      label.setAttribute('for', id);
-      label.innerHTML = `<input id="${id}" type="checkbox" value="${b.id}"> <span>${b.title}</span>`;
-      booksSel.appendChild(label);
-    });
-
     // Prefill from q if navigated from home
     const q = new URLSearchParams(location.search).get('q');
     if (q) document.getElementById('q').value = q;
@@ -271,4 +261,98 @@
 
   // boot
   window.addEventListener('DOMContentLoaded', init);
+
+  /* --------------------------------------- */
+  
+  /* ---------------------------------------
+   ONLY the "Filter by specific books" feature — data/library.json
+   (safe: no clash with the main Deep Search init)
+----------------------------------------*/
+  function byId(id){ return document.getElementById(id); }
+
+  function initBookFilter(){
+    const searchEl = byId('bookSearch');
+    const listEl   = byId('bookChecklist');
+    if (!searchEl || !listEl) return; // not on this page
+
+    const state = { all: [], filtered: [], selected: new Set() };
+
+    // load books
+    (async () => {
+      try {
+        const res  = await fetch('data/library.json', { cache: 'no-cache' });
+        const data = await res.json();
+        const books = Array.isArray(data) ? data : (data.books || []);
+
+        state.all = books.map(b => ({
+          id:    b.id ?? b.slug ?? String(b.title||'').toLowerCase().replace(/\W+/g,'_'),
+          title: b.title || b.short || String(b.id||''),
+          short: b.short || ''
+        })).sort((a,b)=>a.title.localeCompare(b.title));
+
+        state.filtered = state.all.slice();
+        render();
+      } catch (e) {
+        listEl.innerHTML = '<div class="muted">Could not load books (serve via http).</div>';
+      }
+    })();
+
+    // mini search (title/short)
+    searchEl.addEventListener('input', () => {
+      const q = searchEl.value.trim().toLowerCase();
+      state.filtered = q
+        ? state.all.filter(b =>
+            (b.title||'').toLowerCase().includes(q) ||
+            (b.short||'').toLowerCase().includes(q))
+        : state.all.slice();
+      render();
+    });
+
+    function render(){
+      if (!state.filtered.length){
+        listEl.innerHTML = '<div class="muted" aria-live="polite">No books</div>';
+        return;
+      }
+      const frag = document.createDocumentFragment();
+
+      state.filtered.forEach(b => {
+        const idAttr = `book_${String(b.id).replace(/\W+/g,'_')}`;
+
+        const label = document.createElement('label');
+        label.setAttribute('role','option');
+        label.htmlFor = idAttr;
+
+        const box = document.createElement('input');
+        box.type = 'checkbox';
+        box.id = idAttr;
+        box.value = b.id;
+        box.checked = state.selected.has(b.id);
+        box.addEventListener('change', () => {
+          if (box.checked) state.selected.add(b.id);
+          else state.selected.delete(b.id);
+
+          // bubble for anyone listening (your deep search also watches #fBooks change)
+          document.dispatchEvent(new CustomEvent('books:changed', {
+            detail: { selected: Array.from(state.selected) }
+          }));
+          // also trigger the native change your deep search listens to
+          listEl.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        const span = document.createElement('span');
+        span.textContent = b.title;
+
+        label.appendChild(box);
+        label.appendChild(span);
+        frag.appendChild(label);
+      });
+
+      listEl.innerHTML = '';
+      listEl.appendChild(frag);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
+
+
 })();
