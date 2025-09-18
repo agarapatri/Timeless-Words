@@ -356,12 +356,12 @@
   // Serif / Sans
   const serifToggle = document.getElementById('serifToggle');
   const serifInit = !!LS.get('tw.serif', false);
-  document.documentElement.classList.toggle('font-serif', serifInit);
+  document.documentElement.classList.toggle('serif', serifInit);
   if (serifToggle) {
     serifToggle.checked = serifInit;
     serifToggle.addEventListener('change', () => {
       const on = serifToggle.checked;
-      document.documentElement.classList.toggle('font-serif', on);
+      document.documentElement.classList.toggle('serif', on);
       LS.set('tw.serif', on);
     });
   }

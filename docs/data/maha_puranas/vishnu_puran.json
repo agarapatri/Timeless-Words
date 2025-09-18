@@ -1,572 +1,108 @@
 [
-  {
-    "id": "vp",
-    "short": "VP",
-    "title": "Vishnu Puran",
-    "author": "Unknown",
-    "chapters": [
-      {
-        "number": 1,
-        "title": "Adhyāya 1",
-        "verses": [
-          {
-            "number": 1,
-            "ref": "1.1.1",
-            "devanagari": null,
-            "iast": "parāśaraṃ munivaraṃ kṛtapūrvāhṇikakriyam\nmaitreyaḥ paripapraccha praṇipatyābhivādya ca",
-            "word_by_word": [
-              { "sanskrit": "parāśaram", "english": "Parāśara" },
-              { "sanskrit": "maitreyaḥ", "english": "Maitreya" }
-            ],
-            "translation": "Maitreya, having bowed and offered respects, questioned the eminent sage Parāśara after his morning rites."
-          },
-          {
-            "number": 2,
-            "ref": "1.1.2",
-            "devanagari": null,
-            "iast": "tvatto hi vedādhyayanam adhītam akhilaṃ guro\ndharmaśāstrāṇi sarvāṇi vedāṅgāni yathākramam",
-            "word_by_word": [
-              { "sanskrit": "tvattaḥ", "english": "from you" },
-              { "sanskrit": "vedāṅgāni", "english": "Vedic auxiliaries" }
-            ],
-            "translation": "From you, O teacher, I have studied the Vedas, all the Dharma-śāstras, and the Vedic auxiliaries in due order."
-          },
-          {
-            "number": 3,
-            "ref": "1.1.3",
-            "devanagari": null,
-            "iast": "tvatprasādān muniśreṣṭha mām anye nākṛtaśramam\nvakṣyanti sarvaśāstreṣu prāyaśo ye 'pi vidviṣaḥ",
-            "word_by_word": [
-              { "sanskrit": "tvat-prasādāt", "english": "by your grace" },
-              { "sanskrit": "sarvaśāstreṣu", "english": "in all scriptures" }
-            ],
-            "translation": "By your favor, O best of sages, even the ill-disposed will proclaim me learned in the scriptures, without undue toil."
-          },
-          {
-            "number": 4,
-            "ref": "1.1.4",
-            "devanagari": null,
-            "iast": "so 'ham icchāmi dharmajña śrotuṃ tvatto yathā jagat\nbabhūva bhūyaś ca yathā mahābhāga bhaviṣyati",
-            "word_by_word": [
-              { "sanskrit": "śrotum", "english": "to hear" },
-              { "sanskrit": "jagat", "english": "world" }
-            ],
-            "translation": "Therefore I wish to hear from you, O knower of dharma, how the world arose, arises again, and will be hereafter."
-          },
-          {
-            "number": 5,
-            "ref": "1.1.5",
-            "devanagari": null,
-            "iast": "yanmayaṃ ca jagad brahman yataś caitac carācaram\nlīnam āsīd yathā yatra layam eṣyati yatra ca",
-            "word_by_word": [
-              { "sanskrit": "yan-mayam", "english": "of what composed" },
-              { "sanskrit": "layaḥ", "english": "dissolution" }
-            ],
-            "translation": "Of what the universe is made, O brāhman; whence this moving and unmoving arises; how and where it was dissolved and where it returns."
-          },
-          {
-            "number": 6,
-            "ref": "1.1.6",
-            "devanagari": null,
-            "iast": "yatpramāṇāni bhūtāni devādīnāṃ ca saṃbhavam\nsamudraparvatānāṃ ca saṃsthānaṃ ca yathā bhuvaḥ",
-            "word_by_word": [
-              { "sanskrit": "pramāṇa", "english": "measure" },
-              { "sanskrit": "saṃbhava", "english": "origin" }
-            ],
-            "translation": "What the measures of beings are, the origin of gods and others, and the arrangement of oceans, mountains, and the earth."
-          },
-          {
-            "number": 7,
-            "ref": "1.1.7",
-            "devanagari": null,
-            "iast": "sūryādīnāṃ ca saṃsthānaṃ pramāṇaṃ munisattama\ndevādīnāṃ tathā vaṃśān manūn manvantarāṇi ca",
-            "word_by_word": [
-              { "sanskrit": "sūrya", "english": "sun" },
-              { "sanskrit": "manvantara", "english": "Manu-epoch" }
-            ],
-            "translation": "The structure and measure of the sun and others; the lineages of gods; the Manus and the Manvantaras."
-          },
-          {
-            "number": 8,
-            "ref": "1.1.8",
-            "devanagari": null,
-            "iast": "kalpān kalpavikalpāṃś ca caturyugavikalpitān\nkalpāntasya svarūpaṃ ca yugadharmāṃś ca kṛtsnaśaḥ",
-            "word_by_word": [
-              { "sanskrit": "kalpa", "english": "aeon" },
-              { "sanskrit": "yugadharma", "english": "duty of an age" }
-            ],
-            "translation": "The aeons and their varieties according to the four yugas; the nature of a kalpa’s end and the duties of each age."
-          },
-          {
-            "number": 9,
-            "ref": "1.1.9",
-            "devanagari": null,
-            "iast": "devarṣipārthivānāṃ ca caritaṃ yan mahāmune\nvedaśākhāpraṇayanaṃ yathāvad vyāsakartṛkam",
-            "word_by_word": [
-              { "sanskrit": "caritam", "english": "deeds" },
-              { "sanskrit": "veda-śākhā", "english": "Vedic branches" }
-            ],
-            "translation": "The lives of gods, seers, and kings; and how Vyāsa duly arranged the Vedic branches."
-          },
-          {
-            "number": 10,
-            "ref": "1.1.10",
-            "devanagari": null,
-            "iast": "dharmāṃś ca brāhmaṇādīnāṃ tathā cāśramavāsinām\nśrotum icchāmy ahaṃ sarvaṃ tvatto vāsiṣṭhanandana",
-            "word_by_word": [
-              { "sanskrit": "dharmān", "english": "duties" },
-              { "sanskrit": "āśrama", "english": "life-stage" }
-            ],
-            "translation": "I wish to hear from you, O son of Vasiṣṭha, the duties of the classes and the stages of life."
-          },
-          {
-            "number": 11,
-            "ref": "1.1.11",
-            "devanagari": null,
-            "iast": "brahman prasādapravaṇaṃ kuruṣva mayi mānasam\nyenāham etaj jānīyāṃ tvatprasādān mahāmune",
-            "word_by_word": [
-              { "sanskrit": "prasāda", "english": "favor" },
-              { "sanskrit": "mānasa", "english": "mind" }
-            ],
-            "translation": "O brāhman, turn your mind graciously toward me, that by your grace I may understand this."
-          },
-          {
-            "number": 12,
-            "ref": "1.1.12",
-            "devanagari": null,
-            "iast": "§parāśara uvāca:\nsādhu maitreya dharmajña smārito 'smi purātanam\npituḥ pitā me bhagavān vasiṣṭho yad uvāca ha",
-            "word_by_word": [
-              { "sanskrit": "parāśaraḥ", "english": "Parāśara (spoke)" },
-              { "sanskrit": "smāritaḥ", "english": "reminded" }
-            ],
-            "translation": "Parāśara said: Well said, O Maitreya— you have reminded me of the ancient teaching my grandsire Vasiṣṭha declared."
-          },
-          {
-            "number": 13,
-            "ref": "1.1.13",
-            "devanagari": null,
-            "iast": "viśvāmitraprayuktena rakṣasā bhakṣito mayā\nśrutas tātas tataḥ krodho maitreyāsīn mamātulaḥ",
-            "word_by_word": [
-              { "sanskrit": "viśvāmitra-prayuktena", "english": "instigated by Viśvāmitra" },
-              { "sanskrit": "rakṣasā", "english": "by a demon" }
-            ],
-            "translation": "A demon set on by Viśvāmitra devoured my father—so I heard; then anger arose in me, O Maitreya."
-          },
-          {
-            "number": 14,
-            "ref": "1.1.14",
-            "devanagari": null,
-            "iast": "tato 'haṃ rakṣasāṃ satraṃ vināśāya samārabham\nbhasmīkṛtāś ca śataśas tasmin satre niśācarāḥ",
-            "word_by_word": [
-              { "sanskrit": "satra", "english": "sacrificial rite" },
-              { "sanskrit": "bhasmīkṛta", "english": "reduced to ashes" }
-            ],
-            "translation": "I began a rite to destroy the rākṣasas, and in that session hundreds of night-roamers were reduced to ashes."
-          },
-          {
-            "number": 15,
-            "ref": "1.1.15",
-            "devanagari": null,
-            "iast": "tataḥ saṃkṣīyamāṇeṣu teṣu rakṣaḥsv aśeṣataḥ\nmām uvāca mahābhāgo vasiṣṭho 'smatpitāmahaḥ",
-            "word_by_word": [
-              { "sanskrit": "saṃkṣīyamāṇeṣu", "english": "as they were being destroyed" },
-              { "sanskrit": "vasiṣṭhaḥ", "english": "Vasiṣṭha" }
-            ],
-            "translation": "As the rākṣasas were being annihilated almost completely, my revered grandsire Vasiṣṭha addressed me."
-          },
-          {
-            "number": 16,
-            "ref": "1.1.16",
-            "devanagari": null,
-            "iast": "alam atyantakopena tāta manyum imaṃ jahi\nrākṣasā nāparādhyante pitus te vihitaṃ tathā",
-            "word_by_word": [
-              { "sanskrit": "alam", "english": "enough" },
-              { "sanskrit": "manyum jahi", "english": "abandon wrath" }
-            ],
-            "translation": "Enough of intense anger, my son—give up this wrath; the rākṣasas are not at fault; it was ordained by your father."
-          },
-          {
-            "number": 17,
-            "ref": "1.1.17",
-            "devanagari": null,
-            "iast": "mūḍhānām eṣa bhavati krodho jñānavatāṃ kutaḥ\nhanyate tāta kaḥ kena yataḥ svakṛtabhuk pumān",
-            "word_by_word": [
-              { "sanskrit": "mūḍhānām", "english": "of the deluded" },
-              { "sanskrit": "svakṛta-bhuk", "english": "reaper of his deeds" }
-            ],
-            "translation": "Anger is for the deluded; how could it befit the wise? Who kills whom, since each person experiences his own acts?"
-          },
-          {
-            "number": 18,
-            "ref": "1.1.18",
-            "devanagari": null,
-            "iast": "saṃcitasyāpi mahatā vatsa kleśena mānavaiḥ\nyaśasas tapasaś caiva krodho nāśakaraḥ paraḥ",
-            "word_by_word": [
-              { "sanskrit": "saṃcita", "english": "accumulated" },
-              { "sanskrit": "krodhaḥ", "english": "anger" }
-            ],
-            "translation": "Even what men amass with great effort—fame and ascetic merit—anger utterly destroys, my child."
-          },
-          {
-            "number": 19,
-            "ref": "1.1.19",
-            "devanagari": null,
-            "iast": "svargāpavargavyāsedhakāraṇaṃ paramarṣayaḥ\nvarjayanti sadā krodhaṃ tāta mā tadvaśo bhava",
-            "word_by_word": [
-              { "sanskrit": "svarga-apavarga", "english": "heaven/liberation" },
-              { "sanskrit": "varjayanti", "english": "avoid" }
-            ],
-            "translation": "The supreme seers always avoid anger—the cause that obstructs heaven and liberation; do not fall under its sway."
-          },
-          {
-            "number": 20,
-            "ref": "1.1.20",
-            "devanagari": null,
-            "iast": "alaṃ niśācarair dagdhair dīnair anaparādhibhiḥ\nsatraṃ te viramatv etat kṣamāsārā hi sādhavaḥ",
-            "word_by_word": [
-              { "sanskrit": "niśācara", "english": "rākṣasa" },
-              { "sanskrit": "kṣamā", "english": "forbearance" }
-            ],
-            "translation": "Enough of burning these pitiable, not-truly-guilty night-roamers; let this rite cease—the good are grounded in forbearance."
-          },
-          {
-            "number": 21,
-            "ref": "1.1.21",
-            "devanagari": null,
-            "iast": "evaṃ tātena tenāham anunīto mahātmanā\nupasaṃhṛtavān satraṃ sadyas tadvākyagauravāt",
-            "word_by_word": [
-              { "sanskrit": "anunītaḥ", "english": "persuaded" },
-              { "sanskrit": "upasaṃhṛtavān", "english": "I ended" }
-            ],
-            "translation": "Thus persuaded by that great-souled father, I at once ended the rite, out of respect for his words."
-          },
-          {
-            "number": 22,
-            "ref": "1.1.22",
-            "devanagari": null,
-            "iast": "tataḥ prītaḥ sa bhagavān vasiṣṭho munisattamaḥ\nsaṃprāptaś ca tadā tatra pulastyo brahmaṇaḥ sutaḥ",
-            "word_by_word": [
-              { "sanskrit": "vasiṣṭhaḥ", "english": "Vasiṣṭha" },
-              { "sanskrit": "pulastyaḥ", "english": "Pulastya" }
-            ],
-            "translation": "Then the blessed Vasiṣṭha rejoiced; and Pulastya, son of Brahmā, arrived there."
-          },
-          {
-            "number": 23,
-            "ref": "1.1.23",
-            "devanagari": null,
-            "iast": "pitāmahena dattārghyaḥ kṛtāsanaparigrahaḥ\nmām uvāca mahābhāgo maitreya pulahāgrajaḥ",
-            "word_by_word": [
-              { "sanskrit": "dattārghyaḥ", "english": "honored with water" },
-              { "sanskrit": "āsana-parigrahaḥ", "english": "taking a seat" }
-            ],
-            "translation": "Honored with arghya by the grandsire and seated, the illustrious elder brother of Pulaha addressed me, O Maitreya."
-          },
-          {
-            "number": 24,
-            "ref": "1.1.24",
-            "devanagari": null,
-            "iast": "§pulastya uvāca:\nvaire mahati yad vākyād guror asyāśritā kṣamā\ntvayā tasmāt samastāni bhavāñ chāstrāṇi vetsyati",
-            "word_by_word": [
-              { "sanskrit": "kṣamā", "english": "forbearance" },
-              { "sanskrit": "śāstrāṇi vetsyasi", "english": "you will know scriptures" }
-            ],
-            "translation": "Pulastya said: Because you took refuge in your teacher’s word and patience in great enmity, you will know all the scriptures."
-          },
-          {
-            "number": 25,
-            "ref": "1.1.25",
-            "devanagari": null,
-            "iast": "saṃtater na mamocchedaḥ kruddhenāpi yataḥ kṛtaḥ\ntvayā tasmān mahābhāga dadāmy anyaṃ mahāvaram",
-            "word_by_word": [
-              { "sanskrit": "saṃtateḥ", "english": "lineage" },
-              { "sanskrit": "mahāvaraḥ", "english": "great boon" }
-            ],
-            "translation": "Since even in anger you did not sever the lineage, I grant you, O blessed one, another great boon."
-          },
-          {
-            "number": 26,
-            "ref": "1.1.26",
-            "devanagari": null,
-            "iast": "purāṇasaṃhitākartā bhavān vatsa bhaviṣyati\ndevatāpāramārthyaṃ ca yathāvad vetsyate bhavān",
-            "word_by_word": [
-              { "sanskrit": "purāṇa-saṃhitā-kartā", "english": "compiler of the Purāṇa" },
-              { "sanskrit": "pāramārthyam", "english": "true import" }
-            ],
-            "translation": "You will compose a Purāṇa-saṃhitā, dear one, and know the true import of the deities."
-          },
-          {
-            "number": 27,
-            "ref": "1.1.27",
-            "devanagari": null,
-            "iast": "pravṛtte ca nivṛtte ca karmaṇy astamalā matiḥ\nmatprasādād asaṃdigdhā tava vatsa bhaviṣyati",
-            "word_by_word": [
-              { "sanskrit": "pravṛtti/nivṛtti", "english": "action/renunciation" },
-              { "sanskrit": "asaṃdigdhā", "english": "free of doubt" }
-            ],
-            "translation": "In action and renunciation your mind will be stainless; by my grace, dear one, it will be free of doubt."
-          },
-          {
-            "number": 28,
-            "ref": "1.1.28",
-            "devanagari": null,
-            "iast": "tataś ca bhagavān prāha vasiṣṭho me pitāmahaḥ\npulastyena yad uktaṃ te sarvam etad bhaviṣyati",
-            "word_by_word": [
-              { "sanskrit": "bhagavān vasiṣṭhaḥ", "english": "holy Vasiṣṭha" },
-              { "sanskrit": "bhaviṣyati", "english": "will come to pass" }
-            ],
-            "translation": "Then my grandsire Vasiṣṭha said: All that Pulastya has spoken to you will indeed come to pass."
-          },
-          {
-            "number": 29,
-            "ref": "1.1.29",
-            "devanagari": null,
-            "iast": "iti pūrvaṃ vasiṣṭhena pulastyena ca dhīmatā\nyad uktaṃ tat smṛtiṃ yātaṃ tvatpraśnād akhilaṃ mama",
-            "word_by_word": [
-              { "sanskrit": "smṛtim yātam", "english": "has come to memory" },
-              { "sanskrit": "tvat-praśnāt", "english": "by your question" }
-            ],
-            "translation": "Thus what Vasiṣṭha and the wise Pulastya formerly taught has all come back to my memory through your question."
-          },
-          {
-            "number": 30,
-            "ref": "1.1.30",
-            "devanagari": null,
-            "iast": "so 'haṃ vadāmy aśeṣaṃ te maitreya paripṛcchate\npurāṇasaṃhitāṃ samyak tāṃ nibodha yathātatham",
-            "word_by_word": [
-              { "sanskrit": "vadāmi", "english": "I shall tell" },
-              { "sanskrit": "nibodha", "english": "hear attentively" }
-            ],
-            "translation": "Therefore I shall relate the Purāṇa-saṃhitā to you in full, O Maitreya; listen exactly as it is."
-          },
-          {
-            "number": 31,
-            "ref": "1.1.31",
-            "devanagari": null,
-            "iast": "viṣṇoḥ sakāśād udbhūtaṃ jagat tatraiva ca sthitam\nsthitisaṃyamakartāsau jagato 'sya jagac ca saḥ",
-            "word_by_word": [
-              { "sanskrit": "udbhūtam", "english": "arisen" },
-              { "sanskrit": "sthitisaṃyama-kartā", "english": "preserver and restrainer" }
-            ],
-            "translation": "From Viṣṇu the universe arises and in Him it remains; He is the agent of its preservation and withdrawal—He is the All."
-          }
-        ]
-      },
-      {
-        "number": 2,
-        "title": "Adhyāya 2",
-        "verses": [
-          {
-            "number": 1,
-            "ref": "1.2.1",
-            "devanagari": null,
-            "iast": "§parāśara uvāca:\navikārāya śuddhāya nityāya paramātmane\nsadaikarūparūpāya viṣṇave sarvajiṣṇave",
-            "word_by_word": [
-              { "sanskrit": "avikārāya", "english": "unchanging" },
-              { "sanskrit": "paramātmane", "english": "to the Supreme Self" }
-            ],
-            "translation": "Parāśara said: To Viṣṇu—the unchanging, pure, eternal Supreme Self, of single, constant form, the all-victorious—(obeisance)."
-          },
-          {
-            "number": 2,
-            "ref": "1.2.2",
-            "devanagari": null,
-            "iast": "namo hiraṇyagarbhāya haraye śaṃkarāya ca\nvāsudevāya tārāya sargasthityantakāriṇe",
-            "word_by_word": [
-              { "sanskrit": "hiraṇyagarbha", "english": "Cosmic embryo" },
-              { "sanskrit": "sarga-sthiti-anta-kārin", "english": "doer of creation, maintenance, dissolution" }
-            ],
-            "translation": "Salutation to Hiraṇyagarbha, to Hari, to Śaṅkara; to Vāsudeva, the savior, who effects creation, sustenance, and end."
-          },
-          {
-            "number": 3,
-            "ref": "1.2.3",
-            "devanagari": null,
-            "iast": "ekānekasvarūpāya sthūlasūkṣmātmane namaḥ\navyaktavyaktarūpāya viṣṇave muktihetave",
-            "word_by_word": [
-              { "sanskrit": "eka-aneka-svarūpa", "english": "one and many in form" },
-              { "sanskrit": "mukti-hetu", "english": "cause of liberation" }
-            ],
-            "translation": "Obeisance to Him of one-and-many forms, gross and subtle; to Viṣṇu whose forms are manifest and unmanifest, the cause of liberation."
-          },
-          {
-            "number": 4,
-            "ref": "1.2.4",
-            "devanagari": null,
-            "iast": "sargasthitivināśānāṃ jagato yo jaganmayaḥ\nmūlabhūto namas tasmai viṣṇave paramātmane",
-            "word_by_word": [
-              { "sanskrit": "mūla-bhūta", "english": "fundamental ground" },
-              { "sanskrit": "paramātmā", "english": "Supreme Self" }
-            ],
-            "translation": "Homage to that Supreme Self Viṣṇu—root of the universe—who pervades the world and is creation, maintenance, and dissolution."
-          },
-          {
-            "number": 5,
-            "ref": "1.2.5",
-            "devanagari": null,
-            "iast": "ādhārabhūtaṃ viśvasyāpy aṇīyāṃsam aṇīyasām\npraṇamya sarvabhūtastham acyutaṃ puruṣottamam",
-            "word_by_word": [
-              { "sanskrit": "ādhāra-bhūta", "english": "as the support" },
-              { "sanskrit": "puruṣottama", "english": "Supreme Person" }
-            ],
-            "translation": "Having bowed to the Acyuta, Supreme Person, support of the universe and subtler than the subtlest, dwelling in all beings."
-          },
-          {
-            "number": 6,
-            "ref": "1.2.6",
-            "devanagari": null,
-            "iast": "jñānasvarūpam atyantanirmalaṃ paramārthataḥ\ntam evārthasvarūpeṇa bhrāntidarśanataḥ sthitam",
-            "word_by_word": [
-              { "sanskrit": "jñāna-svarūpa", "english": "essence as knowledge" },
-              { "sanskrit": "nirmalam", "english": "utterly pure" }
-            ],
-            "translation": "He whose essence is knowledge, utterly pure in truth; yet seen by the deluded as identified with objects."
-          },
-          {
-            "number": 7,
-            "ref": "1.2.7",
-            "devanagari": null,
-            "iast": "viṣṇuṃ grasiṣṇuṃ viśvasya sthitisarge tathā prabhum\npraṇamya jagatām īśam ajam akṣayam avyayam",
-            "word_by_word": [
-              { "sanskrit": "grasiṣṇu", "english": "devourer (absorber)" },
-              { "sanskrit": "aja/akṣaya/avyaya", "english": "unborn, undecaying, imperishable" }
-            ],
-            "translation": "Bowing to Viṣṇu—the Lord who absorbs and creates the universe; the unborn, undecaying, imperishable Lord of worlds."
-          },
-          {
-            "number": 8,
-            "ref": "1.2.8",
-            "devanagari": null,
-            "iast": "kathayāmi yathāpūrvaṃ dakṣādyair munisattamaiḥ\npṛṣṭaḥ provāca bhagavān abjayoniḥ pitāmahaḥ",
-            "word_by_word": [
-              { "sanskrit": "kathayāmi", "english": "I recount" },
-              { "sanskrit": "abja-yoniḥ", "english": "lotus-born (Brahmā)" }
-            ],
-            "translation": "I shall narrate as before what the lotus-born grandsire told when questioned by Dakṣa and other sages."
-          },
-          {
-            "number": 9,
-            "ref": "1.2.9",
-            "devanagari": null,
-            "iast": "taiś coktaṃ purukutsāya bhūbhuje narmadātaṭe\nsārasvatāya tenāpi mama sārasvatena ca",
-            "word_by_word": [
-              { "sanskrit": "Purukutsa", "english": "king Purukutsa" },
-              { "sanskrit": "Sārasvata", "english": "sage Sārasvata" }
-            ],
-            "translation": "By them it was told to King Purukutsa on the banks of the Narmadā, then to Sārasvata, and by Sārasvata to me."
-          },
-          {
-            "number": 10,
-            "ref": "1.2.10",
-            "devanagari": null,
-            "iast": "paraḥ parāṇāṃ paramaḥ paramātmātmasaṃsthitaḥ\nrūpavarṇādinirdeśaviśeṣaṇavivarjitaḥ",
-            "word_by_word": [
-              { "sanskrit": "paramātmā", "english": "Supreme Self" },
-              { "sanskrit": "nirdeśa-vivarjita", "english": "beyond predicates" }
-            ],
-            "translation": "The Supreme beyond all things, the Supreme Self abiding in itself, devoid of determinations like form and color."
-          },
-          {
-            "number": 11,
-            "ref": "1.2.11",
-            "devanagari": null,
-            "iast": "apakṣayavināśābhyāṃ pariṇāmarddhijanmabhiḥ\nvarjitaḥ śakyate vaktuṃ yaḥ sadāstīti kevalam",
-            "word_by_word": [
-              { "sanskrit": "apakṣaya-vināśa", "english": "decline and destruction" },
-              { "sanskrit": "pariṇāma", "english": "change" }
-            ],
-            "translation": "Free from decline, destruction, transformation, growth, and birth; of Him one may say only: ‘He ever simply is.’"
-          },
-          {
-            "number": 12,
-            "ref": "1.2.12",
-            "devanagari": null,
-            "iast": "sarvatrāsau samastaṃ ca vasaty atreti vai yataḥ\ntataḥ sa vāsudeveti vidvadbhiḥ paripaṭhyate",
-            "word_by_word": [
-              { "sanskrit": "sarvatra vasati", "english": "dwells everywhere" },
-              { "sanskrit": "vāsudeva", "english": "He in whom all dwell" }
-            ],
-            "translation": "Since He abides everywhere and all abides in Him, the learned recite Him as Vāsudeva."
-          },
-          {
-            "number": 13,
-            "ref": "1.2.13",
-            "devanagari": null,
-            "iast": "tad brahma paramaṃ nityam ajam akṣayam avyayam\nekasvarūpaṃ ca sadā heyābhāvāc ca nirmalam",
-            "word_by_word": [
-              { "sanskrit": "eka-svarūpam", "english": "of single form" },
-              { "sanskrit": "nirmalam", "english": "stainless" }
-            ],
-            "translation": "That Brahman is supreme, eternal, unborn, undecaying, imperishable—ever of one nature and immaculate, since none other exists."
-          },
-          {
-            "number": 14,
-            "ref": "1.2.14",
-            "devanagari": null,
-            "iast": "tad eva sarvam evaitad vyaktāvyaktasvarūpavat\ntathā puruṣarūpeṇa kālarūpeṇa ca sthitam",
-            "word_by_word": [
-              { "sanskrit": "vyakta-avyakta", "english": "manifest/unmanifest" },
-              { "sanskrit": "kāla-rūpa", "english": "form as time" }
-            ],
-            "translation": "That alone is all this, having manifest and unmanifest form; it abides as the Person and as Time."
-          },
-          {
-            "number": 15,
-            "ref": "1.2.15",
-            "devanagari": null,
-            "iast": "parasya brahmaṇo rūpaṃ puruṣaḥ prathamaṃ dvija\nvyaktāvyakte tathaivānye rūpe kālas tathāparam",
-            "word_by_word": [
-              { "sanskrit": "puruṣaḥ", "english": "the Person" },
-              { "sanskrit": "kālaḥ", "english": "Time" }
-            ],
-            "translation": "The Person is the first form of the Supreme Brahman; besides the manifest and unmanifest there is another form—Time."
-          },
-          {
-            "number": 16,
-            "ref": "1.2.16",
-            "devanagari": null,
-            "iast": "pradhānapuruṣavyaktakālānāṃ paramaṃ hi yat\npaśyanti sūrayaḥ śuddhaṃ tad viṣṇoḥ paramaṃ padam",
-            "word_by_word": [
-              { "sanskrit": "pradhāna-puruṣa-vyakta-kāla", "english": "matter, person, manifest, time" },
-              { "sanskrit": "paramaṃ padam", "english": "supreme abode" }
-            ],
-            "translation": "What the sages behold as pure, beyond matter, person, manifest and time—that is Viṣṇu’s supreme abode."
-          },
-          {
-            "number": 17,
-            "ref": "1.2.17",
-            "devanagari": null,
-            "iast": "pradhānapuruṣavyaktakālās tu pravibhāgaśaḥ\nrūpāṇi sthitisargāntavyaktisadbhāvahetavaḥ",
-            "word_by_word": [
-              { "sanskrit": "rūpāṇi", "english": "modes/forms" },
-              { "sanskrit": "hetavaḥ", "english": "causes" }
-            ],
-            "translation": "Matter, person, manifest, and time—distinct modes—are causes of subsistence, creation, dissolution, manifestation."
-          },
-          {
-            "number": 18,
-            "ref": "1.2.18",
-            "devanagari": null,
-            "iast": "vyaktaṃ viṣṇus tathāvyaktaṃ puruṣaḥ kāla eva ca\nkrīḍato bālakasyeva ceṣṭāṃ tasya niśāmaya",
-            "word_by_word": [
-              { "sanskrit": "vyaktam", "english": "the manifest" },
-              { "sanskrit": "krīḍataḥ bālakasya", "english": "as a child at play" }
-            ],
-            "translation": "The manifest is Viṣṇu, the unmanifest the Person, and Time as well—behold His play, like that of a child."
-          },
-          {
-            "number": 19,
-            "ref": "1.2.19",
-            "devanagari": null,
-            "iast": "avyaktaṃ kāraṇaṃ yat tat pradhānam ṛṣisattamaiḥ\nprocyate prakṛtiḥ sūkṣmā nityā sadasadātmikā",
-            "word_by_word": [
-              { "sanskrit": "avyaktam kāraṇam", "english": "unmanifest cause" },
-              { "sanskrit": "prakṛtiḥ", "english": "primordial matter" }
-            ],
-            "translation": "The unmanifest cause is called Pradhāna by the foremost seers—subtle, eternal Prakṛti of the nature of both being and non-being."
-          }
-        ]
-      }
-    ]
-  }
-]
+    {
+      "id": "vp",
+      "short": "VP",
+      "title": "Vishnu Puran",
+      "author": "Unknown",
+      "type": "Puranas",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chapter 1",
+          "verses": [
+            {
+              "number": 1,
+              "ref": "1.1",
+              "devanagari": "श्रोतव्यं सततं तस्मात्सर्वपापप्रणाशनम् । ब्रह्माण्डपुराणं पुण्यं सर्वानन्दप्रदायकम् ॥ १० ॥",
+              "iast": "oṁ namo bhagavate vāsudevāya\njanmādy asya yataḥ sṛṣṭi-sthiti-layāḥ\nsatyasya jñānānandasya brahmaṇaḥ\nparamātmanaḥ",
+              "word_by_word": [
+                {
+                  "sanskrit": "oṁ",
+                  "english": "sacred syllable"
+                },
+                {
+                  "sanskrit": "namo",
+                  "english": "obeisance"
+                },
+                {
+                  "sanskrit": "bhagavate",
+                  "english": "unto the Lord"
+                },
+                {
+                  "sanskrit": "vāsudevāya",
+                  "english": "Vāsudeva (Kṛṣṇa)"
+                }
+              ],
+              "translation": "Om! I bow to the blessed Lord Vāsudeva, the Supreme Self, from whom arise creation, preservation, and dissolution, who is truth, knowledge, and bliss."
+            },
+            {
+              "number": 2,
+              "ref": "1.2",
+              "devanagari": "श्रोतव्यं सततं तस्मात्सर्वपापप्रणाशनम् । ब्रह्माण्डपुराणं पुण्यं सर्वानन्दप्रदायकम् ॥ १० ॥",
+              "iast": "viṣṇoḥ paramaṁ rūpaṁ sattva-rūpaṁ sanātanam\nśuddhaṁ sac-cid-ānandaṁ yad brahma paramaṁ viduḥ",
+              "word_by_word": [
+                {
+                  "sanskrit": "viṣṇoḥ",
+                  "english": "of Viṣṇu"
+                },
+                {
+                  "sanskrit": "paramam",
+                  "english": "supreme"
+                },
+                {
+                  "sanskrit": "rūpam",
+                  "english": "form"
+                }
+              ],
+              "translation": "The supreme form of Viṣṇu is eternal, pure existence-consciousness-bliss, composed of sattva, which the wise know as the highest Brahman."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sp",
+      "short": "SP",
+      "title": "Shiva Puran",
+      "author": "Unknown",
+      "type": "Puranas",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Chapter 1",
+          "verses": [
+            {
+              "number": 1,
+              "ref": "1.1",
+              "devanagari": "श्रोतव्यं सततं तस्मात्सर्वपापप्रणाशनम् । ब्रह्माण्डपुराणं पुण्यं सर्वानन्दप्रदायकम् ॥ १० ॥",
+              "iast": "namo ’stu nīlakaṇṭhāya sahasrākṣāya śambhave\nkāraṇāya namas tubhyaṁ kāraṇānāṁ ca kāraṇe",
+              "word_by_word": [
+                {
+                  "sanskrit": "namaḥ",
+                  "english": "obeisance"
+                },
+                {
+                  "sanskrit": "nīlakaṇṭha",
+                  "english": "blue-throated one (Śiva)"
+                }
+              ],
+              "translation": "Obeisance to the blue-throated Lord Śambhu, the thousand-eyed, the cause of all causes."
+            },
+            {
+              "number": 2,
+              "ref": "1.2",
+              "devanagari": "श्रोतव्यं सततं तस्मात्सर्वपापप्रणाशनम् । ब्रह्माण्डपुराणं पुण्यं सर्वानन्दप्रदायकम् ॥ १० ॥",
+              "iast": "yasya prasādāt sarvasya prasādaḥ syāt prabhoḥ sadā\nyasya krodhād bhayaṁ sarvaṁ tasmai śambhave namaḥ",
+              "word_by_word": [
+                {
+                  "sanskrit": "prasādāt",
+                  "english": "by grace"
+                }
+              ],
+              "translation": "By whose grace everyone prospers, by whose anger all are struck with fear—to that Lord Śambhu I bow."
+            }
+          ]
+        }
+      ]
+    }
+  ]

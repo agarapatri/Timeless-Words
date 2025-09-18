@@ -1,90 +1,162 @@
-/* Global */
+/* ---------- Tokens ---------- */
 :root {
+  /* Base palette */
   --bg: #ffffff;
-  --text: #1a1a1a;
+  --fg: #111111;         /* canonical foreground (text) */
   --muted: #6b7280;
   --border: #e5e7eb;
-  --accent: #6200EE; /* purple-ish for focus */
+  --accent: #6200EE;     /* focus / interactive */
+
+  /* Surfaces */
+  --surface: #fafafa;
+  --surface-2: #f3f4f6;
+
+  /* Cards & shadows */
+  --card-bg: var(--bg);
+  --shadow-1: 0 2px 10px rgba(0,0,0,.06);
+  --shadow-2: 0 8px 24px rgba(0,0,0,.18);
+
+  /* Serif toggle: use CSS variables so JS only toggles the html.serif class */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", Times, serif;
+  --font-base: var(--font-sans);
 }
+
+html.theme-dark {
+  --bg: #0b0d0f;
+  --fg: #e5e7eb;
+  --muted: #9aa4af;
+  --border: #26313a;
+  --accent: #e5e7eb;
+  --surface: rgba(255,255,255,0.04);
+  --surface-2: rgba(255,255,255,0.06);
+  --card-bg: #0d1013;
+}
+
+/* Optional: auto-respect user preference (won't override explicit .theme-dark) */
+@media (prefers-color-scheme: dark) {
+  html:not(.theme-dark) body.auto-dark { background: #0b0d0f; color: #e5e7eb; }
+}
+
+/* ---------- Base ---------- */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+html, body { background: var(--bg); color: var(--fg); }
+
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-base);
   line-height: 1.6;
 }
-.container { width: min(1100px, 92vw); margin: 0 auto; }
-.title { font-size: clamp(28px, 3vw, 40px); margin: 16px 0 0; } /* top, right, bottom, left */
-.section-title { font-size: 18px; margin: 24px 0 12px; color: var(--muted); }
-.count { margin-left: 0px; color: var(--muted); font-weight: normal; }
-.muted { color: var(--muted); }
+
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+.titlebar { position: relative; display: flex; align-items: center; gap: 12px; margin: 16px 0 0; }
+.title { font-size: clamp(28px, 3vw, 40px); margin: 0; line-height: 1.2; }
+.section-title { font-size: 18px; margin: 24px 0 12px; color: var(--muted); }
+.count, .muted { color: var(--muted); }
+
+/* ---------- Focus ---------- */
+:where(button, a, input, select, textarea):focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #111; color: #fff;
+  font-weight: 600; cursor: pointer;
+  white-space: nowrap; min-width: max-content;
+}
+.btn:hover { text-decoration: none; filter: brightness(0.98); }
+.btn .icon { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; }
+.btn .icon svg { display: block; }
+.btn.thin { padding: 4px 12px; }
+.btn.sm { padding: 4px 8px; font-size: 12px; }
+
+.btn.ghost { background: var(--bg); color: var(--fg); }
+.btn-outline { background: var(--bg); color: var(--fg); border-color: var(--fg); }
+
+/* Icon-only control to match Deep Search pill */
+.icon-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  height: 2.1875rem; min-width: 2.75rem; padding: 0 .5rem;
+  border: 1px solid currentColor; border-radius: 999px;
+  background: var(--bg); color: var(--fg);
+  font: inherit;
+}
+.icon-btn svg { width: 1.1em; height: 1.1em; }
+.icon-btn:hover { background: rgba(0,0,0,0.04); }
+html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
+
+/* ---------- Header / Hero ---------- */
+.hero, .hero-top, .hero-bar {
+  display: flex; align-items: center;
+}
+.hero { flex-direction: column; gap: 16px; margin: 24px 0 8px; display: grid; }
+.hero-top { gap: 12px; }
+.hero-title, .title { flex: 1 1 auto; min-width: 0; }
+.hero-actions { margin-left: auto; flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
+
+/* Mobile: keep menu next to title; truncate title */
+@media (max-width: 600px) {
+  .hero-top { position: relative; flex-wrap: nowrap !important; }
+  .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hero-actions { position: absolute; right: 0; top: 6px; }
+  .hero-top > div:first-child { padding-right: 64px; }
+}
+
 /* Collapsible header */
-.mini-header { position: fixed; top: 0; left: 0; right: 0; height: 52px; display: flex; align-items: center; background: #fff; border-bottom: 1px solid var(--border); transform: translateY(-100%); transition: transform .2s ease; z-index: 3; }
+.mini-header {
+  position: fixed; inset: 0 0 auto 0; height: 52px;
+  display: flex; align-items: center;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  transform: translateY(-100%); transition: transform .2s ease; z-index: 3;
+}
 .mini-header .container { display: flex; align-items: center; justify-content: space-between; }
 .mini-header .brand { font-weight: 700; }
 .mini-header.show { transform: translateY(0); }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 16px 0; color: var(--muted); }
-
 .fallback-notice { position: sticky; top: 0; z-index: 4; background: #fff7ed; color: #9a3412; border: 1px solid #fdba74; padding: 10px 12px; border-radius: 10px; margin: 12px 0; }
 
-/* Home */
-.hero { display: grid; gap: 16px; margin: 24px 0 8px; }
-.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 999px; background: #111; color: #fff; text-decoration: none; font-weight: 600; cursor: pointer; }
-.btn-outline { background: #fff; color: #000; border: 1px solid #000; }
-.btn.ghost { background: #fff; color: #111; }
-.btn:hover { text-decoration: none; filter: brightness(0.98); }
-.btn .icon { width: 16px; height: 16px; display: inline-block; }
-.btn.thin { padding: 4px 12px; }
+/* ---------- Search (home & page) ---------- */
 .search-bar { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
 .home-filter { grid-template-columns: 1fr; }
+
 .search-bar input[type="search"] {
   padding: 12px 16px 12px 44px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #f3f4f6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") no-repeat 14px center;
+  background: var(--surface-2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: 14px center;
   box-shadow: inset 0 1px 2px rgba(0,0,0,.06);
   font-size: 16px;
 }
-.search-bar button, .filters button { padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border); background: #111; color: #fff; cursor: pointer; }
-.filters .ghost { background: transparent; color: #111; }
-.search-bar input:focus, .filters input:focus, .filters select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.search-bar button, .filters button {
+  padding: 12px 16px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #111; color: #fff; cursor: pointer;
+}
 
-.books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-.book-card { display: grid; grid-template-columns: 76px 1fr; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; }
-.book-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-.book-card .cover { width: 76px; height: 100px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg,#f1f5f9,#e2e8f0); font-weight: 700; font-size: 28px; color: #475569; }
-.book-card .cover.has-image { background: #ddd center/cover no-repeat; color: transparent; }
-.book-card .book-title { font-weight: 600; }
-.book-card .book-sub { font-size: 14px; color: var(--muted); }
-
-/* Search page */
-.chipbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; align-items: center; grid-column: span 12; }
-.chipbar button { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: #fafafa; color: #374151; font-size: 13px; cursor: pointer; }
-.chipbar button.active, .chipbar button:hover { background: #111; color: #fff; border-color: #111; }
 .filters { display: grid; gap: 12px; grid-template-columns: repeat(12, 1fr); margin: 8px 0 20px; }
 .filter { display: grid; gap: 6px; grid-column: span 12; }
 .filter label { font-size: 13px; color: var(--muted); }
 .filter input, .filter select {
   padding: 12px 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #f3f4f6;
+  background: var(--surface-2);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.06);
   font-size: 15px;
-}
-.filter select[multiple] {
-  border-radius: 12px;
-  background: #fff;
-  height: 280px;
-  padding: 8px 10px;
 }
 .filter input[type="search"] {
   padding-left: 44px;
@@ -92,26 +164,35 @@ a:hover { text-decoration: underline; }
   background-repeat: no-repeat;
   background-position: 14px center;
 }
-.filter select { min-height: auto; }
-.checklist { display: grid; gap: 8px; padding: 8px 0; }
-.checklist label { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: #fff; cursor: pointer; }
-.checklist input[type="checkbox"] { width: 16px; height: 16px; }
-.filter.actions { display: flex; gap: 8px; }
-@media (min-width: 800px) {
-  #fTitle, #fAuthor, #fDeva, #fIast, #fTrans, #fBooks { grid-column: span 6; }
+.filter select[multiple] {
+  border-radius: 12px;
+  background: var(--bg);
+  height: 280px;
+  padding: 8px 10px;
 }
 
+.checklist { display: grid; gap: 8px; padding: 8px 0; }
+.checklist label {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border: 1px solid var(--border);
+  border-radius: 10px; background: var(--bg); cursor: pointer;
+}
+.checklist input[type="checkbox"] { width: 16px; height: 16px; }
+
+/* Chip bar */
+.chipbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; align-items: center; grid-column: span 12; }
+.chipbar button { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: #fafafa; color: #374151; font-size: 13px; cursor: pointer; }
+.chipbar button.active, .chipbar button:hover { background: #111; color: #fff; border-color: #111; }
+
+/* Results */
 .results-info { color: var(--muted); margin-bottom: 8px; }
 .results-list { list-style: none; padding: 0; display: grid; gap: 8px; }
 .results-list a { display: block; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; }
 .results-list a:hover { border-color: #111; text-decoration: none; }
-.results-list a .hit { color: #6200EE; font-weight: 600; }
+.results-list a .hit { color: var(--accent); font-weight: 600; }
 .results-list a .ref { color: var(--muted); }
-
-/* Tighten the deep search results */
 .results-list .line { margin-top: 2px; }
 .results-list .line:first-child { margin-top: 0; }
-
 
 /* Deep Search layout */
 .search-layout { display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -121,134 +202,99 @@ a:hover { text-decoration: underline; }
   .search-side { order: 2; position: sticky; top: 64px; }
 }
 
-/* Book page */
+/* ---------- Books grid & cards ---------- */
+.books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.book-card {
+  display: grid; grid-template-columns: 76px 1fr; gap: 12px; padding: 12px;
+  border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg);
+}
+.book-card:hover { box-shadow: var(--shadow-1); }
+.book-card .cover {
+  width: 76px; height: 100px; border-radius: 8px; display: grid; place-items: center;
+  background: linear-gradient(135deg,#f1f5f9,#e2e8f0); font-weight: 700; font-size: 28px; color: #475569;
+}
+.book-card .cover.has-image { background: #ddd center/cover no-repeat; color: transparent; }
+.book-card .book-title { font-weight: 600; }
+.book-card .book-sub { font-size: 14px; color: var(--muted); }
+
+/* ---------- Search page right sidebar: Filter by specific books ---------- */
+#fBooks .book-box { border: 1px solid var(--border); border-radius: 14px; padding: 8px 10px 4px; background: var(--bg); overflow: hidden; }
+#fBooks .filter { position: relative; padding: 2px 0 6px; background: transparent !important; border-bottom: 1px solid var(--border); }
+#fBooks .filter input[type="search"],
+#fBooks .filter input[type="text"],
+#fBooks .filter .search-input {
+  display: block; width: 100%;
+  background: var(--bg) !important; border: 0 !important; box-shadow: none !important;
+  border-radius: 999px; height: 34px; padding: 0 10px 0 36px; min-width: 0; font-size: 15px;
+}
+#fBooks .filter input::placeholder { color: #9aa3ad; }
+#fBooks .filter input:focus { outline: none; box-shadow: 0 0 0 2px rgba(0,0,0,0.06); }
+
+#fBooks .checklist { display: block; padding: 0; margin: 0; }
+#fBooks .checklist label {
+  display: flex; align-items: center; gap: 12px; padding: 8px 0;
+  border: 0; border-radius: 0; background: transparent; cursor: pointer;
+}
+#fBooks .checklist label + label { border-top: 1px solid var(--border); }
+#fBooks .checklist input[type="checkbox"] { width: 18px; height: 18px; }
+#fBooks .checklist span { font-size: 15px; }
+
+#fBooks .filter::before {
+  content: ""; position: absolute; left: 0; top: 17px; transform: translateY(-50%);
+  width: 18px; height: 18px; background: url("../icons/search.svg") no-repeat center / 18px 18px; opacity: .35; pointer-events: none;
+}
+
+/* ---------- Book page ---------- */
 .crumb { display: inline-block; margin-top: 10px; color: var(--muted); }
 .back-link { display: inline-block; margin: 6px 0 0; color: var(--muted); }
 .chapters { display: grid; gap: 12px; margin: 16px 0 24px; }
 .chapter { border: 1px solid var(--border); border-radius: 12px; overflow: clip; }
-.chapter-toggle { width: 100%; text-align: left; padding: 12px 14px; background: #fafafa; border: 0; border-bottom: 1px solid var(--border); font-weight: 600; cursor: pointer; }
+.chapter-toggle { width: 100%; text-align: left; padding: 12px 14px; background: var(--surface); border: 0; border-bottom: 1px solid var(--border); font-weight: 600; cursor: pointer; }
 .chapter-body { display: none; padding: 8px 12px 14px; }
 .chapter.open .chapter-body { display: block; }
 .verse-list { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
 .verse-list .ref { color: var(--muted); margin-right: 8px; }
 
-/* Verse page */
+/* ---------- Verse page ---------- */
 .crumbs { display: flex; gap: 8px; align-items: center; color: var(--muted); margin: 12px 0; }
 .verse-ref { text-align: center; font-size: clamp(22px, 3vw, 32px); margin-top: 8px; }
 .verse-block { max-width: 780px; margin: 0 auto 16px; }
 .verse-block h2 { font-size: 16px; text-transform: none; color: var(--muted); margin-bottom: 6px; }
-pre { background: #fafafa; padding: 12px; border: 1px solid var(--border); border-radius: 10px; white-space: pre-wrap; }
+pre { background: var(--surface); padding: 12px; border: 1px solid var(--border); border-radius: 10px; white-space: pre-wrap; }
 .wfw { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .wfw .sk { font-weight: 600; }
 .translation { font-size: 18px; line-height: 1.7; }
 
-/* Accessibility */
-button:focus, a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-button { border-radius: 999px; }
-
-/* Banner */
-.banner {
-  width: 100%;
-  margin: 0 auto 8px;
-}
+/* ---------- Banner ---------- */
+.banner { width: 100%; margin: 0 auto 8px; }
 .banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px; /* optional, can remove */
-  border: 1px solid #e5e7eb;
-  box-shadow: none;
+  width: 100%; height: auto; display: block;
+  border-radius: 12px; border: 1px solid var(--border); box-shadow: none;
 }
 
-/* Keep button content on one line */
-.btn {
-  white-space: nowrap;
-  min-width: max-content;   /* prevents internal wrap */
+/* ---------- Controls & Inputs (unified) ---------- */
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress { accent-color: var(--fg); }
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible,
+input[type="range"]:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  outline-offset: 2px;
 }
 
-/* Make icon not affect text height */
-.btn .icon { 
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center; 
-  flex: 0 0 auto;
-}
-.btn .icon svg { display: block; }  /* removes baseline gap */
+/* Safari polish for range thumb */
+input[type="range"]::-webkit-slider-thumb { background: var(--fg); border-color: var(--fg); }
+input[type="range"]::-moz-range-thumb     { background: var(--fg); border-color: var(--fg); }
 
-/* Mobile layout: allow the row to wrap, shrink button size a bit */
-@media (max-width: 520px) {
-  .hero-top {
-    flex-wrap: wrap;                 /* lets button move to next line if needed */
-    gap: 8px;                        /* tighter spacing on mobile */
-  }
-  .hero-top > div {                  /* the title block */
-    flex: 1 1 280px;                 /* take the row width first */
-  }
-  .hero-top .btn {
-    font-size: 14px;                 /* slightly smaller */
-    padding: 6px 12px;               /* slimmer */
-    order: 2;                        /* place after the title block */
-  }
-}
-
-/* Deep Search: checkbox color */
-#fBooks input[type="checkbox"],
-.checklist input[type="checkbox"] {
-  accent-color: var(--text);
-}
-
-/* Pager controls */
-.pager {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 8px 0 12px;
-  justify-content: flex-end;
-}
-.pager .btn { padding: 6px 10px; }
-#pageSize {
-  padding: 6px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: #fff;
-}
-@media (max-width: 600px) {
-  .pager { justify-content: space-between; }
-}
-
-.book-stats {
-  margin-top: 2px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-/* Row holding the Deep Search pill and the menu button */
-.hero-actions { display: flex; align-items: center; gap: 10px; }
-
-/* Make the 3-dots button visually match the Deep Search pill */
-.icon-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  height: 2.1875rem;             /* 35px -> scales with root font-size */
-  min-width: 2.75rem;            /* 44px minimum; grows if content needs it */
-  padding: 0 .5rem;              /* extra room when content grows */
-  border: 0.0625rem solid var(--fg);  /* 1px -> scalable unit */
-  border-radius: 999px;
-  background: var(--bg); color: var(--fg);
-  font: inherit;                 /* scale icon size with site font */
-}
-/* make the dots scale with text size */
-.icon-btn svg{ width: 1.1em; height: 1.1em; }
-
-.icon-btn:hover { background: rgba(0,0,0,0.04); }
-html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
-
-/* Dropdown panel */
+/* ---------- Menu / Dropdown ---------- */
 .menu-wrap { position: relative; }
 .menu-panel {
   position: absolute; right: 0; top: calc(100% + 6px); z-index: 40;
   min-width: 260px; padding: 8px; border: 1px solid var(--border);
-  border-radius: 12px; background: var(--bg); box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  border-radius: 12px; background: var(--bg); box-shadow: var(--shadow-2);
 }
 .menu-item { display:block; padding:8px 10px; border-radius:8px; }
 .menu-item:hover { background: rgba(0,0,0,0.04); }
@@ -257,128 +303,71 @@ html.theme-dark .menu-item:hover { background: rgba(255,255,255,0.06); }
 .menu-item.col { display:flex; flex-direction:column; gap:6px; }
 .menu-sep { height:1px; background: var(--border); margin:6px 0; }
 .row.gap { display:flex; align-items:center; gap:8px; }
-.btn.sm { padding: 4px 8px; font-size: 12px; }
 
-/* Accessible helper */
-.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-
-/* MOBILE behavior:
-   - hide the inline Deep Search pill
-   - show the Deep Search item INSIDE the menu (first item) */
-.mobile-only { display: none; }
-@media (max-width: 600px) {
-  .hero-actions .btn-deep { display: none; }   /* pill hidden on mobile */
-  .menu-panel .mobile-only { display: block; } /* menu item shown on mobile */
-}
-
-/* Dark mode (toggle by adding .theme-dark on html) */
-:root { --bg:#fff; --fg:#111; --muted:#6b7280; --border:#e5e7eb; }
-html.theme-dark { --bg:#0b0d0f; --fg:#e5e7eb; --muted:#9aa4af; --border:#26313a; }
-html { background: var(--bg); color: var(--fg); }
-
-/* Typeface toggle (html.font-serif vs default) */
-html.font-serif, html.font-serif body { font-family: Georgia, "Times New Roman", serif; }
-
-/* --- Keep the menu on the far right of the header --- */
-.hero-bar, .hero-top {
-  display: flex;
-  align-items: center;
-}
-
-.hero-title, .title {
-  flex: 1 1 auto;      /* title takes remaining space */
-  min-width: 0;        /* allow shrink */
-}
-
-.hero-actions {
-  margin-left: auto;   /* push actions all the way right */
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;           /* same visual spacing; adjust if you used a different gap */
-}
-
-/* Mobile: prevent wrapping, let title truncate so menu stays beside it */
-@media (max-width: 600px) {
-  .hero-bar, .hero-top { flex-wrap: nowrap; }
-  .hero-title, .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-}
-
-
-/* --- Keep menu on the far right (desktop + mobile) --- */
-.hero-top { display: flex; align-items: center; }
-.hero-top > :first-child { flex: 1 1 auto; min-width: 0; } /* title block flexes */
-.hero-actions { margin-left: auto; flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
-
-@media (max-width: 600px) {
-  .hero-top { flex-wrap: nowrap !important; } /* prevent wrap under subtitle */
-  .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-}
-
-/* --- Dark Mode: actually flip text color (keep sizes unchanged) --- */
-html.theme-dark { --text: #e5e7eb; }   /* your base uses --text for body color */
-html, body { background: var(--bg); color: var(--text); }  /* ensure both honor vars */
-
-/* === Mobile: pin the menu to the far right next to the title === */
-@media (max-width: 600px) {
-  /* Make the header a positioning context */
-  .hero-top { position: relative; }
-
-  /* Absolutely position the actions on the right */
-  .hero-actions {
-    position: absolute;
-    right: 0;
-    top: 6px;             /* nudge to align with title baseline; tweak if needed */
-  }
-
-  /* Reserve space on the right so the title/subtitle don't sit under the menu */
-  .hero-top > div:first-child { padding-right: 64px; }
-}
-
-/* === Dark Mode: ensure body text turns light === */
-html.theme-dark { --text: #e5e7eb; }   /* your base uses --text for body color */
-body { color: var(--text); }           /* make sure body honors the token */
-
-html.theme-dark {
-  --accent: #e5e7eb;           /* light thumb/fill in dark theme */
-}
-
-/* Apply to checkboxes, radios, ranges, and progress bars */
-input[type="checkbox"],
-input[type="radio"],
-input[type="range"],
-progress {
-  accent-color: var(--text);
-}
-
-/* Optional: clearer focus ring (keeps sizes the same) */
-input[type="checkbox"]:focus-visible,
-input[type="radio"]:focus-visible,
-input[type="range"]:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
-  outline-offset: 2px;
-}
-
-/* Safari polish (thumb color) — harmless elsewhere */
-input[type="range"]::-webkit-slider-thumb { background: var(--text); border-color: var(--text); }
-input[type="range"]::-moz-range-thumb     { background: var(--text); border-color: var(--text); }
-
-
-/* Font-size menu layout (matches your screenshot) */
+/* Font-size controls */
 .menu-panel .menu-row { display: flex; align-items: center; }
 .menu-panel .menu-row.head { justify-content: space-between; }
-#fontSizeCurrent { margin-left: auto; font-weight: 0; color: var(--muted); }
+#fontSizeCurrent { margin-left: auto; color: var(--muted); }
 .menu-panel .menu-row.controls { gap: 10px; }
-#fontSizeRange { flex: 1 1 auto; min-width: 0; }     /* slider fills width */
-#fontSizeReset { flex: 0 0 auto; }                    /* button sits to the right */
+#fontSizeRange { flex: 1 1 auto; min-width: 0; }
+#fontSizeReset { flex: 0 0 auto; }
 
-/* Make sure the range/checkboxes use your accent color (not default blue) */
-input[type="range"],
-input[type="checkbox"],
-input[type="radio"] { accent-color: var(--text); }
+/* Mobile-specific: show Deep Search item INSIDE the menu */
+.mobile-only { display: none; }
+@media (max-width: 600px) {
+  .hero-actions .btn-deep { display: none; }
+  .menu-panel .mobile-only { display: block; }
+}
 
+/* ---------- Info / Help popover ---------- */
+.help-wrap { position: relative; display:inline-block; }
+.help-btn {
+  width:28px; height:28px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; color: var(--fg); cursor:pointer;
+  padding:0; margin-left:8px;
+}
+.help-btn:hover { background: rgba(0,0,0,0.04); }
+html.theme-dark .help-btn:hover { background: rgba(255,255,255,0.06); }
 
-/* --- Book detail header --- */
+.help-popover {
+  position:absolute; top:100%; left:0; margin-top:6px; z-index:50;
+  width:min(540px,95vw); background:var(--bg); border:1px solid var(--border);
+  border-radius:12px; box-shadow: var(--shadow-2);
+  font-size:14px; line-height:1.5; overflow:hidden;
+}
+.help-header { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-bottom:1px solid var(--border); }
+.help-header h2 { margin:0; font-size:16px; font-weight:700; }
+.close-btn { border:0; background:transparent; font-size:18px; line-height:1; padding:0; cursor:pointer; }
+.help-content { padding:12px 14px; }
+.help-content hr { border:0; border-top:1px solid var(--border); margin:12px 0; }
+.help-content code { background: var(--surface-2); padding:.15rem .35rem; border-radius:4px; font:400 13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+.help-content p{ margin: 10px 0; }
+.help-content ul{ margin: 8px 0; padding-left: 18px; }
+
+/* Accordion chevron */
+.acc-btn { display:flex; justify-content:space-between; align-items:center; gap:8px; border:1px solid var(--border); border-radius:8px; padding:8px 10px; cursor:pointer; background:transparent; }
+.acc-btn .chev { width:18px; height:18px; transition:transform .15s ease; }
+.acc-btn[aria-expanded="true"] .chev { transform:rotate(90deg); }
+
+/* ---------- Accessibility helpers ---------- */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* ---------- Pager ---------- */
+.pager {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin: 8px 0 12px; justify-content: flex-end;
+}
+.pager .btn { padding: 6px 10px; }
+#pageSize {
+  padding: 6px 10px; border: 1px solid var(--border);
+  border-radius: 999px; background: var(--bg);
+}
+@media (max-width: 600px) { .pager { justify-content: space-between; } }
+
+/* ---------- Book detail header ---------- */
 .book-hero { display:flex; align-items:center; gap:18px; margin-top:12px; }
 .book-cover {
   width: 136px; height: 160px; border-radius: 14px;
@@ -391,169 +380,53 @@ input[type="radio"] { accent-color: var(--text); }
 .book-info .title { margin:0; }
 .book-info .muted { margin-top:6px; }
 
-/* --- Chapter list on the book page --- */
+/* ---------- Chapter list on the book page ---------- */
 .chapter-list { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 8px; }
 .chapter-card {
   display:block; padding:16px; border:1px solid var(--border); border-radius:12px;
-  background: var(--card-bg, var(--bg));
+  background: var(--card-bg);
 }
 .chapter-card:hover { background: rgba(0,0,0,.03); }
 html.theme-dark .chapter-card:hover { background: rgba(255,255,255,.04); }
 .chapter-title { font-weight: 700; margin: 0 0 6px; }
 .chapter-sub { font-size: 14px; }
 
-/* External-link icon alignment */
-.link-ext { justify-content: space-between; gap: 10px; }
-.link-ext .ext-icon { flex: 0 0 auto; opacity: .7; }
+/* ---------- Misc ---------- */
+.notranslate { }
+.verse-list .ref, .results-list a .ref, .book-stats, .results-info { color: var(--muted); }
 
-/* Unified accent for checkbox (shares your range accent if you set --accent) */
-input[type="checkbox"] { accent-color: var(--text, currentColor); }
-
-.notranslate { /* intentionally not translated by Google */ }
-
-/* Info button */
-.help-btn {
-  width:28px; height:28px;
-  border:1px solid currentColor;
-  border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  background:transparent; color:solid var(--border); cursor:pointer;
-  padding:0; margin-left:8px;
-}
-.help-btn:hover { background:rgba(255,255,255,0.1); }
-
-/* Accordion chevron */
-.acc-btn { display:flex; justify-content:space-between; align-items:center; gap:8px; border:1px solid var(--border,#ccc); border-radius:8px; padding:8px 10px; cursor:pointer; background:transparent; }
-.acc-btn .chev { width:18px; height:18px; transition:transform .15s ease; }
-.acc-btn[aria-expanded="true"] .chev { transform:rotate(90deg); }
-
-/* header + close button + divider tone */
-.help-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border);}
-.help-header h2{margin:0;font-size:16px;font-weight:700;}
-.close-btn{border:0;background:transparent;font-size:18px;line-height:1;padding:0;cursor:pointer;}
-
-/* Fix the titlebar structure - it should be a div, not an h1 */
-.titlebar { 
-  position: relative; 
-  display: flex; 
-  align-items: center; /* Change back to center for better icon alignment */
-  gap: 12px; 
-  margin: 16px 0 0; /* Move the margin from .title to .titlebar */
+/* ---------- Responsive tweaks ---------- */
+@media (min-width: 800px) {
+  #fTitle, #fAuthor, #fDeva, #fIast, #fTrans, #fBooks { grid-column: span 6; }
 }
 
-/* Reset title margin since titlebar now handles it */
-.titlebar .title {
-  margin: 0; /* Remove margin since parent handles spacing */
-  flex: none; /* Don't let title grow/shrink */
-  line-height: 1.2; /* Tighter line height for better alignment */
+/* Keep */
+button { border-radius: 999px; }
+
+/* When html.serif is present, flip the base font */
+html.serif { --font-base: var(--font-serif); }
+
+/* 2) Keep the help (search tips) button right next to the title */
+.titlebar,
+.hero-top { display: flex; align-items: center; gap: 8px; }
+
+/* Prevent title from stretching all the way across (which pushes help to the edge) */
+.titlebar .title,
+.hero-top .title { flex: 0 1 auto; }
+
+/* Ensure the help icon sits immediately after the title */
+.titlebar .help-wrap,
+.hero-top .help-wrap { order: 1; margin-left: 6px; }
+
+/* Actions (menu, etc.) live on the far right */
+.hero-actions { margin-left: auto; }
+
+/* Mobile positioning: reserve room for the actions on the right */
+@media (max-width: 600px) {
+  .hero-actions { position: absolute; right: 0; top: 6px; }
+  .hero-top, .titlebar { position: relative; padding-right: 64px; }
+  .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 
-/* Help button alignment - make it inline with title center */
-.titlebar .help-btn {
-  flex: none; /* Keep button size fixed */
-  margin: 0;  /* Remove any conflicting margins */
-  position: relative; /* Make it a positioning context for the popup */
-}
-
-/* Position popup so left edge is directly under the help icon */
-.titlebar .help-popover {
-  position: absolute; 
-  left: 0; /* Left edge of popup aligns with left edge of help button */
-  top: 100%; /* Bottom edge of button = top edge of popup */
-  margin-top: 6px; /* Small gap between button and popup */
-  right: auto; /* Override any existing right positioning */
-  transform: none; /* No transforms that might shift position */
-  z-index: 1000; /* High z-index to appear above other content */
-}
-
-.help-popover{
-  position:absolute; right:0; top:100%; margin-top:6px; z-index:50;
-  width:min(540px,95vw); background:var(--bg); border:1px solid var(--border);
-  border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18);
-  font-size:14px; line-height:1.5;  /* resets the giant H1 size */
-  overflow: hidden; /* keeps the rounded corners clean */
-}
-
-/* add breathing room inside the sheet */
-.help-content{
-  padding: 12px 14px;
-}
-
-/* tidy detail: softer divider + query highlight */
-.help-content hr{ border:0; border-top:1px solid var(--border); margin:12px 0; }
-.help-content code{ background:#f3f4f6; padding:.15rem .35rem; border-radius:4px; font:400 13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
-
-/* tidy spacing for paragraphs & lists inside tips */
-.help-content p{ margin: 10px 0; }
-.help-content ul{ margin: 8px 0; padding-left: 18px; }
-
-/* Anchor for the popover exactly under the icon */
-.help-wrap{ position:relative; display:inline-block; }
-
-/* ----------------------------------------------- */
-/* --- Filter by specific books (right sidebar) — clean, compact, with visible icon --- */
-#fBooks .book-box{
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 8px 10px 4px;             /* tighter container padding */
-  background: var(--bg);
-  overflow: hidden;
-}
-
-/* SEARCH */
-#fBooks .filter{
-  position: relative;
-  padding: 2px 0 6px;                /* compact */
-  background: transparent !important;
-  border-bottom: 1px solid var(--border); /* divider under search */
-}
-
-#fBooks .filter input[type="search"],
-#fBooks .filter input[type="text"],
-#fBooks .filter .search-input{
-  display: block;
-  width: 100%;
-  background: #fff !important;       /* white pill */
-  border: 0 !important;
-  box-shadow: none !important;
-  border-radius: 999px;
-  height: 34px;                      /* compact height */
-  padding: 0 10px 0 36px;            /* space for the icon */
-  min-width: 0;
-  font-size:15px;
-}
-#fBooks .filter input::placeholder{ color:#9aa3ad; }
-#fBooks .filter input:focus{
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
-}
-
-/* LIST (clean with subtle dividers, tighter rows) */
-#fBooks .checklist{ display:block; padding:0; margin:0; }
-#fBooks .checklist label{
-  display:flex; align-items:center; gap:12px;
-  padding:8px 0;                     /* tighter row spacing */
-  border:0; border-radius:0; background:transparent;
-  cursor:pointer;
-}
-#fBooks .checklist label + label{ border-top:1px solid var(--border); }
-#fBooks .checklist input[type="checkbox"]{ width:18px; height:18px; }
-#fBooks .checklist span{ font-size:15px; }
-
-#fBooks .filter::before{
-  content: "";
-  position: absolute;
-  left: 0px;
-  top: calc(17px); /* centers for 34px input height + 2px top padding */
-  transform: translateY(-50%);
-  width: 18px; height: 18px;
-  background-repeat: no-repeat;
-  background-size: 18px 18px;
-  pointer-events: none;
-  background: url("../icons/search.svg");
-  opacity: .35;
-}
-
-
-
-/* ----------------------------------------------- */
+/* (Optional) Keep the menu panel sans even in serif mode */
+html.serif .menu-panel { font-family: var(--font-sans); }
