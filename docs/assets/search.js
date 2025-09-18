@@ -1,15 +1,15 @@
-/* Search implementation with 6 filters */
+/* Deep Search with substring + optional regex */
 (function () {
-  let STATE = { results: [], page: 1, perPage: 25 }; // <-- set default page size here
+  let STATE = { results: [], page: 1, perPage: 25 }; // default page size
 
   function ensurePager() {
     let pager = document.getElementById('pager');
-    const list = document.getElementById('results');   // <- use the list, not the info line
+    const list = document.getElementById('results');
     if (!pager && list) {
       pager = document.createElement('div');
       pager.id = 'pager';
       pager.className = 'pager';
-      list.after(pager);                                // <- move it below the results
+      list.after(pager);
       pager.innerHTML = `
         <button id="prevPage" type="button" class="btn ghost" aria-label="Previous page">‹ Prev</button>
         <span id="pageInfo" class="muted"></span>
@@ -36,21 +36,40 @@
     renderPage(true);
   }
 
+  // --- query parsing ---
+  function parseRegexQuery(q) {
+    // Accept /pattern/flags (flags optional). If not in this form, return null.
+    const m = String(q || '').match(/^\/(.+)\/([a-z]*)$/i);
+    if (!m) return null;
+    try {
+      return new RegExp(m[1], m[2]);
+    } catch {
+      return null; // invalid regex -> treat as normal text later
+    }
+  }
 
+  // accent-insensitive normalization for substring search
   function norm(s) {
     const x = (s || '').toLowerCase().normalize('NFKD');
-    // Strip diacritics and common punctuation for accent-insensitive search
     return x.replace(/[\u0300-\u036f]/g, '').replace(/[\u2013\u2014]/g, '-');
   }
-  function includes(hay, needle) {
-    const H = norm(hay);
-    const N = norm(needle);
-    return N ? H.includes(N) : false;
+
+  // match helpers
+  function matchText(hay, query) {
+    if (!query) return false;
+    const re = parseRegexQuery(query);
+    if (re) {
+      try { return re.test(String(hay || '')); } catch { return false; }
+    }
+    // substring (accent-insensitive)
+    return norm(hay).includes(norm(query));
   }
 
   async function init() {
     const library = await window.Library.loadLibrary();
     const data = await window.Library.loadAllBooks();
+
+    // Build book checklist
     const booksSel = document.getElementById('fBooks');
     library.forEach(b => {
       const id = `b_${b.id}`;
@@ -68,6 +87,7 @@
     document.getElementById('filters').addEventListener('submit', (e) => { e.preventDefault(); });
     document.getElementById('q').addEventListener('input', run);
     document.getElementById('fBooks').addEventListener('change', run);
+
     const bar = document.getElementById('chipbar');
     bar.addEventListener('click', (e) => {
       const btn = e.target.closest('button[data-scope]');
@@ -77,7 +97,7 @@
       run();
     });
 
-    // Make results reliably clickable even when clicking outside the link text
+    // Click anywhere on result row
     const resEl = document.getElementById('results');
     resEl.addEventListener('click', (e) => {
       const link = e.target.closest('a');
@@ -86,12 +106,20 @@
       if (li && li.dataset.href) location.href = li.dataset.href;
     });
 
-    if (q && q.trim()) {
-      run();
-    } else {
+    if (q && q.trim()) run();
+    else {
       document.getElementById('results').innerHTML = '';
       document.getElementById('resultsInfo').textContent = '';
     }
+  }
+
+  function readFilters() {
+    const allowedIds = Array.from(document.querySelectorAll('#fBooks input[type="checkbox"]:checked')).map(i => i.value);
+    const scopes = { deva:false, iast:false, trans:false, wfw:false };
+    const actives = document.querySelectorAll('#chipbar button.active');
+    if (actives.length === 0) { Object.keys(scopes).forEach(k => scopes[k] = true); }
+    else { actives.forEach(b => { scopes[b.getAttribute('data-scope')] = true; }); }
+    return { q: document.getElementById('q').value.trim(), allowedIds, scopes };
   }
 
   function matchesFilters(book, chapter, verse, f) {
@@ -101,35 +129,15 @@
     if (f.scopes.deva)  haystacks.push(verse.devanagari);
     if (f.scopes.iast)  haystacks.push(verse.iast);
     if (f.scopes.trans) haystacks.push(verse.translation);
-    if (f.scopes.wfw) {
-      if (Array.isArray(verse.word_by_word)) {
-        verse.word_by_word.forEach(p => haystacks.push(`${p.sanskrit||p[0]} ${p.english||p[1]}`));
-      }
+    if (f.scopes.wfw && Array.isArray(verse.word_by_word)) {
+      verse.word_by_word.forEach(p => haystacks.push(`${p.sanskrit||p[0]} ${p.english||p[1]}`));
     }
-    return haystacks.some(h => includes(h || '', f.q));
-  }
-
-  function readFilters() {
-    const allowedIds = Array.from(document.querySelectorAll('#fBooks input[type="checkbox"]:checked')).map(i => i.value);
-    // Read chip scopes; default to all if none active
-    const scopes = { deva:false, iast:false, trans:false, wfw:false };
-    const actives = document.querySelectorAll('#chipbar button.active');
-    if (actives.length === 0) {
-      Object.keys(scopes).forEach(k => scopes[k] = true);
-    } else {
-      actives.forEach(b => { scopes[b.getAttribute('data-scope')] = true; });
-    }
-    return {
-      q: document.getElementById('q').value.trim(),
-      allowedIds,
-      scopes
-    };
+    return haystacks.some(h => matchText(h || '', f.q));
   }
 
   function search(data) {
     const f = readFilters();
 
-    // No query: clear UI and remove pager
     if (!f.q) {
       document.getElementById('results').innerHTML = '';
       document.getElementById('resultsInfo').textContent = '';
@@ -140,30 +148,73 @@
       return;
     }
 
-    // Build results
     const results = [];
     data.books.forEach(book => {
       book.chapters.forEach(ch => {
         ch.verses.forEach(v => {
-          if (matchesFilters(book, ch, v, f)) {
-            results.push({ book, ch, v });
-          }
+          if (matchesFilters(book, ch, v, f)) results.push({ book, ch, v });
         });
       });
     });
 
-    // Store & render page 1
     STATE.results = results;
     STATE.page = 1;
     ensurePager();
     renderPage();
   }
 
+  function pickSnippets(book, verse, f, q) {
+    const scopesOrder = ['deva','iast','trans','wfw'];
+    const active = scopesOrder.filter(k => f.scopes[k]);
+
+    const fields = {
+      deva: () => ({ key:'deva',  label:'Devanāgarī', text: verse.devanagari || verse.original_sanskrit || '' }),
+      iast: () => ({ key:'iast',  label:'IAST',       text: verse.iast || verse.iast_transliteration || '' }),
+      trans: () => ({ key:'trans',label:'Translation',text: verse.translation || verse.translation_en || '' }),
+      wfw:  () => {
+        const arr = Array.isArray(verse.word_by_word) ? verse.word_by_word : [];
+        const line = arr.map(p => Array.isArray(p) ? `${p[0]} — ${p[1]}` : `${p.sanskrit} — ${p.english}`).join('; ');
+        return { key:'wfw', label:'Word-for-word', text: line };
+      }
+    };
+
+    const out = [];
+    active.forEach(k => out.push(fields[k]()));
+    return out.filter(x => (x.text || '').trim());
+  }
+
+  function highlight(text, query) {
+    // fall back to simple (non-regex) highlight; your page render also shows the ref header prominently.
+    if (!query) return (text || '');
+    const re = parseRegexQuery(query);
+    if (re) {
+      try {
+        return String(text || '').replace(re, m => `<span class="hit">${m}</span>`);
+      } catch {
+        // invalid regex -> no highlight
+      }
+    }
+    const qn = norm(query);
+    if (!qn) return (text || '');
+    const hay = String(text || '');
+    // naive non-overlapping highlight by case-insensitive substring on normalized forms
+    const H = norm(hay);
+    const parts = [];
+    let i = 0, j;
+    while ((j = H.indexOf(qn, i)) !== -1) {
+      parts.push(hay.slice(i, j));
+      parts.push(`<span class="hit">${hay.slice(j, j + qn.length)}</span>`);
+      i = j + qn.length;
+    }
+    parts.push(hay.slice(i));
+    return parts.join('');
+  }
+
   function renderPage(scrollToTop = false) {
     const resEl = document.getElementById('results');
     const info  = document.getElementById('resultsInfo');
     const qVal  = document.getElementById('q').value || '';
-    const f     = readFilters(); // respect currently selected scopes
+    const f     = readFilters();
 
     resEl.innerHTML = '';
     const total = STATE.results.length;
@@ -172,10 +223,8 @@
     const start = (page - 1) * STATE.perPage;
     const end = Math.min(start + STATE.perPage, total);
 
-    // Build only the current page
     for (let i = start; i < end; i++) {
       const { book, ch, v } = STATE.results[i];
-
       const li = document.createElement('li');
       const href = `verse.html?book=${encodeURIComponent(book.id)}&c=${encodeURIComponent(ch.number)}&v=${encodeURIComponent(v.number)}`;
       li.dataset.href = href;
@@ -201,8 +250,8 @@
       resEl.appendChild(li);
     }
 
-    // Info + pager UI
     info.textContent = `${total} result${total===1?'':'s'} · Page ${page} of ${totalPages}`;
+
     const prev = document.getElementById('prevPage');
     const next = document.getElementById('nextPage');
     const pi   = document.getElementById('pageInfo');
@@ -220,53 +269,6 @@
     }
   }
 
-  function pickSnippets(book, verse, f, q) {
-    const scopesOrder = ['deva','iast','trans','wfw'];              // title/author removed
-    const active = scopesOrder.filter(k => f.scopes[k]);
-
-    const fields = {
-      deva: () => ({ key:'deva',  label:'Devanāgarī', text: verse.devanagari || verse.original_sanskrit || '' }),
-      iast: () => ({ key:'iast',  label:'IAST',       text: verse.iast || verse.iast_transliteration || '' }),
-      trans: () => ({ key:'trans',label:'Translation',text: verse.translation || verse.translation_en || '' }),
-      wfw:  () => {
-        const arr = Array.isArray(verse.word_by_word) ? verse.word_by_word : [];
-        const line = arr.map(p => Array.isArray(p) ? `${p[0]} — ${p[1]}` : `${p.sanskrit} — ${p.english}`).join('; ');
-        return { key:'wfw', label:'Word-for-word', text: line };
-      }
-    };
-
-    // 1) Prefer scopes that actually matched the query
-    const matches = [];
-    for (const k of active) {
-      const o = fields[k]();
-      if (includes(o.text, q)) matches.push(o);
-    }
-    if (matches.length) return matches;
-
-    // 2) Otherwise show the selected scopes that have text (prevents blank cards)
-    const fallbacks = active.map(k => fields[k]()).filter(o => o.text);
-    if (fallbacks.length) return fallbacks;
-
-    // 3) Last resort: sensible single fallback
-    for (const k of ['trans','iast','deva','wfw']) {
-      if (f.scopes[k]) {
-        const o = fields[k]();
-        if (o.text) return [o];
-      }
-    }
-    return [{ label:'', text:'' }];
-  }
-
-  function highlight(text, needle) {
-    if (!needle) return escapeHtml(text || '');
-    const n = needle.trim();
-    if (!n) return escapeHtml(text || '');
-    const re = new RegExp(`(${escapeRegExp(n)})`, 'ig');
-    return escapeHtml(text || '').replace(re, '<span class="hit">$1</span>');
-  }
-
-  function escapeHtml(s) { return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
-  function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-
+  // boot
   window.addEventListener('DOMContentLoaded', init);
 })();

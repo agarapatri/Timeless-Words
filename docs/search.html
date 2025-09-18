@@ -13,39 +13,159 @@
 
     <main class="container search-page">
       <a class="back-link" href="index.html">← Back</a>
-      <h1 class="title">Deep Search</h1>
+      
+      <div class="titlebar">
+        <h1 class="title">Deep Search</h1>
+
+          <button id="search-help-btn" type="button" class="help-btn"
+                  aria-label="Search help" aria-haspopup="dialog" aria-expanded="false"
+                  aria-controls="search-help-popover">?</button>
+
+          <div id="search-help-popover" class="help-popover" role="dialog"
+              aria-modal="true" aria-labelledby="search-help-title" hidden>
+            <div class="help-header">
+              <h2 id="search-help-title">Search tips</h2>
+              <button type="button" class="close-btn" aria-label="Close">✕</button>
+            </div>
+            <div class="help-content">
+
+              <p><strong>Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
+              <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
+              <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
+              <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
+              <p><strong>Filters</strong><br>Limit by work/chapter/ref: <code>work:vishnu-puran chapter:2</code> &nbsp; <code>ref:1.2.19</code></p>
+              <hr>
+
+              <!-- Accordion trigger -->
+              <button id="regex-acc-btn" class="acc-btn"
+                      aria-expanded="false" aria-controls="regex-acc-panel">
+                Advanced tips
+                <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 9l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <!-- Accordion panel -->
+              <div id="regex-acc-panel" class="acc-panel" hidden style="margin-top:8px;">
+                <ul class="cheatsheet" style="columns:1; gap:24px; list-style:none; padding:0; margin:10px 0;">
+                  <li><code>śiva</code> — literal</li>
+                  <li><code>ś.va</code> — dot = any char</li>
+                  <li><code>viṣṇu.*parama</code> — any chars between</li>
+                  <li><code>rudr+a</code> — one or more</li>
+                  <li><code>śiv?a</code> — zero or one</li>
+                  <li><code>śiva|śambhu</code> — alternation</li>
+                  <li><code>(hari|viṣṇu)nāma</code> — grouping</li>
+                  <li><code>[sr]āma</code> — character class</li>
+                  <li><code>[0-9]+</code> — numbers</li>
+                  <li><code>[^a-zA-Z]</code> — not a letter</li>
+                  <li><code>^namaḥ</code> — start of line</li>
+                  <li><code>śivāya$</code> — end of line</li>
+                  <li><code>\bparama\b</code> — whole word</li>
+                  <li><code>\Bparama</code> — inside word</li>
+                  <li><code>a{2,4}</code> — 2 to 4 times</li>
+                  <li><code>(śrī\s)?kṛṣṇa</code> — optional group</li>
+                  <li><code>\(1\.2\.19\)</code> — escape specials</li>
+                  <li><code>śiva(?=.*parama)</code> — lookahead</li>
+                  <li><code>śiva(?! paramātmā)</code> — neg. lookahead</li>
+                  <li><code>(?i)viṣṇu</code> — case-insensitive</li>
+                </ul>
+                
+                <p class="dim" style="color:#64748b; margin-top:12px;">
+                  Learn & test interactively:
+                  <a href="https://regex101.com/" target="_blank" rel="noopener">regex101.com</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </h1>
+      </div>
 
       <div class="search-layout">
         <section class="search-main">
+          
           <form id="filters" class="filters" onsubmit="return false;">
-            <div class="filter" style="grid-column: span 12;">
-              <input id="q" type="search" placeholder="Search verses, translations…" aria-label="Deep search">
+            <div class="filter" style="grid-column: span 12; position:relative;">
+              <input id="q" type="search" placeholder="Search (regex, phrases, wildcards)…" aria-label="Deep search">
             </div>
+
             <div class="chipbar" id="chipbar">
               <button type="button" class="active" data-scope="deva" aria-pressed="true">Devanāgarī</button>
               <button type="button" class="active" data-scope="iast" aria-pressed="true">IAST</button>
               <button type="button" class="active" data-scope="trans" aria-pressed="true">Translation</button>
-              <button type="button" class="active" data-scope="wfw" aria-pressed="true">Word‑for‑word</button>
+              <button type="button" class="active" data-scope="wfw" aria-pressed="true">Word-for-word</button>
             </div>
           </form>
+
+          <script>
+          (function(){
+            const btn   = document.getElementById('search-help-btn');
+            const pop   = document.getElementById('search-help-popover');
+            const inner = pop?.querySelector('.help-inner');
+            const close = pop?.querySelector('.close-btn');
+            const input = document.getElementById('q');
+            const accBtn   = document.getElementById('regex-acc-btn');
+            const accPanel = document.getElementById('regex-acc-panel');
+
+            if (btn && pop) {
+              let open = false;
+              function show(){ pop.hidden = false; open = true; btn.setAttribute('aria-expanded','true'); requestAnimationFrame(()=> inner?.focus()); document.addEventListener('keydown', onKey); document.addEventListener('click', onDocClick, true); }
+              function hide(){ pop.hidden = true;  open = false; btn.setAttribute('aria-expanded','false'); document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDocClick, true); btn.focus(); }
+              function onKey(e){ if(e.key === 'Escape') hide(); }
+              function onDocClick(e){ if(!pop.contains(e.target) && e.target !== btn) hide(); }
+              btn.addEventListener('click', ()=> pop.hidden ? show() : hide());
+              close?.addEventListener('click', hide);
+            }
+
+            // Accordion
+            if (accBtn && accPanel) {
+              accBtn.addEventListener('click', ()=>{
+                const expanded = accBtn.getAttribute('aria-expanded') === 'true';
+                accBtn.setAttribute('aria-expanded', String(!expanded));
+                accPanel.hidden = expanded;
+                const chev = accBtn.querySelector('.chev');
+                if (chev) chev.style.transform = expanded ? 'rotate(0deg)' : 'rotate(90deg)';
+              });
+            }
+
+            // Rotating placeholder tips
+            if (input) {
+              const tips = [
+                'Search (regex, phrases, wildcards)…',
+                'Try phrase: "śiva paramātmā"',
+                'Try prefix: rudr*',
+                'Try regex: /viṣṇu.*nārāyaṇa/',
+                'Filter: vishnu-puran chapter:2'
+              ];
+              let i = 0;
+              setInterval(()=> {
+                if (document.activeElement === input) return;
+                i = (i+1) % tips.length;
+                input.placeholder = tips[i];
+              }, 4000);
+            }
+          })();
+          </script>
           <div id="resultsInfo" class="results-info" aria-live="polite"></div>
           <ol id="results" class="results-list" aria-live="polite"></ol>
         </section>
+        
         <aside class="search-side">
           <div class="filter">
             <label>Filter by specific books</label>
             <div id="fBooks" class="checklist" role="group" aria-label="Books"></div>
           </div>
         </aside>
+
       </div>
     </main>
+
+
     <footer class="site-footer">
       <div class="container">
         <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
       </div>
     </footer>
-
-    
 
     <script src="assets/data-bundle.js"></script>
     <script src="assets/app.js?v=3"></script>

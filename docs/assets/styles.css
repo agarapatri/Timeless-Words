@@ -411,3 +411,81 @@ input[type="checkbox"] { accent-color: var(--accent, currentColor); }
 
 .notranslate { /* intentionally not translated by Google */ }
 
+/* Info button */
+.help-btn {
+  width:28px; height:28px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; color:solid var(--border); cursor:pointer;
+  padding:0; margin-left:8px;
+}
+.help-btn:hover { background:rgba(255,255,255,0.1); }
+
+/* Accordion chevron */
+.acc-btn { display:flex; justify-content:space-between; align-items:center; gap:8px; border:1px solid var(--border,#ccc); border-radius:8px; padding:8px 10px; cursor:pointer; background:transparent; }
+.acc-btn .chev { width:18px; height:18px; transition:transform .15s ease; }
+.acc-btn[aria-expanded="true"] .chev { transform:rotate(90deg); }
+
+/* header + close button + divider tone */
+.help-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border);}
+.help-header h2{margin:0;font-size:16px;font-weight:700;}
+.close-btn{border:0;background:transparent;font-size:18px;line-height:1;padding:0;cursor:pointer;}
+
+/* Fix the titlebar structure - it should be a div, not an h1 */
+.titlebar { 
+  position: relative; 
+  display: flex; 
+  align-items: center; /* Change back to center for better icon alignment */
+  gap: 12px; 
+  margin: 16px 0 0; /* Move the margin from .title to .titlebar */
+}
+
+/* Reset title margin since titlebar now handles it */
+.titlebar .title {
+  margin: 0; /* Remove margin since parent handles spacing */
+  flex: none; /* Don't let title grow/shrink */
+  line-height: 1.2; /* Tighter line height for better alignment */
+}
+
+/* Help button alignment - make it inline with title center */
+.titlebar .help-btn {
+  flex: none; /* Keep button size fixed */
+  margin: 0;  /* Remove any conflicting margins */
+  position: relative; /* Make it a positioning context for the popup */
+}
+
+/* Position popup so left edge is directly under the help icon */
+.titlebar .help-popover {
+  position: absolute; 
+  left: 0; /* Left edge of popup aligns with left edge of help button */
+  top: 100%; /* Bottom edge of button = top edge of popup */
+  margin-top: 6px; /* Small gap between button and popup */
+  right: auto; /* Override any existing right positioning */
+  transform: none; /* No transforms that might shift position */
+  z-index: 1000; /* High z-index to appear above other content */
+}
+
+.help-popover{
+  position:absolute; right:0; top:100%; margin-top:6px; z-index:50;
+  width:min(540px,95vw); background:var(--bg); border:1px solid var(--border);
+  border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18);
+  font-size:14px; line-height:1.5;  /* resets the giant H1 size */
+  overflow: hidden; /* keeps the rounded corners clean */
+}
+
+/* add breathing room inside the sheet */
+.help-content{
+  padding: 12px 14px;
+}
+
+/* tidy detail: softer divider + query highlight */
+.help-content hr{ border:0; border-top:1px solid var(--border); margin:12px 0; }
+.help-content code{ background:#f3f4f6; padding:.15rem .35rem; border-radius:4px; font:400 13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+
+/* tidy spacing for paragraphs & lists inside tips */
+.help-content p{ margin: 10px 0; }
+.help-content ul{ margin: 8px 0; padding-left: 18px; }
+
+/* Anchor for the popover exactly under the icon */
+.help-wrap{ position:relative; display:inline-block; }
