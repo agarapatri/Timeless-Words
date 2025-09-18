@@ -33,7 +33,6 @@
               <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
               <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
               <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
-              <p><strong>Filters</strong><br>Limit by work/chapter/ref: <code>work:vishnu-puran chapter:2</code> &nbsp; <code>ref:1.2.19</code></p>
               <hr>
 
               <!-- Accordion trigger -->
@@ -132,17 +131,17 @@
             if (input) {
               const tips = [
                 'Search (regex, phrases, wildcards)…',
+                'Try any word: "vishnu paramatma"',
                 'Try phrase: "śiva paramātmā"',
                 'Try prefix: rudr*',
-                'Try regex: /viṣṇu.*nārāyaṇa/',
-                'Filter: vishnu-puran chapter:2'
+                'Try regex: /viṣṇu.*nārāyaṇa/'
               ];
               let i = 0;
               setInterval(()=> {
                 if (document.activeElement === input) return;
                 i = (i+1) % tips.length;
                 input.placeholder = tips[i];
-              }, 4000);
+              }, 3000);
             }
           })();
           </script>
