@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Timeless Words</title>
     <link rel="stylesheet" href="assets/styles.css">
+
+    <!-- Put this once near the end of <body> (or in the <head>): -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+      <symbol id="icon-external" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 17L17 7"></path>
+        <path d="M9 7h8v8"></path>
+      </symbol>
+    </svg>
   </head>
   <body>
     <div class="mini-header">
@@ -52,10 +61,20 @@
                   href="https://github.com/agarapatri/Timeless-Words" target="_blank" rel="noopener">
                   <span>Open GitHub Repo</span>
                   <!-- 45° external arrow -->
-                  <svg class="ext-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M7 17L17 7"></path>
-                    <path d="M9 7h8v8"></path>
+                  <svg class="ext-icon" width="16" height="16" aria-hidden="true">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+
+                <div class="menu-sep"></div>
+
+                <!-- Open Vedabase (with external link icon) -->
+                <a class="menu-item row link-ext" role="menuitem"
+                  href="https://vedabase.io/en/" target="_blank" rel="noopener">
+                  <span>vedabase.io</span>
+                  <!-- 45° external arrow -->
+                  <svg class="ext-icon" width="16" height="16" aria-hidden="true">
+                    <use href="#icon-external"></use>
                   </svg>
                 </a>
 
