@@ -430,3 +430,123 @@ html.serif { --font-base: var(--font-serif); }
 
 /* (Optional) Keep the menu panel sans even in serif mode */
 html.serif .menu-panel { font-family: var(--font-sans); }
+
+/* ===== Library header row (search + type) ===== */
+.home-filter {
+  display: grid;
+  grid-template-columns: 1fr max-content; /* search grows, button hugs */
+  gap: 12px;
+  align-items: stretch;
+  width: 100%;
+  margin: 0 0 16px;
+}
+
+.home-filter-input {
+  width: 100%;
+}
+
+/* Make the "Type" trigger match input height */
+.type-filter { position: relative; }
+.type-trigger {
+  height: 100%;                 /* stretch to input height */
+  padding: 0 16px;              /* pill look, same vertical height */
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ===== Popover styled like your Search tips panel ===== */
+.type-popover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 320px;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-2, 0 8px 24px rgba(0,0,0,.08));
+  z-index: 40;
+}
+
+/* Panel scaffold to mirror your tips modal */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-title { font-weight: 700; }
+.panel-body { padding: 12px 14px 14px; }
+
+/* Checkbox list */
+.type-list {
+  display: grid;
+  gap: 10px;
+  max-height: 320px;
+  overflow: auto;
+}
+.type-item { display: flex; align-items: center; gap: 10px; }
+.type-item input { width: 16px; height: 16px; }
+.type-item { cursor: pointer; }
+
+/* ===== Reuse of your button system ===== */
+/* “Reset” pill look for Clear (to match Font Size > Reset) */
+.btn.pill { border-radius: 999px; }
+.btn.small { font-size: 0.875rem; padding: 6px 12px; }
+
+/* Checkbox list → stacked rows with separators and muted labels */
+.type-popover .panel-body { padding: 8px 12px 12px; }
+
+.type-list {
+  display: block;
+  max-height: 320px;
+  overflow: auto;
+  padding: 4px 0;
+}
+
+.type-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 2px;
+  border: 0;               /* no card border */
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* subtle divider between rows */
+.type-item + .type-item { border-top: 1px solid var(--border); }
+
+.type-item input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.type-item span {
+  font-size: 16px;
+  color: var(--muted);     /* grey label text */
+}
+
+/* Make the "Type" trigger match input height */
+.type-filter { position: relative; }
+
+/* OVERRIDE: make the trigger a white circular icon button */
+.home-filter .type-trigger {
+  height: 100%;
+  width: 44px;
+  padding: 0;                         /* icon-only */
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fg);                   /* white button */
+  border: 1px solid var(--fg);             /* black border */
+  color: var(--border);                        /* icon stroke via currentColor */
+}
+
+/* ensure the icon uses the button color */
+.home-filter .type-trigger svg { stroke: currentColor; }
+

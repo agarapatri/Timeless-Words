@@ -134,11 +134,37 @@
         </section>
 
         <form class="search-bar home-filter" action="#" id="homeFilterForm">
-          <input id="homeFilterInput" type="search" name="q" placeholder="Filter library by title or author…" aria-label="Filter library">
+          <input id="homeFilterInput" class="home-filter-input" type="search" name="q"
+                placeholder="Filter library by title or author…" aria-label="Filter library" />
+
+          <div class="type-filter">
+            <button id="typeBtn" class="type-icon-btn type-trigger" type="button"
+                    aria-label="Filter by type" aria-haspopup="true" aria-expanded="false" aria-controls="typePanel">
+              <!-- Filter (funnel) icon -->
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"></path>
+              </svg>
+            </button>
+
+            <!-- Popover -->
+            <div id="typePanel" class="type-popover panel" hidden>
+              <div class="panel-header">
+                <div class="panel-title">Book Type</div>
+                <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
+              </div>
+              <div class="panel-body">
+                <div class="type-list"><!-- checkboxes injected by JS --></div>
+              </div>
+            </div>
+          </div>
         </form>
+
       </section>
       <section>
-        <h2 class="section-title">Books <span id="booksCount" class="count"></span></h2>
+        <h2 class="section-title" style="margin-top:0px">
+          Books <span id="booksCount" class="count" style="font-weight:400"></span>
+        </h2>
         <div id="booksGrid" class="books-grid" aria-live="polite"></div>
       </section>
     </main>
@@ -152,17 +178,97 @@
 
     <script src="assets/data-bundle.js"></script>
     <script src="assets/app.js?v=3"></script>
+    
     <script>
       window.addEventListener('DOMContentLoaded', async () => {
         const library = await window.Library.loadLibrary();
-        const grid = document.getElementById('booksGrid');
+
+        const CATEGORY_LABELS = [
+          ['vedas', 'Vedas'],
+          ['upanishads', 'Upanishads'],
+          ['maha_puranas', 'Maha Puranas'],
+          ['upa_puranas', 'Upa Puranas'],
+          ['ati_puranas', 'Ati Puranas'],
+          ['itihasas', 'Itihasas'],
+          ['gitas', 'Gitas'],
+          ['sutras', 'Sutras'],
+          ['others', 'Others'],
+        ];
+
+        // Temporary fallback; remove once you add "type" to each book in library.json
+        const CATEGORY_BY_ID_FALLBACK = { vp: 'maha_puranas', sp: 'maha_puranas' };
+
+        // Elements
+        const grid       = document.getElementById('booksGrid');
         const booksCount = document.getElementById('booksCount');
-        const input = document.getElementById('homeFilterInput');
+        const input      = document.getElementById('homeFilterInput');
+
+        const typeBtn    = document.getElementById('typeBtn');
+        const typePanel  = document.getElementById('typePanel');
+        const typeList   = typePanel.querySelector('.type-list');
+        const typeClear  = document.getElementById('typeClear');
+
+        // Build checkbox list
+        CATEGORY_LABELS.forEach(([key, label]) => {
+          const row = document.createElement('label');
+          row.className = 'type-item';
+          row.innerHTML = `
+            <input type="checkbox" name="bookType" value="${key}">
+            <span>${label}</span>
+          `;
+          typeList.appendChild(row);
+        });
+
+        // Open/close popover (click + ESC + click-away)
+        function openType() {
+          typePanel.hidden = false;
+          typeBtn.setAttribute('aria-expanded', 'true');
+          const first = typePanel.querySelector('input[type="checkbox"]');
+          if (first) first.focus({ preventScroll: true });
+          document.addEventListener('click', onAway, { capture: true });
+          document.addEventListener('keydown', onEsc, { capture: true });
+        }
+        function closeType() {
+          typePanel.hidden = true;
+          typeBtn.setAttribute('aria-expanded', 'false');
+          document.removeEventListener('click', onAway, { capture: true });
+          document.removeEventListener('keydown', onEsc, { capture: true });
+        }
+        function onAway(e) {
+          if (typePanel.contains(e.target) || typeBtn.contains(e.target)) return;
+          closeType();
+        }
+        function onEsc(e) { if (e.key === 'Escape') closeType(); }
+        typeBtn.addEventListener('click', () => typePanel.hidden ? openType() : closeType());
+
+        // Selection utilities
+        function selectedTypes() {
+          const set = new Set();
+          typePanel.querySelectorAll('input[name="bookType"]:checked').forEach(cb => set.add(cb.value));
+          return set;
+        }
+        typePanel.addEventListener('change', () => filter(input.value));
+        typeClear.addEventListener('click', () => {
+          typePanel.querySelectorAll('input[name="bookType"]').forEach(cb => cb.checked = false);
+          filter(input.value);
+        });
+
+        // Normalize book type
+        function getType(book) {
+          const raw = (book.type || CATEGORY_BY_ID_FALLBACK[book.id] || 'others')
+                      .toString().trim().toLowerCase();
+          return raw
+            .replace(/\s+/g, '_')
+            .replace(/mahapuranas?|maha_purana/, 'maha_puranas')
+            .replace(/upa_purana/, 'upa_puranas')
+            .replace(/ati_purana/, 'ati_puranas');
+        }
 
         function initialsFromTitle(title) {
           const words = (title || '').trim().split(/\s+/).filter(Boolean);
-          if (!words.length) return '';
-          return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+          if (words.length === 0) return '';
+          if (words.length === 1) return words[0].slice(0,2).toUpperCase();
+          return words.slice(0,2).map(w => w[0]).join('').toUpperCase();
         }
 
         function render(list) {
@@ -176,19 +282,16 @@
             const coverClass = b.image ? 'cover has-image' : 'cover';
             const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
 
-            // Coerce to numbers in case library.json stores them as strings
             const ch = Number(b.chapters);
             const vs = Number(b.verses);
-            const stats = (Number.isFinite(ch) && Number.isFinite(vs))
-              ? `${ch} chapters · ${vs} verses`
-              : '';
+            const stats = (Number.isFinite(ch) && Number.isFinite(vs)) ? `${ch} chapters · ${vs} verses` : '';
 
             card.innerHTML = `
               <div class="${coverClass} notranslate" translate="no" ${styleAttr} aria-hidden="true">${initials}</div>
               <div class="meta">
                 <div class="book-title">${b.title}</div>
-                <div class="book-sub">${b.author || 'Unknown'}</div>
-                ${stats ? `<div class="book-stats">${stats}</div>` : ''}
+                <div class="book-sub" style="font-size:14px;line-height:1.4">${b.author || 'Unknown'}</div>
+                ${stats ? `<div class="book-stats" style="font-size:14px;line-height:1.4">${stats}</div>` : ''}
               </div>
             `;
             grid.appendChild(card);
@@ -196,20 +299,31 @@
           if (booksCount) booksCount.textContent = `(${(list || []).length})`;
         }
 
-        function filter(term) {
-          const t = (term || '').toLowerCase();
-          if (!t) return render(library);
-          const list = library.filter(b => (
-            (b.title||'').toLowerCase().includes(t) ||
-            (b.author||'').toLowerCase().includes(t)
-          ));
+        function filter(q) {
+          const t = (q || '').toLowerCase().trim();
+          const selected = selectedTypes();
+
+          const list = library.filter(b => {
+            const matchesText =
+              (b.title || '').toLowerCase().includes(t) ||
+              (b.author || '').toLowerCase().includes(t);
+            const matchesType = selected.size === 0 || selected.has(getType(b));
+            return matchesText && matchesType;
+          });
+
           render(list);
         }
 
+        // Initial render + handlers
         render(library);
         input.addEventListener('input', () => filter(input.value));
-        document.getElementById('homeFilterForm').addEventListener('submit', (e) => { e.preventDefault(); filter(input.value); });
+        document.getElementById('homeFilterForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          filter(input.value);
+        });
       });
     </script>
+
+
   </body>
   </html>
