@@ -213,11 +213,13 @@
           const row = document.createElement('label');
           row.className = 'type-item';
           row.innerHTML = `
-            <input type="checkbox" name="bookType" value="${key}">
+            <input type="checkbox" name="bookType" value="${key} checked">
             <span>${label}</span>
           `;
           typeList.appendChild(row);
         });
+        // One initial apply (not a second DOM iteration over checkboxes)
+        filter(input.value);
 
         // Open/close popover (click + ESC + click-away)
         function openType() {

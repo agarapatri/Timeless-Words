@@ -199,7 +199,7 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
 @media (min-width: 1000px) {
   .search-layout { grid-template-columns: 1fr 280px; align-items: start; }
   .search-main { order: 1; }
-  .search-side { order: 2; position: sticky; top: 64px; }
+  .search-side { order: 2; position: sticky; top: 64px; margin: 0 0 24px; }
 }
 
 /* ---------- Books grid & cards ---------- */
@@ -218,8 +218,8 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
 .book-card .book-sub { font-size: 14px; color: var(--muted); }
 
 /* ---------- Search page right sidebar: Filter by specific books ---------- */
-#fBooks .book-box { border: 1px solid var(--border); border-radius: 14px; padding: 8px 10px 4px; background: var(--bg); overflow: hidden; }
-#fBooks .filter { position: relative; padding: 2px 0 6px; background: transparent !important; border-bottom: 1px solid var(--border); }
+#fBooks .book-box, #fTypes .book-box { border: 1px solid var(--border); border-radius: 14px; padding: 8px 10px 4px; background: var(--bg); overflow: hidden; }
+#fBooks .filter, #fTypes .filter { position: relative; padding: 2px 0 6px; background: transparent !important; border-bottom: 1px solid var(--border); }
 #fBooks .filter input[type="search"],
 #fBooks .filter input[type="text"],
 #fBooks .filter .search-input {
@@ -230,19 +230,20 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
 #fBooks .filter input::placeholder { color: #9aa3ad; }
 #fBooks .filter input:focus { outline: none; box-shadow: 0 0 0 2px rgba(0,0,0,0.06); }
 
-#fBooks .checklist { display: block; padding: 0; margin: 0; }
-#fBooks .checklist label {
+#fBooks .checklist, #fTypes .checklist { display: block; padding: 0; margin: 0; }
+#fBooks .checklist label, #fTypes .checklist label {
   display: flex; align-items: center; gap: 12px; padding: 8px 0;
   border: 0; border-radius: 0; background: transparent; cursor: pointer;
 }
-#fBooks .checklist label + label { border-top: 1px solid var(--border); }
+#fBooks .checklist label + label, #fTypes .checklist label + label { border-top: 1px solid var(--border); }
 #fBooks .checklist input[type="checkbox"] { width: 18px; height: 18px; }
 #fBooks .checklist span { font-size: 15px; }
 
-#fBooks .filter::before {
+#fBooks .filter::before, #fTypes .filter::before {
   content: ""; position: absolute; left: 0; top: 17px; transform: translateY(-50%);
   width: 18px; height: 18px; background: url("../icons/search.svg") no-repeat center / 18px 18px; opacity: .35; pointer-events: none;
 }
+#fBooks, #fTypes { grid-column: span 6; margin-bottom: 24px; }
 
 /* ---------- Book page ---------- */
 .crumb { display: inline-block; margin-top: 10px; color: var(--muted); }
@@ -397,7 +398,7 @@ html.theme-dark .chapter-card:hover { background: rgba(255,255,255,.04); }
 
 /* ---------- Responsive tweaks ---------- */
 @media (min-width: 800px) {
-  #fTitle, #fAuthor, #fDeva, #fIast, #fTrans, #fBooks { grid-column: span 6; }
+  #fTitle, #fAuthor, #fDeva, #fIast, #fTrans { grid-column: span 6; }
 }
 
 /* Keep */
@@ -476,6 +477,12 @@ html.serif .menu-panel { font-family: var(--font-sans); }
   justify-content: space-between;
   padding: 12px 14px;
   border-bottom: 1px solid var(--border);
+}
+.panel-header2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 14px;
 }
 .panel-title { font-weight: 700; }
 .panel-body { padding: 12px 14px 14px; }

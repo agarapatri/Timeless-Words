@@ -264,95 +264,173 @@
 
   /* --------------------------------------- */
   
-  /* ---------------------------------------
-   ONLY the "Filter by specific books" feature — data/library.json
-   (safe: no clash with the main Deep Search init)
-----------------------------------------*/
-  function byId(id){ return document.getElementById(id); }
+function byId(id){ return document.getElementById(id); }
 
-  function initBookFilter(){
-    const searchEl = byId('bookSearch');
-    const listEl   = byId('bookChecklist');
-    if (!searchEl || !listEl) return; // not on this page
+function initBookFilter(){
+  const searchEl = byId('bookSearch');
+  const listEl   = byId('bookChecklist');
+  if (!searchEl || !listEl) return; // not on this page
 
-    const state = { all: [], filtered: [], selected: new Set() };
+  const state = { all: [], filtered: [], selected: new Set() };
 
-    // load books
-    (async () => {
-      try {
-        const res  = await fetch('data/library.json', { cache: 'no-cache' });
-        const data = await res.json();
-        const books = Array.isArray(data) ? data : (data.books || []);
+  // load books
+  (async () => {
+    try {
+      const res  = await fetch('data/library.json', { cache: 'no-cache' });
+      const data = await res.json();
+      const books = Array.isArray(data) ? data : (data.books || []);
 
-        state.all = books.map(b => ({
-          id:    b.id ?? b.slug ?? String(b.title||'').toLowerCase().replace(/\W+/g,'_'),
-          title: b.title || b.short || String(b.id||''),
-          short: b.short || ''
-        })).sort((a,b)=>a.title.localeCompare(b.title));
+      state.all = books.map(b => ({
+        id:    b.id ?? b.slug ?? String(b.title||'').toLowerCase().replace(/\W+/g,'_'),
+        title: b.title || b.short || String(b.id||''),
+        short: b.short || ''
+      })).sort((a,b)=>a.title.localeCompare(b.title));
 
-        state.filtered = state.all.slice();
-        render();
-      } catch (e) {
-        listEl.innerHTML = '<div class="muted">Could not load books (serve via http).</div>';
-      }
-    })();
+      // ✅ select ALL by default
+      state.selected = new Set(state.all.map(b => b.id));
 
-    // mini search (title/short)
-    searchEl.addEventListener('input', () => {
-      const q = searchEl.value.trim().toLowerCase();
-      state.filtered = q
-        ? state.all.filter(b =>
-            (b.title||'').toLowerCase().includes(q) ||
-            (b.short||'').toLowerCase().includes(q))
-        : state.all.slice();
+      state.filtered = state.all.slice();
       render();
-    });
 
-    function render(){
-      if (!state.filtered.length){
-        listEl.innerHTML = '<div class="muted" aria-live="polite">No books</div>';
-        return;
-      }
-      const frag = document.createDocumentFragment();
+      // ✅ fire once so the rest of the app sees the default selection
+      document.dispatchEvent(new CustomEvent('books:changed', {
+        detail: { selected: Array.from(state.selected) }
+      }));
+      listEl.dispatchEvent(new Event('change', { bubbles: true }));
+    } catch (e) {
+      listEl.innerHTML = '<div class="muted">Could not load books (serve via http).</div>';
+    }
+  })();
 
-      state.filtered.forEach(b => {
-        const idAttr = `book_${String(b.id).replace(/\W+/g,'_')}`;
+  // mini search (title/short)
+  searchEl.addEventListener('input', () => {
+    const q = searchEl.value.trim().toLowerCase();
+    state.filtered = q
+      ? state.all.filter(b =>
+          (b.title||'').toLowerCase().includes(q) ||
+          (b.short||'').toLowerCase().includes(q))
+      : state.all.slice();
+    render();
+  });
 
-        const label = document.createElement('label');
-        label.setAttribute('role','option');
-        label.htmlFor = idAttr;
+  function render(){
+    if (!state.filtered.length){
+      listEl.innerHTML = '<div class="muted" aria-live="polite">No books</div>';
+      return;
+    }
+    const frag = document.createDocumentFragment();
 
-        const box = document.createElement('input');
-        box.type = 'checkbox';
-        box.id = idAttr;
-        box.value = b.id;
-        box.checked = state.selected.has(b.id);
-        box.addEventListener('change', () => {
-          if (box.checked) state.selected.add(b.id);
-          else state.selected.delete(b.id);
+    state.filtered.forEach(b => {
+      const idAttr = `book_${String(b.id).replace(/\W+/g,'_')}`;
 
-          // bubble for anyone listening (your deep search also watches #fBooks change)
-          document.dispatchEvent(new CustomEvent('books:changed', {
-            detail: { selected: Array.from(state.selected) }
-          }));
-          // also trigger the native change your deep search listens to
-          listEl.dispatchEvent(new Event('change', { bubbles: true }));
-        });
+      const label = document.createElement('label');
+      label.setAttribute('role','option');
+      label.htmlFor = idAttr;
 
-        const span = document.createElement('span');
-        span.textContent = b.title;
+      const box = document.createElement('input');
+      box.type = 'checkbox';
+      box.id = idAttr;
+      box.value = b.id;
+      box.checked = state.selected.has(b.id);   // ✅ now true on first render
+      box.addEventListener('change', () => {
+        if (box.checked) state.selected.add(b.id);
+        else state.selected.delete(b.id);
 
-        label.appendChild(box);
-        label.appendChild(span);
-        frag.appendChild(label);
+        document.dispatchEvent(new CustomEvent('books:changed', {
+          detail: { selected: Array.from(state.selected) }
+        }));
+        listEl.dispatchEvent(new Event('change', { bubbles: true }));
       });
 
-      listEl.innerHTML = '';
-      listEl.appendChild(frag);
+      const span = document.createElement('span');
+      span.textContent = b.title;
+
+      label.appendChild(box);
+      label.appendChild(span);
+      frag.appendChild(label);
+    });
+
+    listEl.innerHTML = '';
+    listEl.appendChild(frag);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
+
+
+  /* ----------------------------------------------------- */
+
+  function initTypeFilter(){
+    const listEl = document.getElementById('typeChecklist');
+    if (!listEl) return;
+
+    const TYPES = [
+      'Vedas','Upanishads','Maha Puranas','Upa Puranas',
+      'Ati Puranas','Itihasas','Gitas','Sutras','Others'
+    ];
+
+    const frag = document.createDocumentFragment();
+
+    TYPES.forEach((t, idx) => {
+      const idAttr = `type_${idx}`;
+      const label  = document.createElement('label');
+      label.setAttribute('role','option');
+      label.htmlFor = idAttr;
+
+      const box = document.createElement('input');
+      box.type = 'checkbox';
+      box.id = idAttr;
+      box.value = t;
+      box.checked = true;
+
+      // Whenever types change, notify the book filter section to re-filter
+      box.addEventListener('change', () => {
+        document.dispatchEvent(new CustomEvent('types:changed', {
+          detail: { selected: getSelectedTypes() }
+        }));
+      });
+
+      const span = document.createElement('span');
+      span.textContent = t;
+
+      label.appendChild(box);
+      label.appendChild(span);
+      frag.appendChild(label);
+    });
+
+    listEl.innerHTML = '';
+    listEl.appendChild(frag);
+
+    function getSelectedTypes(){
+      return Array.from(listEl.querySelectorAll('input[type="checkbox"]:checked'))
+        .map(i => i.value);
     }
   }
 
-  window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
+  window.addEventListener('DOMContentLoaded', initTypeFilter, { once:true });
 
+  function getSelectedTypes(){
+    const el = document.getElementById('typeChecklist');
+    if (!el) return [];
+    return Array.from(el.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(i => i.value);
+  }
+
+  function applyFilter(){
+    const q = (searchEl.value || '').trim().toLowerCase();
+    const activeTypes = new Set(getSelectedTypes());
+
+    state.filtered = state.all.filter(b => {
+      // filter by types if any are selected
+      const typeOk = activeTypes.size === 0 || activeTypes.has(b.type);
+      // filter by search query
+      const textOk = !q || b.title.toLowerCase().includes(q);
+      return typeOk && textOk;
+    });
+
+    renderList(state.filtered);
+  }
+
+  document.addEventListener('types:changed', applyFilter);
 
 })();
