@@ -1,0 +1,157 @@
+{
+  "id": "iu",
+  "short": "IU",
+  "title": "Īśā Upaniṣad",
+  "author": "Unknown (Śruti; White Yajurveda)",
+  "type": "Upanishad",
+  "date_of_origin": "c. 1st millennium BCE (late Vedic)",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Chapter 1",
+      "section": null,
+      "section_title": null,
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् । तेन त्यक्तेन भुञ्जीथाः मा गृधः कस्यस्विद्धनम् ॥",
+          "iast": "īśāvāsyam idaṁ sarvaṁ yat kiñca jagatyāṁ jagat | tena tyaktena bhuñjīthāḥ mā gṛdhaḥ kasyasvid dhanam ||",
+          "word_by_word": [
+            { "sanskrit": "īśa", "english": "the Lord" },
+            { "sanskrit": "vāsyam", "english": "to be pervaded" },
+            { "sanskrit": "tyaktena", "english": "by renunciation" },
+            { "sanskrit": "bhuñjīthāḥ", "english": "enjoy/protect" },
+            { "sanskrit": "mā gṛdhaḥ", "english": "do not covet" }
+          ],
+          "translation": "All this—whatever moves in this moving world—is pervaded by the Lord. Enjoy (protect) through renunciation; do not covet anyone’s wealth."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "कुर्वन्नेव इह कर्माणि जिजीविषेच्छतं समाः । एवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे ॥",
+          "iast": "kurvann eveha karmāṇi jijīviṣec chataṁ samāḥ | evaṁ tvayi nānyatheto 'sti na karma lipyate nare ||",
+          "word_by_word": [
+            { "sanskrit": "kurvan", "english": "doing" },
+            { "sanskrit": "karmāṇi", "english": "works" },
+            { "sanskrit": "jijīviṣet", "english": "should wish to live" },
+            { "sanskrit": "śatam samāḥ", "english": "a hundred years" },
+            { "sanskrit": "na lipyate", "english": "is not tainted" }
+          ],
+          "translation": "By doing works here one should wish to live a hundred years. Thus there is no other way for you; action does not cling to a person so living."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "असूर्या नाम ते लोका अन्धेन तमसाऽवृताः । तान् ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः ॥",
+          "iast": "asūryā nāma te lokā andhena tamasāvṛtāḥ | tān te pretyābhigacchanti ye ke cātma-hano janāḥ ||",
+          "word_by_word": [
+            { "sanskrit": "asūryā lokāḥ", "english": "sunless worlds" },
+            { "sanskrit": "andhena tamasā", "english": "with blind darkness" },
+            { "sanskrit": "pretya", "english": "after death" },
+            { "sanskrit": "abhigacchanti", "english": "go to" },
+            { "sanskrit": "ātma-hanaḥ", "english": "self-slayers" }
+          ],
+          "translation": "Sunless are those worlds, enveloped in blind darkness; to them go, after death, those who slay the Self."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "अनेजदेकं मनसो जवीयो नैनं देवा आप्नुवन् पूर्वमर्षत् । तद्धावतोऽन्यानत्येति तिष्ठत् तस्मिन्नपो मातरिश्वा दधाति ॥",
+          "iast": "anejad ekaṁ manaso javīyo nainaṁ devā āpnuvan pūrvam arṣat | tad dhāvato 'nyān atyeti tiṣṭhat tasminn apo mātariśvā dadhāti ||",
+          "word_by_word": [
+            { "sanskrit": "anejat", "english": "unmoving" },
+            { "sanskrit": "ekaṁ", "english": "the One" },
+            { "sanskrit": "manasaḥ javīyaḥ", "english": "swifter than mind" },
+            { "sanskrit": "na āpnuvan", "english": "do not reach" },
+            { "sanskrit": "atyeti", "english": "outstrips" }
+          ],
+          "translation": "Unmoving, the One—swifter than the mind. The gods reach It not, for It ever goes before; standing, It outstrips others as they run. In It the Wind places the waters."
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "तदेजति तन्नैजति तद्दूरे तद्वन्तिके । तदन्तरस्य सर्वस्य तदु सर्वस्य बाह्यतः ॥",
+          "iast": "tad ejati tan naijati tad dūre tad v antike | tad antar asya sarvasya tad u sarvasya bāhyataḥ ||",
+          "word_by_word": [
+            { "sanskrit": "tat", "english": "That (Brahman)" },
+            { "sanskrit": "ejati", "english": "moves" },
+            { "sanskrit": "na ejati", "english": "moves not" },
+            { "sanskrit": "dūre/antike", "english": "far/near" },
+            { "sanskrit": "antar/bāhyataḥ", "english": "within/outside" }
+          ],
+          "translation": "That moves and That moves not; That is far, and That is near. That is within this all, and That is also outside all."
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "यस्तु सर्वाणि भूतान्यात्मन्येवाऽनुपश्यति । सर्वभूतेषु चात्मानं ततो न विजुगुप्सते ॥",
+          "iast": "yas tu sarvāṇi bhūtāny ātmanyevānupaśyati | sarva-bhūteṣu cātmānaṁ tato na vijugupsate ||",
+          "word_by_word": [
+            { "sanskrit": "yas tu", "english": "but the one who" },
+            { "sanskrit": "sarvāṇi bhūtāni", "english": "all beings" },
+            { "sanskrit": "ātmani", "english": "in the Self" },
+            { "sanskrit": "anupaśyati", "english": "realizes/sees" },
+            { "sanskrit": "na vijugupsate", "english": "does not shrink" }
+          ],
+          "translation": "But whoever sees all beings in the Self alone, and the Self in all beings, from that one no aversion arises."
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "यस्मिन् सर्वाणि भूतान्यात्मैवाभूद्विजानतः । तत्र को मोहः कः शोक एकत्वमनुपश्यतः ॥",
+          "iast": "yasmin sarvāṇi bhūtāny ātmaivābhūd vijānataḥ | tatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||",
+          "word_by_word": [
+            { "sanskrit": "yasmin", "english": "in which" },
+            { "sanskrit": "ātmaiva abhūt", "english": "all became the Self" },
+            { "sanskrit": "vijānataḥ", "english": "for the knower" },
+            { "sanskrit": "moha/śoka", "english": "delusion/sorrow" },
+            { "sanskrit": "ekatvam", "english": "oneness" }
+          ],
+          "translation": "For the knower in whom all beings have become the Self, what delusion, what grief is there for one who sees oneness?"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "स पर्यगाच्छुक्रमकायमव्रणमस्नाविरं शुद्धमपापविद्धम् । कविर्मनीषी परिभूः स्वयम्भूर्याथातथ्यान्यथार्थान् व्यदधाच्छाश्वतीभ्यः समाभ्यः ॥",
+          "iast": "sa paryagāc chukram akāyam avraṇam asnāviraṁ śuddham apāpa-viddham | kavir manīṣī paribhūḥ svayambhūr yāthātathyato 'rthān vyadadhāc chāśvatībhyaḥ samābhyaḥ ||",
+          "word_by_word": [
+            { "sanskrit": "śukram", "english": "effulgent" },
+            { "sanskrit": "akāyam", "english": "bodiless" },
+            { "sanskrit": "śuddham", "english": "pure" },
+            { "sanskrit": "apāpa-viddham", "english": "untouched by sin" },
+            { "sanskrit": "svayambhūḥ", "english": "self-existent" }
+          ],
+          "translation": "He has encompassed all—effulgent, bodiless, woundless, sinewless, pure, untouched by evil—seer, thinker, transcendent, self-existent, who allotted things rightly from ages everlasting."
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽसम्भूतिमुपासते । ततो भूय इव ते तमो या उ सम्भूत्या रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'sambhūtim upāsate | tato bhūya iva te tamo yā u sambhūtyāṁ ratāḥ ||",
+          "word_by_word": [
+            { "sanskrit": "andham tamaḥ", "english": "blind darkness" },
+            { "sanskrit": "asambhūtim", "english": "the Unmanifest (prākṛti) or non-becoming" },
+            { "sanskrit": "upāsate", "english": "worship" },
+            { "sanskrit": "sambhūtyām ratāḥ", "english": "absorbed in becoming" }
+          ],
+          "translation": "Into blind darkness they enter who worship the Unmanifest; into a darkness seeming greater go those who delight only in becoming."
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "अन्यदेवाहुः सम्भवादन्यदाहुरसम्भवात् । इति शुश्रुम धीमानां ये नस्तद्विचचक्षिरे ॥",
+          "iast": "anyad evāhuḥ sambhavād anyad āhur asambhavāt | iti śuśruma dhīmānāṁ ye nas tad vicacakṣire ||",
+          "word_by_word": [
+            { "sanskrit": "anyat", "english": "different (is the result)" },
+            { "sanskrit": "sambhavāt", "english": "from becoming" },
+            { "sanskrit": "asambhavāt", "english": "from non-becoming" },
+            { "sanskrit": "śuśruma", "english": "we have heard" },
+            { "sanskrit": "dhīmānām", "english": "from the wise" }
+          ],
+          "translation": "Different indeed, they say, is what comes from becoming; and different, they say, from non-becoming. So have we heard from the wise who explained it to us."
+        }
+      ]
+    }
+  ]
+}

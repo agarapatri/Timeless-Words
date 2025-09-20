@@ -4,6 +4,50 @@ Collection of Vedic texts
 ## Website demo
 * https://agarapatri.github.io/Timeless-Words/
 
+## Types of Vedic Texts
+* **Vedas**:
+  * Ṛg
+  * Yajur
+  * Sāma
+  * Atharva
+* **Layers of Vedas**: 
+  * Saṁhitā (hymns)
+  * Brāhmaṇa (ritual prose)
+  * Āraṇyaka (forest texts)
+  * Upaniṣad (philosophy)
+* **Upaniṣads**: A lot of them but chief are PROBABLY 108 according to Muktika Upanishad which is the 108th one.
+* **Itihāsas** (Epics): 
+  * Rāmāyaṇa
+  * Mahābhārata (includes Bhagavad-Gītā)
+* **Mahā-Purāṇas**: 18 Mahā-Purāṇas
+* **Upa-Purāṇas**
+* **Ati-Purāṇas**
+* **Vedāṅgas**:
+  * Śikṣā (phonetics)
+  * Chandas (metre)
+  * Vyākaraṇa (grammar)
+  * Nirukta (etymology)
+  * Jyotiṣa (astronomy/astrology)
+  * Kalpa (ritual manuals)
+* **Dharmaśāstra**: legal/ethical codes (e.g., Manusmṛti, Yājñavalkya Smṛti)
+* **Upavedas** (applied “Vedas”): 
+  * Āyurveda (medicine)
+  * Dhanurveda (martial)
+  * Gāndharvaveda (music/arts)
+  * Sthāpatyaveda (architecture)
+* **Darśanas** (6 orthodox schools): 
+  * Nyāya
+  * Vaiśeṣika
+  * Sāṅkhya
+  * Yoga
+  * Pūrva-Mīmāṁsā
+  * Uttara-Mīmāṁsā (Vedānta)
+* **Āgamas/Tantras**: Śaiva, Vaiṣṇava (Pāñcarātra), Śākta traditions and their Saṁhitās.
+* **Commentaries**: Bhāṣyas, Nibandhas, Kāvya, Nīti/Artha texts (e.g., Arthaśāstra)
+* **Gitas**
+* **Kalpa Sūtras** (within Vedāṅga): Śrauta, Gṛhya, Dharma (incl. Śulba Sūtras)
+* **Others**
+
 ## What’s inside
 - Pure HTML/CSS + tiny vanilla JS (no libraries)
 - Pages: `index.html`, `search.html`, `book.html`, `verse.html`

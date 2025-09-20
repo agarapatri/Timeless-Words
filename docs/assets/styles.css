@@ -237,7 +237,7 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
 }
 #fBooks .checklist label + label, #fTypes .checklist label + label { border-top: 1px solid var(--border); }
 #fBooks .checklist input[type="checkbox"] { width: 18px; height: 18px; }
-#fBooks .checklist span { font-size: 15px; }
+#fBooks .checklist span, #fTypes .checklist span { font-size: 14px; }
 
 #fBooks .filter::before, #fTypes .filter::before {
   content: ""; position: absolute; left: 0; top: 17px; transform: translateY(-50%);
