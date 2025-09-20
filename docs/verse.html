@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
-    <div class="mini-header">
-      <div class="container"><span class="brand">Timeless Words</span><a href="search.html">Deep Search</a></div>
-    </div>
+    
 
     <main class="container verse-page">
       <nav class="crumbs" id="crumbs"></nav>
@@ -31,6 +29,11 @@
         <h2>Translation</h2>
         <p id="translation" class="translation"></p>
       </section>
+
+      <div class="pager" id="verseNav" style="justify-content: space-between;">
+        <a id="prevVerse" class="btn ghost" href="#" style="display:none">‹ Prev verse</a>
+        <a id="nextVerse" class="btn ghost" href="#" style="display:none">Next verse ›</a>
+      </div>
     </main>
     <footer class="site-footer">
       <div class="container">
@@ -143,6 +146,41 @@
             wfw.appendChild(li);
           });
           document.getElementById('translation').textContent = en || '';
+
+          // Prev/Next verse navigation across chapters
+          const prevQ = db.exec(`
+            SELECT vs.verse_id, d.division_id, d.ordinal AS cord, vs.ordinal AS vord
+            FROM verses vs
+            JOIN divisions d ON d.division_id = vs.division_id
+            WHERE vs.work_id=${Number(work_id)}
+              AND (d.ordinal < ${Number(division_ord)} OR (d.ordinal = ${Number(division_ord)} AND vs.ordinal < ${Number(verseOrd)}))
+            ORDER BY d.ordinal DESC, vs.ordinal DESC
+            LIMIT 1
+          `);
+          const nextQ = db.exec(`
+            SELECT vs.verse_id, d.division_id, d.ordinal AS cord, vs.ordinal AS vord
+            FROM verses vs
+            JOIN divisions d ON d.division_id = vs.division_id
+            WHERE vs.work_id=${Number(work_id)}
+              AND (d.ordinal > ${Number(division_ord)} OR (d.ordinal = ${Number(division_ord)} AND vs.ordinal > ${Number(verseOrd)}))
+            ORDER BY d.ordinal ASC, vs.ordinal ASC
+            LIMIT 1
+          `);
+          const prev = prevQ[0]?.values?.[0];
+          const next = nextQ[0]?.values?.[0];
+
+          const prevEl = document.getElementById('prevVerse');
+          const nextEl = document.getElementById('nextVerse');
+          if (prev) {
+            const dId = prev[1], vOrd = prev[3];
+            prevEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
+            prevEl.style.display = '';
+          }
+          if (next) {
+            const dId = next[1], vOrd = next[3];
+            nextEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
+            nextEl.style.display = '';
+          }
         } catch (err) {
           console.error('Verse load error', err);
         }

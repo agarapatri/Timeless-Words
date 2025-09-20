@@ -258,7 +258,12 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
 
 /* ---------- Verse page ---------- */
 .crumbs { display: flex; gap: 8px; align-items: center; color: var(--muted); margin: 12px 0; }
-.verse-ref { text-align: center; font-size: clamp(22px, 3vw, 32px); margin-top: 8px; }
+.verse-page .verse-ref {
+  text-align: left;
+  font-size: clamp(22px, 3vw, 32px);
+  max-width: 780px;
+  margin: 8px auto 16px;
+}
 .verse-block { max-width: 780px; margin: 0 auto 16px; }
 .verse-block h2 { font-size: 16px; text-transform: none; color: var(--muted); margin-bottom: 6px; }
 pre { background: var(--surface); padding: 12px; border: 1px solid var(--border); border-radius: 10px; white-space: pre-wrap; }
@@ -367,6 +372,7 @@ html.theme-dark .help-btn:hover { background: rgba(255,255,255,0.06); }
   border-radius: 999px; background: var(--bg);
 }
 @media (max-width: 600px) { .pager { justify-content: space-between; } }
+.verse-page .pager { max-width: 780px; margin-left: auto; margin-right: auto; justify-content: space-between; }
 
 /* ---------- Book detail header ---------- */
 .book-hero { display:flex; align-items:center; gap:18px; margin-top:12px; }
@@ -556,4 +562,3 @@ html.serif .menu-panel { font-family: var(--font-sans); }
 
 /* ensure the icon uses the button color */
 .home-filter .type-trigger svg { stroke: currentColor; }
-
