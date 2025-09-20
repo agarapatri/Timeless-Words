@@ -1,0 +1,76 @@
+# Translate Indian Texts to English
+
+* **json_to_sqlite_cli.py:** This script can take a directory filled with json files and give a sqlite file with all the json data. The json files have to be in this specific format. The jsons directory contains sample json files of some Vedic texts all in this particular json format.
+
+```json
+{
+  "id": "vp",
+  "short": "VP",
+  "title": "Vishnu Puran",
+  "author": "Veda Vyas",
+  "type": "Puranas",
+  "date_of_origin": "Atleast 2nd century BCE.",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Chapter 1",
+      "section": 1,
+      "section_title": "Unknown",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "श्रोतव्यं सततं तस्मात्सर्वपापप्रणाशनम् । ब्रह्माण्डपुराणं पुण्यं सर्वानन्दप्रदायकम् ॥ १० ॥",
+          "iast": "oṁ namo bhagavate vāsudevāya\njanmādy asya yataḥ sṛṣṭi-sthiti-layāḥ\nsatyasya jñānānandasya brahmaṇaḥ\nparamātmanaḥ",
+          "word_by_word": [
+            {
+              "sanskrit": "oṁ",
+              "english": "sacred syllable"
+            },
+            {
+              "sanskrit": "namo",
+              "english": "obeisance"
+            },
+            {
+              "sanskrit": "bhagavate",
+              "english": "unto the Lord"
+            },
+            {
+              "sanskrit": "vāsudevāya",
+              "english": "Vāsudeva (Kṛṣṇa)"
+            }
+          ],
+          "translation": "Om! I bow to the blessed Lord Vāsudeva, the Supreme Self, from whom arise creation, preservation, and dissolution, who is truth, knowledge, and bliss."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "श्रोतव्यं सततं तस्मात्सर्वपापप्रणाशनम् । ब्रह्माण्डपुराणं पुण्यं सर्वानन्दप्रदायकम् ॥ १० ॥",
+          "iast": "viṣṇoḥ paramaṁ rūpaṁ sattva-rūpaṁ sanātanam\nśuddhaṁ sac-cid-ānandaṁ yad brahma paramaṁ viduḥ",
+          "word_by_word": [
+            {
+              "sanskrit": "viṣṇoḥ",
+              "english": "of Viṣṇu"
+            },
+            {
+              "sanskrit": "paramam",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "rūpam",
+              "english": "form"
+            }
+          ],
+          "translation": "The supreme form of Viṣṇu is eternal, pure existence-consciousness-bliss, composed of sattva, which the wise know as the highest Brahman."
+        }
+      ]
+    }
+  ]
+}
+```
+
+* Under "chapters" array, number should be chapter number.
+* Under "verses" array, number should be verse number.
+* "type" field is the type of work, like Purana, Itihasa, Veda, Upanishad, etc.
+* "section" field under chapters array is the canto number if any exists.
+* "section_title" under chapters array is the canto title if any exists.

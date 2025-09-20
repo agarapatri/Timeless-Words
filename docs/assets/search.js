@@ -1,6 +1,8 @@
 /* Deep Search with substring + optional regex */
 (function () {
   let STATE = { results: [], page: 1, perPage: 25 }; // default page size
+  let DB = null;
+  let ALL = { types: [], books: [], verses: [], wfwByVerse: new Map() };
 
   function ensurePager() {
     let pager = document.getElementById('pager');
@@ -59,21 +61,42 @@
     if (!query) return false;
     const re = parseRegexQuery(query);
     if (re) {
-      try { return re.test(String(hay || '')); } catch { return false; }
+      try {
+        const s = String(hay || '');
+        if (re.test(s)) return true; // exact regex match
+        // Diacritic-insensitive fallback: normalize both pattern and haystack
+        const normSrc = norm(re.source);
+        const re2 = new RegExp(normSrc, re.flags);
+        return re2.test(norm(s));
+      } catch {
+        return false;
+      }
+    }
+    // simple wildcards (* and ?) on normalized text
+    const qn = norm(query);
+    if (/[\*\?]/.test(qn)) {
+      // escape all regex specials except * and ?
+      const esc = qn.replace(/[\-\/\\\^\$\+\.\(\)\|\[\]\{\}]/g, '\\$&');
+      const patt = esc.replace(/\*/g, '.*').replace(/\?/g, '.');
+      try {
+        const wre = new RegExp(patt, 'i');
+        return wre.test(norm(hay));
+      } catch { /* fall through */ }
     }
     // substring (accent-insensitive)
-    return norm(hay).includes(norm(query));
+    return norm(hay).includes(qn);
   }
 
   async function init() {
-    const library = await window.Library.loadLibrary();
-    const data = await window.Library.loadAllBooks();
+    await loadDb();
+    await loadCatalog();
+    await loadVerses();
 
     // Prefill from q if navigated from home
     const q = new URLSearchParams(location.search).get('q');
     if (q) document.getElementById('q').value = q;
 
-    const run = () => search(data);
+    const run = () => search();
     document.getElementById('filters').addEventListener('submit', (e) => { e.preventDefault(); });
     document.getElementById('q').addEventListener('input', run);
     document.getElementById('fBooks').addEventListener('change', run);
@@ -103,32 +126,77 @@
     }
   }
 
+  async function loadDb() {
+    if (DB) return DB;
+    const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
+    const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Failed to fetch SQLite');
+    const buf = new Uint8Array(await res.arrayBuffer());
+    DB = new SQL.Database(buf);
+    return DB;
+  }
+
+  async function loadCatalog() {
+    const typesOut = DB.exec(`SELECT code, label FROM work_types ORDER BY label`);
+    ALL.types = (typesOut[0]?.values || []).map(r => ({ code: r[0], label: r[1] }));
+    const booksOut = DB.exec(`SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`);
+    ALL.books = (booksOut[0]?.values || []).map(r => ({ id: String(r[0]), work_id: r[0], title: r[1] || '', type: r[2] || '' }));
+
+    // Checklists are built by initTypeFilter and initBookFilter on DOMContentLoaded
+  }
+
+  async function loadVerses() {
+    // Load verses with texts and refs
+    const out = DB.exec(`
+      SELECT vs.verse_id, vs.work_id, vs.division_id, vs.ordinal as vord,
+             d.ordinal as cord, vs.ref_citation,
+             COALESCE(vw.sa_deva,''), COALESCE(vw.sa_iast,''), COALESCE(vw.en_translation,''),
+             w.title_en, w.work_type_code
+      FROM verses vs
+      JOIN verse_texts_wide vw ON vw.verse_id = vs.verse_id
+      JOIN divisions d ON d.division_id = vs.division_id
+      JOIN works w ON w.work_id = vs.work_id
+      ORDER BY vs.work_id, d.ordinal, vs.ordinal
+    `);
+    ALL.verses = (out[0]?.values || []).map(r => ({
+      verse_id: r[0], work_id: String(r[1]), division_id: r[2], vord: r[3], cord: r[4], ref: r[5] || `${r[4]}.${r[3]}`,
+      deva: r[6], iast: r[7], trans: r[8], title: r[9] || '', type: r[10] || ''
+    }));
+
+    // Word-for-word map
+    const wfw = DB.exec(`
+      SELECT t.verse_id, GROUP_CONCAT(COALESCE(t.surface,'') || ' — ' || COALESCE((SELECT gloss FROM verse_glosses g WHERE g.verse_id=t.verse_id AND g.surface=t.surface LIMIT 1),'') , '; ') AS wfw
+      FROM tokens t GROUP BY t.verse_id
+    `);
+    ALL.wfwByVerse = new Map();
+    if (wfw[0]) for (const row of wfw[0].values) ALL.wfwByVerse.set(row[0], row[1] || '');
+  }
+
   function readFilters() {
     const allowedIds = Array.from(document.querySelectorAll('#fBooks input[type="checkbox"]:checked')).map(i => i.value);
     const scopes = { deva:false, iast:false, trans:false, wfw:false };
     const actives = document.querySelectorAll('#chipbar button.active');
-    if (actives.length === 0) { Object.keys(scopes).forEach(k => scopes[k] = true); }
-    else { actives.forEach(b => { scopes[b.getAttribute('data-scope')] = true; }); }
-    return { q: document.getElementById('q').value.trim(), allowedIds, scopes };
+    if (actives.length > 0) { actives.forEach(b => { scopes[b.getAttribute('data-scope')] = true; }); }
+    // if none active => all scopes false (show none)
+    const anyScope = scopes.deva || scopes.iast || scopes.trans || scopes.wfw;
+    return { q: document.getElementById('q').value.trim(), allowedIds, scopes, anyScope };
   }
 
-  function matchesFilters(book, chapter, verse, f) {
-    if (f.allowedIds.length && !f.allowedIds.includes(book.id)) return false;
+  function matchesFilters(row, f) {
+    if (f.allowedIds.length && !f.allowedIds.includes(row.work_id)) return false;
     if (!f.q) return false;
     const haystacks = [];
-    if (f.scopes.deva)  haystacks.push(verse.devanagari);
-    if (f.scopes.iast)  haystacks.push(verse.iast);
-    if (f.scopes.trans) haystacks.push(verse.translation);
-    if (f.scopes.wfw && Array.isArray(verse.word_by_word)) {
-      verse.word_by_word.forEach(p => haystacks.push(`${p.sanskrit||p[0]} ${p.english||p[1]}`));
-    }
+    if (f.scopes.deva)  haystacks.push(row.deva);
+    if (f.scopes.iast)  haystacks.push(row.iast);
+    if (f.scopes.trans) haystacks.push(row.trans);
+    if (f.scopes.wfw)  haystacks.push(ALL.wfwByVerse.get(row.verse_id) || '');
     return haystacks.some(h => matchText(h || '', f.q));
   }
 
-  function search(data) {
+  function search() {
     const f = readFilters();
 
-    if (!f.q) {
+    if (!f.q || !f.anyScope || f.allowedIds.length === 0) {
       document.getElementById('results').innerHTML = '';
       document.getElementById('resultsInfo').textContent = '';
       STATE.results = [];
@@ -138,14 +206,7 @@
       return;
     }
 
-    const results = [];
-    data.books.forEach(book => {
-      book.chapters.forEach(ch => {
-        ch.verses.forEach(v => {
-          if (matchesFilters(book, ch, v, f)) results.push({ book, ch, v });
-        });
-      });
-    });
+    const results = ALL.verses.filter(r => matchesFilters(r, f));
 
     STATE.results = results;
     STATE.page = 1;
@@ -214,15 +275,15 @@
     const end = Math.min(start + STATE.perPage, total);
 
     for (let i = start; i < end; i++) {
-      const { book, ch, v } = STATE.results[i];
+      const row = STATE.results[i];
       const li = document.createElement('li');
-      const href = `verse.html?book=${encodeURIComponent(book.id)}&c=${encodeURIComponent(ch.number)}&v=${encodeURIComponent(v.number)}`;
+      const href = `verse.html?book=${encodeURIComponent(row.work_id)}&d=${encodeURIComponent(row.division_id)}&v=${encodeURIComponent(row.vord)}`;
       li.dataset.href = href;
 
       const a = document.createElement('a');
       a.href = href;
 
-      const snippets = pickSnippets(book, v, f, qVal);
+      const snippets = pickSnippetsRow(row, f, qVal);
       const lines = snippets.slice(0, 3).map(snp => `
         <div class="line">
           ${snp.label ? `<span class="ref">${snp.label}</span> · ` : ''}
@@ -232,7 +293,7 @@
 
       a.innerHTML = `
         <div class="line">
-          <span class="ref notranslate" translate="no">${book.short || book.title} ${ch.number}.${v.number}</span>
+          <span class="ref notranslate" translate="no">${initials(row.title)} ${row.cord}.${row.vord}</span>
         </div>
         ${lines}
       `;
@@ -259,6 +320,24 @@
     }
   }
 
+  function initials(title) {
+    return String(title||'').trim().split(/\s+/).slice(0,2).map(s=>s[0]).join('').toUpperCase();
+  }
+
+  function pickSnippetsRow(row, f, q) {
+    const scopesOrder = ['deva','iast','trans','wfw'];
+    const active = scopesOrder.filter(k => f.scopes[k]);
+    const out = [];
+    if (active.includes('deva') && (row.deva||'').trim()) out.push({ key:'deva', label:'Devanāgarī', text: row.deva });
+    if (active.includes('iast') && (row.iast||'').trim()) out.push({ key:'iast', label:'IAST', text: row.iast });
+    if (active.includes('trans') && (row.trans||'').trim()) out.push({ key:'trans', label:'Translation', text: row.trans });
+    if (active.includes('wfw')) {
+      const line = ALL.wfwByVerse.get(row.verse_id) || '';
+      if (line.trim()) out.push({ key:'wfw', label:'Word-for-word', text: line });
+    }
+    return out;
+  }
+
   // boot
   window.addEventListener('DOMContentLoaded', init);
 
@@ -271,44 +350,33 @@ function initBookFilter(){
   const listEl   = byId('bookChecklist');
   if (!searchEl || !listEl) return; // not on this page
 
-  const state = { all: [], filtered: [], selected: new Set() };
+  const state = { all: [], filtered: [], selected: new Set(), byType: new Map() };
 
   // load books
   (async () => {
     try {
-      const res  = await fetch('data/library.json', { cache: 'no-cache' });
-      const data = await res.json();
-      const books = Array.isArray(data) ? data : (data.books || []);
-
-      state.all = books.map(b => ({
-        id:    b.id ?? b.slug ?? String(b.title||'').toLowerCase().replace(/\W+/g,'_'),
-        title: b.title || b.short || String(b.id||''),
-        short: b.short || ''
-      })).sort((a,b)=>a.title.localeCompare(b.title));
-
-      // ✅ select ALL by default
-      state.selected = new Set(state.all.map(b => b.id));
-
-      state.filtered = state.all.slice();
+      await loadDb();
+      const booksOut = DB.exec(`SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`);
+      const rows = (booksOut[0]?.values || []).map(r => ({ id:String(r[0]), title: r[1] || '', type: r[2] || '' }));
+      state.all = rows;
+      state.filtered = rows.slice();
+      state.selected = new Set(rows.map(b => b.id));
+      // Build type -> books map
+      state.byType = new Map();
+      rows.forEach(b => { if(!state.byType.has(b.type)) state.byType.set(b.type, []); state.byType.get(b.type).push(b.id); });
       render();
-
-      // ✅ fire once so the rest of the app sees the default selection
-      document.dispatchEvent(new CustomEvent('books:changed', {
-        detail: { selected: Array.from(state.selected) }
-      }));
+      document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: Array.from(state.selected) } }));
       listEl.dispatchEvent(new Event('change', { bubbles: true }));
     } catch (e) {
-      listEl.innerHTML = '<div class="muted">Could not load books (serve via http).</div>';
+      listEl.innerHTML = '<div class="muted">Could not load books.</div>';
     }
   })();
 
-  // mini search (title/short)
+  // mini search (title) with diacritic-insensitive normalization
   searchEl.addEventListener('input', () => {
-    const q = searchEl.value.trim().toLowerCase();
+    const q = norm(searchEl.value.trim());
     state.filtered = q
-      ? state.all.filter(b =>
-          (b.title||'').toLowerCase().includes(q) ||
-          (b.short||'').toLowerCase().includes(q))
+      ? state.all.filter(b => norm(b.title||'').includes(q))
       : state.all.slice();
     render();
   });
@@ -332,13 +400,24 @@ function initBookFilter(){
       box.id = idAttr;
       box.value = b.id;
       box.checked = state.selected.has(b.id);   // ✅ now true on first render
+      function updateParentFor(typeCode){
+        const typeBox = document.querySelector(`#typeChecklist input[data-type='${CSS.escape(typeCode)}']`);
+        if (!typeBox) return;
+        const typeList = state.byType.get(typeCode) || [];
+        const selectedCount = typeList.filter(id => state.selected.has(id)).length;
+        if (selectedCount === 0) { typeBox.checked = false; typeBox.indeterminate = false; }
+        else if (selectedCount === typeList.length) { typeBox.checked = true; typeBox.indeterminate = false; }
+        else { typeBox.checked = true; typeBox.indeterminate = true; }
+      }
+
       box.addEventListener('change', () => {
         if (box.checked) state.selected.add(b.id);
         else state.selected.delete(b.id);
 
-        document.dispatchEvent(new CustomEvent('books:changed', {
-          detail: { selected: Array.from(state.selected) }
-        }));
+        // Update parent checkbox to reflect tri-state (all/some/none)
+        updateParentFor(b.type);
+
+        document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: Array.from(state.selected) } }));
         listEl.dispatchEvent(new Event('change', { bubbles: true }));
       });
 
@@ -353,6 +432,17 @@ function initBookFilter(){
     listEl.innerHTML = '';
     listEl.appendChild(frag);
   }
+  // Clear button in Book panel
+  const bookPanel = document.getElementById('fBooks');
+  const bookClear = bookPanel?.querySelector('.panel-header2 .btn');
+  if (bookClear) bookClear.addEventListener('click', () => {
+    state.selected.clear();
+    // Uncheck all book checkboxes
+    listEl.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    render();
+    document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: [] } }));
+    listEl.dispatchEvent(new Event('change', { bubbles: true }));
+  });
 }
 
 window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
@@ -364,46 +454,67 @@ window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
     const listEl = document.getElementById('typeChecklist');
     if (!listEl) return;
 
-    const TYPES = [
-      'Vedas','Upanishads','Maha Puranas','Upa Puranas',
-      'Ati Puranas','Itihasas','Gitas','Sutras','Others'
-    ];
+    (async () => {
+      await loadDb();
+      const out = DB.exec(`SELECT code, label FROM work_types ORDER BY label`);
+      const types = (out[0]?.values || []).map(r => ({ code: r[0], label: r[1] }));
+      const frag = document.createDocumentFragment();
+      types.forEach((t, idx) => {
+        const idAttr = `type_${idx}`;
+        const label  = document.createElement('label');
+        label.setAttribute('role','option');
+        label.htmlFor = idAttr;
 
-    const frag = document.createDocumentFragment();
+        const box = document.createElement('input');
+        box.type = 'checkbox';
+        box.id = idAttr;
+        box.value = t.code;
+        box.dataset.type = t.code;
+        box.checked = true;
 
-    TYPES.forEach((t, idx) => {
-      const idAttr = `type_${idx}`;
-      const label  = document.createElement('label');
-      label.setAttribute('role','option');
-      label.htmlFor = idAttr;
+        box.addEventListener('change', () => {
+          // Parent semantics:
+          // - If checked: select all books of this type
+          // - If unchecked: deselect all books of this type
+          const bookBoxes = document.querySelectorAll(`#fBooks input[type='checkbox']`);
+          bookBoxes.forEach(bx => {
+            const row = ALL.books.find(x => x.id === bx.value);
+            if (row && row.type === t.code) {
+              if (bx.checked !== box.checked) { bx.checked = box.checked; bx.dispatchEvent(new Event('change', { bubbles: true })); }
+            }
+          });
 
-      const box = document.createElement('input');
-      box.type = 'checkbox';
-      box.id = idAttr;
-      box.value = t;
-      box.checked = true;
+          document.dispatchEvent(new CustomEvent('types:changed', { detail: { selected: getSelectedTypes() } }));
+          rebuildBookListForTypes();
+        });
 
-      // Whenever types change, notify the book filter section to re-filter
-      box.addEventListener('change', () => {
-        document.dispatchEvent(new CustomEvent('types:changed', {
-          detail: { selected: getSelectedTypes() }
-        }));
+        const span = document.createElement('span');
+        span.textContent = t.label;
+        label.appendChild(box);
+        label.appendChild(span);
+        frag.appendChild(label);
       });
+      listEl.innerHTML = '';
+      listEl.appendChild(frag);
 
-      const span = document.createElement('span');
-      span.textContent = t;
-
-      label.appendChild(box);
-      label.appendChild(span);
-      frag.appendChild(label);
-    });
-
-    listEl.innerHTML = '';
-    listEl.appendChild(frag);
+      // Clear button for types panel
+      const typePanel = document.getElementById('fTypes');
+      const typeClear = typePanel?.querySelector('.panel-header2 .btn');
+      if (typeClear) typeClear.addEventListener('click', () => {
+        // Uncheck all types
+        listEl.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; cb.indeterminate = false; });
+        // Uncheck all books as parent cascade
+        const bookList = document.getElementById('bookChecklist');
+        if (bookList) {
+          bookList.querySelectorAll('input[type="checkbox"]').forEach(cb => { if (cb.checked) { cb.checked = false; cb.dispatchEvent(new Event('change', { bubbles: true })); } });
+        }
+        document.dispatchEvent(new CustomEvent('types:changed', { detail: { selected: [] } }));
+        rebuildBookListForTypes();
+      });
+    })();
 
     function getSelectedTypes(){
-      return Array.from(listEl.querySelectorAll('input[type="checkbox"]:checked'))
-        .map(i => i.value);
+      return Array.from(listEl.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value);
     }
   }
 
@@ -412,25 +523,27 @@ window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
   function getSelectedTypes(){
     const el = document.getElementById('typeChecklist');
     if (!el) return [];
-    return Array.from(el.querySelectorAll('input[type="checkbox"]:checked'))
-      .map(i => i.value);
+    return Array.from(el.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value);
   }
 
-  function applyFilter(){
-    const q = (searchEl.value || '').trim().toLowerCase();
-    const activeTypes = new Set(getSelectedTypes());
-
-    state.filtered = state.all.filter(b => {
-      // filter by types if any are selected
-      const typeOk = activeTypes.size === 0 || activeTypes.has(b.type);
-      // filter by search query
-      const textOk = !q || b.title.toLowerCase().includes(q);
-      return typeOk && textOk;
+  function rebuildBookListForTypes(){
+    const active = new Set(getSelectedTypes());
+    const listEl = byId('bookChecklist');
+    if (!listEl) return;
+    // Hide books whose types are not active; if no type selected, show none
+    listEl.querySelectorAll('label').forEach(lbl => {
+      const cb = lbl.querySelector('input[type="checkbox"]');
+      const row = ALL.books.find(x => x.id === cb.value);
+      const visible = row ? (active.size === 0 ? false : active.has(row.type)) : true;
+      lbl.style.display = visible ? '' : 'none';
+      if (row && !visible) {
+        cb.checked = false;
+        cb.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      // When re-enabling a type, do not auto-check here; the type checkbox change handler already checked relevant books
     });
-
-    renderList(state.filtered);
   }
 
-  document.addEventListener('types:changed', applyFilter);
+  document.addEventListener('types:changed', rebuildBookListForTypes);
 
 })();
