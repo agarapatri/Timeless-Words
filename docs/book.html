@@ -37,8 +37,8 @@
       </div>
     </footer>
 
-    <script src="assets/data-bundle.js"></script>
     <script src="assets/app.js?v=3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       // Helpers shared with home page
       function initialsFromTitle(title='') {
@@ -48,59 +48,80 @@
         return (parts[0][0] + parts[1][0]).toUpperCase();
       }
 
+      function plural(n, s) { return `${n} ${n === 1 ? s : s + 's'}`; }
+
       window.addEventListener('DOMContentLoaded', async () => {
         const params = new URLSearchParams(location.search);
-        const id = params.get('book');
+        const q = params.get('book') || '';
 
-        // 1) Load metadata
-        const library = await window.Library.loadLibrary();
-        const meta = library.find(b => b.id === id) || library[0];
+        async function loadDb() {
+          const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
+          const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
+          if (!res.ok) throw new Error('Failed to fetch SQLite');
+          const buf = new Uint8Array(await res.arrayBuffer());
+          return new SQL.Database(buf);
+        }
 
-        // 2) Header: cover/title/author/counts
+        function findWork(db, token) {
+          const isNumeric = /^\d+$/.test(token);
+          if (isNumeric) {
+            const out = db.exec(`SELECT work_id, slug, title_en, author FROM works WHERE work_id=${Number(token)} LIMIT 1`);
+            if (out[0]?.values?.length) return out[0].values[0];
+          }
+          // by slug
+          const esc = String(token).replace(/'/g, "''");
+          let out = db.exec(`SELECT work_id, slug, title_en, author FROM works WHERE slug='${esc}' LIMIT 1`);
+          if (out[0]?.values?.length) return out[0].values[0];
+          // fallback by exact title_en (case-insensitive)
+          out = db.exec(`SELECT work_id, slug, title_en, author FROM works WHERE lower(title_en)=lower('${esc}') LIMIT 1`);
+          return out[0]?.values?.[0] || null;
+        }
+
+        const db = await loadDb();
+        const row = findWork(db, q);
+        if (!row) {
+          console.error('Book not found in DB:', q);
+          return;
+        }
+        const work_id = row[0];
+        const slug = row[1];
+        const title = row[2] || '';
+        const author = row[3] || 'Unknown';
+
+        // Header: cover/title/author
         const cover = document.getElementById('bookCover');
-        if (meta.image) {
-          cover.classList.add('has-image');
-          cover.style.backgroundImage = `url('${meta.image}')`;
-        } else {
-          cover.textContent = initialsFromTitle(meta.title);
-        }
+        cover.textContent = initialsFromTitle(title);
+        document.getElementById('bookTitle').textContent = title;
+        document.getElementById('bookAuthor').textContent = `by ${author}`;
 
-        document.getElementById('bookTitle').textContent = meta.title || '';
-        document.getElementById('bookAuthor').textContent = `by ${meta.author || 'Unknown'}`;
+        // Counts (chapters and verses)
+        const countsOut = db.exec(`SELECT COUNT(DISTINCT division_id) AS chapters, COUNT(*) AS verses FROM verses WHERE work_id=${Number(work_id)}`);
+        const countsVal = countsOut[0]?.values?.[0] || [0,0];
+        const chapterCount = countsVal[0] || 0;
+        const verseCount = countsVal[1] || 0;
+        document.getElementById('bookCounts').textContent = `${plural(chapterCount,'chapter')} · ${plural(verseCount,'verse')}`;
 
-        // 3) Load all verses (flat rows) to compute per-chapter counts
-        const rows = await window.Library.loadBookRows(meta.id);
+        // Chapters list with verse counts
+        const chOut = db.exec(`
+          SELECT d.division_id, d.ordinal, d.label, COUNT(v.verse_id) AS verses
+          FROM divisions d
+          JOIN verses v ON v.division_id = d.division_id
+          WHERE d.work_id = ${Number(work_id)}
+          GROUP BY d.division_id
+          ORDER BY d.ordinal
+        `);
+        const chapters = (chOut[0]?.values || []).map(r => ({ id: r[0], number: r[1], label: r[2] || `Chapter ${r[1]}`, verses: r[3] || 0 }));
 
-        const byChapter = new Map();
-        for (const r of rows) {
-          const key = String(r.chapter);
-          if (!byChapter.has(key)) byChapter.set(key, []);
-          byChapter.get(key).push(r);
-        }
-        const chapters = Array.from(byChapter.entries())
-          .map(([num, arr]) => ({
-            number: Number(num),
-            title: `Chapter ${num}`,
-            verses: arr.sort((a,b)=>Number(a.verse)-Number(b.verse))
-          }))
-          .sort((a,b)=>a.number-b.number);
-
-        // counts line like "12 chapters · 591 verses"
-        const chapCount = chapters.length;
-        const verseCount = rows.length;
-        document.getElementById('bookCounts').textContent =
-          `${chapCount} ${chapCount===1?'chapter':'chapters'} · ${verseCount} ${verseCount===1?'verse':'verses'}`;
-
-        // 4) Render chapter cards
         const list = document.getElementById('chaptersList');
         list.innerHTML = '';
         chapters.forEach(ch => {
           const a = document.createElement('a');
           a.className = 'chapter-card';
-          a.href = `chapter.html?book=${encodeURIComponent(meta.id)}&c=${encodeURIComponent(ch.number)}`;
+          const bookParam = String(work_id); // use numeric for stability
+          a.href = `chapter.html?book=${encodeURIComponent(bookParam)}&d=${encodeURIComponent(ch.id)}`;
           a.innerHTML = `
-            <div class="chapter-title">Chapter ${ch.number}: ${ch.title}</div>
-            <div class="chapter-sub muted">${ch.verses.length} ${ch.verses.length===1?'verse':'verses'}</div>
+            <div class="chapter-title">Chapter ${ch.number}: ${ch.label}</div>
+            <div class="chapter-sub muted">${plural(ch.verses,'verse')}</div>
           `;
           list.appendChild(a);
         });

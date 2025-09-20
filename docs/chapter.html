@@ -49,10 +49,10 @@
     <ol id="verseList" class="results-list"></ol>
   </main>
 
-  <!-- Load your embedded data bundle FIRST -->
-  <script src="assets/data-bundle.js"></script>
-  <!-- Your general app helpers (optional to keep; we don't depend on it here) -->
+  <!-- App helpers (kept) -->
   <script src="assets/app.js"></script>
+  <!-- sql.js for SQLite in-browser access -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
     // Query param helper
@@ -64,67 +64,134 @@
     }
     function saveMode(mode) { try { localStorage.setItem('tw.viewMode', mode); } catch {} }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      if (!window.DATA) {
-        console.error('DATA bundle not loaded.');
-        return;
-      }
-      const { library, rows } = window.DATA;
-
-      const bookId = qp('book') || (library[0] && library[0].id);
+    window.addEventListener('DOMContentLoaded', async () => {
+      const bookParam = qp('book');
+      const divisionParam = qp('d');
       const chapterNum = Number(qp('c') || 1);
 
-      const bookMeta = library.find(b => b.id === bookId) || library[0];
-      const allRows = rows[bookMeta.id] || [];
-      const chapterRows = allRows
-        .filter(r => Number(r.chapter) === chapterNum)
-        .sort((a, b) => Number(a.verse) - Number(b.verse));
+      async function loadDb() {
+        const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
+        const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to fetch SQLite');
+        const buf = new Uint8Array(await res.arrayBuffer());
+        return new SQL.Database(buf);
+      }
+
+      function findWork(db, token) {
+        const isNumeric = /^\d+$/.test(token || '');
+        if (isNumeric) {
+          const out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE work_id=${Number(token)} LIMIT 1`);
+          if (out[0]?.values?.length) return out[0].values[0];
+        }
+        const esc = String(token || '').replace(/'/g, "''");
+        let out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE slug='${esc}' LIMIT 1`);
+        if (out[0]?.values?.length) return out[0].values[0];
+        out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE lower(title_en)=lower('${esc}') LIMIT 1`);
+        return out[0]?.values?.[0] || null;
+      }
+
+      const db = await loadDb();
+      const work = findWork(db, bookParam);
+      if (!work) { console.error('Work not found', bookParam); return; }
+      const work_id = work[0], slug = work[1], title = work[2] || '';
+
+      // Resolve division (chapter)
+      let division_id, division_label, division_ord;
+      if (divisionParam) {
+        const di = db.exec(`SELECT division_id, ordinal, label FROM divisions WHERE division_id=${Number(divisionParam)} AND work_id=${Number(work_id)} LIMIT 1`);
+        const rowd = di[0]?.values?.[0];
+        if (!rowd) { console.error('Division not found by id', { work_id, divisionParam }); return; }
+        division_id = rowd[0];
+        division_ord = rowd[1];
+        division_label = rowd[2] || `Chapter ${rowd[1]}`;
+      } else {
+        const di = db.exec(`SELECT division_id, ordinal, label FROM divisions WHERE work_id=${Number(work_id)} AND ordinal=${Number(chapterNum)} LIMIT 1`);
+        const rowd = di[0]?.values?.[0];
+        if (!rowd) { console.error('Division not found by ordinal', { work_id, chapterNum }); return; }
+        division_id = rowd[0];
+        division_ord = rowd[1];
+        division_label = rowd[2] || `Chapter ${rowd[1]}`;
+      }
 
       // Header + crumbs
-      document.getElementById('chapterTitle').textContent =
-        `${bookMeta.title} — Chapter ${chapterNum}`;
-      document.getElementById('chapterMeta').textContent =
-        `${chapterRows.length} ${chapterRows.length === 1 ? 'verse' : 'verses'}`;
-
+      document.getElementById('chapterTitle').textContent = `${title} — Chapter ${division_ord || chapterNum}`;
       const crumbs = document.getElementById('crumbs');
+      const backBookParam = String(work_id);
       crumbs.innerHTML = `
         <a href="index.html">Timeless Words</a><span>›</span>
-        <a href="book.html?book=${encodeURIComponent(bookMeta.id)}">${bookMeta.title}</a><span>›</span>
+        <a href="book.html?book=${encodeURIComponent(backBookParam)}">${title}</a><span>›</span>
         <span>Chapter ${chapterNum}</span>
       `;
 
+      // Load verses for this division using the wide view
+      const versesOut = db.exec(`
+        SELECT vw.verse_id, vw.ref_citation, vs.ordinal,
+               COALESCE(vw.sa_deva, '') AS sa_deva,
+               COALESCE(vw.sa_iast, '') AS sa_iast,
+               COALESCE(vw.en_translation, '') AS en
+        FROM verse_texts_wide vw
+        JOIN verses vs ON vs.verse_id = vw.verse_id
+        WHERE vw.work_id = ${Number(work_id)} AND vw.division_id = ${Number(division_id)}
+        ORDER BY vs.ordinal
+      `);
+      const rows = (versesOut[0]?.values || []).map(r => ({
+        verse_id: r[0],
+        ref: r[1],
+        ordinal: r[2],
+        sa_deva: r[3],
+        sa_iast: r[4],
+        en: r[5]
+      }));
+
+      // Build WFW map for this division
+      const wfwMap = new Map();
+      const wfwOut = db.exec(`
+        SELECT t.verse_id, t.pos, t.surface,
+               (SELECT gloss FROM verse_glosses g WHERE g.verse_id = t.verse_id AND g.surface = t.surface LIMIT 1) AS gloss
+        FROM tokens t
+        JOIN verses v ON v.verse_id = t.verse_id
+        WHERE v.division_id = ${Number(division_id)}
+        ORDER BY t.verse_id, t.pos
+      `);
+      if (wfwOut[0]) {
+        for (const [verse_id, pos, surface, gloss] of wfwOut[0].values) {
+          const key = Number(verse_id);
+          if (!wfwMap.has(key)) wfwMap.set(key, []);
+          wfwMap.get(key).push([surface || '', gloss || '']);
+        }
+      }
+
+      // Meta counts
+      document.getElementById('chapterMeta').textContent = `${rows.length} ${rows.length === 1 ? 'verse' : 'verses'}`;
+
+      // Render
       const list = document.getElementById('verseList');
       const modeSel = document.getElementById('viewMode');
-
-      // Initialize selector from saved preference, default to English
       const initialMode = getSavedMode();
       modeSel.value = ['en','dev','iast','wfw'].includes(initialMode) ? initialMode : 'en';
 
       function asSnippet(row, mode) {
-        if (mode === 'dev') return (row.original_sanskrit || row.devanagari || row.sanskrit || '').toString().trim();
-        if (mode === 'iast') return (row.iast_transliteration || row.iast || row.transliteration || '').toString().trim();
+        if (mode === 'dev') return row.sa_deva || '';
+        if (mode === 'iast') return row.sa_iast || '';
         if (mode === 'wfw') {
-          const pairs = Array.isArray(row.word_by_word) ? row.word_by_word
-                    : Array.isArray(row.word_for_word) ? row.word_for_word : [];
-          return pairs.map(p => {
-            const sk = Array.isArray(p) ? (p[0] ?? '') : (p.sanskrit ?? '');
-            const en = Array.isArray(p) ? (p[1] ?? '') : (p.english ?? '');
-            return `${sk} — ${en}`;
-          }).join('; ');
+          const pairs = wfwMap.get(Number(row.verse_id)) || [];
+          return pairs.map(([sk, en]) => `${sk} — ${en}`).join('; ');
         }
-        return (row.translation_en || row.translation || row.en || '').toString().trim();
+        return row.en || '';
       }
 
       function render() {
         const mode = modeSel.value;
         list.innerHTML = '';
-        chapterRows.forEach(r => {
+        rows.forEach(r => {
           const li = document.createElement('li');
           const a = document.createElement('a');
-          a.href = `verse.html?book=${encodeURIComponent(bookMeta.id)}&c=${encodeURIComponent(chapterNum)}&v=${encodeURIComponent(r.verse)}`;
+          a.href = `verse.html?book=${encodeURIComponent(backBookParam)}&d=${encodeURIComponent(division_id)}&v=${encodeURIComponent(r.ordinal)}`;
           const snippet = asSnippet(r, mode);
+          // ref: use work short ID equivalent; we don't have short here, so display first two letters of title
+          const short = (title || '').split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase();
           a.innerHTML = `
-            <div class="line"><span class="ref notranslate" translate="no">${bookMeta.id.toUpperCase()} ${chapterNum}.${r.verse}</span></div>
+            <div class="line"><span class="ref notranslate" translate="no">${short} ${division_ord || chapterNum}.${r.ordinal}</span></div>
             <div class="line">${(snippet || '').replace(/\n/g, '<br>')}</div>
           `;
           li.appendChild(a);
@@ -133,7 +200,7 @@
       }
 
       modeSel.addEventListener('change', () => { saveMode(modeSel.value); render(); });
-      render(); // initial
+      render();
     });
   </script>
 </body>

@@ -304,7 +304,8 @@
           (list || []).forEach(b => {
             const card = document.createElement('a');
             card.className = 'book-card';
-            const bookParam = b.slug || b.id || String(b.work_id || '');
+            // Use numeric work_id for robust linking
+            const bookParam = String(b.work_id || b.id || b.slug || '');
             card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
 
             const initials = initialsFromTitle(b.title);
