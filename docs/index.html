@@ -176,27 +176,54 @@
 
     
 
-    <script src="assets/data-bundle.js"></script>
     <script src="assets/app.js?v=3"></script>
-    
+    <!-- Load sql.js to read SQLite in the browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       window.addEventListener('DOMContentLoaded', async () => {
-        const library = await window.Library.loadLibrary();
+        // Load books and work types from SQLite
+        async function loadFromSQLite() {
+          const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
+          const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
+          if (!res.ok) throw new Error('Failed to fetch SQLite');
+          const buf = new Uint8Array(await res.arrayBuffer());
+          const db = new SQL.Database(buf);
 
-        const CATEGORY_LABELS = [
-          ['vedas', 'Vedas'],
-          ['upanishads', 'Upanishads'],
-          ['maha_puranas', 'Maha Puranas'],
-          ['upa_puranas', 'Upa Puranas'],
-          ['ati_puranas', 'Ati Puranas'],
-          ['itihasas', 'Itihasas'],
-          ['gitas', 'Gitas'],
-          ['sutras', 'Sutras'],
-          ['others', 'Others'],
-        ];
+          const typesOut = db.exec(`SELECT code, label FROM work_types ORDER BY label`);
+          const types = (typesOut[0]?.values || []).map(row => ({ code: row[0], label: row[1] }));
 
-        // Temporary fallback; remove once you add "type" to each book in library.json
-        const CATEGORY_BY_ID_FALLBACK = { vp: 'maha_puranas', sp: 'maha_puranas' };
+          const worksOut = db.exec(`
+            SELECT w.work_id, w.slug, w.title_en, w.author, w.work_type_code,
+                   (SELECT COUNT(*) FROM divisions d WHERE d.work_id = w.work_id) AS chapters,
+                   (SELECT COUNT(*) FROM verses v WHERE v.work_id = w.work_id) AS verses
+            FROM works w
+            ORDER BY w.title_en
+          `);
+          const works = (worksOut[0]?.values || []).map(row => ({
+            work_id: row[0],
+            slug: row[1],
+            title: row[2] || '',
+            author: row[3] || 'Unknown',
+            type: row[4] || '',
+            chapters: row[5],
+            verses: row[6],
+            id: row[1] || String(row[0]),
+            image: ''
+          }));
+          return { works, types };
+        }
+
+        let books = [];
+        let workTypes = [];
+        try {
+          const loaded = await loadFromSQLite();
+          books = loaded.works;
+          workTypes = loaded.types;
+        } catch (e) {
+          console.error('SQLite load error:', e);
+          books = [];
+          workTypes = [];
+        }
 
         // Elements
         const grid       = document.getElementById('booksGrid');
@@ -208,12 +235,12 @@
         const typeList   = typePanel.querySelector('.type-list');
         const typeClear  = document.getElementById('typeClear');
 
-        // Build checkbox list
-        CATEGORY_LABELS.forEach(([key, label]) => {
+        // Build checkbox list from work_types
+        workTypes.forEach(({ code, label }) => {
           const row = document.createElement('label');
           row.className = 'type-item';
           row.innerHTML = `
-            <input type="checkbox" name="bookType" value="${key} checked">
+            <input type="checkbox" name="bookType" value="${code}" checked>
             <span>${label}</span>
           `;
           typeList.appendChild(row);
@@ -255,16 +282,7 @@
           filter(input.value);
         });
 
-        // Normalize book type
-        function getType(book) {
-          const raw = (book.type || CATEGORY_BY_ID_FALLBACK[book.id] || 'others')
-                      .toString().trim().toLowerCase();
-          return raw
-            .replace(/\s+/g, '_')
-            .replace(/mahapuranas?|maha_purana/, 'maha_puranas')
-            .replace(/upa_purana/, 'upa_puranas')
-            .replace(/ati_purana/, 'ati_puranas');
-        }
+        // Types come directly from DB codes; no normalization needed
 
         function initialsFromTitle(title) {
           const words = (title || '').trim().split(/\s+/).filter(Boolean);
@@ -273,27 +291,37 @@
           return words.slice(0,2).map(w => w[0]).join('').toUpperCase();
         }
 
+        // Diacritic-insensitive, case-insensitive normalization for search
+        function norm(s) {
+          return String(s || '')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '') // strip combining marks
+            .toLowerCase();
+        }
+
         function render(list) {
           grid.innerHTML = '';
           (list || []).forEach(b => {
             const card = document.createElement('a');
             card.className = 'book-card';
-            card.href = `book.html?book=${encodeURIComponent(b.id)}`;
+            const bookParam = b.slug || b.id || String(b.work_id || '');
+            card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
 
             const initials = initialsFromTitle(b.title);
             const coverClass = b.image ? 'cover has-image' : 'cover';
             const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
 
-            const ch = Number(b.chapters);
-            const vs = Number(b.verses);
-            const stats = (Number.isFinite(ch) && Number.isFinite(vs)) ? `${ch} chapters · ${vs} verses` : '';
+            const ch = Number(b.chapters ?? 0);
+            const vs = Number(b.verses ?? 0);
+            const stats = `${ch} chapters · ${vs} verses`;
 
             card.innerHTML = `
               <div class="${coverClass} notranslate" translate="no" ${styleAttr} aria-hidden="true">${initials}</div>
-              <div class="meta">
-                <div class="book-title">${b.title}</div>
-                <div class="book-sub" style="font-size:14px;line-height:1.4">${b.author || 'Unknown'}</div>
-                ${stats ? `<div class="book-stats" style="font-size:14px;line-height:1.4">${stats}</div>` : ''}
+              <div class="meta" style="min-width:0">
+                <div class="book-title" title="${b.title}"
+                     style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${b.title}</div>
+                <div class="book-sub" title="${b.author || 'Unknown'}" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b.author || 'Unknown'}</div>
+                <div class="book-stats" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${stats}</div>
               </div>
             `;
             grid.appendChild(card);
@@ -302,14 +330,14 @@
         }
 
         function filter(q) {
-          const t = (q || '').toLowerCase().trim();
+          const t = norm(q).trim();
           const selected = selectedTypes();
 
-          const list = library.filter(b => {
+          const list = books.filter(b => {
             const matchesText =
-              (b.title || '').toLowerCase().includes(t) ||
-              (b.author || '').toLowerCase().includes(t);
-            const matchesType = selected.size === 0 || selected.has(getType(b));
+              norm(b.title).includes(t) ||
+              norm(b.author).includes(t);
+            const matchesType = selected.has(b.type); // if none selected, show none
             return matchesText && matchesType;
           });
 
@@ -317,7 +345,7 @@
         }
 
         // Initial render + handlers
-        render(library);
+        render(books);
         input.addEventListener('input', () => filter(input.value));
         document.getElementById('homeFilterForm').addEventListener('submit', (e) => {
           e.preventDefault();
