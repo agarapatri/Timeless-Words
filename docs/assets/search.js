@@ -439,6 +439,13 @@ function initBookFilter(){
     state.selected.clear();
     // Uncheck all book checkboxes
     listEl.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    // Also uncheck all Book Type checkboxes to keep filters in sync
+    const typeList = document.getElementById('typeChecklist');
+    if (typeList) {
+      typeList.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; cb.indeterminate = false; });
+      // notify any listeners that types changed
+      document.dispatchEvent(new CustomEvent('types:changed', { detail: { selected: [] } }));
+    }
     render();
     document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: [] } }));
     listEl.dispatchEvent(new Event('change', { bubbles: true }));

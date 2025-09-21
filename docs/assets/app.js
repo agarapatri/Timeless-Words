@@ -1,36 +1,35 @@
 (function () {
+  const Library = window.Library || (window.Library = {});
 
   /* ---------------------------------- */
 
-  const menuBtn   = document.getElementById('menuBtn');
-  const menuPanel = document.getElementById('menuPanel');
-  if (!menuBtn || !menuPanel) return;
-
-  // ---- menu open/close
-  function openMenu() {
-    menuPanel.hidden = false;
-    menuBtn.setAttribute('aria-expanded', 'true');
-    // position is CSS; focus the first control for a11y
-    const first = menuPanel.querySelector('.menu-item, a, input, button');
-    if (first) first.focus({ preventScroll: true });
-    document.addEventListener('mousedown', onDocClick, true);
-    document.addEventListener('keydown', onKey, true);
+  function wireMenu(root) {
+    const scope = root || document;
+    const menuBtn = scope.querySelector('#menuBtn');
+    const menuPanel = scope.querySelector('#menuPanel');
+    if (!menuBtn || !menuPanel) return;
+    function openMenu() {
+      menuPanel.hidden = false;
+      menuBtn.setAttribute('aria-expanded', 'true');
+      const first = menuPanel.querySelector('.menu-item, a, input, button');
+      if (first) first.focus({ preventScroll: true });
+      document.addEventListener('mousedown', onDocClick, true);
+      document.addEventListener('keydown', onKey, true);
+    }
+    function closeMenu() {
+      menuPanel.hidden = true;
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.removeEventListener('mousedown', onDocClick, true);
+      document.removeEventListener('keydown', onKey, true);
+    }
+    function onDocClick(e) {
+      if (!menuPanel.contains(e.target) && e.target !== menuBtn) closeMenu();
+    }
+    function onKey(e) { if (e.key === 'Escape') { closeMenu(); menuBtn.focus(); } }
+    menuBtn.addEventListener('click', () => { (menuPanel.hidden ? openMenu : closeMenu)(); });
   }
-  function closeMenu() {
-    menuPanel.hidden = true;
-    menuBtn.setAttribute('aria-expanded', 'false');
-    document.removeEventListener('mousedown', onDocClick, true);
-    document.removeEventListener('keydown', onKey, true);
-  }
-  function onDocClick(e) {
-    if (!menuPanel.contains(e.target) && e.target !== menuBtn) closeMenu();
-  }
-  function onKey(e) {
-    if (e.key === 'Escape') { closeMenu(); menuBtn.focus(); }
-  }
-  menuBtn.addEventListener('click', () => {
-    (menuPanel.hidden ? openMenu : closeMenu)();
-  });
+  Library.wireMenu = wireMenu;
+  wireMenu(document);
 
   // After you set up open/close listeners:
   // menuPanel.addEventListener('click', (e) => {
@@ -53,11 +52,12 @@
   };
 
   // Dark Mode
-  const darkToggle = document.getElementById('darkToggle');
   const darkInit = LS.get('tw.dark', false);
   if (darkInit) document.documentElement.classList.add('theme-dark');
-  if (darkToggle) {
-    darkToggle.checked = darkInit;
+  function bindThemeControls(root){
+    const darkToggle = (root||document).querySelector('#darkToggle');
+    if (!darkToggle) return;
+    darkToggle.checked = document.documentElement.classList.contains('theme-dark');
     darkToggle.addEventListener('change', () => {
       document.documentElement.classList.toggle('theme-dark', darkToggle.checked);
       LS.set('tw.dark', darkToggle.checked);
@@ -65,11 +65,12 @@
   }
 
   // Serif / Sans
-  const serifToggle = document.getElementById('serifToggle');
   const serifInit = !!LS.get('tw.serif', false);
   document.documentElement.classList.toggle('serif', serifInit);
-  if (serifToggle) {
-    serifToggle.checked = serifInit;
+  function bindSerifControls(root){
+    const serifToggle = (root||document).querySelector('#serifToggle');
+    if (!serifToggle) return;
+    serifToggle.checked = document.documentElement.classList.contains('serif');
     serifToggle.addEventListener('change', () => {
       const on = serifToggle.checked;
       document.documentElement.classList.toggle('serif', on);
@@ -83,11 +84,6 @@
   const MIN = 14, MAX = 20, DEFAULT = 16;
   const root = document.documentElement;
 
-  const rng = document.getElementById('fontSizeRange');
-  const lbl = document.getElementById('fontSizeVal');
-  const resetBtn = document.getElementById('fontSizeReset');
-  if (!rng || !lbl) return;
-
   // clamp + sanitize any previously saved value (kills old 12px saves)
   const read = () => {
     const n = Number(localStorage.getItem('tw.fontSize'));
@@ -97,27 +93,36 @@
   const apply = (px) => {
     const v = Math.max(MIN, Math.min(MAX, Math.round(px)));
     root.style.fontSize = v + 'px';
-    lbl.textContent = String(v);
+    const labelEl = document.getElementById('fontSizeVal');
+    if (labelEl) labelEl.textContent = String(v);
     localStorage.setItem('tw.fontSize', String(v));
   };
 
   // init
   const start = read();
-  rng.min = String(MIN);
-  rng.max = String(MAX);
-  rng.step = '1';
-  rng.value = String(start);
   apply(start);
 
-  // live update
-  rng.addEventListener('input', () => apply(rng.value));
-
-  // reset to default
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      apply(DEFAULT);
-      rng.value = String(DEFAULT);
-    });
+  function bindFontControls(root){
+    const scope = root||document;
+    const rng = scope.querySelector('#fontSizeRange');
+    const lbl = scope.querySelector('#fontSizeVal');
+    const resetBtn = scope.querySelector('#fontSizeReset');
+    if (rng) {
+      rng.min = String(MIN);
+      rng.max = String(MAX);
+      rng.step = '1';
+      rng.value = String(read());
+      if (lbl) lbl.textContent = String(read());
+      rng.addEventListener('input', () => apply(rng.value));
+    }
+    if (resetBtn && rng) {
+      resetBtn.addEventListener('click', () => {
+        apply(DEFAULT);
+        rng.value = String(DEFAULT);
+        const lbl2 = scope.querySelector('#fontSizeVal');
+        if (lbl2) lbl2.textContent = String(DEFAULT);
+      });
+    }
   }
 
   /* ---------------------------------- */
@@ -146,19 +151,22 @@
   function resume() { if (synth.paused) synth.resume(); }
   function stop() { synth.cancel(); utter = null; }
 
-  const ttsPlay  = document.getElementById('ttsPlay');
-  const ttsPause = document.getElementById('ttsPause');
-  const ttsStop  = document.getElementById('ttsStop');
-
-  if (ttsPlay)  ttsPlay.addEventListener('click', () => { if (synth.paused) resume(); else speak(); });
-  if (ttsPause) ttsPause.addEventListener('click', pause);
-  if (ttsStop)  ttsStop.addEventListener('click', stop);
+  function bindTTSControls(root){
+    const scope = root||document;
+    const ttsPlay  = scope.querySelector('#ttsPlay');
+    const ttsPause = scope.querySelector('#ttsPause');
+    const ttsStop  = scope.querySelector('#ttsStop');
+    if (ttsPlay)  ttsPlay.addEventListener('click', () => { if (synth.paused) resume(); else speak(); });
+    if (ttsPause) ttsPause.addEventListener('click', pause);
+    if (ttsStop)  ttsStop.addEventListener('click', stop);
+  }
 
   /* ---------------------------------- */
 
   // === Google Translate toggle (checkbox) ===
-  const toggle = document.getElementById('gtToggle');
-  if (!toggle) return;
+  function bindTranslateControls(root){
+    const toggle = (root||document).querySelector('#gtToggle');
+    if (!toggle) return;
 
   function isTranslated() {
     const h = location.hostname;
@@ -188,14 +196,38 @@
   toggle.addEventListener('change', () => {
     const nowTranslated = isTranslated();
     if (toggle.checked) {
-      // Turn ON translate
       const orig = nowTranslated ? originalFromTranslateUrl() : location.href;
       location.href = makeTranslateUrl(orig);
     } else {
-      // Turn OFF translate -> go back to original URL
-      if (nowTranslated) {
-        location.href = originalFromTranslateUrl();
-      } // else already original; nothing to do
+      if (nowTranslated) { location.href = originalFromTranslateUrl(); }
     }
   });
+  }
+
+  function bindMenuControls(root){
+    bindThemeControls(root);
+    bindSerifControls(root);
+    bindFontControls(root);
+    bindTTSControls(root);
+    bindTranslateControls(root);
+  }
+  Library.bindMenuControls = bindMenuControls;
+  bindMenuControls(document);
+})();
+
+// expose minimal API for menu injection
+(function(){
+  const Library = window.Library || (window.Library = {});
+  Library.injectMenu = async function(slotSelector){
+    try {
+      const slot = document.querySelector(slotSelector);
+      if (!slot) return;
+      const res = await fetch('assets/menu.html', { cache: 'no-store' });
+      const html = await res.text();
+      slot.innerHTML = html;
+      // wire and bind controls within the slot
+      if (Library.wireMenu) Library.wireMenu(slot);
+      if (Library.bindMenuControls) Library.bindMenuControls(slot);
+    } catch (e) { /* ignore to avoid breaking page */ }
+  }
 })();

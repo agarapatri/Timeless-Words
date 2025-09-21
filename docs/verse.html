@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Verse — Timeless Words</title>
     <link rel="stylesheet" href="assets/styles.css">
+    
   </head>
   <body>
     
 
     <main class="container verse-page">
       <nav class="crumbs" id="crumbs"></nav>
-      <h1 id="ref" class="verse-ref notranslate" translate="no"></h1>
+      <div class="verse-head" style="position:relative;">
+        <h1 id="ref" class="verse-ref notranslate" translate="no" style="margin:0"></h1>
+        <div id="menuSlot-verse" class="menu-wrap" style="position:absolute; right:0; top:50%; transform:translateY(-50%);"></div>
+      </div>
 
       <section class="verse-block">
         <h2>Sanskrit (Devanāgarī)</h2>
@@ -31,8 +35,8 @@
       </section>
 
       <div class="pager" id="verseNav" style="justify-content: space-between;">
-        <a id="prevVerse" class="btn ghost" href="#" style="display:none">‹ Prev verse</a>
-        <a id="nextVerse" class="btn ghost" href="#" style="display:none">Next verse ›</a>
+        <a id="prevVerse" class="btn ghost nav-btn" href="#">‹ Prev verse</a>
+        <a id="nextVerse" class="btn ghost nav-btn" href="#">Next verse ›</a>
       </div>
     </main>
     <footer class="site-footer">
@@ -44,6 +48,7 @@
     <script src="assets/app.js?v=3"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+      if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-verse');
       window.addEventListener('DOMContentLoaded', async () => {
         const p = new URLSearchParams(location.search);
         const bookParam = p.get('book'); // numeric work_id preferred
@@ -174,12 +179,16 @@
           if (prev) {
             const dId = prev[1], vOrd = prev[3];
             prevEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
-            prevEl.style.display = '';
+            prevEl.style.visibility = 'visible';
+          } else {
+            prevEl.style.visibility = 'hidden';
           }
           if (next) {
             const dId = next[1], vOrd = next[3];
             nextEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
-            nextEl.style.display = '';
+            nextEl.style.visibility = 'visible';
+          } else {
+            nextEl.style.visibility = 'hidden';
           }
         } catch (err) {
           console.error('Verse load error', err);

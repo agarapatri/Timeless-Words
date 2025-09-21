@@ -5,18 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Timeless Words</title>
     <link rel="stylesheet" href="assets/styles.css">
-
-    <!-- Put this once near the end of <body> (or in the <head>): -->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-      <symbol id="icon-external" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M7 17L17 7"></path>
-        <path d="M9 7h8v8"></path>
-      </symbol>
-    </svg>
   </head>
   <body>
-    
 
     <main class="container home">
       <section class="hero">
@@ -29,100 +19,13 @@
           <div class="hero-actions">
             <a class="btn btn-outline thin btn-deep" href="search.html" aria-label="Go to Deep Search">
               <span class="icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+                <svg width="16" height="16" aria-hidden="true">
+                  <use href="icons/search-symbol.svg#icon-search"></use>
                 </svg>
               </span>
               Deep Search
             </a>
-
-            <!-- three horizontal dots icon -->
-            <div class="menu-wrap">
-              <button id="menuBtn" class="icon-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel" title="More">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <circle cx="6" cy="12" r="1.8"></circle>
-                  <circle cx="12" cy="12" r="1.8"></circle>
-                  <circle cx="18" cy="12" r="1.8"></circle>
-                </svg>
-                <span class="sr-only">More</span>
-              </button>
-
-              <div id="menuPanel" class="menu-panel" role="menu" hidden>
-                <!-- Mobile-only Deep Search (first item) -->
-                <a class="menu-item mobile-only" role="menuitem" href="search.html">Deep Search</a>
-
-                <div class="menu-sep mobile-only"></div>
-
-                <!-- Open GitHub Repo (with external link icon) -->
-                <a class="menu-item row link-ext" role="menuitem"
-                  href="https://github.com/agarapatri/Timeless-Words" target="_blank" rel="noopener">
-                  <span>Open GitHub Repo</span>
-                  <!-- 45° external arrow -->
-                  <svg class="ext-icon" width="16" height="16" aria-hidden="true">
-                    <use href="#icon-external"></use>
-                  </svg>
-                </a>
-
-                <div class="menu-sep"></div>
-
-                <!-- Open Vedabase (with external link icon) -->
-                <a class="menu-item row link-ext" role="menuitem"
-                  href="https://vedabase.io/en/" target="_blank" rel="noopener">
-                  <span>vedabase.io</span>
-                  <!-- 45° external arrow -->
-                  <svg class="ext-icon" width="16" height="16" aria-hidden="true">
-                    <use href="#icon-external"></use>
-                  </svg>
-                </a>
-
-                <div class="menu-sep"></div>
-
-                <!-- Translate (Google) toggle -->
-                <label class="menu-item row" role="menuitem" for="gtToggle">
-                  <span>Translate (Google)</span>
-                  <input id="gtToggle" type="checkbox">
-                </label>
-
-                <div class="menu-sep"></div>
-
-                <label class="menu-item row" role="menuitem" for="darkToggle">
-                  <span>Dark Mode</span>
-                  <input id="darkToggle" type="checkbox">
-                </label>
-
-                <div class="menu-sep"></div>
-
-                <label class="menu-item row" role="menuitem" for="serifToggle">
-                  <span>Serif Typeface</span>
-                  <input id="serifToggle" type="checkbox">
-                </label>
-
-                <div class="menu-sep"></div>
-
-                <div class="menu-item col" role="menuitem">
-                  <div class="menu-row head">
-                    <label for="fontSizeRange" class="menu-label">Font Size</label>
-                    <div id="fontSizeCurrent"><span id="fontSizeVal">16</span>px</div>
-                  </div>
-                  <div class="menu-row controls">
-                    <input id="fontSizeRange" type="range" min="14" max="20" step="1" value="16" />
-                    <button type="button" id="fontSizeReset" class="btn ghost sm" title="Reset font size">Reset</button>
-                  </div>
-                </div>
-
-                <div class="menu-sep"></div>
-
-                <div class="menu-item col" role="menuitem">
-                  <div>Text to Speech</div>
-                  <div class="row gap">
-                    <button type="button" class="btn ghost sm" id="ttsPlay">Play</button>
-                    <button type="button" class="btn ghost sm" id="ttsPause">Pause</button>
-                    <button type="button" class="btn ghost sm" id="ttsStop">Stop</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div id="menuSlot-home" class="menu-wrap"></div>
           </div>
         </div>
 
@@ -138,10 +41,9 @@
           <div class="type-filter">
             <button id="typeBtn" class="type-icon-btn type-trigger" type="button"
                     aria-label="Filter by type" aria-haspopup="true" aria-expanded="false" aria-controls="typePanel">
-              <!-- Filter (funnel) icon -->
-              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"></path>
+              <!-- Filter icon (uses currentColor for light/dark) -->
+              <svg class="icon" width="20" height="20" aria-hidden="true">
+                <use href="icons/filter.svg#icon-filter"></use>
               </svg>
             </button>
 
@@ -178,6 +80,7 @@
     <!-- Load sql.js to read SQLite in the browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+      if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-home');
       window.addEventListener('DOMContentLoaded', async () => {
         // Load books and work types from SQLite
         async function loadFromSQLite() {

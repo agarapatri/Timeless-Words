@@ -236,7 +236,7 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
   border: 0; border-radius: 0; background: transparent; cursor: pointer;
 }
 #fBooks .checklist label + label, #fTypes .checklist label + label { border-top: 1px solid var(--border); }
-#fBooks .checklist input[type="checkbox"] { width: 18px; height: 18px; }
+#fBooks .checklist input[type="checkbox"] { width: 16px; height: 16px; }
 #fBooks .checklist span, #fTypes .checklist span { font-size: 14px; }
 
 #fBooks .filter::before, #fTypes .filter::before {
@@ -264,6 +264,7 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
   max-width: 780px;
   margin: 8px auto 16px;
 }
+.verse-head { max-width: 780px; margin: 8px auto 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .verse-block { max-width: 780px; margin: 0 auto 16px; }
 .verse-block h2 { font-size: 16px; text-transform: none; color: var(--muted); margin-bottom: 6px; }
 pre { background: var(--surface); padding: 12px; border: 1px solid var(--border); border-radius: 10px; white-space: pre-wrap; }
@@ -338,6 +339,14 @@ html.theme-dark .menu-item:hover { background: rgba(255,255,255,0.06); }
 .help-btn:hover { background: rgba(0,0,0,0.04); }
 html.theme-dark .help-btn:hover { background: rgba(255,255,255,0.06); }
 
+/* --- Dark theme icon fixes --- */
+html.theme-dark #fBooks .filter::before,
+html.theme-dark #fTypes .filter::before {
+  background-image: url("../icons/search-dark.svg");
+  opacity: .6;
+}
+.acc-btn { color: var(--fg); }
+
 .help-popover {
   position:absolute; top:100%; left:0; margin-top:6px; z-index:50;
   width:min(540px,95vw); background:var(--bg); border:1px solid var(--border);
@@ -373,9 +382,13 @@ html.theme-dark .help-btn:hover { background: rgba(255,255,255,0.06); }
 }
 @media (max-width: 600px) { .pager { justify-content: space-between; } }
 .verse-page .pager { max-width: 780px; margin-left: auto; margin-right: auto; justify-content: space-between; }
+.nav-btn { visibility: hidden; }
 
 /* ---------- Book detail header ---------- */
-.book-hero { display:flex; align-items:center; gap:18px; margin-top:12px; }
+.book-hero { display:flex; align-items:flex-start; gap:18px; margin-top:0; }
+.book-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.book-header .book-hero { flex: 1 1 auto; margin-top: 0; }
+.book-header .menu-wrap { flex: 0 0 auto; }
 .book-cover {
   width: 136px; height: 160px; border-radius: 14px;
   display:flex; align-items:center; justify-content:center;
