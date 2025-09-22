@@ -243,7 +243,7 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
   content: ""; position: absolute; left: 0; top: 17px; transform: translateY(-50%);
   width: 18px; height: 18px; background: url("../icons/search.svg") no-repeat center / 18px 18px; opacity: .35; pointer-events: none;
 }
-# In dark mode swap the search icon to a light stroke variant
+/* In dark mode swap the search icon to a light stroke variant */
 html.theme-dark #fBooks .filter::before,
 html.theme-dark #fTypes .filter::before {
   background-image: url("../icons/search-dark.svg");
