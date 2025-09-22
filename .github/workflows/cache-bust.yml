@@ -1,0 +1,38 @@
+
+# CSS (assets/styles.css)
+# JS (assets/app.js, assets/search.js, etc.)
+# Fonts (assets/fonts/*.woff2)
+# Images/icons (icons/*.svg, *.png, etc.)
+# are cached heavily. HTML files update immediately, so you don’t need a version there.
+
+# This GitHub Actions workflow file automates cache busting and deployment of the documentation site.
+# It triggers on pushes to the main branch, replacing all instances of {{VERSION}} in HTML
+# and CSS files within the docs directory with the current commit hash, ensuring that users
+# always receive the latest versions of assets. Finally, it deploys the updated docs to Git
+
+
+name: Cache Busting & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Replace {{VERSION}} with commit hash
+        run: |
+          VERSION=${{ github.sha }}
+          find docs -type f -name "*.html" -exec sed -i "s/{{VERSION}}/$VERSION/g" {} +
+          find docs/assets -type f -name "*.css" -exec sed -i "s/{{VERSION}}/$VERSION/g" {} +
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs

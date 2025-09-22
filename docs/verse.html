@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Verse — Timeless Words</title>
-    <link rel="stylesheet" href="assets/styles.css">
-    
+  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
+    <div id="favicon-slot"></div>
   </head>
   <body>
     
@@ -45,7 +45,7 @@
       </div>
     </footer>
 
-    <script src="assets/app.js?v=3"></script>
+  <script src="assets/app.js?v={{VERSION}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-verse');

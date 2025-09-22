@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search — Timeless Words</title>
-    <link rel="stylesheet" href="assets/styles.css">
-    
+  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
+    <div id="favicon-slot"></div>
   </head>
   <body>
     
@@ -42,7 +42,7 @@
                       aria-expanded="false" aria-controls="regex-acc-panel">
                 Advanced tips
                 <svg class="chev" width="18" height="18" aria-hidden="true">
-                  <use href="icons/chev.svg#icon-chev"></use>
+                  <use href="icons/chev.svg?v={{VERSION}}#icon-chev"></use>
                 </svg>
               </button>
 
@@ -188,11 +188,11 @@
       </div>
     </footer>
 
-    <script src="assets/app.js?v=3"></script>
+  <script src="assets/app.js?v={{VERSION}}"></script>
     <script>
       if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-search');
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="assets/search.js"></script>
+  <script src="assets/search.js?v={{VERSION}}"></script>
   </body>
   </html>

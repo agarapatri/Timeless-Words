@@ -31,20 +31,6 @@
   Library.wireMenu = wireMenu;
   wireMenu(document);
 
-  // After you set up open/close listeners:
-  // menuPanel.addEventListener('click', (e) => {
-  //   const target = e.target.closest('a,button,input,label');
-  //   if (target) {
-  //     // Let the action happen (link, toggle, etc.), then close
-  //     setTimeout(() => {
-  //       if (!menuPanel.hidden) {
-  //         menuPanel.hidden = true;
-  //         menuBtn.setAttribute('aria-expanded', 'false');
-  //       }
-  //     }, 0);
-  //   }
-  // });
-
   // ---- persisted settings
   const LS = {
     get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
@@ -231,3 +217,14 @@
     } catch (e) { /* ignore to avoid breaking page */ }
   }
 })();
+
+(async function() {
+    try {
+      const res = await fetch("assets/favicon.html");
+      if (res.ok) {
+        document.getElementById("favicon-slot").outerHTML = await res.text();
+      }
+    } catch (e) {
+      console.error("Failed to load favicon.html", e);
+    }
+  })();
