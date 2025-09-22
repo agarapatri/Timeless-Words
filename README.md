@@ -162,85 +162,114 @@ This uses SQLite as backend for data storage. WebAssembly (WASM) support across 
 
 
 
-## SQLite Table Structure
+## SQLite DB Schema
 
-### 1. works  (one row per book)
-Groups everything that belongs to the same book; stores its “type”.
-* **work\_id** — numeric ID.
-* **title\_en**, **title\_sa** — titles (English/Sanskrit).
-* **slug** — stable short name (e.g., `vishnu-purana`) for dedup/import.
-* **canonical\_ref** — notes about the reference system (optional).
-* **type** — comes straight from your JSON `"type"` (e.g., *Maha Puranas*).
+### `work_types`
 
-### 2. divisions  (structure like canto/chapter)
-Flexible hierarchy without changing schema when a text has extra levels.
-* **division\_id** — ID.
-* **work\_id** — which book it belongs to.
-* **parent\_id** — for nesting (book → canto → chapter).
-* **level\_name** — e.g., `book`, `canto`, `chapter`.
-* **ordinal** — order within parent (1, 2, 3…).
-* **label**, **slug** — display text and stable name.
+* **code (TEXT, PK)**: Canonical type string from JSON (`"Maha Puranas"`, `"Upanishads"`, etc.).
+* **label (TEXT)**: Display label (often same as `code`).
+* **description (TEXT)**: Optional blurb for the site.
+  **Why**: Powers homepage/search filters and keeps type values consistent.
 
-### 3. verses  (one row per verse)
-A single “anchor” row that all verse-scoped data plugs into.
-* **verse\_id** — ID.
-* **work\_id**, **division\_id** — book and chapter it lives in.
-* **ref\_citation** — human ref like `1.3.15`.
-* **ordinal** — order in the chapter.
-* **ref\_level1/2/3** — optional parsed pieces (helpful for sorting).
+### `works`
 
-### 4. editions  (what “flavor” of text it is)
-Lets you have Devanāgarī, IAST, English (and later Hindi, Telugu, other translators) without adding columns.
-* **edition\_id** — ID.
-* **work\_id** — book it belongs to.
-* **kind** — `source` or `translation`.
-* **language** — e.g., `sa`, `en`.
-* **script** — e.g., `Deva` (Devanāgarī), `Latn` (IAST); usually NULL for translations.
-* **translator** — who translated (optional).
-* **is\_default** — your preferred one of that kind.
+* **work\_id (INTEGER, PK)**: Surrogate ID.
+* **title\_en (TEXT, NOT NULL)**: Display title (English or your preferred language).
+* **title\_sa (TEXT)**: Sanskrit title (optional).
+* **author (TEXT)**: From JSON if provided.
+* **canonical\_ref (TEXT)**: Note on the reference system (optional).
+* **slug (TEXT, UNIQUE)**: Stable identifier (usually JSON `id` or slugified title); used for idempotent import.
+* **work\_type\_code (TEXT, FK→work\_types.code, NOT NULL)**: Book type for filters.
+* **date\_origin\_start (INTEGER)**: Signed year (e.g., `-200` for 200 BCE).
+* **date\_origin\_end (INTEGER)**: Signed year (range end if uncertain).
+* **date\_published (TEXT)**: ISO date when known (optional).
+  **Why**: One row per book; stores the type and dates so you can filter/sort on the homepage and in search.
 
-### 5. verse\_texts  (the actual text per verse × edition)
-Cleanly separates Devanāgarī, IAST, English (and future languages) into their own rows; easy to filter/search.
-* **verse\_id**, **edition\_id** — which verse & which edition.
-* **body** — the text itself.
-* **notes\_json** — optional annotations.
-* **PRIMARY KEY (verse\_id, edition\_id)** — exactly one text per verse per edition.
+### `divisions`
 
-### 6. verse\_texts\_wide  (VIEW for easy UI; one row per verse)
-You want “one row per verse” in the UI; the view gives that without giving up the flexible storage above.
+* **division\_id (INTEGER, PK)**
+* **work\_id (INTEGER, FK)**: Which book.
+* **parent\_id (INTEGER, FK→divisions.division\_id)**: Enables nesting (book → canto → chapter…).
+* **level\_name (TEXT, NOT NULL)**: `"book"`, `"canto"`, `"chapter"`, etc.
+* **ordinal (INTEGER)**: Position under the parent (1-based).
+* **label (TEXT)**: Display label (e.g., “Chapter 1”).
+* **slug (TEXT)**: Stable per-division within a work.
+* **UNIQUE (work\_id, COALESCE(parent\_id,0), level\_name, ordinal)**
+  **Why**: Flexible hierarchy without schema changes; unique key prevents duplicate chapters on re-import.
+
+### `verses`
+
+* **verse\_id (INTEGER, PK)**
+* **work\_id (INTEGER, FK)**: Which book.
+* **division\_id (INTEGER, FK)**: Which chapter (or lowest division).
+* **ref\_citation (TEXT)**: Reference string like `1.1`, `1.2.15`, etc.
+* **ordinal (INTEGER)**: Verse order inside that division (1-based).
+* **UNIQUE (work\_id, division\_id, ordinal)**
+  **Why**: A single anchor per verse. Unique key prevents duplicate verses across multiple runs.
+
+### `editions`
+
+* **edition\_id (INTEGER, PK)**
+* **work\_id (INTEGER, FK)**
+* **kind (TEXT, NOT NULL)**: `'source'` or `'translation'`.
+* **language (TEXT, NOT NULL)**: e.g., `sa`, `en`, `hi`.
+* **script (TEXT)**: e.g., `Deva` (Devanāgarī), `Latn` (IAST); usually NULL for translations.
+* **translator (TEXT)**: Optional, for identifying versions.
+* **is\_default (INTEGER)**: UI preference toggle.
+* **UNIQUE (work\_id, kind, language, COALESCE(script,''), COALESCE(translator,''))**
+  **Why**: Lets you add Devanāgarī, IAST, multiple translations, more languages—without new columns.
+
+### `verse_texts`
+
+* **verse\_id (INTEGER, FK)**: Which verse.
+* **edition\_id (INTEGER, FK)**: Which edition (e.g., `sa/Deva`, `sa/Latn`, `en`).
+* **body (TEXT, NOT NULL)**: The actual text.
+* **notes\_json (TEXT)**: Optional JSON for footnotes/provenance.
+* **PRIMARY KEY (verse\_id, edition\_id)**
+  **Why**: One row per (verse × edition). Clean, scalable storage for multiple scripts/translations.
+
+### `tokens`
+
+* **token\_id (INTEGER, PK)**
+* **verse\_id (INTEGER, FK)**: The verse this word belongs to.
+* **edition\_id (INTEGER, FK)**: Which source edition was tokenized (typically `sa/Deva`).
+* **pos (INTEGER, NOT NULL)**: 1-based position in the verse.
+* **surface (TEXT, NOT NULL)**: Word form as printed (usually Devanāgarī).
+* **UNIQUE (verse\_id, edition\_id, pos)**
+  **Why**: Drives word-level alignment/highlighting. Unique constraint avoids duplicate token positions on re-import.
+
+### `verse_glosses`
+
+* **work\_id (INTEGER, FK)**: Scope (in case verse\_id overlaps across works).
+* **verse\_id (INTEGER, FK)**: Which verse.
+* **surface (TEXT, NOT NULL)**: Word form (usually matches token’s surface).
+* **gloss (TEXT, NOT NULL)**: Meaning for **this verse** (context-dependent).
+* **source (TEXT)**: Provenance (`json`, `user`, `dict`, …).
+* **UNIQUE (verse\_id, surface, gloss)**
+  **Why**: Sanskrit is context-sensitive; meanings are stored **per verse** so the same word can differ elsewhere without conflicts.
+
+### `fts_verse_texts` (FTS5 virtual table)
+
+* **work\_id, edition\_id, verse\_id**: Context for results (UNINDEXED ID columns).
+* **kind, language, script**: From `editions`, to filter queries.
+* **body**: The searchable text.
+  **Why**: Fast, diacritic-aware full-text search, scoped by language/script if needed.
+
+### `verse_texts_wide` (VIEW)
+
 * **verse\_id, work\_id, division\_id, ref\_citation**
-* **sa\_deva** — Devanāgarī text (from `sa/Deva` edition)
-* **sa\_iast** — IAST text (from `sa/Latn`)
-* **en\_translation** — English text (from `en`)
+* **sa\_deva**: Devanāgarī body if present.
+* **sa\_iast**: IAST body if present.
+* **en\_translation**: English translation if present.
+  **Why**: A convenient UI/view layer: **one row per verse**, while the underlying storage stays flexible.
 
-### 7. tokens  (word order within a verse)
-Drives highlight/align features and keeps the word order.
-* **token\_id** — ID.
-* **verse\_id** — which verse.
-* **edition\_id** — which source edition was tokenized (usually `sa/Deva`).
-* **pos** — word position (1…n).
-* **surface** — the word as printed (e.g., in Devanāgarī).
-* **lemma**, **morph**, **start\_char**, **end\_char** — optional normalization, tagging, and text spans.
+### Why multiple tables?
 
-### 8. verse\_glosses  (word→meaning for *this verse*)
-Sanskrit is context-heavy. Meanings are stored **per verse** so the same word can have different meanings in different verses without overwriting.
-* **work\_id**, **verse\_id** — scope.
-* **surface** — the word form (e.g., Devanāgarī).
-* **gloss** — the meaning you picked for this verse.
-* **source** — where it came from (`json`, `user`, `dict`, …).
-* **UNIQUE(verse\_id, surface, gloss)** — same pair isn’t stored twice.
-
-### 9. fts\_verse\_texts  (full-text search index)
-Fast, diacritic-aware search across huge corpora.
-* Virtual table mirroring `verse_texts` fields needed for search: **body**, plus **kind/language/script** to filter.
-
-### Why multiple tables? (the point in 5 bullets)
-
-1. **Flexibility** — Add a new language/translator later with **rows**, not new columns.
-2. **Clean search** — FTS works best when each “document” is its own row (our `verse_texts`).
-3. **Correctness** — One stable `verse_id` avoids duplication when texts multiply.
-4. **Word-level features** — Tokens and verse-scoped glosses need a reliable verse anchor.
-5. **Performance & maintenance** — Update only what changes (e.g., just IAST for a verse), not giant denormalized blobs.
+* **Flexibility**: Adding a new language, script, or translator is just inserting rows into `editions` + `verse_texts`—no schema changes, no wide-table bloat.
+* **Correctness**: A single `verse_id` anchors tokens and per-verse glosses; you don’t duplicate the verse when you add more text variants.
+* **Searchability**: FTS works best when each document (edition text) is its own row. You can search only IAST, only Devanāgarī, or only translations.
+* **Data integrity**: Unique keys on divisions/verses prevent accidental duplicates on repeated imports.
+* **Performance & updates**: Updating IAST for one verse means touching one small row, not a massive denormalized record.
 
 ### Pros / Cons / Trade-offs
 
@@ -248,22 +277,20 @@ Fast, diacritic-aware search across huge corpora.
 
 **Pros**
 
-* Scales to many languages/editions without schema changes.
-* Precise filtering/search (e.g., only IAST; only English).
-* Safer updates (one small row per edition).
-* Robust word-level alignment and per-verse meanings.
+* Scales cleanly to many languages/editions/translators.
+* Per-verse meanings without global overrides.
+* Strong FTS and edition-level filtering.
+* Minimal writes for updates; easier integrity constraints.
 
 **Cons**
 
-* More joins if you query raw tables.
-* Slightly more tables to understand.
+* More tables and joins if you query raw tables.
 
 **Mitigation**
 
-* Use the **`verse_texts_wide` VIEW** for the UI (“one row per verse”).
-* Keep helper queries/snippets handy (I’ve given the common ones).
+* Use the `verse_texts_wide` **VIEW** for UI and exports to keep things “one row per verse”.
 
-#### Single “wide” table (alternative)
+#### Single wide table (alternative)
 
 **Pros**
 
@@ -272,28 +299,93 @@ Fast, diacritic-aware search across huge corpora.
 
 **Cons**
 
-* Adding a second translation/language requires **new columns** or duplication.
-* FTS and edition-level filtering are clumsy.
-* Harder to keep tokens/glosses clean if you duplicate verse rows.
+* Adding the 2nd translation or a new language forces schema changes or row duplication.
+* FTS per edition/script becomes awkward.
+* Hard to keep tokens/glosses consistent when verse rows are duplicated.
 
 **When OK**
 
-* If you are **100% sure** you’ll never exceed {Devanāgarī, IAST, one English} and never add variants.
+* If you are **certain** you’ll only ever store exactly {Devanāgarī, IAST, one English} and never add variations.
+
+
+### How duplicates are prevented (important for re-imports)
+
+* Chapters: `UNIQUE (work_id, parent_id, level_name, ordinal)`
+  Importer uses **get-or-create**; existing chapter reused.
+* Verses: `UNIQUE (work_id, division_id, ordinal)`
+  Importer checks and **updates** `ref_citation` if found; otherwise inserts.
+* Verse texts: `PRIMARY KEY (verse_id, edition_id)`
+  `INSERT OR REPLACE` keeps exactly one text per edition per verse.
+* Tokens: `UNIQUE (verse_id, edition_id, pos)`
+  `INSERT OR IGNORE` avoids duplicating word positions.
+* FTS: Importer **deletes** existing `(verse_id, edition_id)` rows before re-inserting to avoid duplicate search docs.
+
+
+### Common query snippets
+
+**Homepage filters with counts**
+
+```sql
+SELECT wt.code, wt.label, COUNT(*) AS n
+FROM work_types wt
+JOIN works w ON w.work_type_code = wt.code
+GROUP BY wt.code, wt.label
+ORDER BY n DESC;
+```
+
+**List all works with date info**
+
+```sql
+SELECT w.title_en, w.author, w.work_type_code,
+       w.date_origin_start, w.date_origin_end, w.date_published
+FROM works w
+ORDER BY w.title_en;
+```
+
+**Render verses (UI-friendly “one row per verse”)**
+
+```sql
+SELECT v.ref_citation, vw.sa_deva, vw.sa_iast, vw.en_translation
+FROM verse_texts_wide vw
+JOIN verses v ON v.verse_id = vw.verse_id
+WHERE v.work_id = :work_id
+ORDER BY v.verse_id;
+```
+
+**Word-by-word for a verse**
+
+```sql
+SELECT t.pos, t.surface,
+       GROUP_CONCAT(vg.gloss, ' | ') AS glosses
+FROM tokens t
+LEFT JOIN verse_glosses vg
+  ON vg.verse_id = t.verse_id AND vg.surface = t.surface
+WHERE t.verse_id = :verse_id
+GROUP BY t.pos, t.surface
+ORDER BY t.pos;
+```
 
 ### TL;DR
 
 * Store the **texts** per **(verse × edition)**; show them as one row via the **VIEW**.
-* Store **word meanings per verse** in `verse_glosses` to avoid context mix-ups.
-* This buys you correctness now and zero schema pain later.
+* **Multiple tables** keep the data clean, fast, and future-proof (add new editions any time).
+* **Per-verse glosses** guarantee context-correct meanings.
+* Use the **`verse_texts_wide` view** whenever you want the simplicity of a single table for display/export—no compromise on structure under the hood.
+
 
 
 ## Upcoming Features
-* Lazy load books in deep search with loader
-* Show num of chapters and total num of verses in each book in library
-* Dark mode switch
-* Font size adjustment slider
-* Serif Font or San Serif font switch
-* Text-to-Speech for chapters and verses
-* Regex search 
+
+* Extract search tips into separate file
+* Extract footer into separate file - inspired by
+* Fix bradcrumb navigation in all screens
+* Lazy load home books
+* call ChatGPT API and generate texts.
+* TTS should work for full page
+* Home book type filter is transparent
+* Search tips - Advanced tips button should be rounded
+* All search text colors are not handled in dark mode
+* Deep search menu item should be present in all menus in all modes not just mobile view
+* Keep DB writable
 * Plan to **show a friendly unsupported message** for Opera Mini and very old browsers.
 

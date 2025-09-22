@@ -74,3 +74,10 @@
 * "type" field is the type of work, like Purana, Itihasa, Veda, Upanishad, etc.
 * "section" field under chapters array is the canto number if any exists.
 * "section_title" under chapters array is the canto title if any exists.
+
+
+## Helper commands
+* In terminal, to cut PDFs into multiple files based on page length
+```bash
+pdfcpu split -m span input_file.pdf output_dir/ page_count
+```

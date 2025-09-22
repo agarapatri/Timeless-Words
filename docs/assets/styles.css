@@ -243,6 +243,12 @@ html.theme-dark .icon-btn:hover { background: rgba(255,255,255,0.06); }
   content: ""; position: absolute; left: 0; top: 17px; transform: translateY(-50%);
   width: 18px; height: 18px; background: url("../icons/search.svg") no-repeat center / 18px 18px; opacity: .35; pointer-events: none;
 }
+# In dark mode swap the search icon to a light stroke variant
+html.theme-dark #fBooks .filter::before,
+html.theme-dark #fTypes .filter::before {
+  background-image: url("../icons/search-dark.svg");
+  opacity: .6;
+}
 #fBooks, #fTypes { grid-column: span 6; margin-bottom: 24px; }
 
 /* ---------- Book page ---------- */
@@ -363,7 +369,7 @@ html.theme-dark #fTypes .filter::before {
 .help-content ul{ margin: 8px 0; padding-left: 18px; }
 
 /* Accordion chevron */
-.acc-btn { display:flex; justify-content:space-between; align-items:center; gap:8px; border:1px solid var(--border); border-radius:8px; padding:8px 10px; cursor:pointer; background:transparent; }
+.acc-btn { display:flex; justify-content:space-between; align-items:center; gap:8px; border:1px solid var(--border); border-radius:8px; padding:8px 10px; cursor:pointer; background:transparent; color: var(--fg); }
 .acc-btn .chev { width:18px; height:18px; transition:transform .15s ease; }
 .acc-btn[aria-expanded="true"] .chev { transform:rotate(90deg); }
 
