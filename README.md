@@ -1,4 +1,4 @@
-![alt text](https://github.com/agarapatri/Timeless-Words/blob/main/.gitignore/banner.png)
+![alt text](https://github.com/agarapatri/Timeless-Words/blob/main/banner.png)
 Art by: [Yuqing Sheng](x.com/merasgar)
 
 # Timeless Words
