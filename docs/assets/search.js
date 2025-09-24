@@ -1,7 +1,9 @@
+// --- DB loader (shared singleton) ---
+import { loadDb, query } from './db.js';
+
 /* Deep Search with substring + optional regex */
 (function () {
   let STATE = { results: [], page: 1, perPage: 25 }; // default page size
-  let DB = null;
   let ALL = { types: [], books: [], verses: [], wfwByVerse: new Map() };
 
   function ensurePager() {
@@ -126,28 +128,19 @@
     }
   }
 
-  async function loadDb() {
-    if (DB) return DB;
-    const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
-    const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
-    if (!res.ok) throw new Error('Failed to fetch SQLite');
-    const buf = new Uint8Array(await res.arrayBuffer());
-    DB = new SQL.Database(buf);
-    return DB;
-  }
-
   async function loadCatalog() {
-    const typesOut = DB.exec(`SELECT code, label FROM work_types ORDER BY label`);
-    ALL.types = (typesOut[0]?.values || []).map(r => ({ code: r[0], label: r[1] }));
-    const booksOut = DB.exec(`SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`);
-    ALL.books = (booksOut[0]?.values || []).map(r => ({ id: String(r[0]), work_id: r[0], title: r[1] || '', type: r[2] || '' }));
+    const typesOut = await query(`SELECT code, label FROM work_types ORDER BY label`);
+    ALL.types = (typesOut.rows || []).map(r => ({ code: r[0], label: r[1] }));
+
+    const booksOut = await query(`SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`);
+    ALL.books = (booksOut.rows || []).map(r => ({ id: String(r[0]), work_id: r[0], title: r[1] || '', type: r[2] || '' }));
 
     // Checklists are built by initTypeFilter and initBookFilter on DOMContentLoaded
   }
 
   async function loadVerses() {
     // Load verses with texts and refs
-    const out = DB.exec(`
+    const out = await query(`
       SELECT vs.verse_id, vs.work_id, vs.division_id, vs.ordinal as vord,
              d.ordinal as cord, vs.ref_citation,
              COALESCE(vw.sa_deva,''), COALESCE(vw.sa_iast,''), COALESCE(vw.en_translation,''),
@@ -158,18 +151,23 @@
       JOIN works w ON w.work_id = vs.work_id
       ORDER BY vs.work_id, d.ordinal, vs.ordinal
     `);
-    ALL.verses = (out[0]?.values || []).map(r => ({
+    ALL.verses = (out.rows || []).map(r => ({
       verse_id: r[0], work_id: String(r[1]), division_id: r[2], vord: r[3], cord: r[4], ref: r[5] || `${r[4]}.${r[3]}`,
       deva: r[6], iast: r[7], trans: r[8], title: r[9] || '', type: r[10] || ''
     }));
 
     // Word-for-word map
-    const wfw = DB.exec(`
-      SELECT t.verse_id, GROUP_CONCAT(COALESCE(t.surface,'') || ' — ' || COALESCE((SELECT gloss FROM verse_glosses g WHERE g.verse_id=t.verse_id AND g.surface=t.surface LIMIT 1),'') , '; ') AS wfw
+    const wfw = await query(`
+      SELECT t.verse_id,
+             GROUP_CONCAT(
+               COALESCE(t.surface,'') || ' — ' ||
+               COALESCE((SELECT gloss FROM verse_glosses g
+                         WHERE g.verse_id=t.verse_id AND g.surface=t.surface LIMIT 1),'')
+             , '; ') AS wfw
       FROM tokens t GROUP BY t.verse_id
     `);
     ALL.wfwByVerse = new Map();
-    if (wfw[0]) for (const row of wfw[0].values) ALL.wfwByVerse.set(row[0], row[1] || '');
+    if (wfw.rows) for (const row of wfw.rows) ALL.wfwByVerse.set(row[0], row[1] || '');
   }
 
   function readFilters() {
@@ -343,116 +341,116 @@
 
   /* --------------------------------------- */
   
-function byId(id){ return document.getElementById(id); }
+  function byId(id){ return document.getElementById(id); }
 
-function initBookFilter(){
-  const searchEl = byId('bookSearch');
-  const listEl   = byId('bookChecklist');
-  if (!searchEl || !listEl) return; // not on this page
+  function initBookFilter(){
+    const searchEl = byId('bookSearch');
+    const listEl   = byId('bookChecklist');
+    if (!searchEl || !listEl) return; // not on this page
 
-  const state = { all: [], filtered: [], selected: new Set(), byType: new Map() };
+    const state = { all: [], filtered: [], selected: new Set(), byType: new Map() };
 
-  // load books
-  (async () => {
-    try {
-      await loadDb();
-      const booksOut = DB.exec(`SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`);
-      const rows = (booksOut[0]?.values || []).map(r => ({ id:String(r[0]), title: r[1] || '', type: r[2] || '' }));
-      state.all = rows;
-      state.filtered = rows.slice();
-      state.selected = new Set(rows.map(b => b.id));
-      // Build type -> books map
-      state.byType = new Map();
-      rows.forEach(b => { if(!state.byType.has(b.type)) state.byType.set(b.type, []); state.byType.get(b.type).push(b.id); });
-      render();
-      document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: Array.from(state.selected) } }));
-      listEl.dispatchEvent(new Event('change', { bubbles: true }));
-    } catch (e) {
-      listEl.innerHTML = '<div class="muted">Could not load books.</div>';
-    }
-  })();
-
-  // mini search (title) with diacritic-insensitive normalization
-  searchEl.addEventListener('input', () => {
-    const q = norm(searchEl.value.trim());
-    state.filtered = q
-      ? state.all.filter(b => norm(b.title||'').includes(q))
-      : state.all.slice();
-    render();
-  });
-
-  function render(){
-    if (!state.filtered.length){
-      listEl.innerHTML = '<div class="muted" aria-live="polite">No books</div>';
-      return;
-    }
-    const frag = document.createDocumentFragment();
-
-    state.filtered.forEach(b => {
-      const idAttr = `book_${String(b.id).replace(/\W+/g,'_')}`;
-
-      const label = document.createElement('label');
-      label.setAttribute('role','option');
-      label.htmlFor = idAttr;
-
-      const box = document.createElement('input');
-      box.type = 'checkbox';
-      box.id = idAttr;
-      box.value = b.id;
-      box.checked = state.selected.has(b.id);   // ✅ now true on first render
-      function updateParentFor(typeCode){
-        const typeBox = document.querySelector(`#typeChecklist input[data-type='${CSS.escape(typeCode)}']`);
-        if (!typeBox) return;
-        const typeList = state.byType.get(typeCode) || [];
-        const selectedCount = typeList.filter(id => state.selected.has(id)).length;
-        if (selectedCount === 0) { typeBox.checked = false; typeBox.indeterminate = false; }
-        else if (selectedCount === typeList.length) { typeBox.checked = true; typeBox.indeterminate = false; }
-        else { typeBox.checked = true; typeBox.indeterminate = true; }
-      }
-
-      box.addEventListener('change', () => {
-        if (box.checked) state.selected.add(b.id);
-        else state.selected.delete(b.id);
-
-        // Update parent checkbox to reflect tri-state (all/some/none)
-        updateParentFor(b.type);
-
+    // load books
+    (async () => {
+      try {
+        await loadDb();
+        const booksOut = await query(`SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`);
+        const rows = (booksOut.rows || []).map(r => ({ id:String(r[0]), title: r[1] || '', type: r[2] || '' }));
+        state.all = rows;
+        state.filtered = rows.slice();
+        state.selected = new Set(rows.map(b => b.id));
+        // Build type -> books map
+        state.byType = new Map();
+        rows.forEach(b => { if(!state.byType.has(b.type)) state.byType.set(b.type, []); state.byType.get(b.type).push(b.id); });
+        render();
         document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: Array.from(state.selected) } }));
         listEl.dispatchEvent(new Event('change', { bubbles: true }));
-      });
+      } catch (e) {
+        listEl.innerHTML = '<div class="muted">Could not load books.</div>';
+      }
+    })();
 
-      const span = document.createElement('span');
-      span.textContent = b.title;
-
-      label.appendChild(box);
-      label.appendChild(span);
-      frag.appendChild(label);
+    // mini search (title) with diacritic-insensitive normalization
+    searchEl.addEventListener('input', () => {
+      const q = norm(searchEl.value.trim());
+      state.filtered = q
+        ? state.all.filter(b => norm(b.title||'').includes(q))
+        : state.all.slice();
+      render();
     });
 
-    listEl.innerHTML = '';
-    listEl.appendChild(frag);
-  }
-  // Clear button in Book panel
-  const bookPanel = document.getElementById('fBooks');
-  const bookClear = bookPanel?.querySelector('.panel-header2 .btn');
-  if (bookClear) bookClear.addEventListener('click', () => {
-    state.selected.clear();
-    // Uncheck all book checkboxes
-    listEl.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    // Also uncheck all Book Type checkboxes to keep filters in sync
-    const typeList = document.getElementById('typeChecklist');
-    if (typeList) {
-      typeList.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; cb.indeterminate = false; });
-      // notify any listeners that types changed
-      document.dispatchEvent(new CustomEvent('types:changed', { detail: { selected: [] } }));
-    }
-    render();
-    document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: [] } }));
-    listEl.dispatchEvent(new Event('change', { bubbles: true }));
-  });
-}
+    function render(){
+      if (!state.filtered.length){
+        listEl.innerHTML = '<div class="muted" aria-live="polite">No books</div>';
+        return;
+      }
+      const frag = document.createDocumentFragment();
 
-window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
+      state.filtered.forEach(b => {
+        const idAttr = `book_${String(b.id).replace(/\W+/g,'_')}`;
+
+        const label = document.createElement('label');
+        label.setAttribute('role','option');
+        label.htmlFor = idAttr;
+
+        const box = document.createElement('input');
+        box.type = 'checkbox';
+        box.id = idAttr;
+        box.value = b.id;
+        box.checked = state.selected.has(b.id);   // ✅ now true on first render
+        function updateParentFor(typeCode){
+          const typeBox = document.querySelector(`#typeChecklist input[data-type='${CSS.escape(typeCode)}']`);
+          if (!typeBox) return;
+          const typeList = state.byType.get(typeCode) || [];
+          const selectedCount = typeList.filter(id => state.selected.has(id)).length;
+          if (selectedCount === 0) { typeBox.checked = false; typeBox.indeterminate = false; }
+          else if (selectedCount === typeList.length) { typeBox.checked = true; typeBox.indeterminate = false; }
+          else { typeBox.checked = true; typeBox.indeterminate = true; }
+        }
+
+        box.addEventListener('change', () => {
+          if (box.checked) state.selected.add(b.id);
+          else state.selected.delete(b.id);
+
+          // Update parent checkbox to reflect tri-state (all/some/none)
+          updateParentFor(b.type);
+
+          document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: Array.from(state.selected) } }));
+          listEl.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        const span = document.createElement('span');
+        span.textContent = b.title;
+
+        label.appendChild(box);
+        label.appendChild(span);
+        frag.appendChild(label);
+      });
+
+      listEl.innerHTML = '';
+      listEl.appendChild(frag);
+    }
+    // Clear button in Book panel
+    const bookPanel = document.getElementById('fBooks');
+    const bookClear = bookPanel?.querySelector('.panel-header2 .btn');
+    if (bookClear) bookClear.addEventListener('click', () => {
+      state.selected.clear();
+      // Uncheck all book checkboxes
+      listEl.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      // Also uncheck all Book Type checkboxes to keep filters in sync
+      const typeList = document.getElementById('typeChecklist');
+      if (typeList) {
+        typeList.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; cb.indeterminate = false; });
+        // notify any listeners that types changed
+        document.dispatchEvent(new CustomEvent('types:changed', { detail: { selected: [] } }));
+      }
+      render();
+      document.dispatchEvent(new CustomEvent('books:changed', { detail: { selected: [] } }));
+      listEl.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
 
 
   /* ----------------------------------------------------- */
@@ -463,8 +461,8 @@ window.addEventListener('DOMContentLoaded', initBookFilter, { once:true });
 
     (async () => {
       await loadDb();
-      const out = DB.exec(`SELECT code, label FROM work_types ORDER BY label`);
-      const types = (out[0]?.values || []).map(r => ({ code: r[0], label: r[1] }));
+      const out = await query(`SELECT code, label FROM work_types ORDER BY label`);
+      const types = (out.rows || []).map(r => ({ code: r[0], label: r[1] }));
       const frag = document.createDocumentFragment();
       types.forEach((t, idx) => {
         const idAttr = `type_${idx}`;

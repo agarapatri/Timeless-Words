@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Timeless Words</title>
-  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
+    <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
     <meta id="favicon-slot">
+    
   </head>
   <body>
 
@@ -76,40 +77,35 @@
     </footer>
 
     
+  <script src="assets/sql_helpers/sql-wasm.js"></script>
 
-  <script src="assets/app.js?v={{VERSION}}"></script>
-    <!-- Load sql.js to read SQLite in the browser -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-home');
+  <script type="module" src="assets/app.js?v={{VERSION}}"></script>
+    <script type="module">
+      import { query } from './assets/db.js';
+
       window.addEventListener('DOMContentLoaded', async () => {
+        window.Library?.injectMenu?.('#menuSlot-home');
+
         // Load books and work types from SQLite
         async function loadFromSQLite() {
-          const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
-          const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
-          if (!res.ok) throw new Error('Failed to fetch SQLite');
-          const buf = new Uint8Array(await res.arrayBuffer());
-          const db = new SQL.Database(buf);
+          const typesOut = await query('SELECT code, label FROM work_types ORDER BY label');
+          const types = typesOut.rows.map(([code,label]) => ({ code, label }));
 
-          const typesOut = db.exec(`SELECT code, label FROM work_types ORDER BY label`);
-          const types = (typesOut[0]?.values || []).map(row => ({ code: row[0], label: row[1] }));
-
-          const worksOut = db.exec(`
+          const worksOut = await query(`
             SELECT w.work_id, w.slug, w.title_en, w.author, w.work_type_code,
-                   (SELECT COUNT(*) FROM divisions d WHERE d.work_id = w.work_id) AS chapters,
-                   (SELECT COUNT(*) FROM verses v WHERE v.work_id = w.work_id) AS verses
-            FROM works w
-            ORDER BY w.title_en
+                  (SELECT COUNT(*) FROM divisions d WHERE d.work_id = w.work_id) AS chapters,
+                  (SELECT COUNT(*) FROM verses v WHERE v.work_id = w.work_id) AS verses
+            FROM works w ORDER BY w.title_en
           `);
-          const works = (worksOut[0]?.values || []).map(row => ({
-            work_id: row[0],
-            slug: row[1],
-            title: row[2] || '',
-            author: row[3] || 'Unknown',
-            type: row[4] || '',
-            chapters: row[5],
-            verses: row[6],
-            id: row[1] || String(row[0]),
+          const works = worksOut.rows.map(r => ({
+            work_id: r[0], 
+            slug: r[1], 
+            title: r[2] || '', 
+            author: r[3] || 'Unknown',
+            type: r[4] || '', 
+            chapters: r[5], 
+            verses: r[6], 
+            id: r[1] || String(r[0]), 
             image: ''
           }));
           return { works, types };
@@ -121,6 +117,8 @@
           const loaded = await loadFromSQLite();
           books = loaded.works;
           workTypes = loaded.types;
+          console.log('Loaded books:', books.length);
+          console.log('Loaded work types:', workTypes.length);
         } catch (e) {
           console.error('SQLite load error:', e);
           books = [];
@@ -240,7 +238,7 @@
             const matchesText =
               norm(b.title).includes(t) ||
               norm(b.author).includes(t);
-            const matchesType = selected.has(b.type); // if none selected, show none
+            const matchesType = selected.size === 0 || selected.has(b.type);
             return matchesText && matchesType;
           });
 
@@ -257,6 +255,12 @@
       });
     </script>
 
+    <script>
+      // Make sure the menu shows even if data loading fails
+      window.addEventListener('DOMContentLoaded', () => {
+        window.Library?.injectMenu?.('#menuSlot-home');
+      });
+    </script>
 
   </body>
   </html>

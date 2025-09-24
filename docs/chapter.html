@@ -55,12 +55,13 @@
     <ol id="verseList" class="results-list"></ol>
   </main>
 
+  <script src="assets/sql_helpers/sql-wasm.js"></script>
+
   <!-- App helpers (kept) -->
   <script src="assets/app.js?v={{VERSION}}"></script>
-  <!-- sql.js for SQLite in-browser access -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module">
+    import { loadDb, findWork } from './assets/db.js';
 
-  <script>
     if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-chapter');
     // Query param helper
     function qp(name) { return new URLSearchParams(location.search).get(name); }
@@ -76,49 +77,43 @@
       const divisionParam = qp('d');
       const chapterNum = Number(qp('c') || 1);
 
-      async function loadDb() {
-        const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
-        const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
-        if (!res.ok) throw new Error('Failed to fetch SQLite');
-        const buf = new Uint8Array(await res.arrayBuffer());
-        return new SQL.Database(buf);
-      }
-
-      function findWork(db, token) {
-        const isNumeric = /^\d+$/.test(token || '');
-        if (isNumeric) {
-          const out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE work_id=${Number(token)} LIMIT 1`);
-          if (out[0]?.values?.length) return out[0].values[0];
-        }
-        const esc = String(token || '').replace(/'/g, "''");
-        let out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE slug='${esc}' LIMIT 1`);
-        if (out[0]?.values?.length) return out[0].values[0];
-        out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE lower(title_en)=lower('${esc}') LIMIT 1`);
-        return out[0]?.values?.[0] || null;
-      }
-
       const db = await loadDb();
-      const work = findWork(db, bookParam);
+      const work = await findWork(bookParam);
       if (!work) { console.error('Work not found', bookParam); return; }
-      const work_id = work[0], slug = work[1], title = work[2] || '';
+      const [work_id, slug, title] = work;
 
       // Resolve division (chapter)
       let division_id, division_label, division_ord;
+
+      let di;
       if (divisionParam) {
-        const di = db.exec(`SELECT division_id, ordinal, label FROM divisions WHERE division_id=${Number(divisionParam)} AND work_id=${Number(work_id)} LIMIT 1`);
-        const rowd = di[0]?.values?.[0];
-        if (!rowd) { console.error('Division not found by id', { work_id, divisionParam }); return; }
-        division_id = rowd[0];
-        division_ord = rowd[1];
-        division_label = rowd[2] || `Chapter ${rowd[1]}`;
+        di = await db.query(
+          `SELECT division_id, ordinal, label
+          FROM divisions
+          WHERE division_id = $div AND work_id = $work
+          LIMIT 1`,
+          { $div: Number(divisionParam), $work: Number(work_id) }
+        );
       } else {
-        const di = db.exec(`SELECT division_id, ordinal, label FROM divisions WHERE work_id=${Number(work_id)} AND ordinal=${Number(chapterNum)} LIMIT 1`);
-        const rowd = di[0]?.values?.[0];
-        if (!rowd) { console.error('Division not found by ordinal', { work_id, chapterNum }); return; }
-        division_id = rowd[0];
-        division_ord = rowd[1];
-        division_label = rowd[2] || `Chapter ${rowd[1]}`;
+        di = await db.query(
+          `SELECT division_id, ordinal, label
+          FROM divisions
+          WHERE work_id = $work AND ordinal = $ord
+          LIMIT 1`,
+          { $work: Number(work_id), $ord: Number(chapterNum) }
+        );
       }
+
+      const rowd = di.rows?.[0];
+      if (!rowd) {
+        console.error(divisionParam ? 'Division not found by id' : 'Division not found by ordinal',
+                      divisionParam ? { work_id, divisionParam } : { work_id, chapterNum });
+        return;
+      }
+
+      division_id    = rowd[0];
+      division_ord   = rowd[1];
+      division_label = rowd[2] || `Chapter ${rowd[1]}`;
 
       // Header + crumbs
       document.getElementById('chapterTitle').textContent = `${title} — Chapter ${division_ord || chapterNum}`;
@@ -131,17 +126,21 @@
       `;
 
       // Load verses for this division using the wide view
-      const versesOut = db.exec(`
-        SELECT vw.verse_id, vw.ref_citation, vs.ordinal,
-               COALESCE(vw.sa_deva, '') AS sa_deva,
-               COALESCE(vw.sa_iast, '') AS sa_iast,
-               COALESCE(vw.en_translation, '') AS en
+      const versesOut = await db.query(
+        `SELECT
+            vw.verse_id,
+            vw.ref_citation,
+            vs.ordinal,
+            COALESCE(vw.sa_deva, '') AS sa_deva,
+            COALESCE(vw.sa_iast, '') AS sa_iast,
+            COALESCE(vw.en_translation, '') AS en
         FROM verse_texts_wide vw
         JOIN verses vs ON vs.verse_id = vw.verse_id
-        WHERE vw.work_id = ${Number(work_id)} AND vw.division_id = ${Number(division_id)}
-        ORDER BY vs.ordinal
-      `);
-      const rows = (versesOut[0]?.values || []).map(r => ({
+        WHERE vw.work_id = $work AND vw.division_id = $div
+        ORDER BY vs.ordinal`,
+        { $work: Number(work_id), $div: Number(division_id) }
+      );
+      const rows = (versesOut.rows || []).map(r => ({
         verse_id: r[0],
         ref: r[1],
         ordinal: r[2],
@@ -152,16 +151,21 @@
 
       // Build WFW map for this division
       const wfwMap = new Map();
-      const wfwOut = db.exec(`
-        SELECT t.verse_id, t.pos, t.surface,
-               (SELECT gloss FROM verse_glosses g WHERE g.verse_id = t.verse_id AND g.surface = t.surface LIMIT 1) AS gloss
-        FROM tokens t
-        JOIN verses v ON v.verse_id = t.verse_id
-        WHERE v.division_id = ${Number(division_id)}
-        ORDER BY t.verse_id, t.pos
-      `);
-      if (wfwOut[0]) {
-        for (const [verse_id, pos, surface, gloss] of wfwOut[0].values) {
+      const wfwOut = await db.query(
+        `SELECT t.verse_id, t.pos, t.surface,
+                (SELECT gloss
+                  FROM verse_glosses g
+                  WHERE g.verse_id = t.verse_id
+                    AND g.surface  = t.surface
+                  LIMIT 1) AS gloss
+          FROM tokens t
+          JOIN verses v ON v.verse_id = t.verse_id
+          WHERE v.division_id = $div
+          ORDER BY t.verse_id, t.pos`,
+        { $div: Number(division_id) }
+      );
+      if (wfwOut.rows) {
+        for (const [verse_id, pos, surface, gloss] of wfwOut.rows) {
           const key = Number(verse_id);
           if (!wfwMap.has(key)) wfwMap.set(key, []);
           wfwMap.get(key).push([surface || '', gloss || '']);
@@ -210,5 +214,6 @@
       render();
     });
   </script>
+
 </body>
 </html>

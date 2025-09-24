@@ -45,155 +45,175 @@
       </div>
     </footer>
 
+  <script src="assets/sql_helpers/sql-wasm.js"></script>
+
   <script src="assets/app.js?v={{VERSION}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-verse');
-      window.addEventListener('DOMContentLoaded', async () => {
-        const p = new URLSearchParams(location.search);
-        const bookParam = p.get('book'); // numeric work_id preferred
-        const divisionParam = p.get('d');
-        const chapterParam = p.get('c'); // fallback
-        const verseOrd = Number(p.get('v') || 1);
+  <script type="module">
+    import { loadDb, findWork, query } from './assets/db.js';
+    
+    if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-verse');
+    window.addEventListener('DOMContentLoaded', async () => {
+      const p = new URLSearchParams(location.search);
+      const bookParam = p.get('book'); // numeric work_id preferred
+      const divisionParam = p.get('d');
+      const chapterParam = p.get('c'); // fallback
+      const verseOrd = Number(p.get('v') || 1);
 
-        async function loadDb() {
-          const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
-          const res = await fetch(`data/library.sqlite?v=${Date.now()}`, { cache: 'no-store' });
-          if (!res.ok) throw new Error('Failed to fetch SQLite');
-          const buf = new Uint8Array(await res.arrayBuffer());
-          return new SQL.Database(buf);
+      try {
+        const db = await loadDb();
+        const work = await findWork(bookParam);
+        if (!work) throw new Error('Work not found: ' + bookParam);
+        const work_id = work[0];
+        const title = work[2] || '';
+
+        // Resolve division (chapter)
+        let division_id, division_ord;
+        if (divisionParam) {
+          const di = await db.query(
+            `SELECT division_id, ordinal
+              FROM divisions
+              WHERE division_id = $div AND work_id = $work
+              LIMIT 1`,
+            { $div: Number(divisionParam), $work: Number(work_id) }
+          );
+          const rowd = di.rows?.[0];
+          if (!rowd) throw new Error('Division not found (by id)');
+          division_id = rowd[0];
+          division_ord = rowd[1];
+        } else {
+          const ord = Number(chapterParam || 1);
+          const di = await db.query(
+            `SELECT division_id, ordinal
+              FROM divisions
+              WHERE work_id = $work AND ordinal = $ord
+              LIMIT 1`,
+            { $work: Number(work_id), $ord: Number(ord) }
+          );
+          const rowd = di.rows?.[0];
+          if (!rowd) throw new Error('Division not found (by ordinal)');
+          division_id = rowd[0];
+          division_ord = rowd[1];
         }
 
-        function findWork(db, token) {
-          const isNumeric = /^\d+$/.test(token || '');
-          if (isNumeric) {
-            const out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE work_id=${Number(token)} LIMIT 1`);
-            if (out[0]?.values?.length) return out[0].values[0];
-          }
-          const esc = String(token || '').replace(/'/g, "''");
-          let out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE slug='${esc}' LIMIT 1`);
-          if (out[0]?.values?.length) return out[0].values[0];
-          out = db.exec(`SELECT work_id, slug, title_en FROM works WHERE lower(title_en)=lower('${esc}') LIMIT 1`);
-          return out[0]?.values?.[0] || null;
-        }
+        // Find verse row by ordinal within this division
+        const vrow = await db.query(
+          `SELECT verse_id, ref_citation, ordinal
+            FROM verses
+            WHERE work_id = $work
+              AND division_id = $div
+              AND ordinal = $ord
+            LIMIT 1`,
+          { $work: Number(work_id), $div: Number(division_id), $ord: Number(verseOrd) }
+        );
+        const v = vrow.rows?.[0];
+        if (!v) throw new Error('Verse not found');
+        const verse_id = v[0];
+        const ref = v[1] || `${division_ord}.${verseOrd}`;
 
-        try {
-          const db = await loadDb();
-          const work = findWork(db, bookParam);
-          if (!work) throw new Error('Work not found: ' + bookParam);
-          const work_id = work[0];
-          const title = work[2] || '';
+        // Load verse texts from the wide view
+        const trow = await db.query(
+          `SELECT
+              COALESCE(sa_deva, '') AS sa_deva,
+              COALESCE(sa_iast, '') AS sa_iast,
+              COALESCE(en_translation, '') AS en_translation
+            FROM verse_texts_wide
+            WHERE verse_id = $id
+            LIMIT 1`,
+          { $id: Number(verse_id) }
+        );
+        const tvals = trow.rows?.[0] || ['', '', ''];
+        const sa_deva = tvals[0];
+        const sa_iast = tvals[1];
+        const en = tvals[2];
 
-          // Resolve division (chapter)
-          let division_id, division_ord;
-          if (divisionParam) {
-            const di = db.exec(`SELECT division_id, ordinal FROM divisions WHERE division_id=${Number(divisionParam)} AND work_id=${Number(work_id)} LIMIT 1`);
-            const rowd = di[0]?.values?.[0];
-            if (!rowd) throw new Error('Division not found (by id)');
-            division_id = rowd[0];
-            division_ord = rowd[1];
-          } else {
-            const ord = Number(chapterParam || 1);
-            const di = db.exec(`SELECT division_id, ordinal FROM divisions WHERE work_id=${Number(work_id)} AND ordinal=${ord} LIMIT 1`);
-            const rowd = di[0]?.values?.[0];
-            if (!rowd) throw new Error('Division not found (by ordinal)');
-            division_id = rowd[0];
-            division_ord = rowd[1];
-          }
+        // Word-for-word from tokens + verse_glosses
+        const wfwOut = await db.query(
+          `SELECT
+              t.pos,
+              t.surface,
+              (SELECT gloss
+                FROM verse_glosses g
+                WHERE g.verse_id = t.verse_id
+                  AND g.surface  = t.surface
+                LIMIT 1) AS gloss
+            FROM tokens t
+            WHERE t.verse_id = $id
+            ORDER BY t.pos`,
+          { $id: Number(verse_id) }
+        );
+        const pairs = (wfwOut.rows || []).map(r => [r[1] || '', r[2] || '']);
 
-          // Find verse row by ordinal within this division
-          const vrow = db.exec(`SELECT verse_id, ref_citation, ordinal FROM verses WHERE work_id=${Number(work_id)} AND division_id=${Number(division_id)} AND ordinal=${Number(verseOrd)} LIMIT 1`);
-          const v = vrow[0]?.values?.[0];
-          if (!v) throw new Error('Verse not found');
-          const verse_id = v[0];
-          const ref = v[1] || `${division_ord}.${verseOrd}`;
+        // Render header + crumbs
+        const short = (title || '').split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase();
+        document.getElementById('ref').textContent = `${short} ${ref}`;
+        const crumbs = document.getElementById('crumbs');
+        crumbs.innerHTML = `
+          <a href="index.html">Timeless Words</a>
+          <span>›</span>
+          <a href="book.html?book=${encodeURIComponent(String(work_id))}">${title}</a>
+          <span>›</span>
+          <a href="chapter.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(division_id))}">Chapter ${division_ord}</a>
+        `;
 
-          // Load verse texts from the wide view
-          const trow = db.exec(`
-            SELECT COALESCE(sa_deva,''), COALESCE(sa_iast,''), COALESCE(en_translation,'')
-            FROM verse_texts_wide WHERE verse_id=${Number(verse_id)} LIMIT 1
-          `);
-          const tvals = trow[0]?.values?.[0] || ['', '', ''];
-          const sa_deva = tvals[0];
-          const sa_iast = tvals[1];
-          const en = tvals[2];
+        // Fill sections
+        document.getElementById('devanagari').textContent = sa_deva || '';
+        document.getElementById('iast').textContent = sa_iast || '';
 
-          // Word-for-word from tokens + verse_glosses
-          const wfwOut = db.exec(`
-            SELECT t.pos, t.surface,
-                   (SELECT gloss FROM verse_glosses g WHERE g.verse_id=t.verse_id AND g.surface=t.surface LIMIT 1) AS gloss
-            FROM tokens t WHERE t.verse_id=${Number(verse_id)} ORDER BY t.pos
-          `);
-          const pairs = (wfwOut[0]?.values || []).map(r => [r[1] || '', r[2] || '']);
+        const wfw = document.getElementById('wfw');
+        wfw.innerHTML = '';
+        pairs.forEach(([sk, gloss]) => {
+          if (!sk && !gloss) return;
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="sk">${sk}</span> &mdash; <span class="en">${gloss}</span>`;
+          wfw.appendChild(li);
+        });
+        document.getElementById('translation').textContent = en || '';
 
-          // Render header + crumbs
-          const short = (title || '').split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase();
-          document.getElementById('ref').textContent = `${short} ${ref}`;
-          const crumbs = document.getElementById('crumbs');
-          crumbs.innerHTML = `
-            <a href="index.html">Timeless Words</a>
-            <span>›</span>
-            <a href="book.html?book=${encodeURIComponent(String(work_id))}">${title}</a>
-            <span>›</span>
-            <a href="chapter.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(division_id))}">Chapter ${division_ord}</a>
-          `;
-
-          // Fill sections
-          document.getElementById('devanagari').textContent = sa_deva || '';
-          document.getElementById('iast').textContent = sa_iast || '';
-
-          const wfw = document.getElementById('wfw');
-          wfw.innerHTML = '';
-          pairs.forEach(([sk, gloss]) => {
-            if (!sk && !gloss) return;
-            const li = document.createElement('li');
-            li.innerHTML = `<span class="sk">${sk}</span> &mdash; <span class="en">${gloss}</span>`;
-            wfw.appendChild(li);
-          });
-          document.getElementById('translation').textContent = en || '';
-
-          // Prev/Next verse navigation across chapters
-          const prevQ = db.exec(`
-            SELECT vs.verse_id, d.division_id, d.ordinal AS cord, vs.ordinal AS vord
+        // Prev/Next verse navigation across chapters
+        const prevQ = await db.query(
+          `SELECT vs.verse_id, d.division_id, d.ordinal AS cord, vs.ordinal AS vord
             FROM verses vs
             JOIN divisions d ON d.division_id = vs.division_id
-            WHERE vs.work_id=${Number(work_id)}
-              AND (d.ordinal < ${Number(division_ord)} OR (d.ordinal = ${Number(division_ord)} AND vs.ordinal < ${Number(verseOrd)}))
+            WHERE vs.work_id = $work
+              AND (d.ordinal < $cord OR (d.ordinal = $cord AND vs.ordinal < $vord))
             ORDER BY d.ordinal DESC, vs.ordinal DESC
-            LIMIT 1
-          `);
-          const nextQ = db.exec(`
-            SELECT vs.verse_id, d.division_id, d.ordinal AS cord, vs.ordinal AS vord
+            LIMIT 1`,
+          { $work: Number(work_id), $cord: Number(division_ord), $vord: Number(verseOrd) }
+        );
+        const nextQ = await db.query(
+          `SELECT vs.verse_id, d.division_id, d.ordinal AS cord, vs.ordinal AS vord
             FROM verses vs
             JOIN divisions d ON d.division_id = vs.division_id
-            WHERE vs.work_id=${Number(work_id)}
-              AND (d.ordinal > ${Number(division_ord)} OR (d.ordinal = ${Number(division_ord)} AND vs.ordinal > ${Number(verseOrd)}))
+            WHERE vs.work_id = $work
+              AND (d.ordinal > $cord OR (d.ordinal = $cord AND vs.ordinal > $vord))
             ORDER BY d.ordinal ASC, vs.ordinal ASC
-            LIMIT 1
-          `);
-          const prev = prevQ[0]?.values?.[0];
-          const next = nextQ[0]?.values?.[0];
+            LIMIT 1`,
+          { $work: Number(work_id), $cord: Number(division_ord), $vord: Number(verseOrd) }
+        );
+        const prev = prevQ.rows?.[0];
+        const next = nextQ.rows?.[0];
 
-          const prevEl = document.getElementById('prevVerse');
-          const nextEl = document.getElementById('nextVerse');
-          if (prev) {
-            const dId = prev[1], vOrd = prev[3];
-            prevEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
-            prevEl.style.visibility = 'visible';
-          } else {
-            prevEl.style.visibility = 'hidden';
-          }
-          if (next) {
-            const dId = next[1], vOrd = next[3];
-            nextEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
-            nextEl.style.visibility = 'visible';
-          } else {
-            nextEl.style.visibility = 'hidden';
-          }
-        } catch (err) {
-          console.error('Verse load error', err);
+        const prevEl = document.getElementById('prevVerse');
+        const nextEl = document.getElementById('nextVerse');
+        if (prev) {
+          const dId = prev[1], vOrd = prev[3];
+          prevEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
+          prevEl.style.visibility = 'visible';
+        } else {
+          prevEl.style.visibility = 'hidden';
         }
-      });
-    </script>
+        if (next) {
+          const dId = next[1], vOrd = next[3];
+          nextEl.href = `verse.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(dId))}&v=${encodeURIComponent(String(vOrd))}`;
+          nextEl.style.visibility = 'visible';
+        } else {
+          nextEl.style.visibility = 'hidden';
+        }
+      } catch (err) {
+        console.error('Verse load error', err);
+      }
+    });
+  </script>
+
   </body>
   </html>

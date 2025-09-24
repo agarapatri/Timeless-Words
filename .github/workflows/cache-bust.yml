@@ -9,6 +9,7 @@
 # It triggers on pushes to the main branch, replacing all instances of {{VERSION}} in HTML
 # and CSS files within the docs directory with the current commit hash, ensuring that users
 # always receive the latest versions of assets. Finally, it deploys the updated docs to Git
+# Compute DB_VERSION from the SQLite file’s SHA-256. If the DB doesn’t change, the hash stays the same, so no cache-bust.
 
 
 name: Cache Busting & Deploy
@@ -25,11 +26,65 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Replace {{VERSION}} with commit hash
+      - name: Verify DB exists
         run: |
-          VERSION=${{ github.sha }}
-          find docs -type f -name "*.html" -exec sed -i "s/{{VERSION}}/$VERSION/g" {} +
-          find docs/assets -type f -name "*.css" -exec sed -i "s/{{VERSION}}/$VERSION/g" {} +
+          test -f docs/data/library.sqlite || { echo "docs/data/library.sqlite not found"; exit 1; }
+
+      - name: Compute versions and stage versioned DB
+        run: |
+          APP_VERSION="${{ github.sha }}"
+          ORIG_DB="docs/data/library.sqlite"
+          if [ ! -f "$ORIG_DB" ]; then
+            echo "Missing $ORIG_DB" >&2
+            exit 1
+          fi
+
+          # Hash → short version (12 chars)
+          DB_VERSION="$(sha256sum "$ORIG_DB" | awk '{print $1}' | cut -c1-12)"
+          VER_DB="docs/data/library.${DB_VERSION}.sqlite"
+
+          # Create versioned filename (idempotent)
+          [ -f "$VER_DB" ] || cp "$ORIG_DB" "$VER_DB"
+
+          echo "APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
+          echo "DB_VERSION=$DB_VERSION"   >> $GITHUB_ENV
+          echo "VER_DB=$VER_DB"           >> $GITHUB_ENV
+
+      - name: Replace placeholders
+        run: |
+          # App cache-bust (commit SHA)
+          find docs -type f -name "*.html"  -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
+          find docs/assets -type f -name "*.css" -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
+          find docs/assets -type f -name "*.js"  -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
+
+          # DB versioned FILENAME: replace only where referenced (HTML/JS)
+          find docs -type f -name "*.html" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
+          find docs/assets -type f -name "*.js" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
+
+      - name: Verify staged artifacts & replacements
+        run: |
+          # Versioned DB exists
+          if [ ! -f "$VER_DB" ]; then
+            echo "Versioned DB not found: $VER_DB" >&2; exit 1; fi
+
+          # Original vs versioned integrity (size + sha256)
+          ORIG_DB="docs/data/library.sqlite"
+          ORIG_SIZE=$(stat -c%s "$ORIG_DB")
+          VER_SIZE=$(stat -c%s "$VER_DB")
+          if [ "$ORIG_SIZE" -ne "$VER_SIZE" ]; then
+            echo "Size mismatch: $ORIG_DB ($ORIG_SIZE) vs $VER_DB ($VER_SIZE)" >&2; exit 1; fi
+          ORIG_SHA=$(sha256sum "$ORIG_DB" | awk '{print $1}')
+          VER_SHA=$(sha256sum "$VER_DB" | awk '{print $1}')
+          if [ "$ORIG_SHA" != "$VER_SHA" ]; then
+            echo "Hash mismatch: $ORIG_SHA vs $VER_SHA" >&2; exit 1; fi
+
+          # Ensure placeholders are gone
+          if grep -R "{{VERSION}}" docs; then
+            echo "Unreplaced {{VERSION}} remains" >&2; exit 1; fi
+          if grep -R "{{DB_VERSION}}" docs; then
+            echo "Unreplaced {{DB_VERSION}} remains" >&2; exit 1; fi
+
+          echo "✅ Verify passed."
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
