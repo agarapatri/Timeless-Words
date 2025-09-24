@@ -410,6 +410,7 @@ avifenc --min 20 --max 30 --speed 6 input.jpg output.avif
 
 ## Upcoming Features
 
+* Semantic Search - You will be able to search "Who was the father of Lord Krishna?" and it will return appropriate verses from the entire corpus.
 * Extract search tips into separate file
 * Extract footer into separate file - inspired by
 * Fix bradcrumb navigation in all screens
