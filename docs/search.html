@@ -1,127 +1,125 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Search — Timeless Words</title>
-  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
-    <meta id="favicon-slot">
-  </head>
-  <body>
-    
 
-    <main class="container search-page">
-      <div style="display:flex; justify-content:flex-end; padding-top:8px;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search — Timeless Words</title>
+  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
+  <meta id="favicon-slot">
+</head>
+
+<body>
+  <main class="container search-page">
+
+    <a class="back-link" href="index.html">← Back</a>
+
+    <div class="titlebar">
+      <h1 class="title">Deep Search</h1>
+
+      <button id="search-help-btn" type="button" class="help-btn" aria-label="Search help" aria-haspopup="dialog" aria-expanded="false" aria-controls="search-help-popover">?</button>
+
+      <div class="hero-actions">
         <div id="menuSlot-search" class="menu-wrap"></div>
       </div>
-      <a class="back-link" href="index.html">← Back</a>
-      
-      <div class="titlebar">
-        <h1 class="title">Deep Search</h1>
 
-          <button id="search-help-btn" type="button" class="help-btn"
-                  aria-label="Search help" aria-haspopup="dialog" aria-expanded="false"
-                  aria-controls="search-help-popover">?</button>
+      <div id="search-help-popover" class="help-popover" role="dialog" aria-modal="true" aria-labelledby="search-help-title" hidden>
+        <div class="help-header">
+          <h2 id="search-help-title">Search tips</h2>
+          <button type="button" class="close-btn" aria-label="Close">✕</button>
+        </div>
+        <div class="help-content">
 
-          <div id="search-help-popover" class="help-popover" role="dialog"
-              aria-modal="true" aria-labelledby="search-help-title" hidden>
-            <div class="help-header">
-              <h2 id="search-help-title">Search tips</h2>
-              <button type="button" class="close-btn" aria-label="Close">✕</button>
-            </div>
-            <div class="help-content">
+          <p><strong>Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
+          <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
+          <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
+          <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
+          <hr>
 
-              <p><strong>Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
-              <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
-              <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
-              <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
-              <hr>
+          <!-- Accordion trigger -->
+          <button id="regex-acc-btn" class="acc-btn" aria-expanded="false" aria-controls="regex-acc-panel">
+            Advanced tips
+            <svg class="chev" width="18" height="18" aria-hidden="true">
+              <use href="icons/chev.svg?v={{VERSION}}#icon-chev"></use>
+            </svg>
+          </button>
 
-              <!-- Accordion trigger -->
-              <button id="regex-acc-btn" class="acc-btn"
-                      aria-expanded="false" aria-controls="regex-acc-panel">
-                Advanced tips
-                <svg class="chev" width="18" height="18" aria-hidden="true">
-                  <use href="icons/chev.svg?v={{VERSION}}#icon-chev"></use>
-                </svg>
-              </button>
+          <!-- Accordion panel -->
+          <div id="regex-acc-panel" class="acc-panel" hidden style="margin-top:8px;">
+            <ul class="cheatsheet" style="columns:1; gap:24px; list-style:none; padding:0; margin:10px 0;">
+              <li><code>śiva</code> — literal</li>
+              <li><code>ś.va</code> — dot = any char</li>
+              <li><code>viṣṇu.*parama</code> — any chars between</li>
+              <li><code>rudr+a</code> — one or more</li>
+              <li><code>śiv?a</code> — zero or one</li>
+              <li><code>śiva|śambhu</code> — alternation</li>
+              <li><code>(hari|viṣṇu)nāma</code> — grouping</li>
+              <li><code>[sr]āma</code> — character class</li>
+              <li><code>[0-9]+</code> — numbers</li>
+              <li><code>[^a-zA-Z]</code> — not a letter</li>
+              <li><code>^namaḥ</code> — start of line</li>
+              <li><code>śivāya$</code> — end of line</li>
+              <li><code>\bparama\b</code> — whole word</li>
+              <li><code>\Bparama</code> — inside word</li>
+              <li><code>a{2,4}</code> — 2 to 4 times</li>
+              <li><code>(śrī\s)?kṛṣṇa</code> — optional group</li>
+              <li><code>\(1\.2\.19\)</code> — escape specials</li>
+              <li><code>śiva(?=.*parama)</code> — lookahead</li>
+              <li><code>śiva(?! paramātmā)</code> — neg. lookahead</li>
+              <li><code>(?i)viṣṇu</code> — case-insensitive</li>
+            </ul>
 
-              <!-- Accordion panel -->
-              <div id="regex-acc-panel" class="acc-panel" hidden style="margin-top:8px;">
-                <ul class="cheatsheet" style="columns:1; gap:24px; list-style:none; padding:0; margin:10px 0;">
-                  <li><code>śiva</code> — literal</li>
-                  <li><code>ś.va</code> — dot = any char</li>
-                  <li><code>viṣṇu.*parama</code> — any chars between</li>
-                  <li><code>rudr+a</code> — one or more</li>
-                  <li><code>śiv?a</code> — zero or one</li>
-                  <li><code>śiva|śambhu</code> — alternation</li>
-                  <li><code>(hari|viṣṇu)nāma</code> — grouping</li>
-                  <li><code>[sr]āma</code> — character class</li>
-                  <li><code>[0-9]+</code> — numbers</li>
-                  <li><code>[^a-zA-Z]</code> — not a letter</li>
-                  <li><code>^namaḥ</code> — start of line</li>
-                  <li><code>śivāya$</code> — end of line</li>
-                  <li><code>\bparama\b</code> — whole word</li>
-                  <li><code>\Bparama</code> — inside word</li>
-                  <li><code>a{2,4}</code> — 2 to 4 times</li>
-                  <li><code>(śrī\s)?kṛṣṇa</code> — optional group</li>
-                  <li><code>\(1\.2\.19\)</code> — escape specials</li>
-                  <li><code>śiva(?=.*parama)</code> — lookahead</li>
-                  <li><code>śiva(?! paramātmā)</code> — neg. lookahead</li>
-                  <li><code>(?i)viṣṇu</code> — case-insensitive</li>
-                </ul>
-                
-                <p class="dim" style="color:#64748b; margin-top:12px;">
-                  Learn & test interactively:
-                  <a href="https://regex101.com/" target="_blank" rel="noopener">regex101.com</a>
-                </p>
-              </div>
-            </div>
+            <p class="dim" style="color:#64748b; margin-top:12px;">
+              Learn & test interactively:
+              <a href="https://regex101.com/" target="_blank" rel="noopener">regex101.com</a>
+            </p>
           </div>
-        </h1>
+        </div>
       </div>
+      </h1>
+    </div>
 
-      <div class="search-layout">
-        <section class="search-main">
-          
-          <form id="filters" class="filters" onsubmit="return false;">
-            <div class="filter" style="grid-column: span 12; position:relative;">
-              <input id="q" type="search" placeholder="Search (regex, phrases, wildcards)…" aria-label="Deep search">
-            </div>
+    <div class="search-layout">
+      <section class="search-main">
 
-            <div class="chipbar" id="chipbar">
-              <button type="button" class="active" data-scope="deva" aria-pressed="true">Devanāgarī</button>
-              <button type="button" class="active" data-scope="iast" aria-pressed="true">IAST</button>
-              <button type="button" class="active" data-scope="trans" aria-pressed="true">Translation</button>
-              <button type="button" class="active" data-scope="wfw" aria-pressed="true">Word-for-word</button>
-            </div>
-          </form>
+        <form id="filters" class="filters" onsubmit="return false;">
+          <div class="filter" style="grid-column: span 12; position:relative;">
+            <input id="q" type="search" placeholder="Search (regex, phrases, wildcards)…" aria-label="Deep search">
+          </div>
 
-  <script src="assets/sql_helpers/sql-wasm.js"></script>
-  
-  <script>
-          (function(){
-            const btn   = document.getElementById('search-help-btn');
-            const pop   = document.getElementById('search-help-popover');
+          <div class="chipbar" id="chipbar">
+            <button type="button" class="active" data-scope="deva" aria-pressed="true">Devanāgarī</button>
+            <button type="button" class="active" data-scope="iast" aria-pressed="true">IAST</button>
+            <button type="button" class="active" data-scope="trans" aria-pressed="true">Translation</button>
+            <button type="button" class="active" data-scope="wfw" aria-pressed="true">Word-for-word</button>
+          </div>
+        </form>
+
+        <script src="assets/sql_helpers/sql-wasm.js"></script>
+
+        <script>
+          (function () {
+            const btn = document.getElementById('search-help-btn');
+            const pop = document.getElementById('search-help-popover');
             const inner = pop?.querySelector('.help-inner');
             const close = pop?.querySelector('.close-btn');
             const input = document.getElementById('q');
-            const accBtn   = document.getElementById('regex-acc-btn');
+            const accBtn = document.getElementById('regex-acc-btn');
             const accPanel = document.getElementById('regex-acc-panel');
 
             if (btn && pop) {
               let open = false;
-              function show(){ pop.hidden = false; open = true; btn.setAttribute('aria-expanded','true'); requestAnimationFrame(()=> inner?.focus()); document.addEventListener('keydown', onKey); document.addEventListener('click', onDocClick, true); }
-              function hide(){ pop.hidden = true;  open = false; btn.setAttribute('aria-expanded','false'); document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDocClick, true); btn.focus(); }
-              function onKey(e){ if(e.key === 'Escape') hide(); }
-              function onDocClick(e){ if(!pop.contains(e.target) && e.target !== btn) hide(); }
-              btn.addEventListener('click', ()=> pop.hidden ? show() : hide());
+              function show() { pop.hidden = false; open = true; btn.setAttribute('aria-expanded', 'true'); requestAnimationFrame(() => inner?.focus()); document.addEventListener('keydown', onKey); document.addEventListener('click', onDocClick, true); }
+              function hide() { pop.hidden = true; open = false; btn.setAttribute('aria-expanded', 'false'); document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDocClick, true); btn.focus(); }
+              function onKey(e) { if (e.key === 'Escape') hide(); }
+              function onDocClick(e) { if (!pop.contains(e.target) && e.target !== btn) hide(); }
+              btn.addEventListener('click', () => pop.hidden ? show() : hide());
               close?.addEventListener('click', hide);
             }
 
             // Accordion
             if (accBtn && accPanel) {
-              accBtn.addEventListener('click', ()=>{
+              accBtn.addEventListener('click', () => {
                 const expanded = accBtn.getAttribute('aria-expanded') === 'true';
                 accBtn.setAttribute('aria-expanded', String(!expanded));
                 accPanel.hidden = expanded;
@@ -140,68 +138,67 @@
                 'Try regex: /viṣṇu.*nārāyaṇa/'
               ];
               let i = 0;
-              setInterval(()=> {
+              setInterval(() => {
                 if (document.activeElement === input) return;
-                i = (i+1) % tips.length;
+                i = (i + 1) % tips.length;
                 input.placeholder = tips[i];
               }, 3000);
             }
           })();
-          </script>
-          <div id="resultsInfo" class="results-info" aria-live="polite"></div>
-          <ol id="results" class="results-list" aria-live="polite"></ol>
-        </section>
+        </script>
+        <div id="resultsInfo" class="results-info" aria-live="polite"></div>
+        <ol id="results" class="results-list" aria-live="polite"></ol>
+      </section>
 
-        <aside class="search-side">
-          <!-- Filter by book type -->
-          <div class="filter" id="fTypes">
-            <div class="panel-header2">
-              <div class="panel-title">Book Type</div>
-              <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
-            </div>
-            <div class="book-box">
-              <div id="typeChecklist" class="checklist"></div>
-            </div>
+      <aside class="search-side">
+        <!-- Filter by book type -->
+        <div class="filter" id="fTypes">
+          <div class="panel-header2">
+            <div class="panel-title">Book Type</div>
+            <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
           </div>
-
-          <!-- Filter by specific books -->
-          <div class="filter" id="fBooks">
-            <div class="panel-header2">
-              <div class="panel-title">Book</div>
-              <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
-            </div>
-            <div class="book-box">
-              <div class="filter">
-                <input type="search" id="bookSearch" placeholder="Search books…" aria-label="Search books">
-              </div>
-              <div id="bookChecklist" class="checklist"></div>
-            </div>
+          <div class="book-box">
+            <div id="typeChecklist" class="checklist"></div>
           </div>
-        </aside>
+        </div>
+
+        <!-- Filter by specific books -->
+        <div class="filter" id="fBooks">
+          <div class="panel-header3">
+            <div class="panel-title">Book</div>
+            <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
+          </div>
+          <div class="book-box">
+            <div class="filter">
+              <input type="search" id="bookSearch" placeholder="Search books…" aria-label="Search books">
+            </div>
+            <div id="bookChecklist" class="checklist"></div>
+          </div>
+        </div>
+      </aside>
 
 
-      </div>
-    </main>
+    </div>
+  </main>
 
 
-    <footer class="site-footer">
-      <div class="container">
-        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
-      </div>
-    </footer>
+  <footer class="site-footer">
+    <div class="container">
+      <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+    </div>
+  </footer>
 
   <!-- sql.js loader (classic, must come first) -->
   <script src="assets/sql_helpers/sql-wasm.js"></script>
 
-  <!-- your app helpers (module ok if it imports stuff) -->
-  <script type="module" src="assets/app.js?v={{VERSION}}"></script>
-
-  <script>
-    if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-search');
+  <script type="module">
+    import "./assets/app.js?v={{VERSION}}";
+    window.Library?.injectMenu("#menuSlot-search");
   </script>
 
   <!-- search logic is an ES module because it imports ./db.js -->
   <script type="module" src="assets/search.js?v={{VERSION}}"></script>
 
-  </body>
-  </html>
+</body>
+
+</html>

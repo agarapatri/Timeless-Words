@@ -1,8 +1,10 @@
-import { DB_URL, SQL_WASM_URL } from './constants.js';
+import { DB_URL, SQL_WASM_URL } from "./constants.js";
 
-const initSqlJs = globalThis.initSqlJs;  // provided by the classic script tag
-if (typeof initSqlJs !== 'function') {
-  throw new Error('sql.js: initSqlJs global missing (check the <script src=".../sql-wasm.js"> tag)');
+const initSqlJs = globalThis.initSqlJs; // provided by the classic script tag
+if (typeof initSqlJs !== "function") {
+  throw new Error(
+    'sql.js: initSqlJs global missing (check the <script src=".../sql-wasm.js"> tag)'
+  );
 }
 
 let _dbPromise;
@@ -12,12 +14,13 @@ export async function loadDb() {
   _dbPromise = (async () => {
     // 1) Init sql.js using your local wasm
     const SQL = await initSqlJs({
-      locateFile: () => SQL_WASM_URL
+      locateFile: () => SQL_WASM_URL,
     });
 
     // 2) Fetch the DB and open it in-memory (read-only)
     const resp = await fetch(DB_URL);
-    if (!resp.ok) throw new Error(`Failed to fetch DB: ${resp.status} ${resp.statusText}`);
+    if (!resp.ok)
+      throw new Error(`Failed to fetch DB: ${resp.status} ${resp.statusText}`);
     const buf = await resp.arrayBuffer();
     const db = new SQL.Database(new Uint8Array(buf));
 
@@ -31,7 +34,7 @@ export async function loadDb() {
         const columns = stmt.getColumnNames();
         stmt.free();
         return { columns, rows };
-      }
+      },
     };
   })();
 
@@ -46,21 +49,21 @@ export async function query(sql, params) {
 // (optional) if you need it again
 export async function findWork(token) {
   const db = await loadDb();
-  const t = String(token ?? '');
+  const t = String(token ?? "");
   if (/^\d+$/.test(t)) {
     const r = await db.query(
-      'SELECT work_id, slug, title_en, author FROM works WHERE work_id = ? LIMIT 1',
+      "SELECT work_id, slug, title_en, author FROM works WHERE work_id = ? LIMIT 1",
       [Number(t)]
     );
     return r.rows?.[0] ?? null;
   }
   const r1 = await db.query(
-    'SELECT work_id, slug, title_en, author FROM works WHERE slug = ? LIMIT 1',
+    "SELECT work_id, slug, title_en, author FROM works WHERE slug = ? LIMIT 1",
     [t]
   );
   if (r1.rows?.length) return r1.rows[0];
   const r2 = await db.query(
-    'SELECT work_id, slug, title_en, author FROM works WHERE lower(title_en)=lower(?) LIMIT 1',
+    "SELECT work_id, slug, title_en, author FROM works WHERE lower(title_en)=lower(?) LIMIT 1",
     [t]
   );
   return r2.rows?.[0] ?? null;

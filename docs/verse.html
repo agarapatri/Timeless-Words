@@ -1,56 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Verse — Timeless Words</title>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verse — Timeless Words</title>
   <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
-    <meta id="favicon-slot">
-  </head>
-  <body>
-    
+  <meta id="favicon-slot">
+</head>
 
-    <main class="container verse-page">
-      <nav class="crumbs" id="crumbs"></nav>
-      <div class="verse-head" style="position:relative;">
-        <h1 id="ref" class="verse-ref notranslate" translate="no" style="margin:0"></h1>
-        <div id="menuSlot-verse" class="menu-wrap" style="position:absolute; right:0; top:50%; transform:translateY(-50%);"></div>
-      </div>
+<body>
 
-      <section class="verse-block">
-        <h2>Sanskrit (Devanāgarī)</h2>
-        <pre id="devanagari" class="devanagari"></pre>
-      </section>
-      <section class="verse-block">
-        <h2>Sanskrit (IAST)</h2>
-        <pre id="iast" class="iast"></pre>
-      </section>
-      <section class="verse-block">
-        <h2>Word-for-word</h2>
-        <ul id="wfw" class="wfw"></ul>
-      </section>
-      <section class="verse-block">
-        <h2>Translation</h2>
-        <p id="translation" class="translation"></p>
-      </section>
 
-      <div class="pager" id="verseNav" style="justify-content: space-between;">
-        <a id="prevVerse" class="btn ghost nav-btn" href="#">‹ Prev verse</a>
-        <a id="nextVerse" class="btn ghost nav-btn" href="#">Next verse ›</a>
-      </div>
-    </main>
-    <footer class="site-footer">
-      <div class="container">
-        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
-      </div>
-    </footer>
+  <main class="container verse-page">
+    <nav class="crumbs" id="crumbs"></nav>
+    <div class="verse-head" style="position:relative;">
+      <h1 id="ref" class="verse-ref notranslate" translate="no" style="margin:0"></h1>
+      <div id="menuSlot-verse" class="menu-wrap" style="position:absolute; right:0; top:50%; transform:translateY(-50%);"></div>
+    </div>
+
+    <section class="verse-block">
+      <h2>Sanskrit (Devanāgarī)</h2>
+      <pre id="devanagari" class="devanagari"></pre>
+    </section>
+    <section class="verse-block">
+      <h2>Sanskrit (IAST)</h2>
+      <pre id="iast" class="iast"></pre>
+    </section>
+    <section class="verse-block">
+      <h2>Word-for-word</h2>
+      <ul id="wfw" class="wfw"></ul>
+    </section>
+    <section class="verse-block">
+      <h2>Translation</h2>
+      <p id="translation" class="translation"></p>
+    </section>
+
+    <div class="pager" id="verseNav" style="justify-content: space-between;">
+      <a id="prevVerse" class="btn ghost nav-btn" href="#">‹ Prev verse</a>
+      <a id="nextVerse" class="btn ghost nav-btn" href="#">Next verse ›</a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+    </div>
+  </footer>
 
   <script src="assets/sql_helpers/sql-wasm.js"></script>
 
   <script src="assets/app.js?v={{VERSION}}"></script>
   <script type="module">
     import { loadDb, findWork, query } from './assets/db.js';
-    
+
     if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-verse');
     window.addEventListener('DOMContentLoaded', async () => {
       const p = new URLSearchParams(location.search);
@@ -144,7 +146,7 @@
         const pairs = (wfwOut.rows || []).map(r => [r[1] || '', r[2] || '']);
 
         // Render header + crumbs
-        const short = (title || '').split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase();
+        const short = (title || '').split(/\s+/).map(s => s[0]).join('').slice(0, 2).toUpperCase();
         document.getElementById('ref').textContent = `${short} ${ref}`;
         const crumbs = document.getElementById('crumbs');
         crumbs.innerHTML = `
@@ -215,5 +217,6 @@
     });
   </script>
 
-  </body>
-  </html>
+</body>
+
+</html>

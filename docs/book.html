@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book — Timeless Words</title>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book — Timeless Words</title>
   <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
-    <meta id="favicon-slot">
-  </head>
-  <body>
-    
+  <meta id="favicon-slot">
+</head>
+
+<body>
+
   <main class="container book-page">
     <a class="back-link" href="index.html">← Back to Library</a>
     <div class="book-header" style="margin-top:8px; position:relative;">
@@ -36,52 +38,52 @@
   <script src="assets/sql_helpers/sql-wasm.js"></script>
 
   <script src="assets/app.js?v={{VERSION}}"></script>
-    <script type="module">
-      import { loadDb, findWork } from './assets/db.js';
+  <script type="module">
+    import { loadDb, findWork } from './assets/db.js';
 
-      if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-book');
-      // Helpers shared with home page
-      function initialsFromTitle(title='') {
-        const parts = String(title).trim().split(/\s+/).filter(Boolean).slice(0,2);
-        if (!parts.length) return '';
-        if (parts.length === 1) return parts[0][0].toUpperCase();
-        return (parts[0][0] + parts[1][0]).toUpperCase();
-      }
+    if (window.Library && window.Library.injectMenu) window.Library.injectMenu('#menuSlot-book');
+    // Helpers shared with home page
+    function initialsFromTitle(title = '') {
+      const parts = String(title).trim().split(/\s+/).filter(Boolean).slice(0, 2);
+      if (!parts.length) return '';
+      if (parts.length === 1) return parts[0][0].toUpperCase();
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
 
-      function plural(n, s) { return `${n} ${n === 1 ? s : s + 's'}`; }
+    function plural(n, s) { return `${n} ${n === 1 ? s : s + 's'}`; }
 
-      window.addEventListener('DOMContentLoaded', async () => {
-        const params = new URLSearchParams(location.search);
-        const q = params.get('book') || '';
+    window.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(location.search);
+      const q = params.get('book') || '';
 
-        const db = await loadDb();
-        const row = await findWork(q);
-        if (!row) { console.error('Book not found in DB:', q); return; }
-        const [work_id, slug, title, authorRaw] = row;
-        const author = authorRaw || 'Unknown';
+      const db = await loadDb();
+      const row = await findWork(q);
+      if (!row) { console.error('Book not found in DB:', q); return; }
+      const [work_id, slug, title, authorRaw] = row;
+      const author = authorRaw || 'Unknown';
 
-        // Header: cover/title/author
-        const cover = document.getElementById('bookCover');
-        cover.textContent = initialsFromTitle(title);
-        document.getElementById('bookTitle').textContent = title;
-        document.getElementById('bookAuthor').textContent = `by ${author}`;
+      // Header: cover/title/author
+      const cover = document.getElementById('bookCover');
+      cover.textContent = initialsFromTitle(title);
+      document.getElementById('bookTitle').textContent = title;
+      document.getElementById('bookAuthor').textContent = `by ${author}`;
 
-        // Counts (chapters and verses)
-        const countsOut = await db.query(
-          `SELECT
+      // Counts (chapters and verses)
+      const countsOut = await db.query(
+        `SELECT
               COUNT(DISTINCT division_id) AS chapters,
               COUNT(*) AS verses
             FROM verses
             WHERE work_id = $work`,
-          { $work: Number(work_id) }
-        );
-        const countsVal = countsOut.rows?.[0] || [0,0];
-        const chapterCount = countsVal[0] || 0;
-        const verseCount = countsVal[1] || 0;
-        document.getElementById('bookCounts').textContent = `${plural(chapterCount,'chapter')} · ${plural(verseCount,'verse')}`;
+        { $work: Number(work_id) }
+      );
+      const countsVal = countsOut.rows?.[0] || [0, 0];
+      const chapterCount = countsVal[0] || 0;
+      const verseCount = countsVal[1] || 0;
+      document.getElementById('bookCounts').textContent = `${plural(chapterCount, 'chapter')} · ${plural(verseCount, 'verse')}`;
 
-        // Chapters list with verse counts
-        const chOut = await db.query(
+      // Chapters list with verse counts
+      const chOut = await db.query(
         `SELECT d.division_id, d.ordinal, d.label, COUNT(v.verse_id) AS verses
           FROM divisions d
           JOIN verses v ON v.division_id = d.division_id
@@ -90,27 +92,28 @@
           ORDER BY d.ordinal`,
         { $work: Number(work_id) }
       );
-        const chapters = (chOut.rows || []).map(r => ({
-          id: r[0],
-          number: r[1],
-          label: r[2] || `Chapter ${r[1]}`,
-          verses: r[3] || 0
-        }));
+      const chapters = (chOut.rows || []).map(r => ({
+        id: r[0],
+        number: r[1],
+        label: r[2] || `Chapter ${r[1]}`,
+        verses: r[3] || 0
+      }));
 
-        const list = document.getElementById('chaptersList');
-        list.innerHTML = '';
-        chapters.forEach(ch => {
-          const a = document.createElement('a');
-          a.className = 'chapter-card';
-          const bookParam = String(work_id); // use numeric for stability
-          a.href = `chapter.html?book=${encodeURIComponent(bookParam)}&d=${encodeURIComponent(ch.id)}`;
-          a.innerHTML = `
+      const list = document.getElementById('chaptersList');
+      list.innerHTML = '';
+      chapters.forEach(ch => {
+        const a = document.createElement('a');
+        a.className = 'chapter-card';
+        const bookParam = String(work_id); // use numeric for stability
+        a.href = `chapter.html?book=${encodeURIComponent(bookParam)}&d=${encodeURIComponent(ch.id)}`;
+        a.innerHTML = `
             <div class="chapter-title">Chapter ${ch.number}: ${ch.label}</div>
-            <div class="chapter-sub muted">${plural(ch.verses,'verse')}</div>
+            <div class="chapter-sub muted">${plural(ch.verses, 'verse')}</div>
           `;
-          list.appendChild(a);
-        });
+        list.appendChild(a);
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

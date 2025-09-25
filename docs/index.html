@@ -1,222 +1,221 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Timeless Words</title>
-    <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
-    <meta id="favicon-slot">
-    
-  </head>
-  <body>
 
-    <main class="container home">
-      <section class="hero">
-        <div class="hero-top">
-          <div>
-            <h1 class="title"><a href="https://agarapatri.github.io/Timeless-Words/index.html">Timeless Words</a></h1>
-            <div class="muted">Collection of Vedic texts</div>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timeless Words</title>
+  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
+  <meta id="favicon-slot">
+</head>
 
-          <div class="hero-actions">
-            <a class="btn btn-outline thin btn-deep" href="search.html" aria-label="Go to Deep Search">
-              <span class="icon" aria-hidden="true">
-                <svg width="16" height="16" aria-hidden="true">
-                  <use href="icons/search.svg?v={{VERSION}}"></use>
-                </svg>
-              </span>
-              Deep Search
-            </a>
-            <div id="menuSlot-home" class="menu-wrap"></div>
-          </div>
+<body>
+
+  <main class="container home">
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <h1 class="title"><a href="https://agarapatri.github.io/Timeless-Words/index.html">Timeless Words</a></h1>
+          <div class="muted">Collection of Vedic texts</div>
         </div>
 
-         <!-- Banner Section -->
-        <section class="banner">
-          <img src="icons/banner.avif?v={{VERSION}}" alt="Banner" class="banner-img">
-        </section>
-
-        <form class="search-bar home-filter" action="#" id="homeFilterForm">
-          <input id="homeFilterInput" class="home-filter-input" type="search" name="q"
-                placeholder="Filter library by title or author…" aria-label="Filter library" />
-
-          <div class="type-filter">
-            <button id="typeBtn" class="type-icon-btn type-trigger" type="button"
-                    aria-label="Filter by type" aria-haspopup="true" aria-expanded="false" aria-controls="typePanel">
-              <!-- Filter icon (uses currentColor for light/dark) -->
-              <svg class="icon" width="20" height="20" aria-hidden="true">
-                <use href="icons/filter.svg?v={{VERSION}}#icon-filter"></use>
+        <div class="hero-actions">
+          <a class="btn btn-outline thin btn-deep" href="search.html" aria-label="Go to Deep Search">
+            <span class="icon" aria-hidden="true">
+              <svg width="16" height="16" aria-hidden="true">
+                <use href="icons/search.svg?v={{VERSION}}"></use>
               </svg>
-            </button>
+            </span>
+            Deep Search
+          </a>
+          <div id="menuSlot-home" class="menu-wrap"></div>
+        </div>
+      </div>
 
-            <!-- Popover -->
-            <div id="typePanel" class="type-popover panel" hidden>
-              <div class="panel-header">
-                <div class="panel-title">Book Type</div>
-                <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
-              </div>
-              <div class="panel-body">
-                <div class="type-list"><!-- checkboxes injected by JS --></div>
-              </div>
+      <!-- Banner Section -->
+      <section class="banner">
+        <img src="icons/banner.avif?v={{VERSION}}" alt="Banner" class="banner-img">
+      </section>
+
+      <form class="search-bar home-filter" action="#" id="homeFilterForm">
+        <input id="homeFilterInput" class="home-filter-input" type="search" name="q" placeholder="Filter library by title or author…" aria-label="Filter library" />
+
+        <div class="type-filter">
+          <button id="typeBtn" class="type-icon-btn type-trigger" type="button" aria-label="Filter by type" aria-haspopup="true" aria-expanded="false" aria-controls="typePanel">
+            <!-- Filter icon (uses currentColor for light/dark) -->
+            <svg class="icon" width="20" height="20" aria-hidden="true">
+              <use href="icons/filter.svg?v={{VERSION}}#icon-filter"></use>
+            </svg>
+          </button>
+
+          <!-- Popover -->
+          <div id="typePanel" class="type-popover panel" hidden>
+            <div class="panel-header">
+              <div class="panel-title">Book Type</div>
+              <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
+            </div>
+            <div class="panel-body">
+              <div class="type-list"><!-- checkboxes injected by JS --></div>
             </div>
           </div>
-        </form>
+        </div>
+      </form>
 
-      </section>
-      <section>
-        <h2 class="section-title" style="margin-top:0px">
-          Books <span id="booksCount" class="count" style="font-weight:400"></span>
-        </h2>
-        <div id="booksGrid" class="books-grid" aria-live="polite"></div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="container">
-        <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
-      </div>
-    </footer>
+    </section>
+    <section>
+      <h2 class="section-title" style="margin-top:0px">
+        Books <span id="booksCount" class="count" style="font-weight:400"></span>
+      </h2>
+      <div id="booksGrid" class="books-grid" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
+    </div>
+  </footer>
 
-    
+
   <script src="assets/sql_helpers/sql-wasm.js"></script>
 
   <script type="module" src="assets/app.js?v={{VERSION}}"></script>
-    <script type="module">
-      import { query } from './assets/db.js';
+  <script type="module">
+    import { query } from './assets/db.js';
 
-      window.addEventListener('DOMContentLoaded', async () => {
-        window.Library?.injectMenu?.('#menuSlot-home');
+    window.addEventListener('DOMContentLoaded', async () => {
+      window.Library?.injectMenu?.('#menuSlot-home');
 
-        // Load books and work types from SQLite
-        async function loadFromSQLite() {
-          const typesOut = await query('SELECT code, label FROM work_types ORDER BY label');
-          const types = typesOut.rows.map(([code,label]) => ({ code, label }));
+      // Load books and work types from SQLite
+      async function loadFromSQLite() {
+        const typesOut = await query('SELECT code, label FROM work_types ORDER BY label');
+        const types = typesOut.rows.map(([code, label]) => ({ code, label }));
 
-          const worksOut = await query(`
+        const worksOut = await query(`
             SELECT w.work_id, w.slug, w.title_en, w.author, w.work_type_code,
                   (SELECT COUNT(*) FROM divisions d WHERE d.work_id = w.work_id) AS chapters,
                   (SELECT COUNT(*) FROM verses v WHERE v.work_id = w.work_id) AS verses
             FROM works w ORDER BY w.title_en
           `);
-          const works = worksOut.rows.map(r => ({
-            work_id: r[0], 
-            slug: r[1], 
-            title: r[2] || '', 
-            author: r[3] || 'Unknown',
-            type: r[4] || '', 
-            chapters: r[5], 
-            verses: r[6], 
-            id: r[1] || String(r[0]), 
-            image: ''
-          }));
-          return { works, types };
-        }
+        const works = worksOut.rows.map(r => ({
+          work_id: r[0],
+          slug: r[1],
+          title: r[2] || '',
+          author: r[3] || 'Unknown',
+          type: r[4] || '',
+          chapters: r[5],
+          verses: r[6],
+          id: r[1] || String(r[0]),
+          image: ''
+        }));
+        return { works, types };
+      }
 
-        let books = [];
-        let workTypes = [];
-        try {
-          const loaded = await loadFromSQLite();
-          books = loaded.works;
-          workTypes = loaded.types;
-          console.log('Loaded books:', books.length);
-          console.log('Loaded work types:', workTypes.length);
-        } catch (e) {
-          console.error('SQLite load error:', e);
-          books = [];
-          workTypes = [];
-        }
+      let books = [];
+      let workTypes = [];
+      try {
+        const loaded = await loadFromSQLite();
+        books = loaded.works;
+        workTypes = loaded.types;
+        console.log('Loaded books:', books.length);
+        console.log('Loaded work types:', workTypes.length);
+      } catch (e) {
+        console.error('SQLite load error:', e);
+        books = [];
+        workTypes = [];
+      }
 
-        // Elements
-        const grid       = document.getElementById('booksGrid');
-        const booksCount = document.getElementById('booksCount');
-        const input      = document.getElementById('homeFilterInput');
+      // Elements
+      const grid = document.getElementById('booksGrid');
+      const booksCount = document.getElementById('booksCount');
+      const input = document.getElementById('homeFilterInput');
 
-        const typeBtn    = document.getElementById('typeBtn');
-        const typePanel  = document.getElementById('typePanel');
-        const typeList   = typePanel.querySelector('.type-list');
-        const typeClear  = document.getElementById('typeClear');
+      const typeBtn = document.getElementById('typeBtn');
+      const typePanel = document.getElementById('typePanel');
+      const typeList = typePanel.querySelector('.type-list');
+      const typeClear = document.getElementById('typeClear');
 
-        // Build checkbox list from work_types
-        workTypes.forEach(({ code, label }) => {
-          const row = document.createElement('label');
-          row.className = 'type-item';
-          row.innerHTML = `
+      // Build checkbox list from work_types
+      workTypes.forEach(({ code, label }) => {
+        const row = document.createElement('label');
+        row.className = 'type-item';
+        row.innerHTML = `
             <input type="checkbox" name="bookType" value="${code}" checked>
             <span>${label}</span>
           `;
-          typeList.appendChild(row);
-        });
-        // One initial apply (not a second DOM iteration over checkboxes)
+        typeList.appendChild(row);
+      });
+      // One initial apply (not a second DOM iteration over checkboxes)
+      filter(input.value);
+
+      // Open/close popover (click + ESC + click-away)
+      function openType() {
+        typePanel.hidden = false;
+        typeBtn.setAttribute('aria-expanded', 'true');
+        const first = typePanel.querySelector('input[type="checkbox"]');
+        if (first) first.focus({ preventScroll: true });
+        document.addEventListener('click', onAway, { capture: true });
+        document.addEventListener('keydown', onEsc, { capture: true });
+      }
+      function closeType() {
+        typePanel.hidden = true;
+        typeBtn.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', onAway, { capture: true });
+        document.removeEventListener('keydown', onEsc, { capture: true });
+      }
+      function onAway(e) {
+        if (typePanel.contains(e.target) || typeBtn.contains(e.target)) return;
+        closeType();
+      }
+      function onEsc(e) { if (e.key === 'Escape') closeType(); }
+      typeBtn.addEventListener('click', () => typePanel.hidden ? openType() : closeType());
+
+      // Selection utilities
+      function selectedTypes() {
+        const set = new Set();
+        typePanel.querySelectorAll('input[name="bookType"]:checked').forEach(cb => set.add(cb.value));
+        return set;
+      }
+      typePanel.addEventListener('change', () => filter(input.value));
+      typeClear.addEventListener('click', () => {
+        typePanel.querySelectorAll('input[name="bookType"]').forEach(cb => cb.checked = false);
         filter(input.value);
+      });
 
-        // Open/close popover (click + ESC + click-away)
-        function openType() {
-          typePanel.hidden = false;
-          typeBtn.setAttribute('aria-expanded', 'true');
-          const first = typePanel.querySelector('input[type="checkbox"]');
-          if (first) first.focus({ preventScroll: true });
-          document.addEventListener('click', onAway, { capture: true });
-          document.addEventListener('keydown', onEsc, { capture: true });
-        }
-        function closeType() {
-          typePanel.hidden = true;
-          typeBtn.setAttribute('aria-expanded', 'false');
-          document.removeEventListener('click', onAway, { capture: true });
-          document.removeEventListener('keydown', onEsc, { capture: true });
-        }
-        function onAway(e) {
-          if (typePanel.contains(e.target) || typeBtn.contains(e.target)) return;
-          closeType();
-        }
-        function onEsc(e) { if (e.key === 'Escape') closeType(); }
-        typeBtn.addEventListener('click', () => typePanel.hidden ? openType() : closeType());
+      // Types come directly from DB codes; no normalization needed
 
-        // Selection utilities
-        function selectedTypes() {
-          const set = new Set();
-          typePanel.querySelectorAll('input[name="bookType"]:checked').forEach(cb => set.add(cb.value));
-          return set;
-        }
-        typePanel.addEventListener('change', () => filter(input.value));
-        typeClear.addEventListener('click', () => {
-          typePanel.querySelectorAll('input[name="bookType"]').forEach(cb => cb.checked = false);
-          filter(input.value);
-        });
+      function initialsFromTitle(title) {
+        const words = (title || '').trim().split(/\s+/).filter(Boolean);
+        if (words.length === 0) return '';
+        if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+        return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+      }
 
-        // Types come directly from DB codes; no normalization needed
+      // Diacritic-insensitive, case-insensitive normalization for search
+      function norm(s) {
+        return String(s || '')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '') // strip combining marks
+          .toLowerCase();
+      }
 
-        function initialsFromTitle(title) {
-          const words = (title || '').trim().split(/\s+/).filter(Boolean);
-          if (words.length === 0) return '';
-          if (words.length === 1) return words[0].slice(0,2).toUpperCase();
-          return words.slice(0,2).map(w => w[0]).join('').toUpperCase();
-        }
+      function render(list) {
+        grid.innerHTML = '';
+        (list || []).forEach(b => {
+          const card = document.createElement('a');
+          card.className = 'book-card';
+          // Use numeric work_id for robust linking
+          const bookParam = String(b.work_id || b.id || b.slug || '');
+          card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
 
-        // Diacritic-insensitive, case-insensitive normalization for search
-        function norm(s) {
-          return String(s || '')
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '') // strip combining marks
-            .toLowerCase();
-        }
+          const initials = initialsFromTitle(b.title);
+          const coverClass = b.image ? 'cover has-image' : 'cover';
+          const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
 
-        function render(list) {
-          grid.innerHTML = '';
-          (list || []).forEach(b => {
-            const card = document.createElement('a');
-            card.className = 'book-card';
-            // Use numeric work_id for robust linking
-            const bookParam = String(b.work_id || b.id || b.slug || '');
-            card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
+          const ch = Number(b.chapters ?? 0);
+          const vs = Number(b.verses ?? 0);
+          const stats = `${ch} chapters · ${vs} verses`;
 
-            const initials = initialsFromTitle(b.title);
-            const coverClass = b.image ? 'cover has-image' : 'cover';
-            const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
-
-            const ch = Number(b.chapters ?? 0);
-            const vs = Number(b.verses ?? 0);
-            const stats = `${ch} chapters · ${vs} verses`;
-
-            card.innerHTML = `
+          card.innerHTML = `
               <div class="${coverClass} notranslate" translate="no" ${styleAttr} aria-hidden="true">${initials}</div>
               <div class="meta" style="min-width:0">
                 <div class="book-title" title="${b.title}"
@@ -225,42 +224,43 @@
                 <div class="book-stats" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${stats}</div>
               </div>
             `;
-            grid.appendChild(card);
-          });
-          if (booksCount) booksCount.textContent = `(${(list || []).length})`;
-        }
-
-        function filter(q) {
-          const t = norm(q).trim();
-          const selected = selectedTypes();
-
-          const list = books.filter(b => {
-            const matchesText =
-              norm(b.title).includes(t) ||
-              norm(b.author).includes(t);
-            const matchesType = selected.size === 0 || selected.has(b.type);
-            return matchesText && matchesType;
-          });
-
-          render(list);
-        }
-
-        // Initial render + handlers
-        render(books);
-        input.addEventListener('input', () => filter(input.value));
-        document.getElementById('homeFilterForm').addEventListener('submit', (e) => {
-          e.preventDefault();
-          filter(input.value);
+          grid.appendChild(card);
         });
-      });
-    </script>
+        if (booksCount) booksCount.textContent = `(${(list || []).length})`;
+      }
 
-    <script>
-      // Make sure the menu shows even if data loading fails
-      window.addEventListener('DOMContentLoaded', () => {
-        window.Library?.injectMenu?.('#menuSlot-home');
-      });
-    </script>
+      function filter(q) {
+        const t = norm(q).trim();
+        const selected = selectedTypes();
 
-  </body>
-  </html>
+        const list = books.filter(b => {
+          const matchesText =
+            norm(b.title).includes(t) ||
+            norm(b.author).includes(t);
+          const matchesType = selected.size === 0 || selected.has(b.type);
+          return matchesText && matchesType;
+        });
+
+        render(list);
+      }
+
+      // Initial render + handlers
+      render(books);
+      input.addEventListener('input', () => filter(input.value));
+      document.getElementById('homeFilterForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        filter(input.value);
+      });
+    });
+  </script>
+
+  <script>
+    // Make sure the menu shows even if data loading fails
+    window.addEventListener('DOMContentLoaded', () => {
+      window.Library?.injectMenu?.('#menuSlot-home');
+    });
+  </script>
+
+</body>
+
+</html>

@@ -11,93 +11,93 @@
 </div>
 
 <script type="module">
-const POPUP = document.getElementById('sem-popup');
-const BTN = document.getElementById('enable-semantic');
-const GO = document.getElementById('sem-go');
-const CANCEL = document.getElementById('sem-cancel');
-const PROG = document.getElementById('sem-progress');
-const STATUS = document.getElementById('sem-status');
+  const POPUP = document.getElementById('sem-popup');
+  const BTN = document.getElementById('enable-semantic');
+  const GO = document.getElementById('sem-go');
+  const CANCEL = document.getElementById('sem-cancel');
+  const PROG = document.getElementById('sem-progress');
+  const STATUS = document.getElementById('sem-status');
 
-BTN.onclick = () => POPUP.hidden = false;
-CANCEL.onclick = () => POPUP.hidden = true;
+  BTN.onclick = () => POPUP.hidden = false;
+  CANCEL.onclick = () => POPUP.hidden = true;
 
-const root = 'semantic'; // folder on your site
-let aborter;
+  const root = 'semantic'; // folder on your site
+  let aborter;
 
-async function sha256(buf){
-  const hash = await crypto.subtle.digest('SHA-256', buf);
-  return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-
-async function ensureOPFS(dir){
-  const root = await navigator.storage.getDirectory();
-  try { return await root.getDirectoryHandle(dir, { create: true }); }
-  catch { return await root.getDirectoryHandle(dir); }
-}
-
-async function writeFileOPFS(dh, name, stream){
-  const fh = await dh.getFileHandle(name, { create: true });
-  const w = await fh.createWritable();
-  await stream.pipeTo(w, { preventClose: false });
-  return fh;
-}
-
-async function chunkedDownload(url, expectedSha, onProgress){
-  aborter = new AbortController();
-  const res = await fetch(url, { signal: aborter.signal });
-  if(!res.ok) throw new Error(`HTTP ${res.status}`);
-  const total = Number(res.headers.get('content-length')) || 0;
-  const reader = res.body.getReader();
-  let received = 0;
-  const chunks = [];
-  for(;;){
-    const { done, value } = await reader.read();
-    if(done) break;
-    chunks.push(value);
-    received += value.byteLength;
-    if(total) onProgress(Math.round(received*100/total));
-  }
-  const blob = new Blob(chunks);
-  const buf = await blob.arrayBuffer();
-  const got = await sha256(buf);
-  if(expectedSha && got !== expectedSha) throw new Error('SHA256 mismatch');
-  return new Response(blob).body; // a fresh stream for OPFS writer
-}
-
-async function downloadAll(){
-  STATUS.textContent = 'Checking storage…';
-  const est = await navigator.storage.estimate();
-  const res = await fetch(`${root}/manifest.json`);
-  const manifest = await res.json();
-  if ((est.quota - est.usage) < manifest.total_size + 5_000_000) {
-    throw new Error('Not enough storage. Free up space and try again.');
+  async function sha256(buf) {
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  const dh = await ensureOPFS('tw-semantic'); // OPFS dir
-  let done = 0, total = manifest.files.reduce((s,f)=>s+f.size,0);
-
-  for(const f of manifest.files){
-    STATUS.textContent = `Downloading ${f.path}…`;
-    const stream = await chunkedDownload(`${root}/${f.path}`, f.sha256, (pct)=>{
-      const overall = Math.min(100, Math.round((done + f.size*pct/100) * 100 / total));
-      PROG.value = overall;
-    });
-    await writeFileOPFS(dh, f.path, stream);
-    done += f.size;
+  async function ensureOPFS(dir) {
+    const root = await navigator.storage.getDirectory();
+    try { return await root.getDirectoryHandle(dir, { create: true }); }
+    catch { return await root.getDirectoryHandle(dir); }
   }
-  // Write version marker
-  const fh = await dh.getFileHandle('version.txt', { create: true });
-  const w = await fh.createWritable();
-  await w.write(new Blob([manifest.version]));
-  await w.close();
-  STATUS.textContent = 'Ready! Semantic search enabled.';
-  PROG.value = 100;
-}
 
-GO.onclick = async () => {
-  GO.disabled = true; CANCEL.disabled = false;
-  try { await downloadAll(); }
-  catch(e){ STATUS.textContent = e.message; }
-  finally { GO.disabled = false; }
-};
+  async function writeFileOPFS(dh, name, stream) {
+    const fh = await dh.getFileHandle(name, { create: true });
+    const w = await fh.createWritable();
+    await stream.pipeTo(w, { preventClose: false });
+    return fh;
+  }
+
+  async function chunkedDownload(url, expectedSha, onProgress) {
+    aborter = new AbortController();
+    const res = await fetch(url, { signal: aborter.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const total = Number(res.headers.get('content-length')) || 0;
+    const reader = res.body.getReader();
+    let received = 0;
+    const chunks = [];
+    for (; ;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      received += value.byteLength;
+      if (total) onProgress(Math.round(received * 100 / total));
+    }
+    const blob = new Blob(chunks);
+    const buf = await blob.arrayBuffer();
+    const got = await sha256(buf);
+    if (expectedSha && got !== expectedSha) throw new Error('SHA256 mismatch');
+    return new Response(blob).body; // a fresh stream for OPFS writer
+  }
+
+  async function downloadAll() {
+    STATUS.textContent = 'Checking storage…';
+    const est = await navigator.storage.estimate();
+    const res = await fetch(`${root}/manifest.json`);
+    const manifest = await res.json();
+    if ((est.quota - est.usage) < manifest.total_size + 5_000_000) {
+      throw new Error('Not enough storage. Free up space and try again.');
+    }
+
+    const dh = await ensureOPFS('tw-semantic'); // OPFS dir
+    let done = 0, total = manifest.files.reduce((s, f) => s + f.size, 0);
+
+    for (const f of manifest.files) {
+      STATUS.textContent = `Downloading ${f.path}…`;
+      const stream = await chunkedDownload(`${root}/${f.path}`, f.sha256, (pct) => {
+        const overall = Math.min(100, Math.round((done + f.size * pct / 100) * 100 / total));
+        PROG.value = overall;
+      });
+      await writeFileOPFS(dh, f.path, stream);
+      done += f.size;
+    }
+    // Write version marker
+    const fh = await dh.getFileHandle('version.txt', { create: true });
+    const w = await fh.createWritable();
+    await w.write(new Blob([manifest.version]));
+    await w.close();
+    STATUS.textContent = 'Ready! Semantic search enabled.';
+    PROG.value = 100;
+  }
+
+  GO.onclick = async () => {
+    GO.disabled = true; CANCEL.disabled = false;
+    try { await downloadAll(); }
+    catch (e) { STATUS.textContent = e.message; }
+    finally { GO.disabled = false; }
+  };
 </script>
