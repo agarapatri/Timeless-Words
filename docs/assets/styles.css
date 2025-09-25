@@ -1196,7 +1196,7 @@ html.serif .menu-panel {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 14px;
+  padding: 8px 14px 0px 14px;
 }
 .panel-header3 {
   display: flex;
