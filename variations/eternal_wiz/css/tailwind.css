@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #8B4513; /* warm saffron brown */
+  --color-primary-50: #FDF8F3; /* very light saffron */
+  --color-primary-100: #F9E8D8; /* light saffron */
+  --color-primary-200: #F0D0B1; /* medium light saffron */
+  --color-primary-300: #E6B88A; /* medium saffron */
+  --color-primary-400: #DCA063; /* medium dark saffron */
+  --color-primary-500: #8B4513; /* base saffron brown */
+  --color-primary-600: #7A3D11; /* dark saffron */
+  --color-primary-700: #69350F; /* darker saffron */
+  --color-primary-800: #582D0D; /* very dark saffron */
+  --color-primary-900: #47250B; /* deepest saffron */
+
+  /* Secondary Colors */
+  --color-secondary: #6B5B73; /* muted purple */
+  --color-secondary-50: #F7F6F8; /* very light purple */
+  --color-secondary-100: #EBE8ED; /* light purple */
+  --color-secondary-200: #D7D1DB; /* medium light purple */
+  --color-secondary-300: #C3BAC9; /* medium purple */
+  --color-secondary-400: #AFA3B7; /* medium dark purple */
+  --color-secondary-500: #6B5B73; /* base muted purple */
+  --color-secondary-600: #5F5267; /* dark purple */
+  --color-secondary-700: #53495B; /* darker purple */
+  --color-secondary-800: #47404F; /* very dark purple */
+  --color-secondary-900: #3B3743; /* deepest purple */
+
+  /* Accent Colors */
+  --color-accent: #D4A574; /* soft gold */
+  --color-accent-50: #FBF8F4; /* very light gold */
+  --color-accent-100: #F5EDDF; /* light gold */
+  --color-accent-200: #EBDBBF; /* medium light gold */
+  --color-accent-300: #E1C99F; /* medium gold */
+  --color-accent-400: #D7B77F; /* medium dark gold */
+  --color-accent-500: #D4A574; /* base soft gold */
+  --color-accent-600: #C19660; /* dark gold */
+  --color-accent-700: #AE874C; /* darker gold */
+  --color-accent-800: #9B7838; /* very dark gold */
+  --color-accent-900: #886924; /* deepest gold */
+
+  /* Background Colors */
+  --color-background: #FDFCFA; /* warm off-white */
+  --color-surface: #F7F5F3; /* subtle paper texture */
+  --color-surface-hover: #F2F0EE; /* surface hover state */
+  --color-border: #E8E5E1; /* hairline borders */
+
+  /* Text Colors */
+  --color-text-primary: #2D2A26; /* rich dark brown */
+  --color-text-secondary: #5A5550; /* medium brown */
+  --color-text-muted: #8B8680; /* light brown */
+
+  /* Status Colors */
+  --color-success: #7A8471; /* sage green */
+  --color-success-50: #F6F7F6; /* very light sage */
+  --color-success-100: #E8EBE7; /* light sage */
+  --color-success-200: #D1D7CF; /* medium light sage */
+  --color-success-300: #BAC3B7; /* medium sage */
+  --color-success-400: #A3AF9F; /* medium dark sage */
+  --color-success-500: #7A8471; /* base sage green */
+  --color-success-600: #6E7665; /* dark sage */
+  --color-success-700: #626859; /* darker sage */
+  --color-success-800: #565A4D; /* very dark sage */
+  --color-success-900: #4A4C41; /* deepest sage */
+
+  --color-warning: #B8860B; /* muted amber */
+  --color-warning-50: #FDF9F0; /* very light amber */
+  --color-warning-100: #F9F0D6; /* light amber */
+  --color-warning-200: #F3E1AD; /* medium light amber */
+  --color-warning-300: #EDD284; /* medium amber */
+  --color-warning-400: #E7C35B; /* medium dark amber */
+  --color-warning-500: #B8860B; /* base muted amber */
+  --color-warning-600: #A6790A; /* dark amber */
+  --color-warning-700: #946C09; /* darker amber */
+  --color-warning-800: #825F08; /* very dark amber */
+  --color-warning-900: #705207; /* deepest amber */
+
+  --color-error: #A0522D; /* warm sienna */
+  --color-error-50: #FAF6F4; /* very light sienna */
+  --color-error-100: #F2E6DD; /* light sienna */
+  --color-error-200: #E5CDBB; /* medium light sienna */
+  --color-error-300: #D8B499; /* medium sienna */
+  --color-error-400: #CB9B77; /* medium dark sienna */
+  --color-error-500: #A0522D; /* base warm sienna */
+  --color-error-600: #904A29; /* dark sienna */
+  --color-error-700: #804225; /* darker sienna */
+  --color-error-800: #703A21; /* very dark sienna */
+  --color-error-900: #60321D; /* deepest sienna */
+
+  /* Shadow Variables */
+  --shadow-subtle: 0 2px 8px rgba(45, 42, 38, 0.08);
+  --shadow-soft: 0 1px 3px rgba(45, 42, 38, 0.06);
+
+  /* Transition Variables */
+  --transition-fast: 200ms ease-out;
+  --transition-normal: 300ms ease-out;
+}
+
+@layer base {
+  body {
+    font-family: 'Source Serif 4', serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .sanskrit-text {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-weight: 400;
+  }
+
+  .cta-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg font-inter font-medium transition-all duration-200 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-6 py-3 rounded-lg font-inter font-medium transition-all duration-200 hover:bg-secondary-600 focus:outline-none focus:ring-2 focus:ring-secondary-300;
+  }
+
+  .card {
+    @apply bg-surface rounded-lg p-6 transition-all duration-300 hover:bg-surface-hover;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-elevated {
+    @apply bg-surface rounded-lg p-6;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .border-subtle {
+    border: 1px solid var(--color-border);
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-normal);
+  }
+
+  .transition-quick {
+    transition: var(--transition-fast);
+  }
+
+  .shadow-content {
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+}
