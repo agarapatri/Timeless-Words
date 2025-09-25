@@ -1322,20 +1322,32 @@ html.serif .menu-panel {
 
 /* (optional) make the icon-only menu button a consistent touch target */
 .icon-btn {
-  height: 36px;          /* was ~35px, round up for crisp layout */
-  min-width: 44px;       /* WCAG-friendly touch size */
+  height: 36px; /* was ~35px, round up for crisp layout */
+  min-width: 44px; /* WCAG-friendly touch size */
   padding: 0 10px;
 }
 
 /* Fix: menu should float above everything on mobile */
 @media (max-width: 600px) {
   .hero-actions {
-    position: absolute;  /* already set elsewhere, but repeat for clarity */
+    position: absolute; /* already set elsewhere, but repeat for clarity */
     right: 0;
     top: 6px;
-    z-index: 1000;       /* create a higher stacking context for the menu */
+    z-index: 1000; /* create a higher stacking context for the menu */
   }
   .menu-panel {
-    z-index: 1100;       /* ensure panel overlays inputs, chips, popovers, etc. */
+    z-index: 1100; /* ensure panel overlays inputs, chips, popovers, etc. */
   }
+}
+
+/* Center the menu vertically to match the 44px title height */
+@media (max-width: 600px) {
+  .hero-actions {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  .icon-btn {
+    height: 44px;
+    min-width: 44px;
+  } /* same height as header */
 }
