@@ -1,12 +1,5 @@
 {
   "version": "2025-09-24-01",
-  "stack": "sqlite-vec",
-  "total_size": 86432123,
-  "files": [
-    { "path": "sql-wasm.wasm", "sha256": "<...>", "size": 1532848 },
-    { "path": "sqlite-vec.wasm", "sha256": "<...>", "size": 1783240 },
-    { "path": "tokenizer.json", "sha256": "<...>", "size": 512003 },
-    { "path": "e5-small.int8.onnx", "sha256": "<...>", "size": 15234567 },
-    { "path": "library.sqlite", "sha256": "<...>", "size": 67234567 }
-  ]
+  "total_size": 0,
+  "files": []
 }

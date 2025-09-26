@@ -1,6 +1,10 @@
 // --- DB loader (shared singleton) ---
 import { loadDb, query } from "./db.js";
 
+// Data is not loading with these imports, so commenting out for now
+// import { QueryEncoder } from "./encoder.js";
+// import { SemanticDB } from "./vec_db.js";
+
 /* Deep Search with substring + optional regex */
 (function () {
   let STATE = { results: [], page: 1, perPage: 25 }; // default page size
@@ -233,9 +237,35 @@ import { loadDb, query } from "./db.js";
     return haystacks.some((h) => matchText(h || "", f.q));
   }
 
-  function search() {
+  async function ensureSemanticReady() {
+    // Only attempt if the pack is installed and the user actually turned it on
+    if (!localStorage.getItem("tw_semantic_enabled")) {
+      throw new Error("Semantic pack not installed");
+    }
+    if (!window.__twEncoder || !window.__twSemdb) {
+      // IMPORTANT: these paths must match where you put the files (recommended: /assets/)
+      const [{ QueryEncoder }, { SemanticDB }] = await Promise.all([
+        import("./encoder.js?v={{VERSION}}"),
+        import("./vec_db.js?v={{VERSION}}"),
+      ]);
+      window.__twEncoder = new QueryEncoder({ opfsDir: "tw-semantic" });
+      await window.__twEncoder.init();
+
+      window.__twSemdb = new SemanticDB({
+        opfsDir: "tw-semantic",
+        dbFile: "library.semantic.v01.sqlite",
+        sqlWasm: "sql-wasm.wasm",
+        sqliteVec: "sqlite-vec.wasm",
+      });
+      await window.__twSemdb.open();
+    }
+    return { encoder: window.__twEncoder, semdb: window.__twSemdb };
+  }
+
+  async function search() {
     const f = readFilters();
 
+    // your existing early-exit
     if (!f.q || !f.anyScope || f.allowedIds.length === 0) {
       document.getElementById("results").innerHTML = "";
       document.getElementById("resultsInfo").textContent = "";
@@ -246,12 +276,47 @@ import { loadDb, query } from "./db.js";
       return;
     }
 
-    const results = ALL.verses.filter((r) => matchesFilters(r, f));
+    const semanticOn = window.__TW_SEMANTIC_MODE__ === true;
 
-    STATE.results = results;
-    STATE.page = 1;
-    ensurePager();
-    renderPage();
+    if (!semanticOn) {
+      // === NORMAL (lexical) — UNCHANGED ===
+      const results = ALL.verses.filter((r) => matchesFilters(r, f));
+      STATE.results = results;
+      STATE.page = 1;
+      ensurePager();
+      renderPage();
+      return;
+    }
+
+    // === SEMANTIC — completely separate ===
+    try {
+      const { encoder, semdb } = await ensureSemanticReady();
+      const qvec = await encoder.encode(f.q);
+
+      // Vector search (topK can be tuned)
+      const rows = await semdb.vecSearch(qvec, 200);
+
+      // Map results back to the verses you already render
+      const byId = new Map(ALL.verses.map((v) => [v.verse_id, v]));
+      const filtered = [];
+      for (const r of rows) {
+        const v = byId.get(r.id);
+        if (!v) continue;
+        // Respect Book filter only (strict separation from regex/wildcards)
+        if (f.allowedIds.length && !f.allowedIds.includes(v.work_id)) continue;
+        filtered.push(v);
+        if (filtered.length >= 200) break;
+      }
+
+      STATE.results = filtered;
+      STATE.page = 1;
+      ensurePager();
+      renderPage();
+    } catch (e) {
+      console.error(e);
+      document.getElementById("resultsInfo").textContent =
+        "Semantic not ready. Click the Semantic button to install, or switch it off.";
+    }
   }
 
   function pickSnippets(book, verse, f, q) {
@@ -717,4 +782,88 @@ import { loadDb, query } from "./db.js";
   }
 
   document.addEventListener("types:changed", rebuildBookListForTypes);
+
+  // ---- new: semantic wiring ----
+  const SEM_ENABLED = !!localStorage.getItem("tw_semantic_enabled");
+  const semToggleBtn = document.getElementById("btn-semantic"); // from search.html step 1
+  if (semToggleBtn) {
+    const on = semToggleBtn.dataset.on === "1" || SEM_ENABLED;
+    semToggleBtn.textContent = on ? "Semantic: On" : "Enable Semantic";
+  }
+
+  // Lazy singletons
+  let __encoder = null;
+  let __semdb = null;
+
+  async function ensureSemantic() {
+    if (!localStorage.getItem("tw_semantic_enabled")) {
+      location.href = "semantic_download.html";
+      throw new Error("Semantic pack not installed");
+    }
+    if (!__encoder) __encoder = new QueryEncoder({ opfsDir: "tw-semantic" });
+    if (!__semdb)
+      __semdb = new SemanticDB({
+        opfsDir: "tw-semantic",
+        dbFile: "library.semantic.v01.sqlite",
+        sqlWasm: "sql-wasm.wasm",
+        sqliteVec: "sqlite-vec.wasm",
+      });
+    // warm-up encoder
+    await __encoder.init();
+    // open DB
+    await __semdb.open();
+    return { encoder: __encoder, semdb: __semdb };
+  }
+
+  // ---- hook into your search submit ----
+  // Find your existing submit handler and wrap it with a branch.
+  // Pseudo-example (adapt to your actual function names if different):
+
+  async function runSearch(queryText) {
+    const semanticOn =
+      (semToggleBtn && semToggleBtn.dataset.on === "1") || SEM_ENABLED;
+
+    if (!semanticOn) {
+      // your existing lexical/regex flow
+      return await runLexicalSearch(queryText); // <- your existing function
+    }
+
+    // Semantic path
+    try {
+      const { encoder, semdb } = await ensureSemantic();
+      // Encode query
+      const qvec = await encoder.encode(queryText);
+
+      // Dense only (fast) — or use semdb.hybridSearch(queryText, qvec) for hybrid
+      const rows = await semdb.vecSearch(qvec, 100);
+
+      // Normalize to your renderer’s expected shape
+      const results = rows.map((r) => ({
+        id: r.id,
+        work_id: r.work_id,
+        chapter: r.chapter,
+        verse_start: r.verse_start,
+        verse_end: r.verse_end,
+        text: r.text,
+        // extra fields if your renderer uses them:
+        score: r.distance != null ? 1 / (1 + r.distance) : 0,
+        source: "semantic",
+      }));
+
+      renderResults(results); // <- your existing UI renderer
+    } catch (e) {
+      console.error(e);
+      // Fallback to lexical if semantic fails
+      const res = await runLexicalSearch(queryText);
+      renderResults(res);
+    }
+  }
+
+  // Wire up: wherever you attach your input submit/click, point to runSearch(queryValue).
+  // Example:
+  // document.getElementById('searchForm').addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   const q = new FormData(e.target).get('q')?.trim();
+  //   if (q) runSearch(q);
+  // });
 })();

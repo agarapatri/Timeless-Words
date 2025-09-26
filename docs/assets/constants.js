@@ -5,3 +5,9 @@ export const DB_URL = "data/library.{{DB_VERSION}}.sqlite"; // or 'data/library.
 export const WORKER_URL = "";
 export const SQL_WASM_URL = "assets/sql_helpers/sql-wasm.wasm";
 export const ENABLE_SEMANTIC = false;
+
+export const SEMANTIC = {
+  ENABLE_KEY: 'tw_semantic_enabled',
+  OPFS_DIR: 'tw-semantic',
+  MANIFEST_URL: 'semantic/manifest.json?v={{VERSION}}'
+};
