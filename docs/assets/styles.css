@@ -1406,7 +1406,8 @@ html.theme-dark .ios-switch.compact .track {
   height: 20px;
   border-radius: 10px;
   background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;        /* keep size with border */
+  border: 1px solid rgba(122, 122, 122, 0.25); 
   transition: transform 0.2s ease;
 }
 
@@ -1438,6 +1439,10 @@ html.theme-dark .ios-switch.compact:hover {
   outline-offset: 2px;
 }
 
+.ios-switch.compact {
+  padding: 6px 6px 6px 8px;
+}
+
 /* ----- Inline Search Tips ----- */
 .tips-panel {
   border: 1px solid var(--border);
@@ -1448,7 +1453,7 @@ html.theme-dark .ios-switch.compact:hover {
 }
 .tips-title {
   margin: 0 0 10px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 .tips-grid {
@@ -1473,6 +1478,9 @@ html.theme-dark .ios-switch.compact:hover {
 .tips-adv-title {
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--muted);
+}
+.tip-basic {
   color: var(--muted);
 }
 .cheatsheet {

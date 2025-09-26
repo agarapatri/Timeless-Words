@@ -1,4 +1,4 @@
-import { DB_URL, SQL_WASM_URL } from "./constants.js";
+import { DB } from "./constants.js";
 
 const initSqlJs = globalThis.initSqlJs; // provided by the classic script tag
 if (typeof initSqlJs !== "function") {
@@ -14,11 +14,11 @@ export async function loadDb() {
   _dbPromise = (async () => {
     // 1) Init sql.js using your local wasm
     const SQL = await initSqlJs({
-      locateFile: () => SQL_WASM_URL,
+      locateFile: () => DB.SQL_WASM_URL,
     });
 
     // 2) Fetch the DB and open it in-memory (read-only)
-    const resp = await fetch(DB_URL);
+    const resp = await fetch(DB.DB_URL);
     if (!resp.ok)
       throw new Error(`Failed to fetch DB: ${resp.status} ${resp.statusText}`);
     const buf = await resp.arrayBuffer();

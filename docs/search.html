@@ -33,7 +33,7 @@
 
         <form id="filters" class="filters" onsubmit="return false;">
           <div class="filter" style="grid-column: span 12; position:relative;">
-            <input id="q" type="search" placeholder="Search (regex, phrases, wildcards)…" aria-label="Deep search">
+            <input id="q" type="search" placeholder="" aria-label="Deep search">
           </div>
 
           <div class="chipbar" id="chipbar">
@@ -74,10 +74,10 @@
 
           <div class="tips-grid">
             <div class="tips-col">
-              <p><strong>Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
-              <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
-              <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
-              <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
+              <p><strong class="tip-basic">Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
+              <p><strong class="tip-basic">Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
+              <p><strong class="tip-basic">Wildcards</strong><br>Prefix: <code>rudr*</code></p>
+              <p><strong class="tip-basic">Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; <br>Alt: <code>/śiva|śambhu/</code></p>
             </div>
             <div class="tips-col">
               <div class="tips-advanced">
@@ -164,6 +164,10 @@
 
   <script type="module">
     import { SemanticInstall } from './assets/semantic_downloader.js';
+    import { SEARCH } from './assets/constants.js';
+
+    const q = document.getElementById('q');
+    q.placeholder = SEARCH.SEARCH_HINT_REGEX;
 
     // Wait for all other scripts to finish loading
     window.addEventListener('load', () => {
@@ -232,7 +236,7 @@
                 const q = document.getElementById('q');
                 if (q) {
                   q.value = '';
-                  q.placeholder = 'Type a semantic query (meaning-based)…';
+                  q.placeholder = SEARCH.SEARCH_HINT_SEMANTIC;
                   q.focus();
                 }
                 if (window.clearResults) window.clearResults?.();
@@ -252,7 +256,7 @@
           const q = document.getElementById('q');
           if (q) {
             q.value = '';
-            q.placeholder = on ? 'Type a semantic query (meaning-based)…' : 'Type exact/regex/wildcards…';
+            q.placeholder = on ? SEARCH.SEARCH_HINT_SEMANTIC : SEARCH.SEARCH_HINT_REGEX;
             q.focus();
           }
           if (window.clearResults) window.clearResults?.();
