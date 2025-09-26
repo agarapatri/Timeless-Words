@@ -15,9 +15,7 @@
     <a class="back-link" href="index.html">← Back</a>
 
     <div class="titlebar">
-      <h1 class="title">Deep Search</h1>
-
-      <button id="search-help-btn" type="button" class="help-btn" aria-label="Search help" aria-haspopup="dialog" aria-expanded="false" aria-controls="search-help-popover">?</button>
+      <h1 id="search-title" class="title">Deep Search</h1>
 
       <label id="btn-semantic" class="ios-switch compact" data-mode="off" title="Switch to semantic search">
         <span class="label">by meaning</span>
@@ -28,61 +26,6 @@
       <div class="hero-actions">
         <div id="menuSlot-search" class="menu-wrap"></div>
       </div>
-
-      <div id="search-help-popover" class="help-popover" role="dialog" aria-modal="true" aria-labelledby="search-help-title" hidden>
-        <div class="help-header">
-          <h2 id="search-help-title">Search tips</h2>
-          <button type="button" class="close-btn" aria-label="Close">✕</button>
-        </div>
-        <div class="help-content">
-
-          <p><strong>Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
-          <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
-          <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
-          <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
-          <hr>
-
-          <!-- Accordion trigger -->
-          <button id="regex-acc-btn" class="acc-btn" aria-expanded="false" aria-controls="regex-acc-panel">
-            Advanced tips
-            <svg class="chev" width="18" height="18" aria-hidden="true">
-              <use href="icons/chev.svg?v={{VERSION}}#icon-chev"></use>
-            </svg>
-          </button>
-
-          <!-- Accordion panel -->
-          <div id="regex-acc-panel" class="acc-panel" hidden style="margin-top:8px;">
-            <ul class="cheatsheet" style="columns:1; gap:24px; list-style:none; padding:0; margin:10px 0;">
-              <li><code>śiva</code> – literal</li>
-              <li><code>ś.va</code> – dot = any char</li>
-              <li><code>viṣṇu.*parama</code> – any chars between</li>
-              <li><code>rudr+a</code> – one or more</li>
-              <li><code>śiv?a</code> – zero or one</li>
-              <li><code>śiva|śambhu</code> – alternation</li>
-              <li><code>(hari|viṣṇu)nāma</code> – grouping</li>
-              <li><code>[sr]āma</code> – character class</li>
-              <li><code>[0-9]+</code> – numbers</li>
-              <li><code>[^a-zA-Z]</code> – not a letter</li>
-              <li><code>^namaḥ</code> – start of line</li>
-              <li><code>śivāya$</code> – end of line</li>
-              <li><code>\bparama\b</code> – whole word</li>
-              <li><code>\Bparama</code> – inside word</li>
-              <li><code>a{2,4}</code> – 2 to 4 times</li>
-              <li><code>(śrī\s)?kṛṣṇa</code> – optional group</li>
-              <li><code>\(1\.2\.19\)</code> – escape specials</li>
-              <li><code>śiva(?=.*parama)</code> – lookahead</li>
-              <li><code>śiva(?! paramātmā)</code> – neg. lookahead</li>
-              <li><code>(?i)viṣṇu</code> – case-insensitive</li>
-            </ul>
-
-            <p class="dim" style="color:#64748b; margin-top:12px;">
-              Learn & test interactively:
-              <a href="https://regex101.com/" target="_blank" rel="noopener">regex101.com</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      </h1>
     </div>
 
     <div class="search-layout">
@@ -105,55 +48,7 @@
         <script type="module" src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
         <script type="module" src="assets/encoder.js?v={{VERSION}}"></script>
 
-        <script>
-          (function () {
-            const btn = document.getElementById('search-help-btn');
-            const pop = document.getElementById('search-help-popover');
-            const inner = pop?.querySelector('.help-inner');
-            const close = pop?.querySelector('.close-btn');
-            const input = document.getElementById('q');
-            const accBtn = document.getElementById('regex-acc-btn');
-            const accPanel = document.getElementById('regex-acc-panel');
 
-            if (btn && pop) {
-              let open = false;
-              function show() { pop.hidden = false; open = true; btn.setAttribute('aria-expanded', 'true'); requestAnimationFrame(() => inner?.focus()); document.addEventListener('keydown', onKey); document.addEventListener('click', onDocClick, true); }
-              function hide() { pop.hidden = true; open = false; btn.setAttribute('aria-expanded', 'false'); document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDocClick, true); btn.focus(); }
-              function onKey(e) { if (e.key === 'Escape') hide(); }
-              function onDocClick(e) { if (!pop.contains(e.target) && e.target !== btn) hide(); }
-              btn.addEventListener('click', () => pop.hidden ? show() : hide());
-              close?.addEventListener('click', hide);
-            }
-
-            // Accordion
-            if (accBtn && accPanel) {
-              accBtn.addEventListener('click', () => {
-                const expanded = accBtn.getAttribute('aria-expanded') === 'true';
-                accBtn.setAttribute('aria-expanded', String(!expanded));
-                accPanel.hidden = expanded;
-                const chev = accBtn.querySelector('.chev');
-                if (chev) chev.style.transform = expanded ? 'rotate(0deg)' : 'rotate(90deg)';
-              });
-            }
-
-            // Rotating placeholder tips
-            if (input) {
-              const tips = [
-                'Search (regex, phrases, wildcards)…',
-                'Try any word: "vishnu paramatma"',
-                'Try phrase: "śiva paramātmā"',
-                'Try prefix: rudr*',
-                'Try regex: /viṣṇu.*nārāyaṇa/'
-              ];
-              let i = 0;
-              setInterval(() => {
-                if (document.activeElement === input) return;
-                i = (i + 1) % tips.length;
-                input.placeholder = tips[i];
-              }, 3000);
-            }
-          })();
-        </script>
 
         <!-- Inline download panel (hidden until used) -->
         <section id="tw-sem-panel" style="display:none; margin-top:10px;">
@@ -168,6 +63,48 @@
               <button id="tw-sem-cancel" class="secondary">Cancel</button>
               <button id="tw-sem-delete" class="secondary">Delete Pack</button>
               <span id="tw-sem-size" class="muted" style="margin-left:auto;"></span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Inline Search Tips -->
+        <section id="searchTips" class="tips-panel" aria-live="polite">
+          <h2 class="tips-title">Search tips</h2>
+
+          <div class="tips-grid">
+            <div class="tips-col">
+              <p><strong>Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
+              <p><strong>Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
+              <p><strong>Wildcards</strong><br>Prefix: <code>rudr*</code></p>
+              <p><strong>Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; Alt: <code>/śiva|śambhu/</code></p>
+            </div>
+            <div class="tips-col">
+              <div class="tips-advanced">
+                <div class="tips-adv-title">Advanced tips</div>
+                <ul class="cheatsheet">
+                  <li><code>śiva</code> – literal</li>
+                  <li><code>ś.va</code> – dot = any char</li>
+                  <li><code>viṣṇu.*parama</code> – any chars between</li>
+                  <li><code>rudr+a</code> – one or more</li>
+                  <li><code>śiv?a</code> – zero or one</li>
+                  <li><code>śiva|śambhu</code> – alternation</li>
+                  <li><code>(hari|viṣṇu)nāma</code> – grouping</li>
+                  <li><code>[sr]āma</code> – character class</li>
+                  <li><code>[0-9]+</code> – numbers</li>
+                  <li><code>[^a-zA-Z]</code> – not a letter</li>
+                  <li><code>^namaḥ</code> – start of line</li>
+                  <li><code>śivāya$</code> – end of line</li>
+                  <li><code>\bparama\b</code> – whole word</li>
+                  <li><code>\Bparama</code> – inside word</li>
+                  <li><code>a{2,4}</code> – 2 to 4 times</li>
+                  <li><code>(śrī\s)?kṛṣṇa</code> – optional group</li>
+                  <li><code>\(1\.2\.19\)</code> – escape specials</li>
+                  <li><code>śiva(?=.*parama)</code> – lookahead</li>
+                  <li><code>śiva(?! paramātmā)</code> – neg. lookahead</li>
+                  <li><code>(?i)viṣṇu</code> – case-insensitive</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -192,7 +129,6 @@
         <div class="filter" id="fBooks">
           <div class="panel-header3">
             <div class="panel-title">Book</div>
-            <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
           </div>
           <div class="book-box">
             <div class="filter">
@@ -248,8 +184,8 @@
         if (!toggle || !toggle.querySelector('.track')) {
           console.log('Recreating semantic toggle...');
 
-          const helpBtn = document.getElementById('search-help-btn');
-          const container = helpBtn.parentNode;
+          const title = document.getElementById('search-title');
+          const container = title.parentNode;
 
           const existing = document.getElementById('btn-semantic');
           if (existing) existing.remove();
@@ -266,7 +202,7 @@
           <span class="track"><span class="thumb"></span></span>
         `;
 
-          container.insertBefore(newToggle, helpBtn.nextSibling);
+          container.insertBefore(newToggle, title.nextSibling);
         }
 
         const finalToggle = document.getElementById('btn-semantic');
@@ -328,6 +264,66 @@
     });
   </script>
 
+
+  <!-- INLINE_TIPS_TOGGLE -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const input = document.getElementById('q') || document.querySelector('input[type="search"], input[name="q"]');
+      const tips = document.getElementById('searchTips');
+      const results = document.getElementById('results');
+      const info = document.getElementById('resultsInfo');
+      const form = document.getElementById('searchForm') || (input && input.form);
+
+      function showTips() {
+        if (tips) tips.style.display = '';
+        if (results) results.innerHTML = '';
+        if (info) info.textContent = '';
+        const pager = document.getElementById('pager');
+        if (pager) pager.remove();
+      }
+      function hideTips() {
+        if (tips) tips.style.display = 'none';
+      }
+
+      function runSearchNow() {
+        // Try the app's global search functions if present.
+        if (typeof window.run === 'function') {
+          window.run();
+          return;
+        }
+        if (typeof window.runSearch === 'function') {
+          window.runSearch(input ? input.value : '');
+          return;
+        }
+        // Fallback: submit the form (if any)
+        if (form) {
+          form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      }
+
+      function sync() {
+        const val = (input && input.value || '').trim();
+        if (val.length === 0) {
+          showTips();
+        } else {
+          hideTips();
+          runSearchNow();
+        }
+      }
+
+      if (input) {
+        input.addEventListener('input', sync);
+        // Initial state on load
+        sync();
+      } else {
+        // If no input found, still ensure tips shown by default
+        if (tips) tips.style.display = '';
+      }
+    });
+  </script>
+
+  <!-- /INLINE_TIPS_TOGGLE -->
 </body>
 
 </html>
