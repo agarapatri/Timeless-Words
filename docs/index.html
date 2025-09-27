@@ -15,7 +15,7 @@
     <section class="hero">
       <div class="hero-top">
         <div>
-          <h1 class="title"><a href="https://agarapatri.github.io/Timeless-Words/index.html">Timeless Words</a></h1>
+          <h1 class="title"><a href="./">Timeless Words</a></h1>
           <div class="muted">Collection of Vedic texts</div>
         </div>
 
@@ -69,11 +69,13 @@
       <div id="booksGrid" class="books-grid" aria-live="polite"></div>
     </section>
   </main>
-  <footer class="site-footer">
-    <div class="container">
-      <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
-    </div>
-  </footer>
+
+  <div id="footerSlot"></div>
+
+  <script type="module">
+    import { injectFooter } from './assets/scripts/footer.js';
+    injectFooter('#footerSlot');
+  </script>
 
 
   <script src="assets/sql_helpers/sql-wasm.js"></script>

@@ -17,11 +17,15 @@
     <div class="titlebar">
       <h1 id="search-title" class="title">Deep Search</h1>
 
-      <label id="btn-semantic" class="ios-switch compact" data-mode="off" title="Switch to semantic search">
-        <span class="label">by meaning</span>
-        <input type="checkbox" />
-        <span class="track"><span class="thumb"></span></span>
+      <!-- Semantic toggle -->
+      <label id="tw-sem-switch" class="tw-pill-switch">
+        <input id="sem-check" type="checkbox" class="tw-pill-switch__input" />
+        <span class="tw-pill-switch__text">by meaning</span>
+        <span class="tw-pill-switch__track" aria-hidden="true">
+          <span class="tw-pill-switch__knob"></span>
+        </span>
       </label>
+
 
       <div class="hero-actions">
         <div id="menuSlot-search" class="menu-wrap"></div>
@@ -45,27 +49,37 @@
         </form>
 
         <script src="assets/sql_helpers/sql-wasm.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
+
+        <script type="module">
+          import { env, pipeline } from '/assets/vendor/transformers/transformers.min.js';
+          env.allowRemoteModels = false;
+          env.localModelPath = '/models/';            // your local models
+          env.backends.onnx.wasm.wasmPaths = '/assets/onnx/'; // local .wasm
+          // avoid threaded runtime on non-COI pages
+          env.backends.onnx.wasm.numThreads = 1;
+        </script>
+
         <script type="module" src="assets/encoder.js?v={{VERSION}}"></script>
 
+        <!-- Full-screen blocking overlay for semantic download -->
+        <div id="tw-sem-overlay" class="tw-overlay" hidden>
+          <div class="tw-overlay__panel">
+            <h3 class="tw-overlay__title">Preparing semantic search…</h3>
+            <p class="muted">We’re downloading a compact pack so meaning-based search works offline.</p>
 
-
-        <!-- Inline download panel (hidden until used) -->
-        <section id="tw-sem-panel" style="display:none; margin-top:10px;">
-          <div style="padding:10px; border:1px solid var(--border); border-radius:10px;">
-            <strong>Downloading semantic pack…</strong>
-            <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
-              <progress id="tw-sem-progress" value="0" max="100" style="flex:1;"></progress>
+            <div class="tw-overlay__progress">
+              <progress id="tw-sem-progress" value="0" max="100"></progress>
               <span id="tw-sem-pct" class="muted">0%</span>
             </div>
-            <div id="tw-sem-status" class="muted" style="margin-top:6px;">Preparing…</div>
-            <div style="margin-top:8px; display:flex; gap:8px;">
-              <button id="tw-sem-cancel" class="secondary">Cancel</button>
-              <button id="tw-sem-delete" class="secondary">Delete Pack</button>
-              <span id="tw-sem-size" class="muted" style="margin-left:auto;"></span>
+
+            <div id="tw-sem-status" class="muted">Starting…</div>
+
+            <div class="tw-overlay__actions">
+              <button id="tw-sem-cancel" class="btn">Cancel</button>
             </div>
           </div>
-        </section>
+        </div>
+
 
 
         <!-- Inline Search Tips -->
@@ -142,11 +156,12 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
-    </div>
-  </footer>
+  <div id="footerSlot"></div>
+
+  <script type="module">
+    import { injectFooter } from './assets/scripts/footer.js';
+    injectFooter('#footerSlot');
+  </script>
 
   <!-- sql.js loader (classic, must come first) -->
   <script src="assets/sql_helpers/sql-wasm.js"></script>
@@ -164,109 +179,69 @@
 
   <script type="module">
     import { SemanticInstall } from './assets/semantic_downloader.js';
-    import { SEARCH } from './assets/constants.js';
+    import { SEARCH, SEMANTIC } from './assets/constants.js';
 
-    const q = document.getElementById('q');
-    q.placeholder = SEARCH.SEARCH_HINT_REGEX;
+    const input = document.getElementById('q');
+    if (input) input.placeholder = SEARCH.SEARCH_HINT_REGEX;
 
-    // Wait for all other scripts to finish loading
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const panel = new SemanticInstall({
-          panelId: 'tw-sem-panel',
-          barId: 'tw-sem-progress',
-          pctId: 'tw-sem-pct',
-          statusId: 'tw-sem-status',
-          cancelId: 'tw-sem-cancel',
-          deleteId: 'tw-sem-delete',
-          sizeId: 'tw-sem-size',
-        });
+    const checkbox = document.getElementById('sem-check');
 
-        const toggle = document.getElementById('btn-semantic');
+    // Blocker-based downloader
+    const panel = new SemanticInstall({
+      overlayId: 'tw-sem-overlay',
+      barId: 'tw-sem-progress',
+      pctId: 'tw-sem-pct',
+      statusId: 'tw-sem-status',
+      cancelId: 'tw-sem-cancel',
+      manifestUrl: SEMANTIC.MANIFEST_URL,
+    });
 
-        // If the element doesn't exist or isn't our switch, recreate it
-        if (!toggle || !toggle.querySelector('.track')) {
-          console.log('Recreating semantic toggle...');
+    // Initial state
+    const packInstalled = await panel.isInstalled();
+    const enabledFlag = localStorage.getItem(SEMANTIC.ENABLE_KEY) === '1';
+    window.__TW_SEMANTIC_MODE__ = packInstalled && enabledFlag;
+    checkbox.checked = window.__TW_SEMANTIC_MODE__;
+    if (input) input.placeholder = window.__TW_SEMANTIC_MODE__
+      ? SEARCH.SEARCH_HINT_SEMANTIC
+      : SEARCH.SEARCH_HINT_REGEX;
 
-          const title = document.getElementById('search-title');
-          const container = title.parentNode;
+    // Toggle behavior (strict separation)
+    checkbox.addEventListener('change', async (e) => {
+      const wantOn = e.target.checked;
 
-          const existing = document.getElementById('btn-semantic');
-          if (existing) existing.remove();
-
-          const newToggle = document.createElement('label');
-          newToggle.id = 'btn-semantic';
-          newToggle.className = 'ios-switch compact';
-          newToggle.setAttribute('data-mode', 'off');
-          newToggle.title = 'Switch to semantic search';
-
-          newToggle.innerHTML = `
-          <span class="label">by meaning</span>
-          <input type="checkbox" />
-          <span class="track"><span class="thumb"></span></span>
-        `;
-
-          container.insertBefore(newToggle, title.nextSibling);
+      const hasPack = await panel.isInstalled();
+      if (wantOn && !hasPack) {
+        // Show blocking overlay & start
+        panel.show();
+        panel.onInstalled = () => {
+          localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
+          window.__TW_SEMANTIC_MODE__ = true;
+          if (input) { input.value = ''; input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; input.focus(); }
+          window.clearResults?.();
+          panel.hide(); // auto-close on completion
+        };
+        try { await panel.start(); } catch {
+          // Restore OFF if cancelled/failed
+          checkbox.checked = false;
+          panel.hide();
         }
+        return;
+      }
 
-        const finalToggle = document.getElementById('btn-semantic');
-        const checkbox = finalToggle.querySelector('input[type="checkbox"]');
-        // No need to update label text anymore since it's static
-        window.__TW_SEMANTIC_MODE__ = false;
+      // Already installed → just flip modes
+      window.__TW_SEMANTIC_MODE__ = wantOn;
+      if (wantOn) localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
+      else localStorage.removeItem(SEMANTIC.ENABLE_KEY);
 
-        function setToggle(on, disabled = false) {
-          finalToggle.dataset.mode = on ? 'on' : 'off';
-          checkbox.checked = on;
-          finalToggle.style.opacity = disabled ? '0.6' : '1';
-        }
-
-        finalToggle.addEventListener('click', async (e) => {
-          e.preventDefault();
-
-          const installed = await panel.isInstalled();
-          if (!installed) {
-            panel.show();
-            setToggle(false, true); // Show as disabled during install
-            finalToggle.style.pointerEvents = 'none';
-            try {
-              panel.onInstalled = () => {
-                finalToggle.style.pointerEvents = '';
-                window.__TW_SEMANTIC_MODE__ = true;
-                setToggle(true);
-                const q = document.getElementById('q');
-                if (q) {
-                  q.value = '';
-                  q.placeholder = SEARCH.SEARCH_HINT_SEMANTIC;
-                  q.focus();
-                }
-                if (window.clearResults) window.clearResults?.();
-              };
-              await panel.start();
-            } catch (e) {
-              finalToggle.style.pointerEvents = '';
-              setToggle(false);
-              console.error(e);
-            }
-            return;
-          }
-
-          const on = finalToggle.dataset.mode !== 'on';
-          window.__TW_SEMANTIC_MODE__ = on;
-          setToggle(on);
-          const q = document.getElementById('q');
-          if (q) {
-            q.value = '';
-            q.placeholder = on ? SEARCH.SEARCH_HINT_SEMANTIC : SEARCH.SEARCH_HINT_REGEX;
-            q.focus();
-          }
-          if (window.clearResults) window.clearResults?.();
-        });
-
-        // Set initial state
-        (async () => setToggle(await panel.isInstalled() && window.__TW_SEMANTIC_MODE__))();
-      }, 100);
+      if (input) {
+        input.value = '';
+        input.placeholder = wantOn ? SEARCH.SEARCH_HINT_SEMANTIC : SEARCH.SEARCH_HINT_REGEX;
+        input.focus();
+      }
+      window.clearResults?.();
     });
   </script>
+
 
 
   <!-- INLINE_TIPS_TOGGLE -->
@@ -327,7 +302,6 @@
     });
   </script>
 
-  <!-- /INLINE_TIPS_TOGGLE -->
 </body>
 
 </html>

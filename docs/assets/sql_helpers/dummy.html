@@ -1,0 +1,11 @@
+<script type="module">
+  import init from "/assets/sql_helpers/sqlite3.mjs";
+
+  const sqlite3 = await init({
+    locateFile: (f) => `/assets/sql_helpers/${f}`, // resolves sqlite3.wasm
+  });
+
+  const db = new sqlite3.oo1.DB(":memory:");
+  console.log(db.selectArray("select sqlite_version();"));
+  db.close();
+</script>

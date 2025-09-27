@@ -36,7 +36,7 @@ export class QueryEncoder {
     // eslint-disable-next-line no-undef
     const { pipeline, env } = window.transformers;
     env.allowRemoteModels = false;
-    env.backends.onnx.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.0/dist/'; // runtime loader only
+    env.backends.onnx.wasm.wasmPaths = '/assets/onyx/'; // runtime loader only
 
     this.pipeline = await pipeline('feature-extraction', {
       // A pseudo "model" that references our local ONNX + tokenizer

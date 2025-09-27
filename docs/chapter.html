@@ -114,6 +114,13 @@
     <ol id="verseList" class="results-list"></ol>
   </main>
 
+  <div id="footerSlot"></div>
+
+  <script type="module">
+    import { injectFooter } from './assets/scripts/footer.js';
+    injectFooter('#footerSlot');
+  </script>
+
   <script src="assets/sql_helpers/sql-wasm.js"></script>
 
   <!-- App helpers (kept) -->

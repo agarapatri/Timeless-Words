@@ -1,63 +1,39 @@
 // assets/semantic_downloader.js
-// Inline, resumable downloader. Stores files in OPFS. Non-blocking UI.
-
-const SEM_ROOT = new URL("../semantic/", import.meta.url).href; // always /semantic/ next to /assets/
+const SEM_ROOT = new URL("../semantic/", import.meta.url).href;
 
 export class SemanticInstall {
-  constructor(cfg) {
+  constructor(cfg = {}) {
     this.OPFS_DIR = "tw-semantic";
-    this.MANIFEST_URL = new URL("manifest.json?v={{VERSION}}", SEM_ROOT).href; // resolve once
-    this.ENABLE_KEY = "tw_semantic_enabled"; // "1" when enabled, absent when disabled
-    this.VERSION_KEY = "tw_semantic_version"; // stores last installed version (optional)
+    this.MANIFEST_URL =
+      cfg.manifestUrl || new URL("manifest.json?v={{VERSION}}", SEM_ROOT).href;
+    this.ENABLE_KEY = "tw_semantic_enabled";
 
-    this.panel = document.getElementById(cfg.panelId);
+    // UI (blocker)
+    this.overlay = document.getElementById(cfg.overlayId);
     this.bar = document.getElementById(cfg.barId);
     this.pct = document.getElementById(cfg.pctId);
     this.status = document.getElementById(cfg.statusId);
     this.btnCancel = document.getElementById(cfg.cancelId);
-    this.btnDelete = document.getElementById(cfg.deleteId);
-    this.sizeEl = document.getElementById(cfg.sizeId);
 
     this.controller = null;
     this.boundBeforeUnload = null;
     this.onInstalled = null;
 
     this.btnCancel?.addEventListener("click", () => this.cancel());
-    this.btnDelete?.addEventListener("click", () => this.deletePack());
   }
 
   show() {
-    if (this.panel) this.panel.style.display = "";
+    if (this.overlay) this.overlay.hidden = false;
+    document.documentElement.style.overflow = "hidden";
   }
   hide() {
-    if (this.panel) this.panel.style.display = "none";
+    if (this.overlay) this.overlay.hidden = true;
+    document.documentElement.style.overflow = "";
   }
+
   async isInstalled() {
-    try {
-      const root = await navigator.storage.getDirectory();
-      const dir = await root.getDirectoryHandle(this.OPFS_DIR, {
-        create: false,
-      });
-      await dir.getFileHandle("version.txt", { create: false });
-      return true;
-    } catch {
-      return false;
-    }
+    return !!localStorage.getItem(this.ENABLE_KEY);
   }
-
-  async deletePack() {
-    const root = await navigator.storage.getDirectory();
-    try {
-      await root.removeEntry(this.OPFS_DIR, { recursive: true });
-      localStorage.removeItem(this.ENABLE_KEY);
-      this._setStatus("Semantic pack deleted.");
-      this.bar.value = 0;
-      this.pct.textContent = "0%";
-    } catch {
-      this._setStatus("Nothing to delete.");
-    }
-  }
-
   cancel() {
     if (this.controller) this.controller.abort();
   }
@@ -78,19 +54,20 @@ export class SemanticInstall {
     return `${n.toFixed(1)} ${u[i]}`;
   }
   _setStatus(t, cls = "muted") {
-    this.status.textContent = t;
-    this.status.className = cls;
+    if (this.status) {
+      this.status.textContent = t;
+      this.status.className = cls;
+    }
   }
 
   async _getDir() {
     const root = await navigator.storage.getDirectory();
     return root.getDirectoryHandle(this.OPFS_DIR, { create: true });
   }
-
   _lockUnload() {
     this.boundBeforeUnload = (e) => {
       e.preventDefault();
-      e.returnValue = "Downloading semantic pack...";
+      e.returnValue = "Downloading semantic pack…";
     };
     window.addEventListener("beforeunload", this.boundBeforeUnload);
   }
@@ -114,7 +91,7 @@ export class SemanticInstall {
       if (done) break;
       chunks.push(value);
       received += value.byteLength;
-      if (total) onProgress(received / total);
+      if (total && onProgress) onProgress(received / total);
     }
     const blob = new Blob(chunks);
     const buf = await blob.arrayBuffer();
@@ -134,12 +111,11 @@ export class SemanticInstall {
   async start() {
     try {
       this._lockUnload();
-      console.log("Manifest URL:", this.MANIFEST_URL);
       const manifest = await fetch(this.MANIFEST_URL).then((r) => r.json());
       const total = manifest.files.reduce((s, f) => s + f.size, 0);
-      if (this.sizeEl) this.sizeEl.textContent = `Total: ${this._fmt(total)}`;
+      if (this.pct) this.pct.textContent = "0%";
+      this._setStatus("Starting…");
 
-      // Storage headroom check
       const est = await navigator.storage.estimate();
       if (est.quota - est.usage < total + 2_000_000) {
         this._setStatus("Not enough storage space.", "danger");
@@ -150,33 +126,32 @@ export class SemanticInstall {
       let done = 0;
 
       for (const f of manifest.files) {
-        const url = new URL(f.path, SEM_ROOT).href; // resolve under /semantic/
-        console.log("Downloading:", url);
+        const url = new URL(f.path, SEM_ROOT).href;
         this._setStatus(`Downloading ${f.path}…`);
         const blob = await this._downloadOne(url, f.sha256, (p) => {
           const cur = Math.round(((done + f.size * p) / total) * 100);
-          this.bar.value = cur;
-          this.pct.textContent = `${cur}%`;
+          if (this.bar) this.bar.value = cur;
+          if (this.pct) this.pct.textContent = `${cur}%`;
         });
         await this._writeOPFS(dir, f.path, blob);
         done += f.size;
       }
 
-      // Write version + mark installed & enabled
+      // Mark installed
       const vh = await dir.getFileHandle("version.txt", { create: true });
       const w = await vh.createWritable();
-      await w.write(manifest.version);
+      await w.write(manifest.version || "1");
       await w.close();
-      localStorage.setItem(this.VERSION_KEY, manifest.version);
       localStorage.setItem(this.ENABLE_KEY, "1");
 
-      this.bar.value = 100;
-      this.pct.textContent = "100%";
-      this._setStatus("Semantic pack installed. Semantic is now On.", "ok");
+      if (this.bar) this.bar.value = 100;
+      if (this.pct) this.pct.textContent = "100%";
+      this._setStatus("Done.", "ok");
       if (this.onInstalled) this.onInstalled();
     } catch (e) {
       if (e.name === "AbortError") this._setStatus("Cancelled.", "muted");
-      else this._setStatus(e.message, "danger");
+      else this._setStatus(e.message || "Error", "danger");
+      throw e; // let caller uncheck the switch
     } finally {
       this._unlockUnload();
     }

@@ -389,7 +389,7 @@ html.theme-dark .icon-btn:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 8px 0 12px;
+  margin: 0px 0 12px;
   align-items: center;
   grid-column: span 12;
 }
@@ -1352,97 +1352,6 @@ html.serif .menu-panel {
   } /* same height as header */
 }
 
-/* --- iOS-like switch --- */
-/* Compact iOS switch - complete standalone implementation */
-.ios-switch.compact {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  user-select: none;
-  padding: 4px 8px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg);
-}
-
-.ios-switch.compact .label {
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--muted);
-  order: -1; /* Put label before the toggle */
-}
-
-/* Hide the actual checkbox */
-.ios-switch.compact input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: 1px;
-  height: 1px;
-}
-
-/* The switch track */
-.ios-switch.compact .track {
-  width: 40px;
-  height: 24px;
-  border-radius: 12px;
-  position: relative;
-  background: #e5e7eb;
-  transition: background 0.2s ease;
-  flex-shrink: 0;
-}
-
-html.theme-dark .ios-switch.compact .track {
-  background: #374151;
-}
-
-/* The switch thumb */
-.ios-switch.compact .thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  background: white;
-  box-sizing: border-box;        /* keep size with border */
-  border: 1px solid rgba(122, 122, 122, 0.25); 
-  transition: transform 0.2s ease;
-}
-
-html.theme-dark .ios-switch.compact .thumb {
-  background: #f9fafb;
-}
-
-/* ON state */
-.ios-switch.compact input:checked + .track {
-  background: var(--fg);
-}
-
-.ios-switch.compact input:checked + .track .thumb {
-  transform: translateX(16px);
-}
-
-/* Hover state */
-.ios-switch.compact:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-html.theme-dark .ios-switch.compact:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* Focus ring */
-.ios-switch.compact input:focus-visible + .track {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.ios-switch.compact {
-  padding: 6px 6px 6px 8px;
-}
-
 /* ----- Inline Search Tips ----- */
 .tips-panel {
   border: 1px solid var(--border);
@@ -1494,4 +1403,102 @@ html.theme-dark .ios-switch.compact:hover {
   .cheatsheet {
     columns: 1;
   }
+}
+
+/* --- Pill switch (text + knob inside a capsule) --- */
+.tw-pill-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  cursor: pointer;
+  user-select: none;
+}
+.tw-pill-switch__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.tw-pill-switch__text {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.tw-pill-switch__track {
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: #e5e7eb; /* fallback if --surface-2 is very light */
+  position: relative;
+  box-shadow: inset 0 0 0 1px var(--border);
+  transition: background 0.18s ease;
+}
+.tw-pill-switch__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: transform 0.18s ease;
+}
+
+/* ON state */
+#sem-check:checked ~ .tw-pill-switch__text {
+  color: var(--text);
+}
+#sem-check:checked ~ .tw-pill-switch__track {
+  background: var(--fg);
+  box-shadow: none;
+}
+#sem-check:checked ~ .tw-pill-switch__track .tw-pill-switch__knob {
+  transform: translateX(20px);
+}
+
+/* --- Full-screen blocker overlay --- */
+.tw-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: saturate(140%) blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.tw-overlay[hidden] {
+  display: none;
+}
+.tw-overlay__panel {
+  width: min(640px, 92vw);
+  background: var(--surface-1, #fff);
+  color: var(--text, #111);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+.tw-overlay__title {
+  margin: 0 0 8px 0;
+}
+.tw-overlay__progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+.tw-overlay__progress progress {
+  width: 100%;
+  height: 10px;
+}
+.tw-overlay__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
 }

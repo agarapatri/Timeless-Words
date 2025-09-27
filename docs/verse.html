@@ -41,11 +41,12 @@
       <a id="nextVerse" class="btn ghost nav-btn" href="#">Next verse ›</a>
     </div>
   </main>
-  <footer class="site-footer">
-    <div class="container">
-      <small>Inspired by <a href="https://vedabase.io/en/" target="_blank" rel="noopener">vedabase.io</a></small>
-    </div>
-  </footer>
+  <div id="footerSlot"></div>
+
+  <script type="module">
+    import { injectFooter } from './assets/scripts/footer.js';
+    injectFooter('#footerSlot');
+  </script>
 
   <script src="assets/sql_helpers/sql-wasm.js"></script>
 
