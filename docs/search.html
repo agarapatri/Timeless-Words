@@ -86,7 +86,7 @@
         <section id="searchTips" class="tips-panel" aria-live="polite">
           <h2 class="tips-title">Search tips</h2>
 
-          <div class="tips-grid">
+          <div class="tips-grid" data-mode="regex">
             <div class="tips-col">
               <p><strong class="tip-basic">Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
               <p><strong class="tip-basic">Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
@@ -119,6 +119,17 @@
                   <li><code>(?i)viṣṇu</code> – case-insensitive</li>
                 </ul>
               </div>
+            </div>
+          </div>
+
+          <div class="tips-grid tips-grid--semantic" data-mode="semantic" hidden>
+            <div class="tips-col">
+              <p><strong class="tip-basic">Ask full questions</strong><br>Try natural language like <code>Who was the mother of Lord Krishna?</code></p>
+              <p><strong class="tip-basic">Describe concepts</strong><br>Use short phrases such as <code>teachings on compassion</code> or <code>Krishna guidance on duty</code>.</p>
+            </div>
+            <div class="tips-col">
+              <p><strong class="tip-basic">Mix key ideas</strong><br>Combine people, places, and topics: <code>Arjuna advice battlefield courage</code>.</p>
+              <p><strong class="tip-basic">Need exact matches?</strong><br>Toggle off “by meaning” to return to regex, wildcards, and precise search tools.</p>
             </div>
           </div>
         </section>
@@ -185,6 +196,16 @@
     if (input) input.placeholder = SEARCH.SEARCH_HINT_REGEX;
 
     const checkbox = document.getElementById('sem-check');
+    const tipsSection = document.getElementById('searchTips');
+    const regexTips = tipsSection && tipsSection.querySelector('[data-mode="regex"]');
+    const semanticTips = tipsSection && tipsSection.querySelector('[data-mode="semantic"]');
+
+    const setTipsMode = (semanticOn) => {
+      if (!tipsSection || !regexTips || !semanticTips) return;
+      tipsSection.setAttribute('data-mode', semanticOn ? 'semantic' : 'regex');
+      regexTips.hidden = !!semanticOn;
+      semanticTips.hidden = !semanticOn;
+    };
 
     // Blocker-based downloader
     const panel = new SemanticInstall({
@@ -204,6 +225,7 @@
     if (input) input.placeholder = window.__TW_SEMANTIC_MODE__
       ? SEARCH.SEARCH_HINT_SEMANTIC
       : SEARCH.SEARCH_HINT_REGEX;
+    setTipsMode(window.__TW_SEMANTIC_MODE__);
 
     // Toggle behavior (strict separation)
     checkbox.addEventListener('change', async (e) => {
@@ -217,6 +239,7 @@
           localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
           window.__TW_SEMANTIC_MODE__ = true;
           if (input) { input.value = ''; input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; input.focus(); }
+          setTipsMode(true);
           window.clearResults?.();
           panel.hide(); // auto-close on completion
         };
@@ -238,6 +261,7 @@
         input.placeholder = wantOn ? SEARCH.SEARCH_HINT_SEMANTIC : SEARCH.SEARCH_HINT_REGEX;
         input.focus();
       }
+      setTipsMode(wantOn);
       window.clearResults?.();
     });
   </script>

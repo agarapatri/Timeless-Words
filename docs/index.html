@@ -67,6 +67,7 @@
         Books <span id="booksCount" class="count" style="font-weight:400"></span>
       </h2>
       <div id="booksGrid" class="books-grid" aria-live="polite"></div>
+      <div id="booksPager" class="pager"></div>
     </section>
   </main>
 
@@ -84,13 +85,35 @@
   <script type="module">
     import { query } from './assets/db.js';
 
+    const PAGE_SIZES = [25, 50, 100];
+
     window.addEventListener('DOMContentLoaded', async () => {
       window.Library?.injectMenu?.('#menuSlot-home');
 
-      // Load books and work types from SQLite
+      const state = {
+        books: [],
+        filtered: [],
+        page: 1,
+        perPage: PAGE_SIZES[0],
+      };
+
+      const grid = document.getElementById('booksGrid');
+      const booksCount = document.getElementById('booksCount');
+      const input = document.getElementById('homeFilterInput');
+
+      const typeBtn = document.getElementById('typeBtn');
+      const typePanel = document.getElementById('typePanel');
+      const typeList = typePanel.querySelector('.type-list');
+      const typeClear = document.getElementById('typeClear');
+
+      const pager = document.getElementById('booksPager');
+      let pagerReady = false;
+
       async function loadFromSQLite() {
-        const typesOut = await query('SELECT code, label FROM work_types ORDER BY label');
-        const types = typesOut.rows.map(([code, label]) => ({ code, label }));
+        const typesOut = await query('SELECT code, label FROM work_types');
+        const types = typesOut.rows
+          .map(([code, label]) => ({ code, label }))
+          .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));
 
         const worksOut = await query(`
             SELECT w.work_id, w.slug, w.title_en, w.author, w.work_type_code,
@@ -112,42 +135,169 @@
         return { works, types };
       }
 
-      let books = [];
-      let workTypes = [];
       try {
         const loaded = await loadFromSQLite();
-        books = loaded.works;
-        workTypes = loaded.types;
-        console.log('Loaded books:', books.length);
-        console.log('Loaded work types:', workTypes.length);
+        state.books = loaded.works;
+        console.log('Loaded books:', state.books.length);
+        console.log('Loaded work types:', loaded.types.length);
+
+        const frag = document.createDocumentFragment();
+        loaded.types.forEach(({ code, label }) => {
+          const row = document.createElement('label');
+          row.className = 'type-item';
+          row.innerHTML = `
+              <input type="checkbox" name="bookType" value="${code}" checked>
+              <span>${label}</span>
+            `;
+          frag.appendChild(row);
+        });
+        typeList.appendChild(frag);
       } catch (e) {
         console.error('SQLite load error:', e);
-        books = [];
-        workTypes = [];
+        state.books = [];
       }
 
-      // Elements
-      const grid = document.getElementById('booksGrid');
-      const booksCount = document.getElementById('booksCount');
-      const input = document.getElementById('homeFilterInput');
+      function initialsFromTitle(title) {
+        const words = (title || '').trim().split(/\s+/).filter(Boolean);
+        if (words.length === 0) return '';
+        if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+        return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+      }
 
-      const typeBtn = document.getElementById('typeBtn');
-      const typePanel = document.getElementById('typePanel');
-      const typeList = typePanel.querySelector('.type-list');
-      const typeClear = document.getElementById('typeClear');
+      function norm(s) {
+        return String(s || '')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase();
+      }
 
-      // Build checkbox list from work_types
-      workTypes.forEach(({ code, label }) => {
-        const row = document.createElement('label');
-        row.className = 'type-item';
-        row.innerHTML = `
-            <input type="checkbox" name="bookType" value="${code}" checked>
-            <span>${label}</span>
-          `;
-        typeList.appendChild(row);
-      });
-      // One initial apply (not a second DOM iteration over checkboxes)
-      filter(input.value);
+      function selectedTypes() {
+        const set = new Set();
+        typePanel.querySelectorAll('input[name="bookType"]:checked').forEach(cb => set.add(cb.value));
+        return set;
+      }
+
+      function ensurePager() {
+        if (!pager || pagerReady) return;
+        pager.innerHTML = `
+          <button id="booksPrevPage" type="button" class="btn ghost" aria-label="Previous page">‹ Prev</button>
+          <span id="booksPageInfo" class="muted"></span>
+          <button id="booksNextPage" type="button" class="btn ghost" aria-label="Next page">Next ›</button>
+          <select id="booksPageSize" aria-label="Books per page">
+            ${PAGE_SIZES.map(size => `<option value="${size}">${size}</option>`).join('')}
+          </select>
+        `;
+        pagerReady = true;
+
+        const prev = document.getElementById('booksPrevPage');
+        const next = document.getElementById('booksNextPage');
+        const size = document.getElementById('booksPageSize');
+
+        prev?.addEventListener('click', () => {
+          if (state.page > 1) {
+            state.page -= 1;
+            renderPage(true);
+          }
+        });
+        next?.addEventListener('click', () => {
+          const totalPages = Math.max(1, Math.ceil(state.filtered.length / state.perPage));
+          if (state.page < totalPages) {
+            state.page += 1;
+            renderPage(true);
+          }
+        });
+        size?.addEventListener('change', () => {
+          const val = Number(size.value);
+          if (Number.isFinite(val) && val > 0) {
+            state.perPage = val;
+            state.page = 1;
+            renderPage(true);
+          }
+        });
+      }
+
+      function updatePager(total, totalPages) {
+        if (!pagerReady) return;
+        const prev = document.getElementById('booksPrevPage');
+        const next = document.getElementById('booksNextPage');
+        const info = document.getElementById('booksPageInfo');
+        const size = document.getElementById('booksPageSize');
+        if (prev) prev.disabled = state.page <= 1 || total === 0;
+        if (next) next.disabled = state.page >= totalPages || total === 0;
+        if (info) info.textContent = total === 0 ? 'No books' : `Page ${state.page} / ${totalPages}`;
+        if (size) size.value = String(state.perPage);
+      }
+
+      function renderBooks(list) {
+        grid.innerHTML = '';
+        if (!list.length) {
+          const empty = document.createElement('div');
+          empty.className = 'muted';
+          empty.style.padding = '12px 0';
+          empty.textContent = 'No books match your filters.';
+          grid.appendChild(empty);
+          return;
+        }
+        list.forEach(b => {
+          const card = document.createElement('a');
+          card.className = 'book-card';
+          const bookParam = String(b.work_id || b.id || b.slug || '');
+          card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
+
+          const initials = initialsFromTitle(b.title);
+          const coverClass = b.image ? 'cover has-image' : 'cover';
+          const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
+
+          const ch = Number(b.chapters ?? 0);
+          const vs = Number(b.verses ?? 0);
+          const stats = `${ch} chapters · ${vs} verses`;
+
+          card.innerHTML = `
+              <div class="${coverClass} notranslate" translate="no" ${styleAttr} aria-hidden="true">${initials}</div>
+              <div class="meta" style="min-width:0">
+                <div class="book-title" title="${b.title}"
+                     style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${b.title}</div>
+                <div class="book-sub" title="${b.author || 'Unknown'}" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b.author || 'Unknown'}</div>
+                <div class="book-stats" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${stats}</div>
+              </div>
+            `;
+          grid.appendChild(card);
+        });
+      }
+
+      function renderPage(scrollTop = false) {
+        ensurePager();
+        state.filtered = state.filtered || [];
+        const total = state.filtered.length;
+        const totalPages = Math.max(1, Math.ceil(total / state.perPage));
+        state.page = Math.min(state.page, totalPages);
+        const start = (state.page - 1) * state.perPage;
+        const pageItems = state.filtered.slice(start, start + state.perPage);
+        renderBooks(pageItems);
+        updatePager(total, totalPages);
+        if (booksCount) booksCount.textContent = `(${total})`;
+        if (scrollTop) {
+          const top = Math.max(0, (grid.offsetTop || 0) - 80);
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+
+      function applyFilters(queryText, { scrollTop = false } = {}) {
+        const t = norm(queryText).trim();
+        const selected = selectedTypes();
+        state.filtered = state.books.filter(b => {
+          const matchesText =
+            !t || norm(b.title).includes(t) || norm(b.author).includes(t);
+          const matchesType = selected.size === 0 || selected.has(b.type);
+          return matchesText && matchesType;
+        });
+        state.page = 1;
+        renderPage(scrollTop);
+      }
+
+      // Initial render
+      state.filtered = state.books.slice();
+      renderPage();
 
       // Open/close popover (click + ESC + click-away)
       function openType() {
@@ -171,87 +321,16 @@
       function onEsc(e) { if (e.key === 'Escape') closeType(); }
       typeBtn.addEventListener('click', () => typePanel.hidden ? openType() : closeType());
 
-      // Selection utilities
-      function selectedTypes() {
-        const set = new Set();
-        typePanel.querySelectorAll('input[name="bookType"]:checked').forEach(cb => set.add(cb.value));
-        return set;
-      }
-      typePanel.addEventListener('change', () => filter(input.value));
+      typePanel.addEventListener('change', () => applyFilters(input.value));
       typeClear.addEventListener('click', () => {
         typePanel.querySelectorAll('input[name="bookType"]').forEach(cb => cb.checked = false);
-        filter(input.value);
+        applyFilters(input.value, { scrollTop: true });
       });
 
-      // Types come directly from DB codes; no normalization needed
-
-      function initialsFromTitle(title) {
-        const words = (title || '').trim().split(/\s+/).filter(Boolean);
-        if (words.length === 0) return '';
-        if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-        return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
-      }
-
-      // Diacritic-insensitive, case-insensitive normalization for search
-      function norm(s) {
-        return String(s || '')
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '') // strip combining marks
-          .toLowerCase();
-      }
-
-      function render(list) {
-        grid.innerHTML = '';
-        (list || []).forEach(b => {
-          const card = document.createElement('a');
-          card.className = 'book-card';
-          // Use numeric work_id for robust linking
-          const bookParam = String(b.work_id || b.id || b.slug || '');
-          card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
-
-          const initials = initialsFromTitle(b.title);
-          const coverClass = b.image ? 'cover has-image' : 'cover';
-          const styleAttr = b.image ? `style="background-image:url('${b.image}')"` : '';
-
-          const ch = Number(b.chapters ?? 0);
-          const vs = Number(b.verses ?? 0);
-          const stats = `${ch} chapters · ${vs} verses`;
-
-          card.innerHTML = `
-              <div class="${coverClass} notranslate" translate="no" ${styleAttr} aria-hidden="true">${initials}</div>
-              <div class="meta" style="min-width:0">
-                <div class="book-title" title="${b.title}"
-                     style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${b.title}</div>
-                <div class="book-sub" title="${b.author || 'Unknown'}" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b.author || 'Unknown'}</div>
-                <div class="book-stats" style="font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${stats}</div>
-              </div>
-            `;
-          grid.appendChild(card);
-        });
-        if (booksCount) booksCount.textContent = `(${(list || []).length})`;
-      }
-
-      function filter(q) {
-        const t = norm(q).trim();
-        const selected = selectedTypes();
-
-        const list = books.filter(b => {
-          const matchesText =
-            norm(b.title).includes(t) ||
-            norm(b.author).includes(t);
-          const matchesType = selected.size === 0 || selected.has(b.type);
-          return matchesText && matchesType;
-        });
-
-        render(list);
-      }
-
-      // Initial render + handlers
-      render(books);
-      input.addEventListener('input', () => filter(input.value));
+      input.addEventListener('input', () => applyFilters(input.value));
       document.getElementById('homeFilterForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        filter(input.value);
+        applyFilters(input.value, { scrollTop: true });
       });
     });
   </script>

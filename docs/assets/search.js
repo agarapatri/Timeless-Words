@@ -144,20 +144,22 @@ import { loadDb, query } from "./db.js";
   }
 
   async function loadCatalog() {
-    const typesOut = await query(
-      `SELECT code, label FROM work_types ORDER BY label`
-    );
-    ALL.types = (typesOut.rows || []).map((r) => ({ code: r[0], label: r[1] }));
+    const typesOut = await query(`SELECT code, label FROM work_types`);
+    ALL.types = (typesOut.rows || [])
+      .map((r) => ({ code: r[0], label: r[1] }))
+      .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
 
-    const booksOut = await query(
-      `SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`
-    );
-    ALL.books = (booksOut.rows || []).map((r) => ({
-      id: String(r[0]),
-      work_id: r[0],
-      title: r[1] || "",
-      type: r[2] || "",
-    }));
+    const booksOut = await query(`
+      SELECT work_id, title_en, work_type_code FROM works
+    `);
+    ALL.books = (booksOut.rows || [])
+      .map((r) => ({
+        id: String(r[0]),
+        work_id: r[0],
+        title: r[1] || "",
+        type: r[2] || "",
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }));
 
     // Checklists are built by initTypeFilter and initBookFilter on DOMContentLoaded
   }
@@ -517,13 +519,15 @@ import { loadDb, query } from "./db.js";
       try {
         await loadDb();
         const booksOut = await query(
-          `SELECT work_id, title_en, work_type_code FROM works ORDER BY title_en`
+          `SELECT work_id, title_en, work_type_code FROM works`
         );
-        const rows = (booksOut.rows || []).map((r) => ({
-          id: String(r[0]),
-          title: r[1] || "",
-          type: r[2] || "",
-        }));
+        const rows = (booksOut.rows || [])
+          .map((r) => ({
+            id: String(r[0]),
+            title: r[1] || "",
+            type: r[2] || "",
+          }))
+          .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }));
         state.all = rows;
         state.filtered = rows.slice();
         state.selected = new Set(rows.map((b) => b.id));
@@ -661,10 +665,10 @@ import { loadDb, query } from "./db.js";
 
     (async () => {
       await loadDb();
-      const out = await query(
-        `SELECT code, label FROM work_types ORDER BY label`
-      );
-      const types = (out.rows || []).map((r) => ({ code: r[0], label: r[1] }));
+      const out = await query(`SELECT code, label FROM work_types`);
+      const types = (out.rows || [])
+        .map((r) => ({ code: r[0], label: r[1] }))
+        .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
       const frag = document.createDocumentFragment();
       types.forEach((t, idx) => {
         const idAttr = `type_${idx}`;

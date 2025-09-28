@@ -94,7 +94,7 @@
 
 <body>
   <main class="container chapter-page">
-    <nav class="crumbs" id="crumbs"></nav>
+    <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
 
     <!-- Title row with single-select filter -->
     <div class="titlebar">
@@ -182,13 +182,19 @@
       division_label = rowd[2] || `Chapter ${rowd[1]}`;
 
       // Header + crumbs
-      document.getElementById('chapterTitle').textContent = `${title} — Chapter ${division_ord || chapterNum}`;
+      const chapterOrdinal = division_ord || chapterNum;
+      const chapterLabel = division_label ? division_label : `Chapter ${chapterOrdinal}`;
+      document.getElementById('chapterTitle').textContent = division_label
+        ? `${title} — ${division_label}`
+        : `${title} — Chapter ${chapterOrdinal}`;
       const crumbs = document.getElementById('crumbs');
       const backBookParam = String(work_id);
       crumbs.innerHTML = `
-        <a href="index.html">Timeless Words</a><span>›</span>
-        <a href="book.html?book=${encodeURIComponent(backBookParam)}">${title}</a><span>›</span>
-        <span>Chapter ${chapterNum}</span>
+        <a href="index.html">Timeless Words</a>
+        <span class="crumbs__sep" aria-hidden="true">›</span>
+        <a href="book.html?book=${encodeURIComponent(backBookParam)}">${title}</a>
+        <span class="crumbs__sep" aria-hidden="true">›</span>
+        <span aria-current="page">${chapterLabel}</span>
       `;
 
       // Load verses for this division using the wide view

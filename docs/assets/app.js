@@ -141,9 +141,18 @@
   let utter = null;
 
   function getSpeakText() {
-    const s = String(window.getSelection?.().toString() || "");
-    if (s.trim()) return s;
-    // fallback: title + subtitle (adjust selectors if you want)
+    const sel = window.getSelection?.();
+    const selected = sel ? String(sel.toString()) : "";
+    if (selected.trim()) return selected.trim();
+
+    const main = document.querySelector("main");
+    const base = main ? main.innerText : document.body?.innerText;
+    const cleaned = String(base || "")
+      .replace(/\s+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+    if (cleaned) return cleaned;
+
     const title = document.querySelector(".title,.book-title,h1,h2");
     const sub = document.querySelector(".muted,.book-sub");
     return [title?.textContent || "", sub?.textContent || ""]
@@ -187,8 +196,8 @@
 
   // === Google Translate toggle (checkbox) ===
   function bindTranslateControls(root) {
-    const toggle = (root || document).querySelector("#gtToggle");
-    if (!toggle) return;
+    const control = (root || document).querySelector("#gtToggle");
+    if (!control) return;
 
     function isTranslated() {
       const h = location.hostname;
@@ -219,21 +228,37 @@
       )}&u=${encodeURIComponent(orig)}`;
     }
 
-    // Initialize checkbox state from current URL
-    const translatedNow = isTranslated();
-    toggle.checked = translatedNow;
+    const asInput =
+      typeof HTMLInputElement !== "undefined" && control instanceof HTMLInputElement;
 
-    toggle.addEventListener("change", () => {
+    const updateLabel = (translated) => {
+      if (asInput) return;
+      const button = /** @type {HTMLElement} */ (control);
+      button.textContent = translated ? "View Original Site" : "Translate (Google)";
+    };
+
+    const translatedNow = isTranslated();
+    if (asInput) control.checked = translatedNow;
+    updateLabel(translatedNow);
+
+    const go = (wantTranslate) => {
       const nowTranslated = isTranslated();
-      if (toggle.checked) {
+      if (wantTranslate) {
         const orig = nowTranslated ? originalFromTranslateUrl() : location.href;
         location.href = makeTranslateUrl(orig);
-      } else {
-        if (nowTranslated) {
-          location.href = originalFromTranslateUrl();
-        }
+      } else if (nowTranslated) {
+        location.href = originalFromTranslateUrl();
       }
-    });
+    };
+
+    if (asInput) {
+      control.addEventListener("change", () => go(control.checked));
+    } else {
+      control.addEventListener("click", () => {
+        const nowTranslated = isTranslated();
+        go(!nowTranslated);
+      });
+    }
   }
 
   function bindMenuControls(root) {

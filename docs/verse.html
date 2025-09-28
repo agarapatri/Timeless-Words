@@ -13,7 +13,7 @@
 
 
   <main class="container verse-page">
-    <nav class="crumbs" id="crumbs"></nav>
+    <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
     <div class="verse-head" style="position:relative;">
       <h1 id="ref" class="verse-ref notranslate" translate="no" style="margin:0"></h1>
       <div id="menuSlot-verse" class="menu-wrap" style="position:absolute; right:0; top:50%; transform:translateY(-50%);"></div>
@@ -70,10 +70,10 @@
         const title = work[2] || '';
 
         // Resolve division (chapter)
-        let division_id, division_ord;
+        let division_id, division_ord, division_label;
         if (divisionParam) {
           const di = await db.query(
-            `SELECT division_id, ordinal
+            `SELECT division_id, ordinal, label
               FROM divisions
               WHERE division_id = $div AND work_id = $work
               LIMIT 1`,
@@ -83,10 +83,11 @@
           if (!rowd) throw new Error('Division not found (by id)');
           division_id = rowd[0];
           division_ord = rowd[1];
+          division_label = rowd[2] || '';
         } else {
           const ord = Number(chapterParam || 1);
           const di = await db.query(
-            `SELECT division_id, ordinal
+            `SELECT division_id, ordinal, label
               FROM divisions
               WHERE work_id = $work AND ordinal = $ord
               LIMIT 1`,
@@ -96,6 +97,7 @@
           if (!rowd) throw new Error('Division not found (by ordinal)');
           division_id = rowd[0];
           division_ord = rowd[1];
+          division_label = rowd[2] || '';
         }
 
         // Find verse row by ordinal within this division
@@ -150,12 +152,15 @@
         const short = (title || '').split(/\s+/).map(s => s[0]).join('').slice(0, 2).toUpperCase();
         document.getElementById('ref').textContent = `${short} ${ref}`;
         const crumbs = document.getElementById('crumbs');
+        const chapterLabel = division_label ? division_label : `Chapter ${division_ord}`;
         crumbs.innerHTML = `
           <a href="index.html">Timeless Words</a>
-          <span>›</span>
+          <span class="crumbs__sep" aria-hidden="true">›</span>
           <a href="book.html?book=${encodeURIComponent(String(work_id))}">${title}</a>
-          <span>›</span>
-          <a href="chapter.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(division_id))}">Chapter ${division_ord}</a>
+          <span class="crumbs__sep" aria-hidden="true">›</span>
+          <a href="chapter.html?book=${encodeURIComponent(String(work_id))}&d=${encodeURIComponent(String(division_id))}">${chapterLabel}</a>
+          <span class="crumbs__sep" aria-hidden="true">›</span>
+          <span aria-current="page">Verse ${ref}</span>
         `;
 
         // Fill sections

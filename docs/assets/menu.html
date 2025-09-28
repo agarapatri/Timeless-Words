@@ -24,19 +24,28 @@
       </svg>
     </a>
     <div class="menu-sep"></div>
-    <label class="menu-item row" role="menuitem" for="gtToggle">
-      <span>Translate (Google)</span>
-      <input id="gtToggle" type="checkbox">
-    </label>
+    <button class="menu-item" role="menuitem" id="gtToggle" type="button">
+      Translate (Google)
+    </button>
     <div class="menu-sep"></div>
-    <label class="menu-item row" role="menuitem" for="darkToggle">
+    <label class="menu-item row menu-toggle" role="menuitem" for="darkToggle">
       <span>Dark Mode</span>
-      <input id="darkToggle" type="checkbox">
+      <span class="tw-pill-switch tw-pill-switch--bare">
+        <input id="darkToggle" type="checkbox" class="tw-pill-switch__input" aria-label="Toggle dark mode">
+        <span class="tw-pill-switch__track" aria-hidden="true">
+          <span class="tw-pill-switch__knob"></span>
+        </span>
+      </span>
     </label>
     <div class="menu-sep"></div>
-    <label class="menu-item row" role="menuitem" for="serifToggle">
+    <label class="menu-item row menu-toggle" role="menuitem" for="serifToggle">
       <span>Serif Typeface</span>
-      <input id="serifToggle" type="checkbox">
+      <span class="tw-pill-switch tw-pill-switch--bare">
+        <input id="serifToggle" type="checkbox" class="tw-pill-switch__input" aria-label="Toggle serif typeface">
+        <span class="tw-pill-switch__track" aria-hidden="true">
+          <span class="tw-pill-switch__knob"></span>
+        </span>
+      </span>
     </label>
     <div class="menu-sep"></div>
     <div class="menu-item col" role="menuitem">
