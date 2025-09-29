@@ -1,63 +1,115 @@
 // assets/encoder.js
-// Minimal encoder for semantic search (browser-only).
-// Requires you to include transformers.js once on pages that call this:
-// <script type="module" src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
+// Lightweight query encoder that mirrors the hashed embeddings used in
+// build_semantic_pack.py.  It uses deterministic FNV-1a hashing on tokens and
+// character n-grams, then L2 normalises the resulting vector.
+
+const FNV_OFFSET = BigInt('0xcbf29ce484222325');
+const FNV_PRIME = BigInt('0x100000001b3');
+const MASK64 = BigInt('0xffffffffffffffff');
+const textEncoder = new TextEncoder();
+let unicodeAlphaNum = null;
+const FALLBACK_PUNCT = new Set(['।', '॥', '–', '—', '…']);
+try {
+  unicodeAlphaNum = new RegExp('[\\p{L}\\p{N}]', 'u');
+} catch (err) {
+  unicodeAlphaNum = null;
+}
+
+function fnv1a64(bytes) {
+  let hash = FNV_OFFSET;
+  for (const byte of bytes) {
+    hash ^= BigInt(byte);
+    hash = (hash * FNV_PRIME) & MASK64;
+  }
+  return hash;
+}
+
+function isAlphaNum(ch) {
+  if (unicodeAlphaNum) {
+    unicodeAlphaNum.lastIndex = 0;
+    if (unicodeAlphaNum.test(ch)) return true;
+  }
+  const code = ch.codePointAt(0);
+  if (code === undefined) return false;
+  if (code >= 48 && code <= 57) return true; // 0-9
+  if (code <= 0x7f) {
+    // ASCII letters
+    return (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
+  }
+  // Fallback heuristic: treat most non-ASCII characters as letters except
+  // for a small set of known punctuation marks used in the corpus.
+  return !FALLBACK_PUNCT.has(ch);
+}
+
+function tokenize(text) {
+  const tokens = [];
+  let current = '';
+  for (const ch of text.toLowerCase()) {
+    if (isAlphaNum(ch)) {
+      current += ch;
+    } else if (current) {
+      tokens.push(current);
+      current = '';
+    }
+  }
+  if (current) tokens.push(current);
+  return tokens;
+}
+
+function addFeatures(vec, token, dim) {
+  if (!token) return;
+  const base = Number(fnv1a64(textEncoder.encode(token)) % BigInt(dim));
+  vec[base] += 1;
+
+  if (token.length >= 4) {
+    for (let i = 0; i < token.length - 1; i += 1) {
+      const bigram = token.slice(i, i + 2);
+      const idx = Number(
+        fnv1a64(textEncoder.encode(`bg:${bigram}`)) % BigInt(dim)
+      );
+      vec[idx] += 0.5;
+    }
+  }
+
+  if (token.length >= 6) {
+    for (let i = 0; i < token.length - 3; i += 1) {
+      const quad = token.slice(i, i + 4);
+      const idx = Number(
+        fnv1a64(textEncoder.encode(`cg:${quad}`)) % BigInt(dim)
+      );
+      vec[idx] += 0.25;
+    }
+  }
+}
+
+function embedText(textParts, dim) {
+  const vec = new Float32Array(dim);
+  for (const part of textParts) {
+    if (!part) continue;
+    for (const token of tokenize(part)) {
+      addFeatures(vec, token, dim);
+    }
+  }
+  let norm = 0;
+  for (let i = 0; i < vec.length; i += 1) norm += vec[i] * vec[i];
+  norm = Math.sqrt(norm);
+  if (norm > 0) {
+    for (let i = 0; i < vec.length; i += 1) vec[i] /= norm;
+  }
+  return vec;
+}
 
 export class QueryEncoder {
   constructor(opts = {}) {
-    this.dir = opts.opfsDir || 'tw-semantic';
-    this.modelPath = opts.modelPath || 'embedder.onnx';      // in OPFS
-    this.tokPath   = opts.tokPath   || 'tokenizer.json';     // in OPFS
-    this.pipeline = null;
+    this.dim = opts.dimension || 384;
   }
 
-  async #getOPFSFile(path) {
-    const root = await navigator.storage.getDirectory();
-    const dir = await root.getDirectoryHandle(this.dir, { create: false });
-    const fh  = await dir.getFileHandle(path);
-    return await fh.getFile();
+  setDimension(d) {
+    this.dim = d;
   }
 
-  async init() {
-    if (this.pipeline) return;
-
-    // Build a local filesystem mapping for Transformers.js
-    // NOTE: We feed File objects directly as "local files" so it never fetches from network.
-    const [tokFile, onnxFile] = await Promise.all([
-      this.#getOPFSFile(this.tokPath),
-      this.#getOPFSFile(this.modelPath),
-    ]);
-
-    // Transform OPFS files into "virtual URLs"
-    const tokURL  = URL.createObjectURL(tokFile);
-    const onnxURL = URL.createObjectURL(onnxFile);
-
-    // Configure Transformers.js to use ONNX runtime, local files only.
-    // eslint-disable-next-line no-undef
-    const { pipeline, env } = window.transformers;
-    env.allowRemoteModels = false;
-    env.backends.onnx.wasm.wasmPaths = '/assets/onyx/'; // runtime loader only
-
-    this.pipeline = await pipeline('feature-extraction', {
-      // A pseudo "model" that references our local ONNX + tokenizer
-      model: onnxURL,
-      tokenizer: tokURL,
-      dtype: 'fp32',
-      quantized: false,
-      // Pooling options: mean pooling is standard for sentence embeddings
-      // will call .forward + mean over sequence
-    });
-  }
-
-  /**
-   * Encode a query string to a unit-normalized Float32Array vector.
-   */
-  async encode(text) {
-    if (!this.pipeline) await this.init();
-
-    // eslint-disable-next-line no-undef
-    const output = await this.pipeline(text, { pooling: 'mean', normalize: true });
-    // output.data is a Float32Array already normalized to L2=1
-    return output.data;
+  encode(text) {
+    const merged = Array.isArray(text) ? text : [text];
+    return embedText(merged, this.dim);
   }
 }

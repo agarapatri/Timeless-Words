@@ -408,6 +408,18 @@ avifenc --min 20 --max 30 --speed 6 input.jpg output.avif
 * The destination AVIF file.
 
 
+## Generate Directory Structure
+```bash
+brew install tree
+tree --version
+```
+* Navigate to the directory you want tree to be generated.
+```bash
+tree > directory_structure.txt
+```
+* Output `directory_structure.txt` will be in the same directory.
+
+
 ## Upcoming Features
 
 * Semantic Search - You will be able to search "Who was the father of Lord Krishna?" and it will return appropriate verses from the entire corpus.

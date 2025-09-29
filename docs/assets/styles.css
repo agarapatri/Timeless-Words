@@ -1011,7 +1011,7 @@ html.theme-dark #fTypes .filter::before {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin: 8px 0 12px;
+  margin: 16px 0 12px;
   justify-content: flex-end;
 }
 .pager .btn {
@@ -1434,6 +1434,12 @@ html.serif {
   padding: 0.15rem 0.35rem;
   border-radius: 4px;
   font: 400 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.tips-panel[data-mode='regex'] .tips-grid[data-mode='semantic'] {
+  display: none;
+}
+.tips-panel[data-mode='semantic'] .tips-grid[data-mode='regex'] {
+  display: none;
 }
 .tips-adv-title {
   font-weight: 600;

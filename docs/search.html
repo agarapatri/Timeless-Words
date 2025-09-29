@@ -50,17 +50,6 @@
 
         <script src="assets/sql_helpers/sql-wasm.js"></script>
 
-        <script type="module">
-          import { env, pipeline } from '/assets/vendor/transformers/transformers.min.js';
-          env.allowRemoteModels = false;
-          env.localModelPath = '/models/';            // your local models
-          env.backends.onnx.wasm.wasmPaths = '/assets/onnx/'; // local .wasm
-          // avoid threaded runtime on non-COI pages
-          env.backends.onnx.wasm.numThreads = 1;
-        </script>
-
-        <script type="module" src="assets/encoder.js?v={{VERSION}}"></script>
-
         <!-- Full-screen blocking overlay for semantic download -->
         <div id="tw-sem-overlay" class="tw-overlay" hidden>
           <div class="tw-overlay__panel">

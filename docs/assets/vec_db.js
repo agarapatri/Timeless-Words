@@ -1,116 +1,126 @@
 // assets/vec_db.js
-// Semantic DB adapter. Opens the OPFS-stored SQLite and exposes vecSearch().
-// Uses sql.js HTTPVFS worker you already ship, but we read the DB from OPFS.
-
-import { createDbWorker } from './sql_helpers/sqljs-httpvfs/index.js';
+// Semantic DB helper that loads a compact SQLite pack from OPFS using sql.js
+// and performs cosine similarity search fully in JavaScript.
 
 async function getOPFSFileBuffer(dirName, fileName) {
   const root = await navigator.storage.getDirectory();
-  const dir  = await root.getDirectoryHandle(dirName, { create: false });
-  const fh   = await dir.getFileHandle(fileName);
+  const dir = await root.getDirectoryHandle(dirName, { create: false });
+  const fh = await dir.getFileHandle(fileName);
   const file = await fh.getFile();
-  return await file.arrayBuffer();
+  return new Uint8Array(await file.arrayBuffer());
+}
+
+let sqlPromise = null;
+function loadSqlModule() {
+  if (!sqlPromise) {
+    sqlPromise = initSqlJs({
+      locateFile: (file) => `/assets/sql_helpers/${file}`,
+    });
+  }
+  return sqlPromise;
 }
 
 export class SemanticDB {
   constructor(opts = {}) {
     this.dir = opts.opfsDir || 'tw-semantic';
     this.dbFile = opts.dbFile || 'library.semantic.v01.sqlite';
-    this.sqlWasm = opts.sqlWasm || 'sql-wasm.wasm';
-    this.sqliteVec = opts.sqliteVec || 'sqlite-vec.wasm';
-    this.worker = null;
+    this.dim = opts.dimension || null;
+    this.ready = false;
+    this.passages = new Map();
+    this.ids = [];
+    this.embeddingMatrix = null;
+    this.meta = new Map();
   }
 
   async open() {
-    if (this.worker) return this.worker;
+    if (this.ready) return this;
+    const SQL = await loadSqlModule();
+    const buf = await getOPFSFileBuffer(this.dir, this.dbFile);
+    const db = new SQL.Database(buf);
 
-    // Load wasm binaries and database from OPFS
-    const [wasmBin, vecWasm, dbBuf] = await Promise.all([
-      getOPFSFileBuffer(this.dir, this.sqlWasm),
-      getOPFSFileBuffer(this.dir, this.sqliteVec),
-      getOPFSFileBuffer(this.dir, this.dbFile),
-    ]);
-
-    // Boot the worker. Many builds of sql.js-httpvfs accept wasmBinary and extensions.
-    // If your version differs, we can adapt in the next step.
-    this.worker = await createDbWorker(
-      [{ from: 'buffer', buffer: dbBuf }],       // open from ArrayBuffer (no network)
-      /* wasmModuleOrPath */ null,
-      {
-        wasmBinary: wasmBin,                     // use OPFS wasm
-        extensions: [{ name: 'sqlite-vec', wasm: vecWasm }],
+    const metaRes = db.exec('SELECT key, value FROM meta');
+    if (metaRes.length) {
+      const { columns, values } = metaRes[0];
+      for (const row of values) {
+        this.meta.set(row[columns.indexOf('key')], row[columns.indexOf('value')]);
       }
-    );
-
-    return this.worker;
-  }
-
-  /**
-   * Run a vector search using sqlite-vec and join back to passages.
-   * @param {Float32Array} qvec  normalized vector
-   * @param {number} topK
-   * @returns array of rows: { id, work_id, chapter, verse_start, verse_end, text, distance }
-   */
-  async vecSearch(qvec, topK = 100) {
-    await this.open();
-
-    // Pass raw ArrayBuffer to the query param so sqlite-vec can read it
-    const rows = await this.worker.db.query(
-      `
-      SELECT p.id, p.work_id, p.chapter, p.verse_start, p.verse_end, p.text, v.distance
-      FROM vss_search('embeddings', $vec, $k) AS v
-      JOIN passages p ON p.id = v.rowid
-      ORDER BY v.distance ASC
-      `,
-      { $vec: qvec.buffer, $k: topK }
-    );
-    return rows;
-  }
-
-  /**
-   * Optional: hybrid — blend BM25 from FTS with dense scores.
-   * Requires an FTS table named passages_fts(content=passages, content_rowid=id).
-   */
-  async hybridSearch(qtext, qvec, { denseK = 150, bm25K = 300, alpha = 0.6 } = {}) {
-    await this.open();
-
-    // Dense
-    const dense = await this.worker.db.query(
-      `SELECT rowid AS id, distance FROM vss_search('embeddings', $vec, $k)`,
-      { $vec: qvec.buffer, $k: denseK }
-    );
-    const denseMap = new Map(dense.map(r => [r.id, 1 / (1 + r.distance)]));
-
-    // Lexical (BM25)
-    const bm = await this.worker.db.query(
-      `SELECT rowid AS id, bm25(passages_fts) AS bm FROM passages_fts WHERE passages_fts MATCH $q LIMIT $k`,
-      { $q: qtext, $k: bm25K }
-    );
-    const bmMap = new Map(bm.map(r => [r.id, r.bm]));
-
-    // Combine scores
-    const ids = new Set([...denseMap.keys(), ...bmMap.keys()]);
-    const scores = [];
-    for (const id of ids) {
-      const d = denseMap.get(id) || 0;
-      const b = bmMap.get(id) || 0;
-      // normalize BM25 roughly by max; fetch max lazily
-      scores.push([id, alpha * d + (1 - alpha) * (b)]);
     }
-    scores.sort((a,b) => b[1] - a[1]);
-    const top = scores.slice(0, 100).map(x => x[0]);
+    if (!this.dim) {
+      const metaDim = Number(this.meta.get('dim'));
+      this.dim = Number.isFinite(metaDim) && metaDim > 0 ? metaDim : 384;
+    }
 
-    // Fetch rows
-    const placeholders = top.map(()=>'?').join(',');
-    if (!placeholders) return [];
-    const rows = await this.worker.db.query(
-      `SELECT id, work_id, chapter, verse_start, verse_end, text
-       FROM passages WHERE id IN (${placeholders})`,
-      top
+    const passStmt = db.prepare(
+      'SELECT id, work_id, division_id, chapter, verse_start, verse_end, text FROM passages ORDER BY id'
     );
-    // order rows by our ranking
-    const order = new Map(top.map((id,i)=>[id,i]));
-    rows.sort((a,b)=> order.get(a.id) - order.get(b.id));
-    return rows.map(r => ({ ...r, distance: undefined }));
+    const ids = [];
+    const passages = new Map();
+    while (passStmt.step()) {
+      const row = passStmt.getAsObject();
+      const id = Number(row.id);
+      ids.push(id);
+      passages.set(id, {
+        id,
+        work_id: Number(row.work_id),
+        division_id: Number(row.division_id),
+        chapter: Number(row.chapter),
+        verse_start: Number(row.verse_start),
+        verse_end: Number(row.verse_end),
+        text: String(row.text || ''),
+      });
+    }
+    passStmt.free();
+
+    const vecStmt = db.prepare('SELECT id, vector FROM embeddings ORDER BY id');
+    const matrix = new Float32Array(ids.length * this.dim);
+    const idIndex = new Map(ids.map((id, idx) => [id, idx]));
+    while (vecStmt.step()) {
+      const row = vecStmt.getAsObject();
+      const id = Number(row.id);
+      const idx = idIndex.get(id);
+      if (idx === undefined) continue;
+      const blob = row.vector; // Uint8Array
+      const view = new Float32Array(blob.buffer, blob.byteOffset, blob.byteLength / 4);
+      matrix.set(view, idx * this.dim);
+    }
+    vecStmt.free();
+    db.close();
+
+    this.ids = ids;
+    this.passages = passages;
+    this.embeddingMatrix = matrix;
+    this.ready = true;
+    return this;
+  }
+
+  getDimension() {
+    return this.dim;
+  }
+
+  vecSearch(queryVec, topK = 100) {
+    if (!this.ready) throw new Error('SemanticDB not opened');
+    const dim = this.dim;
+    if (!queryVec || queryVec.length !== dim) {
+      throw new Error(`Query vector has dimension ${queryVec.length}; expected ${dim}`);
+    }
+    const scores = [];
+    const matrix = this.embeddingMatrix;
+    for (let row = 0; row < this.ids.length; row += 1) {
+      let dot = 0;
+      const offset = row * dim;
+      for (let j = 0; j < dim; j += 1) {
+        dot += matrix[offset + j] * queryVec[j];
+      }
+      scores.push({ id: this.ids[row], score: dot });
+    }
+    scores.sort((a, b) => b.score - a.score);
+    const out = [];
+    for (let i = 0; i < scores.length && out.length < topK; i += 1) {
+      const { id, score } = scores[i];
+      const passage = this.passages.get(id);
+      if (!passage) continue;
+      out.push({ ...passage, score });
+    }
+    return out;
   }
 }

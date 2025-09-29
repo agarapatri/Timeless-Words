@@ -240,26 +240,22 @@ import { loadDb, query } from "./db.js";
   }
 
   async function ensureSemanticReady() {
-    // Only attempt if the pack is installed and the user actually turned it on
     if (!localStorage.getItem("tw_semantic_enabled")) {
       throw new Error("Semantic pack not installed");
     }
     if (!window.__twEncoder || !window.__twSemdb) {
-      // IMPORTANT: these paths must match where you put the files (recommended: /assets/)
       const [{ QueryEncoder }, { SemanticDB }] = await Promise.all([
         import("./encoder.js?v={{VERSION}}"),
         import("./vec_db.js?v={{VERSION}}"),
       ]);
-      window.__twEncoder = new QueryEncoder({ opfsDir: "tw-semantic" });
-      await window.__twEncoder.init();
-
-      window.__twSemdb = new SemanticDB({
+      const semdb = new SemanticDB({
         opfsDir: "tw-semantic",
         dbFile: "library.semantic.v01.sqlite",
-        sqlWasm: "sql-wasm.wasm",
-        sqliteVec: "sqlite-vec.wasm",
       });
-      await window.__twSemdb.open();
+      await semdb.open();
+      const encoder = new QueryEncoder({ dimension: semdb.getDimension() });
+      window.__twSemdb = semdb;
+      window.__twEncoder = encoder;
     }
     return { encoder: window.__twEncoder, semdb: window.__twSemdb };
   }
@@ -296,7 +292,7 @@ import { loadDb, query } from "./db.js";
       const qvec = await encoder.encode(f.q);
 
       // Vector search (topK can be tuned)
-      const rows = await semdb.vecSearch(qvec, 200);
+      const rows = semdb.vecSearch(qvec, 200);
 
       // Map results back to the verses you already render
       const byId = new Map(ALL.verses.map((v) => [v.verse_id, v]));
@@ -306,7 +302,7 @@ import { loadDb, query } from "./db.js";
         if (!v) continue;
         // Respect Book filter only (strict separation from regex/wildcards)
         if (f.allowedIds.length && !f.allowedIds.includes(v.work_id)) continue;
-        filtered.push(v);
+        filtered.push({ ...v, __semantic_score: r.score, __semantic_text: r.text });
         if (filtered.length >= 200) break;
       }
 
@@ -317,7 +313,7 @@ import { loadDb, query } from "./db.js";
     } catch (e) {
       console.error(e);
       document.getElementById("resultsInfo").textContent =
-        "Semantic not ready. Click the Semantic button to install, or switch it off.";
+        "Semantic not ready. Install the pack from the menu or switch it off.";
     }
   }
 
@@ -417,6 +413,12 @@ import { loadDb, query } from "./db.js";
       a.href = href;
 
       const snippets = pickSnippetsRow(row, f, qVal);
+      const semanticLines = [];
+      if (row.__semantic_text) {
+        semanticLines.push(
+          `<div class="line muted">${highlight(row.__semantic_text, qVal)}</div>`
+        );
+      }
       const lines = snippets
         .slice(0, 3)
         .map(
@@ -427,7 +429,7 @@ import { loadDb, query } from "./db.js";
         </div>
       `
         )
-        .join("");
+        .join("") + semanticLines.join("");
 
       a.innerHTML = `
         <div class="line">
@@ -804,18 +806,18 @@ import { loadDb, query } from "./db.js";
       location.href = "semantic_download.html";
       throw new Error("Semantic pack not installed");
     }
-    if (!__encoder) __encoder = new QueryEncoder({ opfsDir: "tw-semantic" });
-    if (!__semdb)
-      __semdb = new SemanticDB({
+    if (!__encoder || !__semdb) {
+      const [{ QueryEncoder }, { SemanticDB }] = await Promise.all([
+        import("./encoder.js?v={{VERSION}}"),
+        import("./vec_db.js?v={{VERSION}}"),
+      ]);
+      __semdb = __semdb || new SemanticDB({
         opfsDir: "tw-semantic",
         dbFile: "library.semantic.v01.sqlite",
-        sqlWasm: "sql-wasm.wasm",
-        sqliteVec: "sqlite-vec.wasm",
       });
-    // warm-up encoder
-    await __encoder.init();
-    // open DB
-    await __semdb.open();
+      await __semdb.open();
+      __encoder = new QueryEncoder({ dimension: __semdb.getDimension() });
+    }
     return { encoder: __encoder, semdb: __semdb };
   }
 
@@ -836,12 +838,10 @@ import { loadDb, query } from "./db.js";
     try {
       const { encoder, semdb } = await ensureSemantic();
       // Encode query
-      const qvec = await encoder.encode(queryText);
+      const qvec = encoder.encode(queryText);
 
-      // Dense only (fast) — or use semdb.hybridSearch(queryText, qvec) for hybrid
-      const rows = await semdb.vecSearch(qvec, 100);
+      const rows = semdb.vecSearch(qvec, 100);
 
-      // Normalize to your renderer’s expected shape
       const results = rows.map((r) => ({
         id: r.id,
         work_id: r.work_id,
@@ -849,8 +849,7 @@ import { loadDb, query } from "./db.js";
         verse_start: r.verse_start,
         verse_end: r.verse_end,
         text: r.text,
-        // extra fields if your renderer uses them:
-        score: r.distance != null ? 1 / (1 + r.distance) : 0,
+        score: r.score,
         source: "semantic",
       }));
 

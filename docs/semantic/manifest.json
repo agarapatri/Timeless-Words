@@ -1,21 +1,16 @@
 {
-  "version": "2025-09-26-165902",
-  "total_size": 61,
+  "version": "2025-09-29-213559",
+  "total_size": 421949,
   "files": [
     {
-      "path": "embedder.onnx",
-      "size": 29,
-      "sha256": "45b71fe98efe5f530b825dce6f5049d738e9c16869f10be4370ab81a9912d4a6"
+      "path": "config.json",
+      "size": 61,
+      "sha256": "29e4b178841832bd9ce4a354419a0d70d90f2fd76672d4d14b52d1df0012f549"
     },
     {
-      "path": "pack-ok.txt",
-      "size": 3,
-      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
-    },
-    {
-      "path": "tokenizer.json",
-      "size": 29,
-      "sha256": "45b71fe98efe5f530b825dce6f5049d738e9c16869f10be4370ab81a9912d4a6"
+      "path": "library.semantic.v01.sqlite",
+      "size": 421888,
+      "sha256": "f3f3fc3795a2a3a45c12a5a5a494ce13c8f01ec56f88d94f2815647caea2226a"
     }
   ]
 }
