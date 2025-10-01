@@ -231,7 +231,7 @@
           window.clearResults?.();
           panel.hide(); // auto-close on completion
         };
-        try { await panel.start(); } catch {
+        try { await panel.start(); } catch (err) {
           console.error('semantic install failed:', err);
           const s = document.getElementById('tw-sem-status');
           if (s) s.textContent = String(err?.message || err);
