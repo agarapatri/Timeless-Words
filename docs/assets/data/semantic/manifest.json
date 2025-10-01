@@ -4,7 +4,7 @@
     {
       "path": "library.semantic.v01.sqlite",
       "size": 425984,
-      "sha256": "1f24393353d7c84a955f952eea4bb1235fc7d3d03f37e579f5100ad68ff118c7"
+      "sha256": "CHANGE_ME"
     },
     {
       "path": "onnx_model/config.json",
