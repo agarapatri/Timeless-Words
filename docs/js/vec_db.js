@@ -16,7 +16,7 @@ let sqlPromise = null;
 function loadSqlModule() {
   if (!sqlPromise) {
     sqlPromise = initSqlJs({
-      locateFile: (file) => `/js/sql_helpers/${file}`,
+      locateFile: (file) => new URL(`./sql_helpers/${file}`, import.meta.url).href,
     });
   }
   return sqlPromise;

@@ -15,8 +15,9 @@ export const SEARCH = {
   SEARCH_HINT_SEMANTIC: 'Type "Who was the mother of Lord Krishna?"',
 };
 
+const BASE = new URL('..', import.meta.url);          // resolves to .../views/
 export const SEMANTIC = {
-  ENABLE_KEY: "tw_semantic_enabled",
   OPFS_DIR: "tw-semantic",
-  MANIFEST_URL: new URL("manifest.json?v={{VERSION}}", SEM_ROOT).href,
+  ENABLE_KEY: 'tw_semantic_enabled',
+  MANIFEST_URL: new URL('../assets/data/semantic/manifest.json', BASE).href
 };
