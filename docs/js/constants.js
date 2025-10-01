@@ -1,7 +1,8 @@
 const MOD = new URL(".", import.meta.url); // /Timeless-Words/js/
 export const DATA_ROOT = new URL("../assets/data/", MOD);
 export const JS_ROOT = new URL("./", MOD);
-export const SEM_ONNX_ROOT = new URL("../assets/data/semantic/onnx_model", import.meta.url);
+export const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
+export const SEM_ONNX_ROOT = new URL("../assets/data/semantic/onnx_model/", import.meta.url);
 
 export const ENABLE_SEMANTIC = false;
 
