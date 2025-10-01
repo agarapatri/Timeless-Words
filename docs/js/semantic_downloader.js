@@ -1,12 +1,11 @@
 // assets/semantic_downloader.js
-const SEM_ROOT = new URL("../assets/data/semantic/", import.meta.url).href;
+import { SEMANTIC, SEM_ONNX_ROOT } from "./constants.js";
 
 export class SemanticInstall {
   constructor(cfg = {}) {
-    this.OPFS_DIR = "tw-semantic";
-    this.MANIFEST_URL =
-      cfg.manifestUrl || new URL("manifest.json?v={{VERSION}}", SEM_ROOT).href;
-    this.ENABLE_KEY = "tw_semantic_enabled";
+    this.OPFS_DIR = SEMANTIC.OPFS_DIR;
+    this.MANIFEST_URL = cfg.manifestUrl || SEMANTIC.MANIFEST_URL;
+    this.ENABLE_KEY = SEMANTIC.ENABLE_KEY;
 
     // UI (blocker)
     this.overlay = document.getElementById(cfg.overlayId);
@@ -191,7 +190,7 @@ export class SemanticInstall {
       let done = 0;
 
       for (const f of manifest.files) {
-        const url = new URL(f.path, SEM_ROOT).href;
+        const url = new URL(f.path, SEM_ONNX_ROOT).href;
         this._setStatus(`Downloading ${f.path}…`);
         const blob = await this._downloadOne(url, f.sha256, (p) => {
           const cur = Math.round(((done + f.size * p) / total) * 100);

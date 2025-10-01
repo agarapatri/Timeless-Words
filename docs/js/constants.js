@@ -1,7 +1,7 @@
-const MOD = new URL('.', import.meta.url);              // /Timeless-Words/js/
-export const DATA_ROOT = new URL('../assets/data/', MOD);
-export const JS_ROOT   = new URL('./', MOD);
-export const SEM_ROOT = new URL("../assets/data/semantic/", import.meta.url);
+const MOD = new URL(".", import.meta.url); // /Timeless-Words/js/
+export const DATA_ROOT = new URL("../assets/data/", MOD);
+export const JS_ROOT = new URL("./", MOD);
+export const SEM_ONNX_ROOT = new URL("../assets/data/semantic/onnx_model", import.meta.url);
 
 export const ENABLE_SEMANTIC = false;
 
@@ -17,7 +17,10 @@ export const SEARCH = {
 };
 
 export const SEMANTIC = {
-  ENABLE_KEY: 'tw_semantic_enabled',
+  ENABLE_KEY: "tw_semantic_enabled",
   OPFS_DIR: "tw-semantic",
-  MANIFEST_URL: new URL('../assets/data/semantic/manifest.json', MOD).href,
+  MANIFEST_URL: new URL(
+    "../assets/data/semantic/manifest.json?v={{VERSION}}",
+    MOD
+  ).href,
 };
