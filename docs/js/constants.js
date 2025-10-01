@@ -1,6 +1,7 @@
-export const JS_ROOT = new URL("./", import.meta.url);
+const BASE = new URL('.', import.meta.url);              // /Timeless-Words/js/
+export const JS_ROOT   = new URL('./', BASE);            // module-relative
+export const DATA_ROOT = new URL('../assets/data/', BASE);
 export const SEM_ROOT = new URL("../assets/data/semantic/", import.meta.url);
-export const DATA_ROOT = new URL("../assets/data/", import.meta.url);
 
 export const ENABLE_SEMANTIC = false;
 
@@ -15,9 +16,8 @@ export const SEARCH = {
   SEARCH_HINT_SEMANTIC: 'Type "Who was the mother of Lord Krishna?"',
 };
 
-const BASE = new URL('..', import.meta.url);          // resolves to .../views/
 export const SEMANTIC = {
-  OPFS_DIR: "tw-semantic",
   ENABLE_KEY: 'tw_semantic_enabled',
+  OPFS_DIR: "tw-semantic",
   MANIFEST_URL: new URL('../assets/data/semantic/manifest.json', BASE).href
 };
