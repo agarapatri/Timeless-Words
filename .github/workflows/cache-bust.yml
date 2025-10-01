@@ -14,78 +14,92 @@ name: Cache Busting & Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Verify DB exists
+      - name: Verify DBs exist
         run: |
-          test -f docs/data/library.sqlite || { echo "docs/data/library.sqlite not found"; exit 1; }
+          test -f assets/data/library.sqlite || { echo "assets/data/library.sqlite not found"; exit 1; }
+          test -f assets/data/semantic/library.semantic.sqlite || { echo "assets/data/semantic/library.semantic.sqlite not found"; exit 1; }
 
-      - name: Compute versions and stage versioned DB
+      - name: Compute versions and stage versioned DBs
         run: |
           APP_VERSION="${{ github.sha }}"
-          ORIG_DB="docs/data/library.sqlite"
-          if [ ! -f "$ORIG_DB" ]; then
-            echo "Missing $ORIG_DB" >&2
-            exit 1
-          fi
+
+          ORIG_DB="assets/data/library.sqlite"
+          ORIG_VEC_DB="assets/data/semantic/library.semantic.sqlite"
 
           # Hash → short version (12 chars)
           DB_VERSION="$(sha256sum "$ORIG_DB" | awk '{print $1}' | cut -c1-12)"
-          VER_DB="docs/data/library.${DB_VERSION}.sqlite"
+          VEC_DB_VERSION="$(sha256sum "$ORIG_VEC_DB" | awk '{print $1}' | cut -c1-12)"
 
-          # Create versioned filename (idempotent)
+          # Optional: create versioned copies for immutable hosting
+          VER_DB="assets/data/library.${DB_VERSION}.sqlite"
+          VER_VEC_DB="assets/data/semantic/library.semantic.${VEC_DB_VERSION}.sqlite"
+
           [ -f "$VER_DB" ] || cp "$ORIG_DB" "$VER_DB"
+          [ -f "$VER_VEC_DB" ] || cp "$ORIG_VEC_DB" "$VER_VEC_DB"
 
-          echo "APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
-          echo "DB_VERSION=$DB_VERSION"   >> $GITHUB_ENV
-          echo "VER_DB=$VER_DB"           >> $GITHUB_ENV
+          {
+            echo "APP_VERSION=$APP_VERSION"
+            echo "DB_VERSION=$DB_VERSION"
+            echo "VEC_DB_VERSION=$VEC_DB_VERSION"
+            echo "VER_DB=$VER_DB"
+            echo "VER_VEC_DB=$VER_VEC_DB"
+          } >> "$GITHUB_ENV"
 
       - name: Replace placeholders
         run: |
           # App cache-bust (commit SHA)
-          find docs -type f -name "*.html"  -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
-          find docs/assets -type f -name "*.css" -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
-          find docs/assets -type f -name "*.js"  -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
+          sed -i "s|{{VERSION}}|$APP_VERSION|g" index.html
+          find views -type f -name "*.html" -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
+          find assets/css -type f -name "*.css" -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
+          find js -type f -name "*.js" -exec sed -i "s|{{VERSION}}|$APP_VERSION|g" {} +
 
-          # DB versioned FILENAME: replace only where referenced (HTML/JS)
-          find docs -type f -name "*.html" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
-          find docs/assets -type f -name "*.js" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
+          # DB version token
+          sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" index.html
+          find views -type f -name "*.html" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
+          find js -type f -name "*.js" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
+
+          # Vector DB version token
+          sed -i "s|{{VEC_DB_VERSION}}|$VEC_DB_VERSION|g" index.html
+          find views -type f -name "*.html" -exec sed -i "s|{{VEC_DB_VERSION}}|$VEC_DB_VERSION|g" {} +
+          find js -type f -name "*.js" -exec sed -i "s|{{VEC_DB_VERSION}}|$VEC_DB_VERSION|g" {} +
 
       - name: Verify staged artifacts & replacements
         run: |
-          # Versioned DB exists
-          if [ ! -f "$VER_DB" ]; then
-            echo "Versioned DB not found: $VER_DB" >&2; exit 1; fi
+          # Versioned DBs exist
+          [ -f "$VER_DB" ] || { echo "Versioned primary DB not found: $VER_DB" >&2; exit 1; }
+          [ -f "$VER_VEC_DB" ] || { echo "Versioned vector DB not found: $VER_VEC_DB" >&2; exit 1; }
 
-          # Original vs versioned integrity (size + sha256)
-          ORIG_DB="docs/data/library.sqlite"
-          ORIG_SIZE=$(stat -c%s "$ORIG_DB")
-          VER_SIZE=$(stat -c%s "$VER_DB")
-          if [ "$ORIG_SIZE" -ne "$VER_SIZE" ]; then
-            echo "Size mismatch: $ORIG_DB ($ORIG_SIZE) vs $VER_DB ($VER_SIZE)" >&2; exit 1; fi
-          ORIG_SHA=$(sha256sum "$ORIG_DB" | awk '{print $1}')
+          # Primary DB integrity
+          ORIG_SHA=$(sha256sum assets/data/library.sqlite | awk '{print $1}')
           VER_SHA=$(sha256sum "$VER_DB" | awk '{print $1}')
-          if [ "$ORIG_SHA" != "$VER_SHA" ]; then
-            echo "Hash mismatch: $ORIG_SHA vs $VER_SHA" >&2; exit 1; fi
+          [ "$ORIG_SHA" = "$VER_SHA" ] || { echo "Primary DB hash mismatch"; exit 1; }
+
+          # Vector DB integrity
+          ORIG_VEC_SHA=$(sha256sum assets/data/semantic/library.semantic.sqlite | awk '{print $1}')
+          VER_VEC_SHA=$(sha256sum "$VER_VEC_DB" | awk '{print $1}')
+          [ "$ORIG_VEC_SHA" = "$VER_VEC_SHA" ] || { echo "Vector DB hash mismatch"; exit 1; }
 
           # Ensure placeholders are gone
-          if grep -R "{{VERSION}}" docs; then
+          if grep -R "{{VERSION}}" index.html views assets/css js; then
             echo "Unreplaced {{VERSION}} remains" >&2; exit 1; fi
-          if grep -R "{{DB_VERSION}}" docs; then
+          if grep -R "{{DB_VERSION}}" index.html views js; then
             echo "Unreplaced {{DB_VERSION}} remains" >&2; exit 1; fi
+          if grep -R "{{VEC_DB_VERSION}}" index.html views js; then
+            echo "Unreplaced {{VEC_DB_VERSION}} remains" >&2; exit 1; fi
 
-          echo "✅ Verify passed."
+          echo "OK"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
+          publish_dir: .

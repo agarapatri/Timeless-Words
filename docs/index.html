@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Timeless Words</title>
-  <link rel="stylesheet" href="assets/styles.css?v={{VERSION}}">
+  <link rel="stylesheet" href="assets/css/styles.css?v={{VERSION}}">
   <meta id="favicon-slot">
 </head>
 
@@ -20,10 +20,10 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn btn-outline thin btn-deep" href="search.html" aria-label="Go to Deep Search">
+          <a class="btn btn-outline thin btn-deep" href="views/search.html" aria-label="Go to Deep Search">
             <span class="icon" aria-hidden="true">
               <svg width="16" height="16" aria-hidden="true">
-                <use href="icons/search.svg?v={{VERSION}}"></use>
+                <use href="assets/images/search.svg?v={{VERSION}}"></use>
               </svg>
             </span>
             Deep Search
@@ -34,7 +34,7 @@
 
       <!-- Banner Section -->
       <section class="banner">
-        <img src="icons/banner.avif?v={{VERSION}}" alt="Banner" class="banner-img">
+        <img src="assets/images/banner.avif?v={{VERSION}}" alt="Banner" class="banner-img">
       </section>
 
       <form class="search-bar home-filter" action="#" id="homeFilterForm">
@@ -44,7 +44,7 @@
           <button id="typeBtn" class="type-icon-btn type-trigger" type="button" aria-label="Filter by type" aria-haspopup="true" aria-expanded="false" aria-controls="typePanel">
             <!-- Filter icon (uses currentColor for light/dark) -->
             <svg class="icon" width="20" height="20" aria-hidden="true">
-              <use href="icons/filter.svg?v={{VERSION}}#icon-filter"></use>
+              <use href="assets/images/filter.svg?v={{VERSION}}#icon-filter"></use>
             </svg>
           </button>
 
@@ -74,16 +74,16 @@
   <div id="footerSlot"></div>
 
   <script type="module">
-    import { injectFooter } from './assets/scripts/footer.js';
+    import { injectFooter } from './js/footer.js';
     injectFooter('#footerSlot');
   </script>
 
 
-  <script src="assets/sql_helpers/sql-wasm.js"></script>
+  <script src="js/sql_helpers/sql-wasm.js"></script>
 
-  <script type="module" src="assets/app.js?v={{VERSION}}"></script>
+  <script type="module" src="js/app.js?v={{VERSION}}"></script>
   <script type="module">
-    import { query } from './assets/db.js';
+    import { query } from './js/db.js';
 
     const PAGE_SIZES = [25, 50, 100];
 
@@ -183,7 +183,7 @@
           <button id="booksPrevPage" type="button" class="btn ghost" aria-label="Previous page">‹ Prev</button>
           <span id="booksPageInfo" class="muted"></span>
           <button id="booksNextPage" type="button" class="btn ghost" aria-label="Next page">Next ›</button>
-          <select id="booksPageSize" aria-label="Books per page">
+          <select id="booksPageSize" class="btn ghost" aria-label="Books per page">
             ${PAGE_SIZES.map(size => `<option value="${size}">${size}</option>`).join('')}
           </select>
         `;
@@ -242,7 +242,7 @@
           const card = document.createElement('a');
           card.className = 'book-card';
           const bookParam = String(b.work_id || b.id || b.slug || '');
-          card.href = `book.html?book=${encodeURIComponent(bookParam)}`;
+          card.href = `views/book.html?book=${encodeURIComponent(bookParam)}`;
 
           const initials = initialsFromTitle(b.title);
           const coverClass = b.image ? 'cover has-image' : 'cover';

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search – Timeless Words</title>
+  <link rel="stylesheet" href="../assets/css/styles.css?v={{VERSION}}">
+  <meta id="favicon-slot">
+</head>
+
+<body>
+  <main class="container search-page">
+
+    <a class="back-link" href="../index.html">← Back</a>
+
+    <div class="titlebar">
+      <h1 id="search-title" class="title">Deep Search</h1>
+
+      <!-- Semantic toggle -->
+      <label id="tw-sem-switch" class="tw-pill-switch">
+        <input id="sem-check" type="checkbox" class="tw-pill-switch__input" />
+        <span class="tw-pill-switch__text">by meaning</span>
+        <span class="tw-pill-switch__track" aria-hidden="true">
+          <span class="tw-pill-switch__knob"></span>
+        </span>
+      </label>
+
+
+      <div class="hero-actions">
+        <div id="menuSlot-search" class="menu-wrap"></div>
+      </div>
+    </div>
+
+    <div class="search-layout">
+      <section class="search-main">
+
+        <form id="filters" class="filters" onsubmit="return false;">
+          <div class="filter" style="grid-column: span 12; position:relative;">
+            <input id="q" type="search" placeholder="" aria-label="Deep search">
+          </div>
+
+          <div class="chipbar" id="chipbar">
+            <button type="button" class="active" data-scope="deva" aria-pressed="true">Devanāgarī</button>
+            <button type="button" class="active" data-scope="iast" aria-pressed="true">IAST</button>
+            <button type="button" class="active" data-scope="trans" aria-pressed="true">Translation</button>
+            <button type="button" class="active" data-scope="wfw" aria-pressed="true">Word-for-word</button>
+          </div>
+        </form>
+
+        <!-- Full-screen blocking overlay for semantic download -->
+        <div id="tw-sem-overlay" class="tw-overlay" hidden>
+          <div class="tw-overlay__panel">
+            <h3 class="tw-overlay__title">Preparing semantic search…</h3>
+            <p class="muted">We’re downloading a compact pack so meaning-based search works offline.</p>
+
+            <div class="tw-overlay__progress">
+              <progress id="tw-sem-progress" value="0" max="100"></progress>
+              <span id="tw-sem-pct" class="muted">0%</span>
+            </div>
+
+            <div id="tw-sem-status" class="muted">Starting…</div>
+
+            <div class="tw-overlay__actions">
+              <button id="tw-sem-cancel" class="btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Inline Search Tips -->
+        <section id="searchTips" class="tips-panel" aria-live="polite">
+          <h2 class="tips-title">Search tips</h2>
+
+          <div class="tips-grid" data-mode="regex">
+            <div class="tips-col">
+              <p><strong class="tip-basic">Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
+              <p><strong class="tip-basic">Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
+              <p><strong class="tip-basic">Wildcards</strong><br>Prefix: <code>rudr*</code></p>
+              <p><strong class="tip-basic">Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; <br>Alt: <code>/śiva|śambhu/</code></p>
+            </div>
+            <div class="tips-col">
+              <div class="tips-advanced">
+                <div class="tips-adv-title">Advanced tips</div>
+                <ul class="cheatsheet">
+                  <li><code>śiva</code> – literal</li>
+                  <li><code>ś.va</code> – dot = any char</li>
+                  <li><code>viṣṇu.*parama</code> – any chars between</li>
+                  <li><code>rudr+a</code> – one or more</li>
+                  <li><code>śiv?a</code> – zero or one</li>
+                  <li><code>śiva|śambhu</code> – alternation</li>
+                  <li><code>(hari|viṣṇu)nāma</code> – grouping</li>
+                  <li><code>[sr]āma</code> – character class</li>
+                  <li><code>[0-9]+</code> – numbers</li>
+                  <li><code>[^a-zA-Z]</code> – not a letter</li>
+                  <li><code>^namaḥ</code> – start of line</li>
+                  <li><code>śivāya$</code> – end of line</li>
+                  <li><code>\bparama\b</code> – whole word</li>
+                  <li><code>\Bparama</code> – inside word</li>
+                  <li><code>a{2,4}</code> – 2 to 4 times</li>
+                  <li><code>(śrī\s)?kṛṣṇa</code> – optional group</li>
+                  <li><code>\(1\.2\.19\)</code> – escape specials</li>
+                  <li><code>śiva(?=.*parama)</code> – lookahead</li>
+                  <li><code>śiva(?! paramātmā)</code> – neg. lookahead</li>
+                  <li><code>(?i)viṣṇu</code> – case-insensitive</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tips-grid tips-grid--semantic" data-mode="semantic" hidden>
+            <div class="tips-col">
+              <p><strong class="tip-basic">Ask full questions</strong><br>Try natural language like <code>Who was the mother of Lord Krishna?</code></p>
+              <p><strong class="tip-basic">Describe concepts</strong><br>Use short phrases such as <code>teachings on compassion</code> or <code>Krishna guidance on duty</code>.</p>
+            </div>
+            <div class="tips-col">
+              <p><strong class="tip-basic">Mix key ideas</strong><br>Combine people, places, and topics: <code>Arjuna advice battlefield courage</code>.</p>
+              <p><strong class="tip-basic">Need exact matches?</strong><br>Toggle off “by meaning” to return to regex, wildcards, and precise search tools.</p>
+            </div>
+          </div>
+        </section>
+
+        <div id="resultsInfo" class="results-info" aria-live="polite"></div>
+        <ol id="results" class="results-list" aria-live="polite"></ol>
+      </section>
+
+      <aside class="search-side">
+        <!-- Filter by book type -->
+        <div class="filter" id="fTypes">
+          <div class="panel-header2">
+            <div class="panel-title">Book Type</div>
+            <button id="typeClear" class="btn ghost sm" type="button">Clear</button>
+          </div>
+          <div class="book-box">
+            <div id="typeChecklist" class="checklist"></div>
+          </div>
+        </div>
+
+        <!-- Filter by specific books -->
+        <div class="filter" id="fBooks">
+          <div class="panel-header3">
+            <div class="panel-title">Book</div>
+          </div>
+          <div class="book-box">
+            <div class="filter">
+              <input type="search" id="bookSearch" placeholder="Search books…" aria-label="Search books">
+            </div>
+            <div id="bookChecklist" class="checklist"></div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footerSlot"></div>
+
+  <script type="module">
+    import { injectFooter } from '../js/footer.js';
+    injectFooter('#footerSlot');
+  </script>
+
+  <!-- sql.js loader (classic, must come first) -->
+  <script src="../js/sql_helpers/sql-wasm.js"></script>
+
+  <script type="module" src="../js/app.js?v={{VERSION}}"></script>
+  <script type="module">
+    window.Library?.injectMenu("#menuSlot-search");
+  </script>
+
+  <!-- search logic is an ES module because it imports ./db.js -->
+  <script type="module" src="../js/search.js?v={{VERSION}}"></script>
+
+  <!-- Semantic search support (also modules) -->
+  <script type="module" src="../js/semantic_downloader.js?v={{VERSION}}"></script>
+
+  <script type="module">
+    import { SemanticInstall } from '../js/semantic_downloader.js';
+    import { SEARCH, SEMANTIC } from '../js/constants.js';
+
+    const input = document.getElementById('q');
+    if (input) input.placeholder = SEARCH.SEARCH_HINT_REGEX;
+
+    const checkbox = document.getElementById('sem-check');
+    const tipsSection = document.getElementById('searchTips');
+    const regexTips = tipsSection && tipsSection.querySelector('[data-mode="regex"]');
+    const semanticTips = tipsSection && tipsSection.querySelector('[data-mode="semantic"]');
+
+    const setTipsMode = (semanticOn) => {
+      if (!tipsSection || !regexTips || !semanticTips) return;
+      tipsSection.setAttribute('data-mode', semanticOn ? 'semantic' : 'regex');
+      regexTips.hidden = !!semanticOn;
+      semanticTips.hidden = !semanticOn;
+    };
+
+    // Blocker-based downloader
+    const panel = new SemanticInstall({
+      overlayId: 'tw-sem-overlay',
+      barId: 'tw-sem-progress',
+      pctId: 'tw-sem-pct',
+      statusId: 'tw-sem-status',
+      cancelId: 'tw-sem-cancel',
+      manifestUrl: SEMANTIC.MANIFEST_URL,
+    });
+
+    // Initial state
+    const packInstalled = await panel.isInstalled();
+    const enabledFlag = localStorage.getItem(SEMANTIC.ENABLE_KEY) === '1';
+    window.__TW_SEMANTIC_MODE__ = packInstalled && enabledFlag;
+    checkbox.checked = window.__TW_SEMANTIC_MODE__;
+    if (input) input.placeholder = window.__TW_SEMANTIC_MODE__
+      ? SEARCH.SEARCH_HINT_SEMANTIC
+      : SEARCH.SEARCH_HINT_REGEX;
+    setTipsMode(window.__TW_SEMANTIC_MODE__);
+
+    // Toggle behavior (strict separation)
+    checkbox.addEventListener('change', async (e) => {
+      const wantOn = e.target.checked;
+
+      const hasPack = await panel.isInstalled();
+      if (wantOn && !hasPack) {
+        // Show blocking overlay & start
+        panel.show();
+        panel.onInstalled = () => {
+          localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
+          window.__TW_SEMANTIC_MODE__ = true;
+          if (input) { input.value = ''; input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; input.focus(); }
+          setTipsMode(true);
+          window.clearResults?.();
+          panel.hide(); // auto-close on completion
+        };
+        try { await panel.start(); } catch {
+          // Restore OFF if cancelled/failed
+          checkbox.checked = false;
+          panel.hide();
+        }
+        return;
+      }
+
+      // Already installed → just flip modes
+      window.__TW_SEMANTIC_MODE__ = wantOn;
+      if (wantOn) localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
+      else localStorage.removeItem(SEMANTIC.ENABLE_KEY);
+
+      if (input) {
+        input.value = '';
+        input.placeholder = wantOn ? SEARCH.SEARCH_HINT_SEMANTIC : SEARCH.SEARCH_HINT_REGEX;
+        input.focus();
+      }
+      setTipsMode(wantOn);
+      window.clearResults?.();
+    });
+  </script>
+
+
+
+  <!-- INLINE_TIPS_TOGGLE -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const input = document.getElementById('q') || document.querySelector('input[type="search"], input[name="q"]');
+      const tips = document.getElementById('searchTips');
+      const results = document.getElementById('results');
+      const info = document.getElementById('resultsInfo');
+      const form = document.getElementById('searchForm') || (input && input.form);
+
+      function showTips() {
+        if (tips) tips.style.display = '';
+        if (results) results.innerHTML = '';
+        if (info) info.textContent = '';
+        const pager = document.getElementById('pager');
+        if (pager) pager.remove();
+      }
+      function hideTips() {
+        if (tips) tips.style.display = 'none';
+      }
+
+      function runSearchNow() {
+        // Try the app's global search functions if present.
+        if (typeof window.run === 'function') {
+          window.run();
+          return;
+        }
+        if (typeof window.runSearch === 'function') {
+          window.runSearch(input ? input.value : '');
+          return;
+        }
+        // Fallback: submit the form (if any)
+        if (form) {
+          form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      }
+
+      function sync() {
+        const val = (input && input.value || '').trim();
+        if (val.length === 0) {
+          showTips();
+        } else {
+          hideTips();
+          runSearchNow();
+        }
+      }
+
+      if (input) {
+        input.addEventListener('input', sync);
+        // Initial state on load
+        sync();
+      } else {
+        // If no input found, still ensure tips shown by default
+        if (tips) tips.style.display = '';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
