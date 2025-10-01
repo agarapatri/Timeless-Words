@@ -164,6 +164,14 @@ export class SemanticInstall {
         );
         throw new Error("OPFS not supported");
       }
+
+      // Ask for persistent storage to raise quota in some browsers
+      if (navigator.storage && navigator.storage.persist) {
+        try {
+          await navigator.storage.persist();
+        } catch {}
+      }
+
       this._lockUnload();
       const manifest = await fetch(this.MANIFEST_URL).then((r) => r.json());
       const total = manifest.files.reduce((s, f) => s + f.size, 0);
@@ -171,9 +179,13 @@ export class SemanticInstall {
       this._setStatus("Starting…");
 
       const est = await navigator.storage.estimate();
-      if (est.quota - est.usage < total + 2_000_000) {
-        this._setStatus("Not enough storage space.", "danger");
-        return;
+      const free = (est.quota ?? 0) - (est.usage ?? 0);
+      if (free < total + 2_000_000) {
+        throw new Error(
+          `Not enough storage space. Need ~${Math.ceil(
+            total / 1e6
+          )}MB, free ~${Math.floor(free / 1e6)}MB`
+        );
       }
 
       let done = 0;
