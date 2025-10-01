@@ -232,6 +232,9 @@
           panel.hide(); // auto-close on completion
         };
         try { await panel.start(); } catch {
+          console.error('semantic install failed:', err);
+          const s = document.getElementById('tw-sem-status');
+          if (s) s.textContent = String(err?.message || err);
           // Restore OFF if cancelled/failed
           checkbox.checked = false;
           panel.hide();
