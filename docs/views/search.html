@@ -230,11 +230,13 @@
             input.value = ''; 
             input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; 
             input.focus();
+            input.dispatchEvent(new Event('input', { bubbles: true }));
           }
           setTipsMode(true);
           window.clearResults?.();
           panel.hide(); // auto-close on completion
         };
+        console.log('SEM: start download');
         try { await panel.start(); } catch (err) {
           console.error('semantic install failed:', err);
           const s = document.getElementById('tw-sem-status');
@@ -254,6 +256,7 @@
         input.value = '';
         input.placeholder = wantOn ? SEARCH.SEARCH_HINT_SEMANTIC : SEARCH.SEARCH_HINT_REGEX;
         input.focus();
+        input.dispatchEvent(new Event('input', { bubbles: true }));
       }
       setTipsMode(wantOn);
       window.clearResults?.();

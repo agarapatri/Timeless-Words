@@ -144,3 +144,40 @@ Practical steps:
 * Move to project root and add an npm script like: `dev: node serve.js`.
 * Keep it out of `docs/` so it’s never served.
 * For the 1 GB asset, use content-hashed filenames to leverage browser cache on GitHub Pages.
+
+---
+
+**Why:** Your manifest check is correct. The missing 200 for `library.semantic.v01.sqlite` is expected in some states. The toggle wiring is fine, but the download only fires under a specific condition.
+
+**Answer:**
+Yes. The manifest at your URL includes `"path": "library.semantic.v01.sqlite"` and `"sha256": "CHANGE_ME"`. 
+
+Why you don’t see a 200 for `library.semantic.v01.sqlite` when you flip the switch:
+
+1. The download only runs when **both** are true: you turned the switch ON and the pack is **not already installed**:
+   `if (wantOn && !hasPack) { await panel.start(); }` in `views/search.html`. If `hasPack` is true, no network fetches occur. 
+
+2. “Installed” is detected from OPFS, not network. `isInstalled()` just tries to open the files listed in the manifest from OPFS; if they exist, it returns true and skips downloads. 
+
+3. When a download does run, each file URL is built as `new URL(f.path, SEMANTIC_ROOT)`, where `SEMANTIC_ROOT` resolves to `/assets/data/semantic/` on GitHub Pages. That’s the correct base, so the sqlite file would be requested from `/assets/data/semantic/library.semantic.v01.sqlite`.  
+
+4. The inline module exports are correct. `isSemanticEnabled` and `setSemanticEnabled` are re-exports of localStorage helpers, so the import in `search.html` will work; a failed import is not the blocker here.  
+
+Quick checks to make it show up in Network:
+
+* Force a download path by making `hasPack` false. Delete the OPFS folder `tw-semantic` from DevTools > Application > File System > Origin Private File System, or temporarily change the OPFS dir/key in code, then toggle ON. The code will fetch the files and you’ll see 200s, including the sqlite. 
+* Add a temporary log right before the download to verify flow: just before `await panel.start();` add `console.log('SEM: start download');` in `search.html`. 
+* Verify the manifest URL used at runtime matches what you tested. It’s taken from `constants.js` as `../assets/data/semantic/manifest.json?v={{VERSION}}`. Your manual test URL aligns with this. 
+
+If you still see nothing:
+
+* Confirm the inline module actually runs. In `search.html`, that block is after the `<script type="module" src="../js/semantic_downloader.js">`. Both are fine; the first module’s legacy toggle wiring is guarded and won’t throw if those DOM ids are absent. Keep an eye on console for any import errors.  
+* Ensure `window.__TW_SEMANTIC_MODE__` turns true only after install **and** enable. Placeholder and tips swap depend on this flag; if they don’t change, your change handler didn’t run. 
+
+Repo layout and filenames match what the code expects, including the sqlite pack under `assets/data/semantic/`. 
+
+If useful, you can also fetch the sqlite directly to verify hosting works:
+`https://agarapatri.github.io/Timeless-Words/assets/data/semantic/library.semantic.v01.sqlite`
+Then retry the toggle after clearing OPFS as above.
+
+**Files referenced:** manifest.json, search.html, semantic_downloader.js, constants.js, vec_db.js, project tree.      

@@ -5,7 +5,7 @@
 │   ├── data
 │   │   ├── library.{{DB_VERSION}}.sqlite
 │   │   └── semantic
-│   │       ├── library.semantic.{{VEC_DB_VERSION}}.sqlite
+│   │       ├── library.semantic.v01.sqlite
 │   │       ├── manifest.json
 │   │       └── onnx_model
 │   │           ├── config.json
