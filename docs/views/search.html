@@ -176,8 +176,8 @@
   <script type="module" src="../js/semantic_downloader.js?v={{VERSION}}"></script>
 
   <script type="module">
-    import { SemanticInstall } from '../js/semantic_downloader.js';
-    import { SEARCH, SEMANTIC } from '../js/constants.js';
+    import { SemanticInstall, isSemanticEnabled, setSemanticEnabled } from '../js/semantic_downloader.js';
+    import { SEARCH } from '../js/constants.js';
 
     const input = document.getElementById('q');
     if (input) input.placeholder = SEARCH.SEARCH_HINT_REGEX;
@@ -206,7 +206,7 @@
 
     // Initial state
     const packInstalled = await panel.isInstalled();
-    const enabledFlag = localStorage.getItem(SEMANTIC.ENABLE_KEY) === '1';
+    const enabledFlag = isSemanticEnabled();
     window.__TW_SEMANTIC_MODE__ = packInstalled && enabledFlag;
     checkbox.checked = window.__TW_SEMANTIC_MODE__;
     if (input) input.placeholder = window.__TW_SEMANTIC_MODE__
@@ -223,8 +223,9 @@
         // Show blocking overlay & start
         panel.show();
         panel.onInstalled = () => {
-          localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
+          setSemanticEnabled(true);
           window.__TW_SEMANTIC_MODE__ = true;
+          checkbox.checked = true;
           if (input) { input.value = ''; input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; input.focus(); }
           setTipsMode(true);
           window.clearResults?.();
@@ -240,8 +241,7 @@
 
       // Already installed → just flip modes
       window.__TW_SEMANTIC_MODE__ = wantOn;
-      if (wantOn) localStorage.setItem(SEMANTIC.ENABLE_KEY, '1');
-      else localStorage.removeItem(SEMANTIC.ENABLE_KEY);
+      setSemanticEnabled(wantOn);
 
       if (input) {
         input.value = '';

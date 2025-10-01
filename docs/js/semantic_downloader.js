@@ -1,6 +1,190 @@
 // assets/semantic_downloader.js
 import { SEMANTIC, SEM_ONNX_ROOT } from "./constants.js";
 
+const ENABLE_KEY = SEMANTIC.ENABLE_KEY;
+const hasWindow = typeof window !== "undefined";
+const hasDocument = typeof document !== "undefined";
+
+function getStorage() {
+  if (!hasWindow) return null;
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+function getEnableFlag() {
+  const storage = getStorage();
+  return storage ? storage.getItem(ENABLE_KEY) === "1" : false;
+}
+
+function setEnableFlag(enabled) {
+  const storage = getStorage();
+  if (!storage) return;
+  if (enabled) storage.setItem(ENABLE_KEY, "1");
+  else storage.removeItem(ENABLE_KEY);
+}
+
+function onReady(fn) {
+  if (!hasDocument) return;
+  if (document.readyState === "loading") {
+    const once = () => {
+      document.removeEventListener("DOMContentLoaded", once);
+      fn();
+    };
+    document.addEventListener("DOMContentLoaded", once);
+  } else {
+    fn();
+  }
+}
+
+function updateAria(toggle) {
+  if (!toggle) return;
+  toggle.setAttribute("aria-checked", String(!!toggle.checked));
+}
+
+function wireTrackClick(toggle, track) {
+  if (!toggle || !track) return;
+  if (track.dataset.semClickBound) return;
+  track.dataset.semClickBound = "1";
+  track.addEventListener("click", () => {
+    if (track.classList.contains("just-dragged")) {
+      track.classList.remove("just-dragged");
+      return;
+    }
+    toggle.checked = !toggle.checked;
+    toggle.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+}
+
+function wireTrackDrag(toggle, track) {
+  if (!toggle || !track) return;
+  if (track.dataset.semDragBound) return;
+  track.dataset.semDragBound = "1";
+  let dragging = false;
+  let startX = 0;
+  let startChecked = false;
+  const threshold = 14;
+
+  const onDown = (ev) => {
+    dragging = true;
+    startX = ev.touches?.[0]?.clientX ?? ev.clientX;
+    startChecked = toggle.checked;
+    track.classList.add("dragging");
+    ev.preventDefault();
+  };
+  const onMove = (ev) => {
+    if (!dragging) return;
+    const x = ev.touches?.[0]?.clientX ?? ev.clientX;
+    const dx = x - startX;
+    const wantOn = dx > threshold ? true : dx < -threshold ? false : startChecked;
+    track.style.setProperty("--thumb-shift", wantOn ? "20px" : "0px");
+  };
+  const onUp = (ev) => {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove("dragging");
+    track.style.removeProperty("--thumb-shift");
+
+    const x = ev.changedTouches?.[0]?.clientX ?? ev.clientX;
+    const dx = x - startX;
+    const wantOn = dx > threshold ? true : dx < -threshold ? false : startChecked;
+
+    if (wantOn !== toggle.checked) {
+      toggle.checked = wantOn;
+      track.classList.add("just-dragged");
+      toggle.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  };
+
+  track.addEventListener("mousedown", onDown);
+  track.addEventListener("touchstart", onDown, { passive: false });
+  window.addEventListener("mousemove", onMove, { passive: true });
+  window.addEventListener("touchmove", onMove, { passive: true });
+  window.addEventListener("mouseup", onUp);
+  window.addEventListener("touchend", onUp);
+}
+
+async function refreshToggleUI(installer, toggle, deleteBtn) {
+  if (!toggle) return { installed: false, enabled: false };
+  const installed = await installer.isInstalled();
+  const enabled = getEnableFlag();
+  toggle.checked = enabled;
+  updateAria(toggle);
+  if (deleteBtn) deleteBtn.disabled = !installed;
+  return { installed, enabled };
+}
+
+function initDownloadToggle() {
+  if (!hasDocument) return;
+  const toggle = document.getElementById("semanticToggle");
+  if (!toggle || toggle.dataset.semanticWired) return;
+  toggle.dataset.semanticWired = "1";
+
+  const statusEl = document.getElementById("status");
+  const deleteBtn = document.getElementById("btn-delete");
+  const downloadBtn = document.getElementById("btn-download");
+  const track = document.querySelector("#semanticSwitch .track");
+
+  const installer = new SemanticInstall({
+    panelId: null,
+    barId: "bar",
+    pctId: "pct",
+    statusId: "status",
+    cancelId: "btn-cancel",
+    deleteId: "btn-delete",
+    sizeId: null,
+  });
+
+  const setStatus = (text) => {
+    if (!statusEl) return;
+    statusEl.textContent = text;
+  };
+
+  toggle.addEventListener("change", async (event) => {
+    const wantOn = event.target.checked;
+    const installed = await installer.isInstalled();
+
+    if (wantOn && !installed) {
+      setStatus("Downloading semantic pack…");
+      installer.onInstalled = async () => {
+        setEnableFlag(true);
+      };
+      toggle.disabled = true;
+      try {
+        await installer.start();
+      } catch (err) {
+        setEnableFlag(false);
+        toggle.checked = false;
+        updateAria(toggle);
+        if (err?.name === "AbortError") setStatus("Cancelled.");
+      } finally {
+        installer.onInstalled = null;
+        toggle.disabled = false;
+      }
+      await refreshToggleUI(installer, toggle, deleteBtn);
+      return;
+    }
+
+    setEnableFlag(wantOn);
+    await refreshToggleUI(installer, toggle, deleteBtn);
+  });
+
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      if (toggle.disabled) return;
+      toggle.checked = true;
+      toggle.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  }
+
+  wireTrackClick(toggle, track);
+  wireTrackDrag(toggle, track);
+  refreshToggleUI(installer, toggle, deleteBtn);
+}
+
 export class SemanticInstall {
   constructor(cfg = {}) {
     this.OPFS_DIR = SEMANTIC.OPFS_DIR;
@@ -76,9 +260,8 @@ export class SemanticInstall {
   }
   async isInstalled() {
     if (!this.supported) return false;
-    if (!localStorage.getItem(this.ENABLE_KEY)) return false;
     const ok = await this._hasManifestFiles();
-    if (!ok) localStorage.removeItem(this.ENABLE_KEY);
+    if (!ok) getStorage()?.removeItem(this.ENABLE_KEY);
     return ok;
   }
   cancel() {
@@ -207,7 +390,7 @@ export class SemanticInstall {
       const w = await vh.createWritable();
       await w.write(manifest.version || "1");
       await w.close();
-      localStorage.setItem(this.ENABLE_KEY, "1");
+      setEnableFlag(true);
 
       if (this.bar) this.bar.value = 100;
       if (this.pct) this.pct.textContent = "100%";
@@ -222,3 +405,7 @@ export class SemanticInstall {
     }
   }
 }
+
+onReady(initDownloadToggle);
+
+export { getEnableFlag as isSemanticEnabled, setEnableFlag as setSemanticEnabled };
