@@ -7,7 +7,7 @@ export const ENABLE_SEMANTIC = false;
 
 export const DB = {
   DB_NAME: "library.{{DB_VERSION}}.sqlite",
-  VEC_DB_NAME: "library.semantic.{{VEC_DB_VERSION}}.sqlite", // check manifest.json
+  VEC_DB_NAME: "library.semantic.v01.sqlite", // check manifest.json
   SQL_WASM_PATH: "sql_helpers/sql-wasm.wasm",
 };
 

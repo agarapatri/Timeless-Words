@@ -12,7 +12,7 @@ def sha256(p, chunk=1<<20):
       h.update(b)
   return h.hexdigest()
 
-# Discover actual vector DB file even if versioned, e.g. library.semantic.{{VEC_DB_VERSION}}.sqlite
+# Discover actual vector DB file even if versioned, e.g. library.semantic.v01.sqlite
 vec_db_matches = sorted(glob.glob("assets/data/semantic/library.semantic.*.sqlite"))
 
 # Fixed files as per project tree

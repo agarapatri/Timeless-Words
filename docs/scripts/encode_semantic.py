@@ -28,7 +28,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = find_semantic_root(HERE)                 # <repo>/assets/data/semantic
 MDIR = ROOT / "onnx_model"
 
-# Resolve DB (e.g., library.semantic.{{VEC_DB_VERSION}}.sqlite)
+# Resolve DB (e.g., library.semantic.v01.sqlite)
 DB_CANDIDATES = sorted(ROOT.glob("library.semantic.*.sqlite"))
 if not DB_CANDIDATES:
     raise FileNotFoundError(f"No semantic DB found in {ROOT}")
