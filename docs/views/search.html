@@ -226,7 +226,11 @@
           setSemanticEnabled(true);
           window.__TW_SEMANTIC_MODE__ = true;
           checkbox.checked = true;
-          if (input) { input.value = ''; input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; input.focus(); }
+          if (input) {
+            input.value = ''; 
+            input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; 
+            input.focus();
+          }
           setTipsMode(true);
           window.clearResults?.();
           panel.hide(); // auto-close on completion

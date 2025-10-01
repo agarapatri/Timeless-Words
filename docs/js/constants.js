@@ -22,6 +22,6 @@ export const SEMANTIC = {
   OPFS_DIR: "tw-semantic",
   MANIFEST_URL: new URL(
     "../assets/data/semantic/manifest.json?v={{VERSION}}",
-    MOD
+    import.meta.url
   ).href,
 };
