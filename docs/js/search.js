@@ -3,7 +3,7 @@ import { loadDb, query } from "./db.js";
 import { DB } from "./constants.js";
 
 // Data is not loading with these imports, so commenting out for now
-// import { QueryEncoder } from "./encoder.js";
+// (Removed) Hash-based QueryEncoder replaced with transformer-based encoder.
 // import { SemanticDB } from "./vec_db.js";
 
 /* Deep Search with substring + optional regex */
@@ -249,8 +249,8 @@ import { DB } from "./constants.js";
       throw new Error("Semantic pack not installed");
     }
     if (!window.__twEncoder || !window.__twSemdb) {
-      const [{ QueryEncoder }, { SemanticDB }] = await Promise.all([
-        import("./encoder.js?v={{VERSION}}"),
+      const [{ TransformerEncoder }, { SemanticDB }] = await Promise.all([
+        import("./transformer_encoder.js?v={{VERSION}}"),
         import("./vec_db.js?v={{VERSION}}"),
       ]);
       const semdb = new SemanticDB({
@@ -258,7 +258,9 @@ import { DB } from "./constants.js";
         dbFile: DB.VEC_DB_NAME,
       });
       await semdb.open();
-      const encoder = new QueryEncoder({ dimension: semdb.getDimension() });
+      const encoder = new TransformerEncoder();
+      await encoder.init();
+      encoder.setDimension?.(semdb.getDimension?.());
       window.__twSemdb = semdb;
       window.__twEncoder = encoder;
     }
@@ -836,88 +838,7 @@ import { DB } from "./constants.js";
 
   document.addEventListener("types:changed", rebuildBookListForTypes);
 
-  // ---- new: semantic wiring ----
-  const SEM_ENABLED = !!localStorage.getItem("tw_semantic_enabled");
-  const semToggleBtn = document.getElementById("btn-semantic"); // from search.html step 1
-  if (semToggleBtn) {
-    const on = semToggleBtn.dataset.on === "1" || SEM_ENABLED;
-    semToggleBtn.textContent = on ? "Semantic: On" : "Enable Semantic";
-  }
-
-  // Lazy singletons
-  let __encoder = null;
-  let __semdb = null;
-
-  async function ensureSemantic() {
-    if (!localStorage.getItem("tw_semantic_enabled")) {
-      location.href = "semantic_download.html";
-      throw new Error("Semantic pack not installed");
-    }
-    if (!__encoder || !__semdb) {
-      const [{ QueryEncoder }, { SemanticDB }] = await Promise.all([
-        import("./encoder.js?v={{VERSION}}"),
-        import("./vec_db.js?v={{VERSION}}"),
-      ]);
-      __semdb =
-        __semdb ||
-        new SemanticDB({
-          opfsDir: "tw-semantic",
-          dbFile: DB.VEC_DB_NAME,
-        });
-      await __semdb.open();
-      __encoder = new QueryEncoder({ dimension: __semdb.getDimension() });
-    }
-    return { encoder: __encoder, semdb: __semdb };
-  }
-
-  // ---- hook into your search submit ----
-  // Find your existing submit handler and wrap it with a branch.
-  // Pseudo-example (adapt to your actual function names if different):
-
-  async function runSearch(queryText) {
-    const semanticOn =
-      (semToggleBtn && semToggleBtn.dataset.on === "1") || SEM_ENABLED;
-
-    if (!semanticOn) {
-      // your existing lexical/regex flow
-      return await runLexicalSearch(queryText); // <- your existing function
-    }
-
-    // Semantic path
-    try {
-      const { encoder, semdb } = await ensureSemantic();
-      // Encode query
-      const qvec = encoder.encode(queryText);
-
-      const rows = semdb.vecSearch(qvec, 100);
-
-      const results = rows.map((r) => ({
-        id: r.id,
-        work_id: r.work_id,
-        chapter: r.chapter,
-        verse_start: r.verse_start,
-        verse_end: r.verse_end,
-        text: r.text,
-        score: r.score,
-        source: "semantic",
-      }));
-
-      renderResults(results); // <- your existing UI renderer
-    } catch (e) {
-      console.error(e);
-      // Fallback to lexical if semantic fails
-      const res = await runLexicalSearch(queryText);
-      renderResults(res);
-    }
-  }
-
-  // Wire up: wherever you attach your input submit/click, point to runSearch(queryValue).
-  // Example:
-  // document.getElementById('searchForm').addEventListener('submit', (e) => {
-  //   e.preventDefault();
-  //   const q = new FormData(e.target).get('q')?.trim();
-  //   if (q) runSearch(q);
-  // });
+  // ---- legacy semantic wiring removed (hash-based). Semantic search is transformer-only. ----
 })();
 
 export function wireSemanticDebug() {

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verse Reader - Eternal Wiz</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Immersive Sanskrit verse reading experience with four-layer presentation - Devanāgarī, IAST, word-by-word, and translation" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Feternalwi3558back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background text-text-primary">
+    <!-- Header Navigation -->
+    <header class="bg-surface border-b border-subtle sticky top-0 z-50 shadow-soft">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.11-.71 3-1.36.89.65 1.91 1.15 3 1.36 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <span class="font-crimson text-xl font-semibold text-primary">Eternal Wiz</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="library.html" class="text-text-secondary hover:text-primary transition-quick">Library</a>
+                    <a href="deep_search.html" class="text-text-secondary hover:text-primary transition-quick">Deep Search</a>
+                    <a href="work_overview.html" class="text-text-secondary hover:text-primary transition-quick">Works</a>
+                </div>
+
+                <!-- Reader Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- Font Size Controls -->
+                    <div class="hidden sm:flex items-center space-x-2">
+                        <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" title="Decrease font size">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                            </svg>
+                        </button>
+                        <span class="text-sm text-text-muted">Aa</span>
+                        <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" title="Increase font size">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Night Mode Toggle -->
+                    <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" title="Toggle night mode">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2 rounded-lg hover:bg-surface-hover transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <section class="bg-surface border-b border-subtle">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="library.html" class="text-text-secondary hover:text-primary transition-quick">Library</a>
+                <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <a href="work_overview.html" class="text-text-secondary hover:text-primary transition-quick">Bhagavad Gita</a>
+                <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-primary font-medium">Chapter 2, Verse 47</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Chapter Context -->
+        <div class="mb-8">
+            <h1 class="font-crimson text-2xl sm:text-3xl font-semibold text-text-primary mb-2">
+                Sāṅkhya Yoga - The Path of Knowledge
+            </h1>
+            <p class="text-text-secondary">Chapter 2, Verse 47 of 72</p>
+        </div>
+
+        <!-- Verse Navigation -->
+        <div class="flex items-center justify-between mb-8 p-4 bg-surface rounded-lg">
+            <button class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-quick" onclick="window.location.href='verse_reader.html'">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                <span>Previous Verse</span>
+            </button>
+
+            <div class="flex items-center space-x-4">
+                <span class="text-sm text-text-muted">Verse 47 of 72</span>
+                <div class="w-32 bg-border rounded-full h-2">
+                    <div class="bg-primary h-2 rounded-full" style="width: 65%"></div>
+                </div>
+            </div>
+
+            <button class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-quick" onclick="window.location.href='verse_reader.html'">
+                <span>Next Verse</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Four-Layer Verse Presentation -->
+        <article class="space-y-8">
+            <!-- Layer 1: Sanskrit (Devanāgarī) -->
+            <section class="card-elevated">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-crimson text-xl font-semibold text-text-primary">Sanskrit (Devanāgarī)</h2>
+                    <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" title="Copy Sanskrit text">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="sanskrit-text text-2xl sm:text-3xl leading-relaxed text-center py-6">
+                    कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br />
+                    मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥
+                </div>
+            </section>
+
+            <!-- Layer 2: IAST Transliteration -->
+            <section class="card-elevated">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-crimson text-xl font-semibold text-text-primary">IAST Transliteration</h2>
+                    <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" title="Copy IAST text">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="font-serif text-lg sm:text-xl leading-relaxed text-center py-4 italic text-accent-700">
+                    karmaṇy evādhikāras te mā phaleṣu kadācana<br />
+                    mā karma-phala-hetur bhūr mā te saṅgo 'stv akarmaṇi
+                </div>
+            </section>
+
+            <!-- Layer 3: Word-by-Word Analysis -->
+            <section class="card-elevated">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-crimson text-xl font-semibold text-text-primary">Word-by-Word Analysis</h2>
+                    <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" onclick="toggleWordAnalysis()" title="Toggle detailed analysis">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">कर्मणि</span>
+                            <div>
+                                <div class="font-medium text-text-primary">karmaṇi</div>
+                                <div class="text-sm text-text-secondary">in action (locative)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">एव</span>
+                            <div>
+                                <div class="font-medium text-text-primary">eva</div>
+                                <div class="text-sm text-text-secondary">only, alone</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">अधिकारः</span>
+                            <div>
+                                <div class="font-medium text-text-primary">adhikāraḥ</div>
+                                <div class="text-sm text-text-secondary">right, authority</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">ते</span>
+                            <div>
+                                <div class="font-medium text-text-primary">te</div>
+                                <div class="text-sm text-text-secondary">your (genitive)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">मा</span>
+                            <div>
+                                <div class="font-medium text-text-primary">mā</div>
+                                <div class="text-sm text-text-secondary">not, never</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">फलेषु</span>
+                            <div>
+                                <div class="font-medium text-text-primary">phaleṣu</div>
+                                <div class="text-sm text-text-secondary">in fruits/results</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">कदाचन</span>
+                            <div>
+                                <div class="font-medium text-text-primary">kadācana</div>
+                                <div class="text-sm text-text-secondary">at any time, ever</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <span class="font-devanagari text-lg text-primary">सङ्गः</span>
+                            <div>
+                                <div class="font-medium text-text-primary">saṅgaḥ</div>
+                                <div class="text-sm text-text-secondary">attachment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Grammatical Analysis (Collapsible) -->
+                <div id="wordAnalysis" class="hidden mt-6 p-4 bg-accent-50 rounded-lg border border-accent-200">
+                    <h3 class="font-crimson text-lg font-semibold text-text-primary mb-3">Grammatical Analysis</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>कर्मणि (karmaṇi):</strong> Locative singular of कर्मन् (karman), neuter noun meaning "action" or "work"</p>
+                        <p><strong>अधिकारः (adhikāraḥ):</strong> Nominative singular masculine, compound with ते (te) forming possessive</p>
+                        <p><strong>मा फलेषु (mā phaleṣu):</strong> Prohibitive particle with locative plural of फल (phala)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Layer 4: English Translation -->
+            <section class="card-elevated">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-crimson text-xl font-semibold text-text-primary">English Translation</h2>
+                    <button class="p-2 rounded-lg hover:bg-surface-hover transition-quick" title="Copy translation">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <blockquote class="text-lg sm:text-xl leading-relaxed text-text-primary py-4 border-l-4 border-primary pl-6">
+                    "You have a right to perform your prescribed duty, but never to the fruits of action. Never consider yourself the cause of the results of your activities, and never be attached to not doing your duty."
+                </blockquote>
+            </section>
+
+            <!-- Commentary Section -->
+            <section class="card-elevated">
+                <button class="flex items-center justify-between w-full text-left" onclick="toggleCommentary()">
+                    <h2 class="font-crimson text-xl font-semibold text-text-primary">Scholarly Commentary</h2>
+                    <svg id="commentaryIcon" class="w-5 h-5 text-text-secondary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                
+                <div id="commentary" class="hidden mt-6 space-y-4">
+                    <div class="p-4 bg-background rounded-lg">
+                        <h3 class="font-semibold text-text-primary mb-2">Śaṅkarācārya's Commentary</h3>
+                        <p class="text-text-secondary leading-relaxed">
+                            This verse establishes the fundamental principle of niṣkāma karma (desireless action). The right to action (adhikāra) belongs to the individual, but the results are governed by divine will and natural law. This teaching forms the cornerstone of karma yoga.
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-background rounded-lg">
+                        <h3 class="font-semibold text-text-primary mb-2">Philosophical Context</h3>
+                        <p class="text-text-secondary leading-relaxed">
+                            The verse addresses Arjuna's dilemma about action and inaction. Krishna teaches that complete withdrawal from action is neither possible nor desirable, but attachment to results causes suffering. The middle path is action without attachment.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cross-References -->
+            <section class="card-elevated">
+                <h2 class="font-crimson text-xl font-semibold text-text-primary mb-6">Related Verses</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="verse_reader.html" class="block p-4 bg-background rounded-lg hover:bg-surface-hover transition-quick">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-medium text-primary">BG 3.19</span>
+                            <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm text-text-secondary">Therefore, without attachment, perform always the work that has to be done...</p>
+                    </a>
+                    
+                    <a href="verse_reader.html" class="block p-4 bg-background rounded-lg hover:bg-surface-hover transition-quick">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-medium text-primary">BG 18.9</span>
+                            <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm text-text-secondary">When one performs his prescribed duty only because it ought to be done...</p>
+                    </a>
+                </div>
+            </section>
+        </article>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-12 pt-8 border-t border-subtle">
+            <button class="btn-primary flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                </svg>
+                <span>Bookmark Verse</span>
+            </button>
+            
+            <button class="btn-secondary flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                </svg>
+                <span>Share Verse</span>
+            </button>
+            
+            <a href="work_overview.html" class="btn-secondary flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span>Back to Chapter</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-16 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.11-.71 3-1.36.89.65 1.91 1.15 3 1.36 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <span class="font-crimson text-xl font-semibold">Eternal Wiz</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Where tradition meets technology in the study of ancient Sanskrit wisdom.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-crimson text-lg font-semibold mb-4">Explore</h3>
+                    <ul class="space-y-2">
+                        <li><a href="library.html" class="text-gray-300 hover:text-white transition-quick">Scripture Library</a></li>
+                        <li><a href="deep_search.html" class="text-gray-300 hover:text-white transition-quick">Semantic Search</a></li>
+                        <li><a href="verse_reader.html" class="text-gray-300 hover:text-white transition-quick">Verse Reader</a></li>
+                        <li><a href="work_overview.html" class="text-gray-300 hover:text-white transition-quick">Featured Works</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="font-crimson text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">About Project</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Methodology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">GitHub Repository</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Vedabase.io</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-crimson text-lg font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Academic Partnerships</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Research Collaboration</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Support</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2025 Eternal Wiz. Open source project dedicated to preserving and sharing ancient wisdom.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Features -->
+    <script>
+        // Toggle Commentary Section
+        function toggleCommentary() {
+            const commentary = document.getElementById('commentary');
+            const icon = document.getElementById('commentaryIcon');
+            
+            if (commentary.classList.contains('hidden')) {
+                commentary.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                commentary.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Toggle Word Analysis
+        function toggleWordAnalysis() {
+            const analysis = document.getElementById('wordAnalysis');
+            analysis.classList.toggle('hidden');
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    // Navigate to previous verse
+                    console.log('Previous verse');
+                    break;
+                case 'ArrowRight':
+                    // Navigate to next verse
+                    console.log('Next verse');
+                    break;
+                case 'Escape':
+                    // Close any open modals or panels
+                    const commentary = document.getElementById('commentary');
+                    const analysis = document.getElementById('wordAnalysis');
+                    if (!commentary.classList.contains('hidden')) {
+                        toggleCommentary();
+                    }
+                    if (!analysis.classList.contains('hidden')) {
+                        toggleWordAnalysis();
+                    }
+                    break;
+            }
+        });
+
+        // Touch Gestures for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next verse
+                    console.log('Next verse (swipe)');
+                } else {
+                    // Swipe right - previous verse
+                    console.log('Previous verse (swipe)');
+                }
+            }
+        }
+
+        // Font Size Controls
+        let currentFontSize = 1;
+        const fontSizeButtons = document.querySelectorAll('button[title*="font size"]');
+        
+        fontSizeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const isIncrease = this.title.includes('Increase');
+                const sanskritText = document.querySelector('.sanskrit-text');
+                const iastText = document.querySelector('.font-serif.italic');
+                
+                if (isIncrease && currentFontSize < 1.5) {
+                    currentFontSize += 0.1;
+                } else if (!isIncrease && currentFontSize > 0.8) {
+                    currentFontSize -= 0.1;
+                }
+                
+                if (sanskritText) {
+                    sanskritText.style.fontSize = `${currentFontSize * 2}rem`;
+                }
+                if (iastText) {
+                    iastText.style.fontSize = `${currentFontSize * 1.25}rem`;
+                }
+            });
+        });
+
+        // Copy to Clipboard Functionality
+        document.querySelectorAll('button[title*="Copy"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const section = this.closest('section');
+                let textToCopy = '';
+                
+                if (section.querySelector('.sanskrit-text')) {
+                    textToCopy = section.querySelector('.sanskrit-text').textContent.trim();
+                } else if (section.querySelector('.font-serif.italic')) {
+                    textToCopy = section.querySelector('.font-serif.italic').textContent.trim();
+                } else if (section.querySelector('blockquote')) {
+                    textToCopy = section.querySelector('blockquote').textContent.trim();
+                }
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Visual feedback
+                    const originalIcon = this.innerHTML;
+                    this.innerHTML = '<svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+                    setTimeout(() => {
+                        this.innerHTML = originalIcon;
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

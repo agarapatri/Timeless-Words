@@ -1,0 +1,141 @@
+.
+├── README.md
+├── directory_structure.txt
+├── docs
+│   ├── assets
+│   │   ├── css
+│   │   │   └── styles.css
+│   │   ├── data
+│   │   │   ├── library.{{DB_VERSION}}.sqlite
+│   │   │   └── semantic
+│   │   │       ├── library.semantic.v01.sqlite
+│   │   │       ├── manifest.json
+│   │   │       └── onnx_model
+│   │   │           ├── config.json
+│   │   │           ├── model.onnx
+│   │   │           ├── model_simplified.onnx
+│   │   │           ├── model_simplified_typed.onnx
+│   │   │           ├── onnx
+│   │   │           │   └── model_quantized.onnx
+│   │   │           ├── ort_config.json
+│   │   │           ├── special_tokens_map.json
+│   │   │           ├── tokenizer.json
+│   │   │           ├── tokenizer_config.json
+│   │   │           └── vocab.txt
+│   │   ├── fonts
+│   │   │   ├── inter-400.woff2
+│   │   │   ├── inter-700.woff2
+│   │   │   ├── noto-serif-400.woff2
+│   │   │   └── noto-serif-700.woff2
+│   │   └── images
+│   │       ├── banner.avif
+│   │       ├── chev.svg
+│   │       ├── external.svg
+│   │       ├── favicon.svg
+│   │       ├── filter.svg
+│   │       ├── search-dark.svg
+│   │       └── search.svg
+│   ├── index.html
+│   ├── js
+│   │   ├── app.js
+│   │   ├── constants.js
+│   │   ├── db.js
+│   │   ├── debug.js
+│   │   ├── footer.js
+│   │   ├── onyx
+│   │   │   ├── ort-wasm-simd-threaded.jsep.mjs
+│   │   │   ├── ort-wasm-simd-threaded.jsep.wasm
+│   │   │   ├── ort-wasm-simd-threaded.mjs
+│   │   │   ├── ort-wasm-simd-threaded.wasm
+│   │   │   ├── ort.wasm.bundle.min.mjs
+│   │   │   ├── ort.wasm.min.mjs
+│   │   │   └── ort.wasm.mjs
+│   │   ├── search.js
+│   │   ├── semantic_downloader.js
+│   │   ├── sql_helpers
+│   │   │   ├── sql-wasm.js
+│   │   │   ├── sql-wasm.wasm
+│   │   │   ├── sqlite.worker.js
+│   │   │   ├── sqlite3.mjs
+│   │   │   ├── sqlite3.wasm
+│   │   │   └── sqljs-httpvfs
+│   │   │       └── index.js
+│   │   ├── transformer_encoder.js
+│   │   ├── vec_db.js
+│   │   └── vendor
+│   │       └── transformers
+│   │           └── transformers.min.js
+│   ├── scripts
+│   │   ├── build_semantic_manifest.py
+│   │   ├── build_semantic_pack.py
+│   │   ├── compare_fp32_vs_int8.py
+│   │   ├── encode_semantic.py
+│   │   ├── example_cosine_search.py
+│   │   ├── how_to_run.md
+│   │   ├── inspect_embeddings.py
+│   │   ├── optimize_onnx.py
+│   │   ├── quantize_dynamic.py
+│   │   ├── quick_checks.py
+│   │   ├── sanity_report.py
+│   │   ├── script_docs.md
+│   │   ├── simplify_light.py
+│   │   ├── smoke_int8.py
+│   │   └── verify_quantized.py
+│   ├── tests
+│   │   ├── serve.js
+│   │   └── vec-poc.html
+│   └── views
+│       ├── book.html
+│       ├── chapter.html
+│       ├── partials
+│       │   ├── favicon.html
+│       │   ├── footer.html
+│       │   └── menu.html
+│       ├── search.html
+│       ├── semantic_download.html
+│       └── verse.html
+├── notes
+│   ├── Console Tests.md
+│   ├── Notes.md
+│   ├── PROJECT_DOCS.md
+│   └── Semantic Search Issues.md
+└── tools_and_extras
+    ├── banner.png
+    ├── chatgpt_ocr_to_text
+    │   ├── README.md
+    │   ├── pdf_to_long_image.py
+    │   ├── step1_rename_clean_filenames.py
+    │   ├── step2_pdfs_to_images.py
+    │   └── step3_sanskrit_images_to_md.py
+    ├── multi_json_to_sqlite
+    │   ├── README.md
+    │   ├── json_to_sqlite_cli.py
+    │   └── jsons
+    │       ├── isha_upanishad.json
+    │       ├── kena_upanishad.json
+    │       ├── mahabharata.json
+    │       ├── rig_veda.json
+    │       ├── sama_veda.json
+    │       ├── shiva_purana.json
+    │       ├── valmiki_ramayana.json
+    │       └── vishnu_puran.json
+    └── ui_tests
+        └── eternal_wiz
+            ├── README.md
+            ├── css
+            │   ├── main.css
+            │   └── tailwind.css
+            ├── index.html
+            ├── package.json
+            ├── pages
+            │   ├── deep_search.html
+            │   ├── homepage.html
+            │   ├── library.html
+            │   ├── search_results.html
+            │   ├── verse_reader.html
+            │   └── work_overview.html
+            ├── public
+            │   └── manifest.json
+            └── tailwind.config.js
+
+30 directories, 109 files

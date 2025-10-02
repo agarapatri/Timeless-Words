@@ -1,0 +1,155 @@
+{
+  "id": "vr",
+  "short": "VR",
+  "title": "Rāmāyaṇa",
+  "author": "Vālmīki",
+  "type": "Itihāsa",
+  "date_of_origin": "Atleast 1st millennium BCE.",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Sarga 1",
+      "section": 1,
+      "section_title": "Bāla Kāṇḍa",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "तपस्स्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।\nनारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम् ॥",
+          "iast": "tapaḥsvādhyāyanirataṁ tapasvī vāgvidāṁ varam |\nnāradaṁ paripapraccha vālmīkirmunipuṅgavam ||",
+          "word_by_word": [
+            { "sanskrit": "tapaḥ-svādhyāya-nirataṁ", "english": "engaged in austerity & study" },
+            { "sanskrit": "tapasvī", "english": "ascetic" },
+            { "sanskrit": "vāgvidām varam", "english": "best of speakers" },
+            { "sanskrit": "nāradam", "english": "Nārada" },
+            { "sanskrit": "paripapraccha", "english": "asked/inquired" }
+          ],
+          "translation": "The ascetic Vālmīki, devoted to austerity and study and foremost among eloquent sages, asked Nārada."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "कोन्वस्मिन्साम्प्रतं लोके गुणवान्कश्च वीर्यवान् ।\nधर्मज्ञश्च कृतज्ञश्च सत्यवाक्यो दृढव्रतः ॥",
+          "iast": "ko nvasmin sāmprataṁ loke guṇavān kaś ca vīryavān |\ndharmajñaś ca kṛtajñaś ca satyavākyaḥ dṛḍhavrataḥ ||",
+          "word_by_word": [
+            { "sanskrit": "ko nu", "english": "who indeed" },
+            { "sanskrit": "guṇavān", "english": "virtuous" },
+            { "sanskrit": "vīryavān", "english": "powerful" },
+            { "sanskrit": "dharmajñaḥ", "english": "knower of righteousness" },
+            { "sanskrit": "dṛḍha-vrataḥ", "english": "firm in vows" }
+          ],
+          "translation": "Who in this world today is truly virtuous and mighty, knowing dharma, grateful, truthful in speech, and firm in his vows?"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "चारित्रेण च को युक्तस्सर्वभूतेषु को हितः ।\nविद्वान्कः कस्समर्थश्च कश्चैकप्रियदर्शनः ॥",
+          "iast": "cāritreṇa ca ko yuktaḥ sarvabhūteṣu ko hitaḥ |\nvidvān kaḥ kaḥ samarthaś ca kaś caika-priyadarśanaḥ ||",
+          "word_by_word": [
+            { "sanskrit": "cāritreṇa yuktaḥ", "english": "endowed with good conduct" },
+            { "sanskrit": "sarvabhūteṣu hitaḥ", "english": "beneficial to all beings" },
+            { "sanskrit": "vidvān", "english": "learned" },
+            { "sanskrit": "samarthaḥ", "english": "capable" },
+            { "sanskrit": "eka-priyadarśanaḥ", "english": "pleasing to all" }
+          ],
+          "translation": "Who is endowed with noble character, a benefactor of all beings, learned and capable, and singularly delightful to behold?"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "आत्मवान्को जितक्रोधो द्युतिमान्कोऽनसूयकः ।\nकस्य बिभ्यति देवाश्च जातरोषस्य संयुगे ॥",
+          "iast": "ātmavān ko jitakrodho dyutimān ko ’nasūyakaḥ |\nkasya bibhyati devāś ca jātaroṣasya saṁyuge ||",
+          "word_by_word": [
+            { "sanskrit": "ātmavān", "english": "self-controlled" },
+            { "sanskrit": "jita-krodhaḥ", "english": "conqueror of anger" },
+            { "sanskrit": "dyutimān", "english": "brilliant" },
+            { "sanskrit": "anasūyakaḥ", "english": "free from envy" },
+            { "sanskrit": "jātaroṣasya", "english": "when angered" }
+          ],
+          "translation": "Who is self-mastered, who has conquered anger and shines with brilliance, free of envy—and at whose wrath even the gods fear in battle?"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "एतदिच्छाम्यहं श्रोतुं परं कौतूहलं हि मे ।\nमहर्षे त्वं समर्थोऽसि ज्ञातुमेवंविधं नरम् ॥",
+          "iast": "etad icchāmy ahaṁ śrotuṁ paraṁ kautūhalaṁ hi me |\nmaharṣe tvaṁ samartho ’si jñātum evaṁvidhaṁ naram ||",
+          "word_by_word": [
+            { "sanskrit": "etad śrotum icchāmi", "english": "I wish to hear this" },
+            { "sanskrit": "paraṁ kautūhalam", "english": "great curiosity" },
+            { "sanskrit": "maharṣe", "english": "O great seer" },
+            { "sanskrit": "samarthaḥ asi", "english": "you are able" }
+          ],
+          "translation": "I wish to hear of such a man; my curiosity is great. O great seer, you are capable of knowing and telling me of him."
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "श्रुत्वा चैतत् त्रिलोकज्ञो वाल्मीकेर्नारदो वचः ।\nश्रूयतामिति चामन्त्र्य प्रहृष्टो वाक्यमब्रवीत् ॥",
+          "iast": "śrutvā caitat trilokajño vālmīker nārado vacaḥ |\nśrūyatām iti cāmantrya prahṛṣṭo vākyam abravīt ||",
+          "word_by_word": [
+            { "sanskrit": "trilokajñaḥ", "english": "knower of the three worlds" },
+            { "sanskrit": "vālmīkeḥ vacaḥ", "english": "Vālmīki’s words" },
+            { "sanskrit": "śrūyatām", "english": "listen" },
+            { "sanskrit": "prahṛṣṭaḥ", "english": "delighted" }
+          ],
+          "translation": "Hearing this, Nārada—the knower of the three worlds—gladly addressed Vālmīki: “Listen,” he said, and spoke these words."
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "बहवो दुर्लभाश्चैव ये त्वया कीर्तिता गुणाः ।\nमुने वक्ष्याम्यहं बुद्ध्वा तैर्युक्तः श्रूयतां नरः ॥",
+          "iast": "bahavo durlabhāś caiva ye tvayā kīrtitā guṇāḥ |\nmune vakṣyāmy ahaṁ buddhvā tair yuktaḥ śrūyatāṁ naraḥ ||",
+          "word_by_word": [
+            { "sanskrit": "bahavaḥ durlabhāḥ", "english": "many, yet rare" },
+            { "sanskrit": "tvayā kīrtitā guṇāḥ", "english": "virtues you recounted" },
+            { "sanskrit": "vakṣyāmi", "english": "I shall tell" },
+            { "sanskrit": "tair yuktaḥ naraḥ", "english": "a man endowed with them" }
+          ],
+          "translation": "The virtues you list are many and rare. O sage, having considered, I shall tell of a man endowed with them—listen."
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "इक्ष्वाकुवंशप्रभवो रामो नाम जनैश्श्रुतः ।\nनियतात्मा महावीर्यो द्युतिमान्धृतिमान् वशी ॥",
+          "iast": "ikṣvākuvaṁśa-prabhavo rāmo nāma janaiḥ śrutaḥ |\nniyatātmā mahāvīryo dyutimān dhṛtimān vaśī ||",
+          "word_by_word": [
+            { "sanskrit": "ikṣvāku-vaṁśa-prabhavaḥ", "english": "born of the Ikṣvāku line" },
+            { "sanskrit": "rāmaḥ nāma", "english": "named Rāma" },
+            { "sanskrit": "niyatātmā", "english": "self-possessed" },
+            { "sanskrit": "mahā-vīryaḥ", "english": "of great prowess" },
+            { "sanskrit": "vaśī", "english": "master of senses" }
+          ],
+          "translation": "There is one known among men as Rāma, born of the Ikṣvāku line—self-mastered, of immense prowess, radiant, steadfast, and controlled."
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "बुद्धिमान्नीतिमान्वाग्मी श्रीमान् शत्रुनिबर्हणः ।\nविपुलांसो महाबाहुः कंबुग्रीवो महाहनुः ॥",
+          "iast": "buddhimān nītimān vāgmī śrīmān śatrunibarhaṇaḥ |\nvipulāṁso mahābāhuḥ kambugrīvo mahāhanuḥ ||",
+          "word_by_word": [
+            { "sanskrit": "buddhimān", "english": "intelligent" },
+            { "sanskrit": "nītimān", "english": "principled" },
+            { "sanskrit": "vāgmī", "english": "eloquent" },
+            { "sanskrit": "vipulāṁsaḥ", "english": "broad-shouldered" },
+            { "sanskrit": "mahābāhuḥ", "english": "long-armed" }
+          ],
+          "translation": "Intelligent, principled, eloquent, illustrious and a destroyer of foes—broad-shouldered, mighty-armed, conch-necked and strong-jawed."
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "महोरस्को महेष्वासो गूढजत्रुररिन्दमः ।\nआजानुबाहुस्सुशिराः सुललाटः सुविक्रमः ॥",
+          "iast": "mahoraskaḥ maheṣvāsaḥ gūḍhajatrur arindamaḥ |\nājānubāhus suśirāḥ sulalāṭaḥ suvikramaḥ ||",
+          "word_by_word": [
+            { "sanskrit": "maha-uras-kaḥ", "english": "broad-chested" },
+            { "sanskrit": "maheṣvāsaḥ", "english": "great archer" },
+            { "sanskrit": "gūḍhajatrū", "english": "deep collarbones" },
+            { "sanskrit": "ājānubāhuḥ", "english": "arms to the knees" },
+            { "sanskrit": "suvikramaḥ", "english": "of great prowess" }
+          ],
+          "translation": "Broad-chested, a great archer, with deep-set collarbones, arms reaching the knees, noble head and brow—valorous beyond compare."
+        }
+      ]
+    }
+  ]
+}

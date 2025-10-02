@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results - Eternal Wiz</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Search results for Sanskrit scripture exploration - Eternal Wiz Digital Library" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Feternalwi3558back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background text-text-primary">
+    <!-- Header Navigation -->
+    <header class="bg-surface border-b border-subtle sticky top-0 z-50 shadow-soft">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.11-.71 3-1.36.89.65 1.91 1.15 3 1.36 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <span class="font-crimson text-xl font-semibold text-primary">Eternal Wiz</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="library.html" class="text-text-secondary hover:text-primary transition-quick">Library</a>
+                    <a href="deep_search.html" class="text-text-secondary hover:text-primary transition-quick">Deep Search</a>
+                    <a href="work_overview.html" class="text-text-secondary hover:text-primary transition-quick">Works</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-surface-hover transition-quick">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <section class="bg-surface border-b border-subtle py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <a href="deep_search.html" class="text-text-secondary hover:text-primary transition-quick">Deep Search</a>
+                <svg class="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-text-primary font-medium">Search Results</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Search Header -->
+    <section class="py-8 bg-gradient-to-br from-primary-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <!-- Search Query Display -->
+                <div class="flex-1">
+                    <h1 class="font-crimson text-2xl sm:text-3xl font-semibold text-text-primary mb-2">
+                        Search Results for "<span class="text-primary">dharma</span>"
+                    </h1>
+                    <p class="text-text-secondary">
+                        Found <span class="font-semibold text-primary">47 results</span> across 12 works • 
+                        <span class="text-sm">Search completed in 0.23 seconds</span>
+                    </p>
+                </div>
+
+                <!-- Search Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex bg-white rounded-lg p-1 shadow-soft">
+                        <button class="px-4 py-2 text-sm font-medium bg-primary text-white rounded-md transition-quick">
+                            Semantic
+                        </button>
+                        <button class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-primary transition-quick">
+                            Keyword
+                        </button>
+                    </div>
+                    <button class="btn-secondary px-4 py-2 text-sm" onclick="window.location.href='deep_search.html'">
+                        New Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <aside class="lg:w-80 space-y-6">
+                    <!-- Filter Header -->
+                    <div class="card">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-crimson text-lg font-semibold text-text-primary">Refine Results</h3>
+                            <button class="text-sm text-primary hover:text-primary-600 transition-quick">
+                                Reset All
+                            </button>
+                        </div>
+
+                        <!-- Works Filter -->
+                        <div class="space-y-3 mb-6">
+                            <h4 class="font-medium text-text-primary">Works</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="rounded border-subtle text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">Bhagavad Gita (18)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="rounded border-subtle text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">Upanishads (12)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-subtle text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">Ramayana (8)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-subtle text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">Mahabharata (9)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Relevance Filter -->
+                        <div class="space-y-3 mb-6">
+                            <h4 class="font-medium text-text-primary">Relevance Score</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="relevance" checked class="text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">High (90%+)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="relevance" class="text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">Medium (70%+)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="relevance" class="text-primary focus:ring-primary-300" />
+                                    <span class="ml-2 text-sm text-text-secondary">All Results</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Sort Options -->
+                        <div class="space-y-3">
+                            <h4 class="font-medium text-text-primary">Sort By</h4>
+                            <select class="w-full px-3 py-2 border border-subtle rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                <option>Relevance</option>
+                                <option>Chronological Order</option>
+                                <option>Work Title</option>
+                                <option>Chapter Order</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Search Tips -->
+                    <div class="card bg-accent-50 border border-accent-200">
+                        <div class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-accent-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-medium text-accent-800 mb-2">Semantic Search Active</h4>
+                                <p class="text-sm text-accent-700">
+                                    Results include conceptually related terms and philosophical connections beyond exact word matches.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Results Content -->
+                <main class="flex-1 space-y-6">
+                    <!-- Result Item 1 -->
+                    <article class="card hover:shadow-content transition-all duration-300 cursor-pointer" onclick="window.location.href='verse_reader.html'">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-sm font-medium text-primary bg-primary-50 px-2 py-1 rounded">Bhagavad Gita</span>
+                                    <span class="text-sm text-text-muted">Chapter 18, Verse 47</span>
+                                    <div class="flex items-center space-x-1">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                        <span class="text-sm text-accent font-medium">95% match</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-crimson text-lg font-semibold text-text-primary mb-3">
+                                    Better one's own <mark class="bg-primary-100 text-primary px-1 rounded">dharma</mark>, though imperfectly performed...
+                                </h3>
+                            </div>
+                            <div class="flex items-center space-x-2 ml-4">
+                                <button class="p-2 text-text-muted hover:text-primary transition-quick" title="Bookmark">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                    </svg>
+                                </button>
+                                <button class="p-2 text-text-muted hover:text-primary transition-quick" title="Share">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Four-Layer Preview -->
+                        <div class="space-y-4">
+                            <!-- Sanskrit -->
+                            <div class="p-4 bg-primary-50 rounded-lg">
+                                <div class="text-sm text-primary font-medium mb-2">Sanskrit (Devanāgarī)</div>
+                                <p class="font-devanagari text-lg text-text-primary">
+                                    श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।
+                                </p>
+                            </div>
+
+                            <!-- IAST -->
+                            <div class="p-4 bg-accent-50 rounded-lg">
+                                <div class="text-sm text-accent-700 font-medium mb-2">IAST Transliteration</div>
+                                <p class="font-serif text-lg text-text-primary italic">
+                                    śreyān sva-<mark class="bg-primary-100 text-primary px-1 rounded">dharmo</mark> viguṇaḥ para-dharmāt sv-anuṣṭhitāt
+                                </p>
+                            </div>
+
+                            <!-- Word-by-Word -->
+                            <div class="p-4 bg-secondary-50 rounded-lg">
+                                <div class="text-sm text-secondary font-medium mb-2">Word-by-Word Analysis</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="inline-block bg-white px-2 py-1 rounded text-sm">
+                                        <span class="font-medium">śreyān</span> - better
+                                    </span>
+                                    <span class="inline-block bg-primary-100 px-2 py-1 rounded text-sm">
+                                        <span class="font-medium">sva-dharmaḥ</span> - one's own duty
+                                    </span>
+                                    <span class="inline-block bg-white px-2 py-1 rounded text-sm">
+                                        <span class="font-medium">viguṇaḥ</span> - imperfect
+                                    </span>
+                                    <span class="inline-block bg-white px-2 py-1 rounded text-sm">
+                                        <span class="font-medium">para-dharmāt</span> - than another's duty
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Translation -->
+                            <div class="p-4 bg-success-50 rounded-lg">
+                                <div class="text-sm text-success font-medium mb-2">English Translation</div>
+                                <p class="text-text-primary">
+                                    Better is one's own <mark class="bg-primary-100 text-primary px-1 rounded">dharma</mark> (duty), though imperfectly performed, than the dharma of another well performed.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Context & Actions -->
+                        <div class="flex items-center justify-between mt-6 pt-4 border-t border-subtle">
+                            <div class="flex items-center space-x-4 text-sm text-text-muted">
+                                <span>Context: Final teachings on duty and surrender</span>
+                                <button class="text-primary hover:text-primary-600 transition-quick">
+                                    View surrounding verses
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="btn-secondary px-4 py-2 text-sm">
+                                    Read Full Chapter
+                                </button>
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Result Item 2 -->
+                    <article class="card hover:shadow-content transition-all duration-300 cursor-pointer" onclick="window.location.href='verse_reader.html'">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-sm font-medium text-secondary bg-secondary-50 px-2 py-1 rounded">Katha Upanishad</span>
+                                    <span class="text-sm text-text-muted">Chapter 1, Verse 2</span>
+                                    <div class="flex items-center space-x-1">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                        <span class="text-sm text-accent font-medium">92% match</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-crimson text-lg font-semibold text-text-primary mb-3">
+                                    The wise choose the path of <mark class="bg-primary-100 text-primary px-1 rounded">dharma</mark> over material pleasure...
+                                </h3>
+                            </div>
+                            <div class="flex items-center space-x-2 ml-4">
+                                <button class="p-2 text-text-muted hover:text-primary transition-quick" title="Bookmark">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                    </svg>
+                                </button>
+                                <button class="p-2 text-text-muted hover:text-primary transition-quick" title="Share">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Collapsed Preview -->
+                        <div class="space-y-3">
+                            <div class="p-3 bg-primary-50 rounded-lg">
+                                <p class="font-devanagari text-base text-text-primary">
+                                    श्रेयश्च प्रेयश्च मनुष्यमेतस्तौ सम्परीत्य विविनक्ति धीरः।
+                                </p>
+                            </div>
+                            <div class="p-3 bg-success-50 rounded-lg">
+                                <p class="text-text-primary text-sm">
+                                    The good (śreyas) and the pleasant (preyas) approach man; the wise one examines both and discriminates between them, choosing the good over the pleasant.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-4 pt-4 border-t border-subtle">
+                            <div class="flex items-center space-x-4 text-sm text-text-muted">
+                                <span>Context: Nachiketa's dialogue with Death</span>
+                                <button class="text-primary hover:text-primary-600 transition-quick">
+                                    Expand full analysis
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="btn-secondary px-4 py-2 text-sm">
+                                    Read Full Chapter
+                                </button>
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Result Item 3 -->
+                    <article class="card hover:shadow-content transition-all duration-300 cursor-pointer" onclick="window.location.href='verse_reader.html'">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-sm font-medium text-primary bg-primary-50 px-2 py-1 rounded">Bhagavad Gita</span>
+                                    <span class="text-sm text-text-muted">Chapter 4, Verse 7</span>
+                                    <div class="flex items-center space-x-1">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                        <span class="text-sm text-accent font-medium">89% match</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-crimson text-lg font-semibold text-text-primary mb-3">
+                                    Whenever <mark class="bg-primary-100 text-primary px-1 rounded">dharma</mark> declines and adharma rises, I manifest myself...
+                                </h3>
+                            </div>
+                            <div class="flex items-center space-x-2 ml-4">
+                                <button class="p-2 text-primary" title="Bookmarked">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                    </svg>
+                                </button>
+                                <button class="p-2 text-text-muted hover:text-primary transition-quick" title="Share">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Collapsed Preview -->
+                        <div class="space-y-3">
+                            <div class="p-3 bg-primary-50 rounded-lg">
+                                <p class="font-devanagari text-base text-text-primary">
+                                    यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।
+                                </p>
+                            </div>
+                            <div class="p-3 bg-success-50 rounded-lg">
+                                <p class="text-text-primary text-sm">
+                                    Whenever there is a decline in dharma and a rise in adharma, O Bharata, at that time I manifest myself.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-4 pt-4 border-t border-subtle">
+                            <div class="flex items-center space-x-4 text-sm text-text-muted">
+                                <span>Context: Divine incarnation and cosmic order</span>
+                                <button class="text-primary hover:text-primary-600 transition-quick">
+                                    View related verses
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="btn-secondary px-4 py-2 text-sm">
+                                    Read Full Chapter
+                                </button>
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Load More Results -->
+                    <div class="text-center py-8">
+                        <button class="btn-primary px-8 py-3">
+                            Load More Results
+                        </button>
+                        <p class="text-sm text-text-muted mt-2">
+                            Showing 3 of 47 results
+                        </p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Concepts -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-crimson text-2xl font-semibold text-text-primary mb-8">
+                Related Concepts & Cross-References
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card cursor-pointer hover:shadow-content transition-all duration-300" onclick="window.location.href='search_results.html'">
+                    <h3 class="font-crimson text-lg font-semibold text-text-primary mb-2">Karma</h3>
+                    <p class="text-text-secondary text-sm mb-3">
+                        Action and its consequences in relation to dharmic duty
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-text-muted">23 related verses</span>
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="card cursor-pointer hover:shadow-content transition-all duration-300" onclick="window.location.href='search_results.html'">
+                    <h3 class="font-crimson text-lg font-semibold text-text-primary mb-2">Svadharma</h3>
+                    <p class="text-text-secondary text-sm mb-3">
+                        Individual duty based on nature and circumstances
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-text-muted">15 related verses</span>
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="card cursor-pointer hover:shadow-content transition-all duration-300" onclick="window.location.href='search_results.html'">
+                    <h3 class="font-crimson text-lg font-semibold text-text-primary mb-2">Righteousness</h3>
+                    <p class="text-text-secondary text-sm mb-3">
+                        Moral and ethical conduct in various contexts
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-text-muted">31 related verses</span>
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.11-.71 3-1.36.89.65 1.91 1.15 3 1.36 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <span class="font-crimson text-xl font-semibold">Eternal Wiz</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Where tradition meets technology in the study of ancient Sanskrit wisdom.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-crimson text-lg font-semibold mb-4">Explore</h3>
+                    <ul class="space-y-2">
+                        <li><a href="library.html" class="text-gray-300 hover:text-white transition-quick">Scripture Library</a></li>
+                        <li><a href="deep_search.html" class="text-gray-300 hover:text-white transition-quick">Semantic Search</a></li>
+                        <li><a href="verse_reader.html" class="text-gray-300 hover:text-white transition-quick">Verse Reader</a></li>
+                        <li><a href="work_overview.html" class="text-gray-300 hover:text-white transition-quick">Featured Works</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="font-crimson text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">About Project</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Methodology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">GitHub Repository</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Vedabase.io</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-crimson text-lg font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Academic Partnerships</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Research Collaboration</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Support</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2025 Eternal Wiz. Open source project dedicated to preserving and sharing ancient wisdom.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Features -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter toggle functionality
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // Filter results based on selections
+                    console.log('Filter updated:', this.checked);
+                });
+            });
+
+            // Sort functionality
+            const sortSelect = document.querySelector('select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    console.log('Sort changed to:', this.value);
+                });
+            }
+
+            // Expand/collapse result details
+            const expandButtons = document.querySelectorAll('button[class*="text-primary"]');
+            expandButtons.forEach(button => {
+                if (button.textContent.includes('Expand') || button.textContent.includes('View')) {
+                    button.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        console.log('Expanding result details');
+                    });
+                }
+            });
+
+            // Bookmark functionality
+            const bookmarkButtons = document.querySelectorAll('button[title="Bookmark"], button[title="Bookmarked"]');
+            bookmarkButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isBookmarked = this.title === 'Bookmarked';
+                    this.title = isBookmarked ? 'Bookmark' : 'Bookmarked';
+                    
+                    const svg = this.querySelector('svg');
+                    if (isBookmarked) {
+                        svg.setAttribute('fill', 'none');
+                        this.classList.remove('text-primary');
+                        this.classList.add('text-text-muted');
+                    } else {
+                        svg.setAttribute('fill', 'currentColor');
+                        this.classList.remove('text-text-muted');
+                        this.classList.add('text-primary');
+                    }
+                });
+            });
+
+            // Share functionality
+            const shareButtons = document.querySelectorAll('button[title="Share"]');
+            shareButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    console.log('Share verse');
+                });
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
