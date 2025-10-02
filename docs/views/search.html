@@ -343,6 +343,20 @@
     wireSemanticDebug();
   </script>
 
+  <script type="module">
+    // Only load debug in dev: localhost or ?debug=1
+    const isDev = location.hostname === 'localhost' || location.search.includes('debug=1');
+    if (isDev) {
+      import('../js/debug.js').then(m => {
+        // optional: expose helpers in Console
+        window.listOPFS = m.listOPFS;
+        window.clearOPFS = m.clearOPFS;
+        window.clearFlag = m.clearFlag;
+        window.forceInstall = m.forceInstall;
+        console.log('[debug] helpers attached to window');
+      });
+    }
+  </script>
 
 </body>
 
