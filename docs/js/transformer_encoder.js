@@ -55,14 +55,35 @@ export class TransformerEncoder {
 
   async init() {
     if (this._ready) return this;
-    // Prefer quantized for performance if available, else fallback to fp32
-    try {
-      this._extractor = await pipeline("feature-extraction", this.modelId, { quantized: true });
-    } catch (e) {
-      this._extractor = await pipeline("feature-extraction", this.modelId, { quantized: false });
+
+    const attempts = [
+      { label: "fp32", opts: { quantized: false } },
+      { label: "int8", opts: { quantized: true } },
+    ];
+
+    let lastError = null;
+    for (const attempt of attempts) {
+      try {
+        this._extractor = await pipeline(
+          "feature-extraction",
+          this.modelId,
+          attempt.opts
+        );
+        console.info(
+          `[semantic] transformer encoder ready (${attempt.label})`
+        );
+        this._ready = true;
+        return this;
+      } catch (err) {
+        console.warn(
+          `[semantic] failed to load ${attempt.label} model, trying fallback`,
+          err
+        );
+        lastError = err;
+      }
     }
-    this._ready = true;
-    return this;
+
+    throw lastError || new Error("semantic encoder: all model variants failed");
   }
 
   setDimension(d) {
