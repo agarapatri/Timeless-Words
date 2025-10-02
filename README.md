@@ -1,7 +1,7 @@
 # Timeless Words
 Collection of Vedic texts
 
-![alt text](https://github.com/agarapatri/Timeless-Words/blob/main/tools_and_extras/banner.png)
+![alt text](https://github.com/agarapatri/Timeless-Words/blob/main/tools_notes_extras/banner.png)
 Art by: [Yuqing Sheng](x.com/merasgar)
 
 ## Website demo
