@@ -218,7 +218,8 @@
     checkbox.addEventListener('change', async (e) => {
       const wantOn = e.target.checked;
 
-      const hasPack = await panel.isInstalled();
+      // const hasPack = await panel.isInstalled();
+      const hasPack = false
       if (wantOn && !hasPack) {
         // Show blocking overlay & start
         panel.show();
@@ -227,8 +228,8 @@
           window.__TW_SEMANTIC_MODE__ = true;
           checkbox.checked = true;
           if (input) {
-            input.value = ''; 
-            input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC; 
+            input.value = '';
+            input.placeholder = SEARCH.SEARCH_HINT_SEMANTIC;
             input.focus();
             input.dispatchEvent(new Event('input', { bubbles: true }));
           }
@@ -322,6 +323,26 @@
       }
     });
   </script>
+
+  <script type="module">
+    // global clearResults used by the toggle path
+    window.clearResults = () => {
+      const tips = document.getElementById('searchTips');
+      const results = document.getElementById('results');
+      const info = document.getElementById('resultsInfo');
+      if (tips) tips.style.display = '';
+      if (results) results.innerHTML = '';
+      if (info) info.textContent = '';
+      const pager = document.getElementById('pager');
+      if (pager) pager.remove();
+    };
+  </script>
+
+  <script type="module">
+    import { wireSemanticDebug } from '../js/search.js';
+    wireSemanticDebug();
+  </script>
+
 
 </body>
 

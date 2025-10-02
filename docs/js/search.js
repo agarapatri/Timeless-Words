@@ -889,3 +889,11 @@ import { DB } from "./constants.js";
   //   if (q) runSearch(q);
   // });
 })();
+
+export function wireSemanticDebug() {
+  const sem = document.getElementById("sem-check");
+  if (sem)
+    sem.addEventListener("change", (e) =>
+      console.log("semantic changed:", e.target.checked)
+    );
+}
