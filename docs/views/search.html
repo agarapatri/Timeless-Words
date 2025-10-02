@@ -218,8 +218,8 @@
     checkbox.addEventListener('change', async (e) => {
       const wantOn = e.target.checked;
 
-      // const hasPack = await panel.isInstalled();
-      const hasPack = false
+      // Check if the semantic pack is already installed in OPFS
+      const hasPack = await panel.isInstalled();
       if (wantOn && !hasPack) {
         // Show blocking overlay & start
         panel.show();

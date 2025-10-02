@@ -302,20 +302,50 @@ import { DB } from "./constants.js";
       // Map results back to the verses you already render
       const byId = new Map(ALL.verses.map((v) => [v.verse_id, v]));
       const filtered = [];
+      // Lightweight lexical overlap to re-rank for the active scopes
+      function lexicalScore(q, verseRow) {
+        const ACTIVE = [];
+        if (f.scopes.deva) ACTIVE.push(verseRow.deva);
+        if (f.scopes.iast) ACTIVE.push(verseRow.iast);
+        if (f.scopes.trans) ACTIVE.push(verseRow.trans);
+        if (f.scopes.wfw) ACTIVE.push(ALL.wfwByVerse.get(verseRow.verse_id) || "");
+        const qn = norm(q);
+        if (!qn) return 0;
+        const qset = new Set(qn.split(/\s+/).filter(Boolean));
+        let best = 0;
+        for (const part of ACTIVE) {
+          const pn = norm(part || "");
+          if (!pn) continue;
+          const pset = new Set(pn.split(/\s+/).filter(Boolean));
+          let inter = 0;
+          qset.forEach((t) => {
+            if (pset.has(t)) inter += 1;
+          });
+          const denom = Math.max(1, qset.size);
+          best = Math.max(best, inter / denom);
+        }
+        return best; // [0,1]
+      }
+
+      const reranked = [];
       for (const r of rows) {
         const v = byId.get(r.id);
         if (!v) continue;
         // Respect Book filter only (strict separation from regex/wildcards)
         if (f.allowedIds.length && !f.allowedIds.includes(v.work_id)) continue;
-        filtered.push({
+        const lex = lexicalScore(f.q, v);
+        const final = 0.7 * r.score + 0.3 * lex;
+        reranked.push({
           ...v,
           __semantic_score: r.score,
+          __lexical_score: lex,
+          __final_score: final,
           __semantic_text: r.text,
         });
-        if (filtered.length >= 200) break;
+        if (reranked.length >= 200) break;
       }
-
-      STATE.results = filtered;
+      reranked.sort((a, b) => b.__final_score - a.__final_score);
+      STATE.results = reranked;
       STATE.page = 1;
       ensurePager();
       renderPage();

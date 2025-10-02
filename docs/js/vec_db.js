@@ -97,6 +97,19 @@ export class SemanticDB {
 
     this.ids = ids;
     this.passages = passages;
+    // Ensure rows are unit-normalized so dot product == cosine
+    {
+      const dim = this.dim;
+      for (let row = 0; row < ids.length; row += 1) {
+        let norm = 0;
+        const off = row * dim;
+        for (let j = 0; j < dim; j += 1) norm += matrix[off + j] * matrix[off + j];
+        norm = Math.sqrt(norm) || 1;
+        if (norm !== 1) {
+          for (let j = 0; j < dim; j += 1) matrix[off + j] /= norm;
+        }
+      }
+    }
     this.embeddingMatrix = matrix;
     this.ready = true;
     return this;

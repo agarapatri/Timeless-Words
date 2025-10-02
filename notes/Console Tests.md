@@ -27,14 +27,6 @@
 **DevTools Console**
 
 ```js
-// Check installer state
-typeof navigator.storage?.getDirectory === 'function'
-await (new (await import('../js/semantic_downloader.js')).SemanticDownloadPanel()).isInstalled()
-```
-
-**DevTools Console**
-
-```js
 // Verify URLs the installer will hit
 import { SEMANTIC, SEMANTIC_ROOT } from '../js/constants.js';
 const m = await fetch(SEMANTIC.MANIFEST_URL).then(r=>r.json());
