@@ -1,4 +1,8 @@
-const MOD = new URL(".", import.meta.url); // /Timeless-Words/js/
+export const APP_VERSION = "{{VERSION}}";
+export const DB_VERSION = "{{DB_VERSION}}";
+export const SEM_VERSION = "{{SEM_VERSION}}";
+
+const MOD = new URL(".", import.meta.url); // /docs/js/
 export const DATA_ROOT = new URL("../assets/data/", MOD);
 export const JS_ROOT = new URL("./", MOD);
 export const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
@@ -9,7 +13,7 @@ export const ENABLE_SEMANTIC = false;
 export const DB = {
   DB_NAME: "library.{{DB_VERSION}}.sqlite",
   VEC_DB_NAME: "library.semantic.v01.sqlite", // check manifest.json
-  SQL_WASM_PATH: "sql_helpers/sql-wasm.wasm",
+  SQL_WASM_PATH: `sql_helpers/sql-wasm.wasm?v=${APP_VERSION}`,
 };
 
 export const SEARCH = {
@@ -20,8 +24,9 @@ export const SEARCH = {
 export const SEMANTIC = {
   ENABLE_KEY: "tw_semantic_enabled",
   OPFS_DIR: "tw-semantic",
+  VERSION: SEM_VERSION,
   MANIFEST_URL: new URL(
-    "../assets/data/semantic/manifest.json?v={{VERSION}}",
+    `../assets/data/semantic/manifest.json?v=${SEM_VERSION}`,
     import.meta.url
   ).href,
 };

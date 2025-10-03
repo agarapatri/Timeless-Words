@@ -34,6 +34,8 @@ jobs:
         run: |
           set -euo pipefail
 
+          APP_VERSION="${GITHUB_SHA::8}"
+
           # Primary DB path: prefer unversioned if present, else fall back to templated name after replacement step.
           DB_PATH="docs/assets/data/library.sqlite"
           if [ ! -f "$DB_PATH" ] && ls docs/assets/data/library.*.sqlite >/dev/null 2>&1; then
@@ -56,20 +58,25 @@ jobs:
             | cut -c1-12
           )"
 
+          echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_ENV"
           echo "DB_VERSION=$DB_VERSION"   >> "$GITHUB_ENV"
           echo "SEM_VERSION=$SEM_VERSION" >> "$GITHUB_ENV"
 
-      - name: Replace placeholders in HTML/JS
+      - name: Replace placeholders in assets
         run: |
           set -euo pipefail
-          # Inject DB and SEM versions across site templates and scripts
-          sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" docs/index.html || true
-          find docs/views -type f -name "*.html" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
-          find docs/js -type f -name "*.js" -exec sed -i "s|{{DB_VERSION}}|$DB_VERSION|g" {} +
 
-          sed -i "s|{{SEM_VERSION}}|$SEM_VERSION|g" docs/index.html || true
-          find docs/views -type f -name "*.html" -exec sed -i "s|{{SEM_VERSION}}|$SEM_VERSION|g" {} +
-          find docs/js -type f -name "*.js" -exec sed -i "s|{{SEM_VERSION}}|$SEM_VERSION|g" {} +
+          replace_all() {
+            local placeholder="$1" value="$2"
+            shift 2
+            for pattern in "$@"; do
+              find docs -type f -name "$pattern" -exec sed -i "s|${placeholder}|${value}|g" {} +
+            done
+          }
+
+          replace_all '{{VERSION}}'     "$APP_VERSION" '*.html' '*.css' '*.js' '*.json'
+          replace_all '{{DB_VERSION}}'  "$DB_VERSION"  '*.html' '*.css' '*.js' '*.json'
+          replace_all '{{SEM_VERSION}}' "$SEM_VERSION" '*.html' '*.css' '*.js' '*.json'
 
       - name: Stage versioned DB copy (optional immutable hosting)
         run: |
@@ -84,6 +91,7 @@ jobs:
       - name: Verify replacements
         run: |
           set -euo pipefail
+          ! grep -R "{{VERSION}}" docs || { echo "Unreplaced {{VERSION}}"; exit 1; }
           ! grep -R "{{DB_VERSION}}" docs || { echo "Unreplaced {{DB_VERSION}}"; exit 1; }
           ! grep -R "{{SEM_VERSION}}" docs || { echo "Unreplaced {{SEM_VERSION}}"; exit 1; }
 

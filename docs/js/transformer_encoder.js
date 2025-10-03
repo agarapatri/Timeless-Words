@@ -1,7 +1,8 @@
 // Transformer-based query encoder using Xenova transformers.js and local ONNX assets.
 // Produces pooled (mean) and L2-normalized sentence embeddings.
 
-import { pipeline, env } from "./vendor/transformers/transformers.min.js";
+import { pipeline, env } from "./vendor/transformers/transformers.min.js?v={{VERSION}}";
+import { SEM_VERSION, APP_VERSION } from "./constants.js";
 
 // Configure to load local model assets only (GitHub Pages friendly)
 env.allowLocalModels = true;
@@ -10,12 +11,31 @@ env.useBrowserCache = true;
 // Point to the directory that contains the model folder ("onnx_model/")
 env.localModelPath = new URL("../assets/data/semantic/", import.meta.url).href;
 // Ensure ORT wasm resolves from our bundled path
+const TRANSFORMER_ROOT = new URL("./vendor/transformers/", import.meta.url);
+const ONNX_RUNTIME_ROOT = new URL("./onyx/", import.meta.url);
+const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
+const MODEL_REDIRECT_FROM = new URL(
+  "../assets/data/semantic/onnx_model/onnx/model.onnx",
+  import.meta.url
+);
+const MODEL_REDIRECT_TO = new URL(
+  "../assets/data/semantic/onnx_model/model.onnx",
+  import.meta.url
+);
+const ORT_REDIRECTS = new Map([
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.mjs", "./onyx/ort-wasm-simd-threaded.jsep.mjs"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.wasm", "./onyx/ort-wasm-simd-threaded.jsep.wasm"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.mjs", "./onyx/ort-wasm-simd-threaded.mjs"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.wasm", "./onyx/ort-wasm-simd-threaded.wasm"],
+  ["/js/vendor/transformers/ort.wasm.bundle.min.mjs", "./onyx/ort.wasm.bundle.min.mjs"],
+  ["/js/vendor/transformers/ort.wasm.min.mjs", "./onyx/ort.wasm.min.mjs"],
+  ["/js/vendor/transformers/ort.wasm.mjs", "./onyx/ort.wasm.mjs"],
+]);
+
 try {
-  // Some versions expose this nested path; guard if unavailable
-  const wasmBase = new URL("./onyx/", import.meta.url).href;
   if (env.backends?.onnx?.wasm) {
+    const wasmBase = new URL("./onyx/", import.meta.url).href;
     env.backends.onnx.wasm.wasmPaths = wasmBase;
-    // GitHub Pages / localhost typically lack COOP/COEP → disable JSEP threads
     env.backends.onnx.wasm.numThreads = 1;
     env.backends.onnx.wasm.simd = true;
     // Force single-threaded (no worker) since GitHub Pages lacks cross-origin isolation
@@ -24,22 +44,40 @@ try {
   }
 } catch {}
 
-// Patch fetch to redirect expected /onnx/model.onnx → /model.onnx within our onnx_model folder
-const BASE = new URL("../assets/data/semantic/onnx_model/", import.meta.url).href;
 const originalFetch = globalThis.fetch?.bind(globalThis);
-if (originalFetch) {
+function versionedUrl(url) {
+  let u = new URL(url, globalThis.location?.href ?? ONNX_RUNTIME_ROOT.href);
+  if (u.pathname === MODEL_REDIRECT_FROM.pathname) {
+    const params = new URLSearchParams(u.search);
+    u = new URL(MODEL_REDIRECT_TO.href);
+    u.search = params.toString();
+  }
+  for (const [from, to] of ORT_REDIRECTS.entries()) {
+    if (u.pathname.endsWith(from)) {
+      const params = new URLSearchParams(u.search);
+      u = new URL(to, import.meta.url);
+      u.search = params.toString();
+      break;
+    }
+  }
+  if (u.href.startsWith(TRANSFORMER_ROOT.href) || u.href.startsWith(ONNX_RUNTIME_ROOT.href)) {
+    u.searchParams.set("v", APP_VERSION);
+  } else if (u.href.startsWith(SEMANTIC_ROOT.href)) {
+    u.searchParams.set("v", SEM_VERSION);
+  }
+  return u;
+}
+
+if (originalFetch && !globalThis.__twVersionedFetch) {
+  globalThis.__twVersionedFetch = true;
   globalThis.fetch = (input, init) => {
     try {
-      const url = typeof input === "string" ? input : input.url;
-      const u = new URL(url, globalThis.location?.href || BASE);
-      // Map .../onnx/model.onnx → .../model.onnx
-      if (u.href.startsWith(BASE + "onnx/model.onnx")) {
-        const redirected = BASE + "model.onnx";
-        if (typeof input === "string") return originalFetch(redirected, init);
-        const req = new Request(redirected, input);
-        return originalFetch(req, init);
+      if (typeof input === "string") {
+        input = versionedUrl(input).href;
+      } else if (input instanceof Request) {
+        const url = versionedUrl(input.url).href;
+        input = new Request(url, input);
       }
-      // Do not remap quantized path: your tree stores it under /onnx/model_quantized.onnx
     } catch {}
     return originalFetch(input, init);
   };

@@ -1,5 +1,5 @@
 // assets/semantic_downloader.js
-import { SEMANTIC, SEMANTIC_ROOT } from "./constants.js";
+import { SEMANTIC, SEMANTIC_ROOT, SEM_VERSION } from "./constants.js";
 
 const ENABLE_KEY = SEMANTIC.ENABLE_KEY;
 const hasWindow = typeof window !== "undefined";
@@ -383,7 +383,11 @@ export class SemanticInstall {
       let done = 0;
 
       for (const f of manifest.files) {
-        const url = new URL(f.path, SEMANTIC_ROOT).href;
+        const urlObj = new URL(f.path, SEMANTIC_ROOT);
+        if (!urlObj.searchParams.has("v")) {
+          urlObj.searchParams.set("v", SEM_VERSION);
+        }
+        const url = urlObj.href;
         this._setStatus(`Downloading ${f.path}…`);
         const blob = await this._downloadOne(url, f.sha256, (p) => {
           const raw = ((done + f.size * p) / total) * 100;
