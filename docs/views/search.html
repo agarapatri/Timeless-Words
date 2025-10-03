@@ -223,7 +223,7 @@
       if (wantOn && !hasPack) {
         // Show blocking overlay & start
         panel.show();
-        panel.onInstalled = () => {
+        panel.onInstalled = async () => {
           setSemanticEnabled(true);
           window.__TW_SEMANTIC_MODE__ = true;
           checkbox.checked = true;
@@ -235,7 +235,14 @@
           }
           setTipsMode(true);
           window.clearResults?.();
-          window.prefetchSemanticResources?.();
+          if (panel.status) panel.status.textContent = 'Preparing semantic runtime…';
+          try {
+            if (window.prefetchSemanticResources) {
+              await window.prefetchSemanticResources();
+            }
+          } catch (err) {
+            console.warn('[semantic] prefetch after install failed', err);
+          }
           panel.hide(); // auto-close on completion
         };
         console.log('SEM: start download');

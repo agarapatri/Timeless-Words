@@ -386,7 +386,8 @@ export class SemanticInstall {
         const url = new URL(f.path, SEMANTIC_ROOT).href;
         this._setStatus(`Downloading ${f.path}…`);
         const blob = await this._downloadOne(url, f.sha256, (p) => {
-          const cur = Math.round(((done + f.size * p) / total) * 100);
+          const raw = ((done + f.size * p) / total) * 100;
+          const cur = Math.min(100, Math.round(raw));
           if (this.bar) this.bar.value = cur;
           if (this.pct) this.pct.textContent = `${cur}%`;
         });
