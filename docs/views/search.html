@@ -235,6 +235,7 @@
           }
           setTipsMode(true);
           window.clearResults?.();
+          window.prefetchSemanticResources?.();
           panel.hide(); // auto-close on completion
         };
         console.log('SEM: start download');
@@ -261,6 +262,12 @@
       }
       setTipsMode(wantOn);
       window.clearResults?.();
+
+      if (wantOn && window.prefetchSemanticResources) {
+        window.prefetchSemanticResources().catch((err) =>
+          console.warn('[semantic] prefetch on toggle failed', err)
+        );
+      }
     });
   </script>
 

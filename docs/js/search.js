@@ -267,6 +267,32 @@ import { DB } from "./constants.js";
     return { encoder: window.__twEncoder, semdb: window.__twSemdb };
   }
 
+  let semanticPrefetchPromise = null;
+  let cachedSemanticResources = null;
+  async function prefetchSemanticResources() {
+    if (cachedSemanticResources) return cachedSemanticResources;
+    if (semanticPrefetchPromise) return semanticPrefetchPromise;
+    semanticPrefetchPromise = (async () => {
+      try {
+        const resources = await ensureSemanticReady();
+        if (resources.encoder?.init) await resources.encoder.init();
+        cachedSemanticResources = resources;
+        return resources;
+      } catch (err) {
+        semanticPrefetchPromise = null;
+        throw err;
+      }
+    })();
+    try {
+      return await semanticPrefetchPromise;
+    } catch (err) {
+      console.warn("[semantic] prefetch failed", err);
+      throw err;
+    }
+  }
+
+  window.prefetchSemanticResources = prefetchSemanticResources;
+
   async function search() {
     const f = readFilters();
 
@@ -295,7 +321,7 @@ import { DB } from "./constants.js";
 
     // === SEMANTIC — completely separate ===
     try {
-      const { encoder, semdb } = await ensureSemanticReady();
+      const { encoder, semdb } = await prefetchSemanticResources();
       const qvec = await encoder.encode(f.q);
 
       // Vector search (topK can be tuned)
