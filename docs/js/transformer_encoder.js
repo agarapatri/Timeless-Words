@@ -27,49 +27,11 @@ try {
 // Patch fetch to redirect expected /onnx/model.onnx → /model.onnx within our onnx_model folder
 const BASE = new URL("../assets/data/semantic/onnx_model/", import.meta.url).href;
 const originalFetch = globalThis.fetch?.bind(globalThis);
-async function readOPFSFile(pathSegments) {
-  if (!navigator.storage?.getDirectory) return null;
-  try {
-    let handle = await navigator.storage.getDirectory();
-    handle = await handle.getDirectoryHandle("tw-semantic", { create: false });
-    for (let i = 0; i < pathSegments.length - 1; i += 1) {
-      handle = await handle.getDirectoryHandle(pathSegments[i], { create: false });
-    }
-    const fileHandle = await handle.getFileHandle(
-      pathSegments[pathSegments.length - 1],
-      { create: false }
-    );
-    const file = await fileHandle.getFile();
-    return await file.arrayBuffer();
-  } catch (err) {
-    console.debug("[semantic] OPFS miss", pathSegments.join("/"), err);
-    return null;
-  }
-}
 if (originalFetch) {
   globalThis.fetch = (input, init) => {
     try {
       const url = typeof input === "string" ? input : input.url;
       const u = new URL(url, globalThis.location?.href || BASE);
-      if (/model(\.onnx)?$/i.test(u.pathname)) {
-        console.debug("[semantic] fetch", u.href);
-      }
-      if (u.pathname.endsWith("/onnx/model_quantized.onnx")) {
-        return (async () => {
-          const buf = await readOPFSFile([
-            "onnx_model",
-            "onnx",
-            "model_quantized.onnx",
-          ]);
-          if (buf) {
-            console.info("[semantic] serving quantized model from OPFS");
-            return new Response(buf, {
-              headers: { "Content-Type": "application/octet-stream" },
-            });
-          }
-          return originalFetch(input, init);
-        })();
-      }
       // Map .../onnx/model.onnx → .../model.onnx
       if (u.href.startsWith(BASE + "onnx/model.onnx")) {
         const redirected = BASE + "model.onnx";

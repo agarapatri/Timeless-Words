@@ -1,3 +1,10 @@
+# Operational limits to note:
+* Git push hard limit: 100 MB per file. You are below it.
+* GitHub Pages usage: ~1 GB site size and ~100 GB/month bandwidth. Heavy traffic may require a CDN.
+* COOP/COEP: not needed for single-threaded WASM.
+* Keep INT8 fallback for safety.
+
+
 
 The `serve.js` file is a **simple server script** written using **Node.js** and the **Express framework**. Its primary function is to serve your static web files (HTML, CSS, JS, WASM, etc.) while setting specific HTTP headers required to enable advanced features for **SQLite WebAssembly (WASM)**.
 
