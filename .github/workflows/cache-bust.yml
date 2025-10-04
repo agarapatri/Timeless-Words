@@ -4,11 +4,8 @@
 # Images/icons (icons/*.svg, *.png, etc.)
 # are cached heavily. HTML files update immediately, so you don’t need a version there.
 
-# This GitHub Actions workflow file automates cache busting and deployment of the documentation site.
-# It triggers on pushes to the main branch, replacing all instances of {{VERSION}} in HTML
-# and CSS files within the docs directory with the current commit hash, ensuring that users
-# always receive the latest versions of assets. Finally, it deploys the updated docs to Git
-# Compute DB_VERSION from the SQLite file’s SHA-256. If the DB doesn’t change, the hash stays the same, so no cache-bust.
+# Automates cache busting and deployment of the documentation site.
+# Replaces placeholders with hashed versions before publishing to GitHub Pages.
 
 name: Cache Busting & Deploy
 
@@ -36,7 +33,6 @@ jobs:
 
           APP_VERSION="${GITHUB_SHA::8}"
 
-          # Primary DB path: prefer unversioned if present, else fall back to templated name after replacement step.
           DB_PATH="docs/assets/data/library.sqlite"
           if [ ! -f "$DB_PATH" ] && ls docs/assets/data/library.*.sqlite >/dev/null 2>&1; then
             DB_PATH="$(ls docs/assets/data/library.*.sqlite | head -n1)"

@@ -6,6 +6,9 @@ Art by: [Yuqing Sheng](x.com/merasgar)
 
 ## Website demo
 * https://agarapatri.github.io/Timeless-Words/
+  * If the website seems slow or is unresponsive, you must know that the site is running on github pages and the free tier has limitations. The best thing to do is to Fork it and host it on your own github account. 
+  * GitHub Pages usage: ~1 GB site size and ~100 GB/month bandwidth.
+  * Also if you are facing issues with Semantic search it is best to clear the cache of the site or delete the entire site data. Go to "Site Settings" -> "Delete Data".
 
 ## Types of Vedic Texts
 * **Vedas**:

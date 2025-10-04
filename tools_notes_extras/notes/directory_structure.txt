@@ -2,6 +2,7 @@
 ├── README.md
 ├── directory_structure.txt
 ├── docs
+│   ├── DOCUMENTATION_v2.md
 │   ├── assets
 │   │   ├── css
 │   │   │   └── styles.css
@@ -94,12 +95,7 @@
 │       ├── search.html
 │       ├── semantic_download.html
 │       └── verse.html
-├── notes
-│   ├── Console Tests.md
-│   ├── Notes.md
-│   ├── PROJECT_DOCS.md
-│   └── Semantic Search Issues.md
-└── tools_and_extras
+└── tools_notes_extras
     ├── banner.png
     ├── chatgpt_ocr_to_text
     │   ├── README.md
@@ -119,6 +115,11 @@
     │       ├── shiva_purana.json
     │       ├── valmiki_ramayana.json
     │       └── vishnu_puran.json
+    ├── notes
+    │   ├── Console Tests.md
+    │   ├── Notes.md
+    │   ├── PROJECT_DOCS.md
+    │   └── Semantic Search Issues.md
     └── ui_tests
         └── eternal_wiz
             ├── README.md
@@ -138,4 +139,4 @@
             │   └── manifest.json
             └── tailwind.config.js
 
-30 directories, 109 files
+30 directories, 110 files
