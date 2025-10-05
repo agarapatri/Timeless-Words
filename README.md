@@ -9,7 +9,8 @@ Art by: [Yuqing Sheng](x.com/merasgar)
   * If the website seems slow or is unresponsive, you must know that the site is running on github pages and the free tier has limitations. The best thing to do is to Fork it and host it on your own github account. 
   * GitHub Pages usage: ~1 GB site size and ~100 GB/month bandwidth.
   * Also if you are facing issues with Semantic search it is best to clear the cache of the site or delete the entire site data. Go to "Site Settings" -> "Delete Data".
-  * Semantic search or search by meaning wont work on browsers that don't support OPFS write.This feature currently works on Chromium browsers. So if you use browsers like Safari, you can't to "Search by Meaning".
+  * Semantic search or search by meaning wont work on browsers that don't support OPFS write.This feature currently works on Chromium browsers. So if you use browsers like Safari, you can't do "Search by Meaning". This also applies to mobile browsers.
+  * If you are in Lockdown mode on iOS or something similar, please disable Lockdown Mode for this site on your device and reload the page. You might face issues with Opera browser as well as it doesn't seem to detect Lockdown Mode on iOS.
 
 ## Types of Vedic Texts
 * **Vedas**:
