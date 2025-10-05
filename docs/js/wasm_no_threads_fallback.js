@@ -19,7 +19,7 @@
 
     if (u && u.pathname.endsWith("/js/sql_helpers/sql-wasm.wasm")) {
       // use the exact URL the page requested; no root rewrite
-      input = u.origin + u.pathname + (u.search || "");
+      input = u.href;
     }
     return origFetch(input, init);
   };
