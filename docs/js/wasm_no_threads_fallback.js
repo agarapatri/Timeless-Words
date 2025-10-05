@@ -9,9 +9,6 @@
   const origFetch = window.fetch?.bind(window);
   if (!origFetch) return;
 
-  // same file; no extra download or rename
-  const NOTHREAD = "/js/sql_helpers/sql-wasm.wasm";
-
   window.fetch = async (input, init) => {
     let u =
       typeof input === "string"
@@ -21,7 +18,8 @@
         : null;
 
     if (u && u.pathname.endsWith("/js/sql_helpers/sql-wasm.wasm")) {
-      input = NOTHREAD + (u.search || "");
+      // use the exact URL the page requested; no root rewrite
+      input = u.origin + u.pathname + (u.search || "");
     }
     return origFetch(input, init);
   };
