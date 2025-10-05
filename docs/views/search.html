@@ -218,6 +218,13 @@
     checkbox.addEventListener('change', async (e) => {
       const wantOn = e.target.checked;
 
+      const supported = !!(navigator.storage?.getDirectory && globalThis.FileSystemFileHandle?.prototype?.createWritable);
+      if (wantOn && !supported) {
+        alert('Semantic search requires a browser with OPFS write support.\nThis feature currently works on Chromium browsers.');
+        e.target.checked = false;
+        return;
+      }
+
       // Check if the semantic pack is already installed in OPFS
       const hasPack = await panel.isInstalled();
       if (wantOn && !hasPack) {
