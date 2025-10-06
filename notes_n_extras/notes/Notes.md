@@ -5,6 +5,13 @@
 * Keep INT8 fallback for safety.
 
 
+# Start a server
+* For local testing
+```bash
+cd /Users/harekrsna/Desktop/Work/TimelessWords/docs
+python3 -m http.server 8000
+```
+
 
 The `serve.js` file is a **simple server script** written using **Node.js** and the **Express framework**. Its primary function is to serve your static web files (HTML, CSS, JS, WASM, etc.) while setting specific HTTP headers required to enable advanced features for **SQLite WebAssembly (WASM)**.
 
@@ -154,3 +161,4 @@ Practical steps:
 
 ---
 
+* fully-offline path is embeddings + a local vector index, optionally hybridized with a tiny lexical index and an on-device re-ranker.

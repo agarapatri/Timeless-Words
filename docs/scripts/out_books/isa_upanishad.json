@@ -1,0 +1,394 @@
+{
+  "id": "isaupani",
+  "short": "IU",
+  "title": "Isa Upanishad",
+  "author": null,
+  "type": null,
+  "date_of_origin": null,
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Chapter 1",
+      "section": 1,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "ॐ ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत्।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्॥",
+          "iast": "oṁ īśāvāsyam idaṁ sarvaṁ yat kiñca jagatyāṁ jagat |\ntena tyaktena bhuñjīthā mā gṛdhaḥ kasyasvid dhanam ||",
+          "word_by_word": [],
+          "translation": "All that moves and does not move is enveloped by the Lord. Therefore accept your allotted share and live. Do not covet, for whose wealth is this, after all?"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "कुर्वन्नेवेह कर्माणि जिजीविषेच्छतं समाः।\nएवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे॥",
+          "iast": "kurvanneveha karmāṇi jijīviṣec chataṁ samāḥ |\nevaṁ tvayi nānyatheto'sti na karma lipyate nare ||",
+          "word_by_word": [],
+          "translation": "One should desire to live for a hundred years by working here, doing one’s duty. In this way, and not otherwise, work will not bind the man. This is the path for you."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "असुर्या नाम ते लोका अन्धेन तमसाऽवृताः।\nतांस्ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः॥",
+          "iast": "asūryā nāma te lokā andhena tamasā'vṛtāḥ |\ntāṁs te pretyābhigacchanti ye ke cātmahano janāḥ ||",
+          "word_by_word": [],
+          "translation": "Sunless are those worlds, covered by blind darkness. To them go, after death, all the slayers of the Self. Such is the destination of the self-betraying."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "अनेजदेकं मनसो जवीयो नैनद्देवा आप्नुवन्पूर्वमर्षत्।\nतद्धावतोऽन्यानत्येति तिष्ठत् तस्मिन्नपो मातरिश्वा दधाति॥",
+          "iast": "anejad ekaṁ manaso javīyo nainad devā āpnuvan pūrvam arṣat |\ntad dhāvato'nyān atyeti tiṣṭhat tasminn apo mātarīśvā dadhāti ||",
+          "word_by_word": [],
+          "translation": "Unmoving, the One is swifter than the mind. The gods cannot reach Him, for He ever goes before. Though standing, He surpasses all that run. In Him the life-breath arranges the waters."
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "तदेजति तन्नैजति तद्दूरे तद्वन्तिके।\nतदन्तरस्य सर्वस्य तदु सर्वस्यास्य बाह्यतः॥",
+          "iast": "tad ejati tan naijati tad dūre tadv antike |\ntad antar asya sarvasya tadu sarvasyāsya bāhyataḥ ||",
+          "word_by_word": [],
+          "translation": "He moves and He does not move. He is far away and He is very near. He is within all this, and He is outside of all this."
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "यस्तु सर्वाणि भूतान्यात्मन्येवानुपश्यति।\nसर्वभूतेषु चात्मानं ततो न विजुगुप्सते॥",
+          "iast": "yas tu sarvāṇi bhūtāny ātman y evānupaśyati |\nsarvabhūteṣu cātmānaṁ tato na vijugupsate ||",
+          "word_by_word": [],
+          "translation": "He who sees all beings in the Self alone, and the Self within all beings, does not shrink or hate. From that vision, aversion cannot arise."
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "यस्मिन् सर्वाणि भूतान्यात्मैवाभूद्विजानतः।\nतत्र को मोहः कः शोक एकत्वमनुपश्यतः॥",
+          "iast": "yasmin sarvāṇi bhūtāny ātmaivābhūd vijānataḥ |\ntatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||",
+          "word_by_word": [],
+          "translation": "For the wise who see all beings as the very Self, what delusion can there be and what grief? Seeing oneness, lamentation subsides."
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "स पर्यगाच्छुक्रमकायमव्रणमस्नाविरं शुद्धमपापविद्धम्।\nकविर्मनीषी परिभूः स्वयंभूर्ह्यथातथ्यतोऽर्थान्व्यदधाच्छाश्वतीभ्यः समाभ्यः॥",
+          "iast": "sa paryagāc chukram akāyam avraṇam asnāviraṁ śuddham apāpa-viddham |\nkavir manīṣī paribhūḥ svayambhūr hy athātathyato'rthān vyadadhāc chāśvatībhyaḥ samābhyāḥ ||",
+          "word_by_word": [],
+          "translation": "He has pervaded all—radiant, bodiless, without wound or sinew, pure, untouched by sin. He is seer and sage, the supreme master, self-born. He has arranged all things rightly, for all time, as they are and as they ought to be."
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽविद्यामुपासते।\nततो भूय इव ते तमो य उ विद्यायां रताः॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye'vidyām upāsate |\ntato bhūya iva te tamo ya u vidyāyāṁ ratāḥ ||",
+          "word_by_word": [],
+          "translation": "Into blind darkness enter those who worship ignorance. Into a darkness seeming greater go those devoted only to knowledge. Both paths, taken alone, mislead."
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "अन्यदेवाहुर्विद्यया अन्यदाहुरविद्यया।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे॥",
+          "iast": "anyad evāhur vidyayā anyad āhur avidyayā |\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire ||",
+          "word_by_word": [],
+          "translation": "Different, indeed, they say is the fruit of knowledge, and different is that of ignorance. Thus we have heard from the sober seers, who explained it to us."
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "विद्यां चाविद्यां च यस्तद्वेदोभयं सह ।\nअविद्यया मृत्युं तीर्त्वा विद्ययाऽमृतमश्नुते ॥",
+          "iast": "vidyāṁ cāvidyāṁ ca yas tad veda ubhayaṁ saha |\navidyayā mṛtyuṁ tīrtvā vidyayāmṛtam aśnute ||",
+          "word_by_word": [],
+          "translation": "One who knows both knowledge and nescience together is truly wise. By nescience he crosses over death. By true knowledge he attains immortality. Thus both are to be understood in their proper place."
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽसंभूतिमुपासते ।\nततो भूय इव ते तमो य उ सम्भूत्यां रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye'sambhūtim upāsate |\ntato bhūya iva te tamo ya u sambhūtyāṁ ratāḥ ||",
+          "word_by_word": [],
+          "translation": "Those who worship the Unmanifest enter dense darkness. Into even greater darkness go those who are devoted only to the Manifest. Both extremes blind the seer. Balance is required to approach truth."
+        },
+        {
+          "number": 13,
+          "ref": "1.13",
+          "devanagari": "अन्यदेवाहुः सम्भवादन्यदाहुरसम्भवात् ।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे ॥",
+          "iast": "anyad evāhuḥ sambhavād anyad āhur asambhavāt |\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire ||",
+          "word_by_word": [],
+          "translation": "Different indeed is the fruit of the manifest, and different indeed is that of the unmanifest. So we have heard from the wise, who explained it to us. Discriminating teachers speak thus. One must learn the distinction from realized souls."
+        },
+        {
+          "number": 14,
+          "ref": "1.14",
+          "devanagari": "सम्भूतिं च विनाशं च यस्तद्वेदोभयं सह ।\nविनाशेन मृत्युं तीर्त्वा सम्भूत्याऽमृतमश्नुते ॥",
+          "iast": "sambhūtiṁ ca vināśaṁ ca yas tad veda ubhayaṁ saha |\nvināśena mṛtyuṁ tīrtvā sambhūtyāmṛtam aśnute ||",
+          "word_by_word": [],
+          "translation": "He who knows both the Source and the perishable together is truly learned. By the perishable he crosses death. By the Source he tastes immortality. Thus the transient is used to reach the eternal."
+        },
+        {
+          "number": 15,
+          "ref": "1.15",
+          "devanagari": "हिरण्मयेन पात्रेण सत्यस्यापिहितं मुखम् ।\nतत्त्वं पूषन्नपावृणु सत्यधर्माय दृष्टये ॥",
+          "iast": "hiraṇmayena pātreṇa satyasyāpihitaṁ mukham |\ntat tvaṁ pūṣann apāvṛṇu satyadharmāya dṛṣṭaye ||",
+          "word_by_word": [],
+          "translation": "The face of Truth is covered by a golden veil. O Pūṣan, remove that covering. Reveal it to the follower of truth. Let me see the Reality as it is."
+        },
+        {
+          "number": 16,
+          "ref": "1.16",
+          "devanagari": "पूषन्नेकर्षे यम सूर्य प्राजापत्य ।\nव्यूह रश्मीन् समूह तेजो यत्ते रूपं कल्याणतमं तत् ते पश्यामि योऽसावसौ पुरुषः सोऽहमस्मि ॥",
+          "iast": "pūṣann ekaṛṣe yama sūrya prājāpatya |\nvyūha raśmīn samūha tejo yat te rūpaṁ kalyāṇatamaṁ tat te paśyāmi yo'sāv asau puruṣaḥ so'ham asmi ||",
+          "word_by_word": [],
+          "translation": "O Pūṣan, single seer, controller, O Sun, son of Prajāpati! Withdraw your rays, gather your effulgence. I wish to behold Your most auspicious form. He who dwells there as the Person—may I realize my true identity in relation to Him."
+        },
+        {
+          "number": 17,
+          "ref": "1.17",
+          "devanagari": "वायुरनिलममृतमथेदं भस्मान्तं शरीरम् ।\nॐ क्रतो स्मर कृतं स्मर क्रतो स्मर कृतं स्मर ॥",
+          "iast": "vāyur anilam amṛtam athedaṁ bhasmāntaṁ śarīram |\noṁ krato smara kṛtaṁ smara krato smara kṛtaṁ smara ||",
+          "word_by_word": [],
+          "translation": "Let the breath merge with the immortal air, and this body end in ashes. O sacred will, remember; remember what has been done. O sacred will, remember; remember the deeds. May the eternal account be kept."
+        },
+        {
+          "number": 18,
+          "ref": "1.18",
+          "devanagari": "अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान् ।\nयुयोध्यस्मज्जुहुराणमेनः भूयिष्ठां ते नम उक्तिṃ विधेम ॥",
+          "iast": "agne naya supathā rāye asmān viśvāni deva vayunāni vidvān |\nyuyodhy asmat juhurāṇam enaḥ bhūyiṣṭhāṁ te nama uktiṁ vidhema ||",
+          "word_by_word": [],
+          "translation": "O Agni, lead us on the auspicious path to true wealth. O god, knower of the ways, guide us through all endeavors. Remove from us the crooked sin with which we are entangled. To You we offer our most abundant words of homage."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Chapter 2",
+      "section": 1,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "2.1",
+          "devanagari": "अन्यदेवाहुर्विद्ययाऽन्यदाहुरविद्यया।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे॥",
+          "iast": "anyad evāhur vidyayānyad āhur avidyayā\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire",
+          "word_by_word": [],
+          "translation": "The wise say knowledge yields one result and ignorance another. Thus we have heard from sober seers who have explained it to us."
+        },
+        {
+          "number": 2,
+          "ref": "2.2",
+          "devanagari": "विद्यां चाविद्यां च यस्तद्वेदोभयं सह।\nअविद्यया मृत्युं तीर्त्वा विद्ययाऽमृतमश्नुते॥",
+          "iast": "vidyāṁ cāvidyāṁ ca yas tad vedobhayaṁ saha\navidyayā mṛtyuṁ tīrtvā vidyayāmṛtam aśnute",
+          "word_by_word": [],
+          "translation": "He who knows both knowledge and ignorance together crosses death by ignorance and attains immortality by knowledge. He rightly employs both."
+        },
+        {
+          "number": 3,
+          "ref": "2.3",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽसम्भूतिमुपासते।\nततो भूय इव ते तमो य उ सम्भूत्यां रताः॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'sambhūtim upāsate\ntato bhūya iva te tamo ya u sambhūtyāṁ ratāḥ",
+          "word_by_word": [],
+          "translation": "Into blind darkness go those who worship the unborn, unmanifest. Into still deeper darkness go those who delight only in the born, the manifest."
+        },
+        {
+          "number": 4,
+          "ref": "2.4",
+          "devanagari": "अन्यदेवाहुः सम्भवादन्यदाहुरसम्भवात्।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे॥",
+          "iast": "anyad evāhuḥ sambhavād anyad āhur asambhavāt\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire",
+          "word_by_word": [],
+          "translation": "Different results, they say, arise from the manifest and from the unmanifest. So we have heard from sober authorities who made this clear."
+        },
+        {
+          "number": 5,
+          "ref": "2.5",
+          "devanagari": "सम्भूतिं च विनाशं च यस्तद्वेदोभयं सह।\nविनाशेन मृत्युं तीर्त्वा सम्भूत्याऽमृतमश्नुते॥",
+          "iast": "sambhūtiṁ ca vināśaṁ ca yas tad vedobhayaṁ saha\nvināśena mṛtyuṁ tīrtvā sambhūtyāmṛtam aśnute",
+          "word_by_word": [],
+          "translation": "He who knows both the perishable and the source together crosses death by the perishable and gains immortality by the source. Thus he properly employs both."
+        },
+        {
+          "number": 6,
+          "ref": "2.6",
+          "devanagari": "हिरण्मयेन पात्रेण सत्यस्यापिहितं मुखम्।\nतत्त्वं पूषन्नपावृणु सत्यधर्माय दृष्टये॥",
+          "iast": "hiraṇmayena pātreṇa satyasyāpihitaṁ mukham\ntat tvaṁ pūṣann apāvṛṇu satya-dharmāya dṛṣṭaye",
+          "word_by_word": [],
+          "translation": "The face of Truth is covered by a golden lid. O Pūṣan, remove it so the follower of truth may see."
+        },
+        {
+          "number": 7,
+          "ref": "2.7",
+          "devanagari": "पूषन्नेकर्षे यम सूर्य प्राजापत्य।\nव्यूह रश्मीन् समूह तेजो।\nयत्ते रूपं कल्याणतमं तत्ते पश्यामि।\nयोऽसावसौ पुरुषः सोऽहमस्मि॥",
+          "iast": "pūṣann ekarṣe yama sūrya prājāpatya\nvyūha raśmīn samūha tejo\nyat te rūpaṁ kalyāṇatamaṁ tat te paśyāmi\nyo 'sāv asau puruṣaḥ so 'ham asmi",
+          "word_by_word": [],
+          "translation": "O Pūṣan, single seer, controller, Sun, son of Prajāpati. Withdraw Your rays; gather up Your splendor. Let me behold Your most auspicious form. That Person there—He I am."
+        },
+        {
+          "number": 8,
+          "ref": "2.8",
+          "devanagari": "वायुरनिलममृतमथेदं भस्मान्तं शरीरम्।\nॐ क्रतो स्मर कृतं स्मर क्रतो स्मर कृतं स्मर॥",
+          "iast": "vāyur anilam amṛtam athedaṁ bhasmāntaṁ śarīram\noṁ krato smara kṛtaṁ smara krato smara kṛtaṁ smara",
+          "word_by_word": [],
+          "translation": "Let the life-breath merge with the deathless air; let this body become ashes. O Om—O doer, remember what has been done; remember."
+        },
+        {
+          "number": 9,
+          "ref": "2.9",
+          "devanagari": "अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान्।\nयुयोध्यस्मज्जुहुराणमेनो भूयिष्ठां ते नमोक्तिं विधेम॥",
+          "iast": "agne naya supathā rāye asmān viśvāni deva vayunāni vidvān\nyuyodhy asmaj juhurāṇam eno bhūyiṣṭhāṁ te nama-uktiṁ vidhema",
+          "word_by_word": [],
+          "translation": "O Agni, lead us by the auspicious path to true wealth; O god, You know all the ways. Remove from us the crooked sin that clings. To You we offer abundant words of homage."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Chapter 3",
+      "section": 1,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "3.1",
+          "devanagari": "असूर्या नाम ते लोका अन्धेन तमसा वृताः ।\nतांस् ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः ॥",
+          "iast": "asūryā nāma te lokā andhena tamasā vṛtāḥ\ntāṁs te pretyābhigacchanti ye ke cātma-hano janāḥ",
+          "word_by_word": [],
+          "translation": "There are realms bereft of light, wrapped in blind darkness. Those who destroy their own self wander there after death. Such persons are called killers of the soul."
+        },
+        {
+          "number": 2,
+          "ref": "3.2",
+          "devanagari": "अनेजदेकं मनसो जवीयो नैनद्देवा आप्नुवन् पूर्वमर्षत् ।\nतद्धावतोऽन्यानत्येत तिष्ठत् तस्मिन्नपो मातरिश्वा दधाति ॥",
+          "iast": "anejad ekaṁ manaso javīyo nainad devā āpnuvan pūrvam arṣat\ntad dhāvato 'nyān atyeti tiṣṭhat tasminn apo mātariśvā dadhāti",
+          "word_by_word": [],
+          "translation": "The One is unmoving, yet swifter than the mind. The controllers cannot catch Him, for He ever goes before them. He outstrips all that run, while standing still. In Him the life-bearer arranges the waters."
+        },
+        {
+          "number": 3,
+          "ref": "3.3",
+          "devanagari": "तदेजति तन्नैजति तद्दूरे तद्वन्तिके ।\nतदन्तरस्य सर्वस्य तदु सर्वस्यास्य बाह्यतः ॥",
+          "iast": "tad ejati tan naijati tad dūre tadvantike\ntad antar asya sarvasya tad u sarvasyāsya bāhyataḥ",
+          "word_by_word": [],
+          "translation": "He moves and He does not move. He is far away, yet He is very near. He is within the heart of everything, and He is also outside of all."
+        },
+        {
+          "number": 4,
+          "ref": "3.4",
+          "devanagari": "यस्तु सर्वाणि भूतान्यात्मन्येवानुपश्यति ।\nसर्वभूतेषु चात्मानं ततो न विजुगुप्सते ॥",
+          "iast": "yas tu sarvāṇi bhūtāny ātmany evānupaśyati\nsarva-bhūteṣu cātmānaṁ tato na vijugupsate",
+          "word_by_word": [],
+          "translation": "He who beholds all beings in the Self, and the Self dwelling in all beings, does not despise anyone. Such a seer cannot hate."
+        },
+        {
+          "number": 5,
+          "ref": "3.5",
+          "devanagari": "यस्मिन् सर्वाणि भूतान्यात्मैवाभूद्विजानतः ।\nतत्र को मोहः कः शोक एकत्वमनुपश्यतः ॥",
+          "iast": "yasmin sarvāṇi bhūtāny ātmaivābhūd vijānataḥ\ntatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ",
+          "word_by_word": [],
+          "translation": "For the enlightened, all beings are realized as the Self. Where then is bewilderment, and where is lamentation, for one who perceives unity?"
+        },
+        {
+          "number": 6,
+          "ref": "3.6",
+          "devanagari": "स पर्यगाच्छुक्रमकायमव्रणमस्नाविरं शुद्धमपापविद्धम् ।\nकविर्मनीषी परिभूः स्वयंभूर्याथातथ्यतोऽर्थान् व्यदधाच्छाश्वतीभ्यः समाभ्यः ॥",
+          "iast": "sa paryagāc chukram akāyam avraṇam asnāviraṁ śuddham apāpa-viddham\nkavir manīṣī paribhūḥ svayambhūr yāthātathyato 'rthān vyadadhāc chāśvatībhyaḥ samābhyaḥ",
+          "word_by_word": [],
+          "translation": "He pervades everywhere, radiant, without a material body, without wounds, without sinews—pure, untouched by sin. He is the seer and the sage, the supreme master, self-born. In perfect truth He arranges all things for all ages."
+        },
+        {
+          "number": 7,
+          "ref": "3.7",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽविद्यामुपासते ।\nततो भूय इव ते तमो य उ विद्यायां रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'vidyām upāsate\ntato bhūya iva te tamo ya u vidyāyāṁ ratāḥ",
+          "word_by_word": [],
+          "translation": "Into blind darkness enter those who worship sheer ignorance. Yet into a darkness greater still go those who are absorbed only in so-called knowledge."
+        },
+        {
+          "number": 8,
+          "ref": "3.8",
+          "devanagari": "अन्यदेवाहुर्विद्ययाऽन्यदाहुरविद्यया ।\nइति शुश्रुम धीरणां ये नस्तद्विचचक्षिरे ॥",
+          "iast": "anyad evāhur vidyayānyad āhur avidyayā\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire",
+          "word_by_word": [],
+          "translation": "We have heard from the sober that knowledge leads to one result and ignorance to another. The wise have explained this distinction to us."
+        },
+        {
+          "number": 9,
+          "ref": "3.9",
+          "devanagari": "विद्यां चाविद्यां च यस्तद्वेदोभयं सह ।\nअविद्यया मृत्युं तीर्त्वा विद्ययामृतमश्नुते ॥",
+          "iast": "vidyāṁ cāvidyāṁ ca yas tad vedobhayam saha\navidyayā mṛtyuṁ tīrtvā vidyayāmṛtam aśnute",
+          "word_by_word": [],
+          "translation": "One who knows both knowledge and ignorance together is truly wise. By regulated engagement he crosses death, and by knowledge he tastes immortality."
+        },
+        {
+          "number": 10,
+          "ref": "3.10",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽसम्भूतिमुपासते ।\nततो भूय इव ते तमो य उ सम्भूत्यां रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'sambhūtim upāsate\ntato bhūya iva te tamo ya u sambhūtyāṁ ratāḥ",
+          "word_by_word": [],
+          "translation": "Those who worship the unmanifest enter darkness. Greater is the darkness of those who are absorbed only in the manifest becoming. Both extremes mislead."
+        },
+        {
+          "number": 11,
+          "ref": "3.11",
+          "devanagari": "विद्यां चाविद्यां च यस्तद्वेदोभयं सह ।\nअविद्यया मृत्युं तीर्त्वा विद्ययाऽमृतमश्नुते ॥",
+          "iast": "vidyāṁ cāvidyāṁ ca yas tad veda ubhayaṁ saha |\navidyayā mṛtyuṁ tīrtvā vidyayā 'mṛtam aśnute ||",
+          "word_by_word": [],
+          "translation": "One who knows both knowledge and nescience together is truly learned. By nescience he crosses over death. By knowledge he attains immortality. Thus both have their proper use when aimed at the Supreme."
+        },
+        {
+          "number": 12,
+          "ref": "3.12",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽविद्यामुपासते ।\nततो भूय इव ते तमो य उ विद्यायां रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'vidyām upāsate |\ntato bhūya iva te tamo ya u vidyāyāṁ ratāḥ ||",
+          "word_by_word": [],
+          "translation": "Those who worship only nescience enter blinding darkness. Those attached only to so‑called knowledge fall into an even deeper darkness. Extremes away from the Lord cover the heart."
+        },
+        {
+          "number": 13,
+          "ref": "3.13",
+          "devanagari": "अन्यदेवाहुर्विद्यया अन्यदाहुरविद्यया ।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे ॥",
+          "iast": "anyad evāhur vidyayā anyad āhur avidyayā |\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire ||",
+          "word_by_word": [],
+          "translation": "They say one result comes from knowledge, and another from nescience. Thus we have heard from sober teachers who explained the truth to us. Real understanding descends by hearing."
+        },
+        {
+          "number": 14,
+          "ref": "3.14",
+          "devanagari": "सम्भूतिं च विनाशं च यस्तद्वेदोभयं सह ।\nविनाशेन मृत्युं तीर्त्वा सम्भूत्याऽमृतमश्नुते ॥",
+          "iast": "sambhūtiṁ ca vināśaṁ ca yas tad veda ubhayaṁ saha |\nvināśena mṛtyuṁ tīrtvā sambhūtyā 'mṛtam aśnute ||",
+          "word_by_word": [],
+          "translation": "He who knows both the Origin and destruction together is truly wise. By understanding the perishable, he crosses death. By taking shelter of the Origin, he enjoys immortality. Thus both are to be known, with devotion to the source."
+        },
+        {
+          "number": 15,
+          "ref": "3.15",
+          "devanagari": "हिरण्मयेन पात्रेण सत्यस्यापिहितं मुखम् ।\nतत्त्वं पूषन्नपावृणु सत्यधर्माय दृष्टये ॥",
+          "iast": "hiraṇmayena pātreṇa satyasyāpihitaṁ mukham |\ntat tvaṁ pūṣann apāvṛṇu satyadharmāya dṛṣṭaye ||",
+          "word_by_word": [],
+          "translation": "The face of Truth is covered by a golden vessel. O Pūṣan, kindly remove it. Reveal that face to the follower of truth, that I may behold."
+        },
+        {
+          "number": 16,
+          "ref": "3.16",
+          "devanagari": "पूषन्नेकर्षे यम सूर्य प्राजापत्य ।\nव्यूह रश्मीन् समूह तेजो यत्ते रूपं कल्याणतमम् ।\nतत्ते पश्यामि योऽसावसौ पुरुषः सोऽहमस्मि ॥",
+          "iast": "pūṣann ekarṣe yama sūrya prājāpatya |\nvyūha raśmīn samūha tejo yat te rūpaṁ kalyāṇatamam |\ntat te paśyāmi yo 'sāv asau puruṣaḥ so 'ham asmi ||",
+          "word_by_word": [],
+          "translation": "O Pūṣan, single seer, O Yama, O Sun, O son of Prajāpati—withdraw Your rays; gather up Your glare. Let me behold Your most auspicious form. That Person who is there—so am I."
+        },
+        {
+          "number": 17,
+          "ref": "3.17",
+          "devanagari": "वायुरनिलममृतमथेदं भस्मान्तं शरीरम् ।\nॐ क्रतो स्मर कृतं स्मर क्रतो स्मर कृतं स्मर ॥",
+          "iast": "vāyur anilam amṛtam atha idaṁ bhasmāntaṁ śarīram |\noṁ krato smara kṛtaṁ smara krato smara kṛtaṁ smara ||",
+          "word_by_word": [],
+          "translation": "Let the air return to the immortal Air, and this body end in ashes. O Om, O director of acts, remember what has been done; remember. O director, remember what has been done."
+        },
+        {
+          "number": 18,
+          "ref": "3.18",
+          "devanagari": "अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान् ।\nयुयोध्यस्मज्जुहुराणमेनो भूयिष्ठां ते नमोक्तिं विदेम ॥",
+          "iast": "agne naya supathā rāye asmān viśvāni deva vayunāni vidvān |\nyuyodhy asmaj juhurāṇaṁ eno bhūyiṣṭhāṁ te namo uktiṁ vidhema ||",
+          "word_by_word": [],
+          "translation": "O Agni, lead us by the auspicious path to true wealth. O divine knower of all ways, drive away our sin that clings. May we offer You our abundant words of obeisance."
+        }
+      ]
+    }
+  ]
+}

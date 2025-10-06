@@ -1,7 +1,7 @@
 # Timeless Words
 Collection of Vedic texts
 
-![alt text](https://github.com/agarapatri/Timeless-Words/blob/main/tools_notes_extras/banner.png)
+![alt text](https://github.com/agarapatri/Timeless-Words/blob/main/notes_n_extras/banner.png)
 Art by: [Yuqing Sheng](x.com/merasgar)
 
 ## Website demo
@@ -425,20 +425,26 @@ tree > directory_structure.txt
 * Output `directory_structure.txt` will be in the same directory.
 
 
+## Why it is the way it is
+
+* `library.semantic.v01.sqlite` does not have cache busting through CLI because `manifest.json` also references this name.
+
+
 ## Upcoming Features
 
-* Semantic Search - You will be able to search "Who was the father of Lord Krishna?" and it will return appropriate verses from the entire corpus.
 * LLM Summarisation grounded on this sqlite data. (Not sure)
-* Extract search tips into separate file
-* Extract footer into separate file - inspired by
-* Fix bradcrumb navigation in all screens
-* Lazy load home books
-* call ChatGPT API and generate texts.
 * TTS should work for full page
-* Home book type filter is transparent
-* Search tips - Advanced tips button should be rounded
-* All search text colors are not handled in dark mode
-* Deep search menu item should be present in all menus in all modes not just mobile view
-* Keep DB writable
-* Plan to **show a friendly unsupported message** for Opera Mini and very old browsers.
-
+* Provide detailed tests in docs for testing each aspect of the site especially search
+* fix cache-bust.yml file db paths since u refactored file structure. Add VEC_DB_VERSION for vector db embeddings
+* Use an LLM only for optional answer synthesis/rag-style summaries after retrieval; and even that can be on-device (WebLLM/Llama.cpp).
+* minify css & js files
+* Safari deep search icon is missing
+* safari slider controls UI is broken
+* safari home book type filter button is not a circle
+* Safari large favicon not working
+* safari chapter drop down filter UI style is broken
+* Optimise SQL queries
+* Serif font is not applying to all text
+* Font size is not applying to all text
+* In menu deep search is highlighted. remove the highlight
+* serve.js has hardcoded url with port 8000

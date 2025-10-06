@@ -186,9 +186,7 @@
       // Header + crumbs
       const chapterOrdinal = division_ord || chapterNum;
       const chapterLabel = division_label ? division_label : `Chapter ${chapterOrdinal}`;
-      document.getElementById('chapterTitle').textContent = division_label
-        ? `${title} — ${division_label}`
-        : `${title} — Chapter ${chapterOrdinal}`;
+      document.getElementById('chapterTitle').textContent = chapterLabel;
       const crumbs = document.getElementById('crumbs');
       const backBookParam = String(work_id);
       crumbs.innerHTML = `
