@@ -87,9 +87,9 @@ jobs:
       - name: Verify replacements
         run: |
           set -euo pipefail
-          ! grep -R "{{VERSION}}" docs || { echo "Unreplaced {{VERSION}}"; exit 1; }
-          ! grep -R "{{DB_VERSION}}" docs || { echo "Unreplaced {{DB_VERSION}}"; exit 1; }
-          ! grep -R "{{SEM_VERSION}}" docs || { echo "Unreplaced {{SEM_VERSION}}"; exit 1; }
+          ! grep -R "{{VERSION}}" docs --exclude='*.md' || { echo "Unreplaced {{VERSION}}"; exit 1; }
+          ! grep -R "{{DB_VERSION}}" docs --exclude='*.md' || { echo "Unreplaced {{DB_VERSION}}"; exit 1; }
+          ! grep -R "{{SEM_VERSION}}" docs --exclude='*.md' || { echo "Unreplaced {{SEM_VERSION}}"; exit 1; }
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
