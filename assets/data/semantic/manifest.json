@@ -1,0 +1,50 @@
+{
+  "version": "v01",
+  "files": [
+    {
+      "path": "library.semantic.v01.sqlite",
+      "size": 425984,
+      "sha256": "92aa63ceac8ed5b424afc946f3411a7bbbc121c56709b5f34fd0238b3146f910"
+    },
+    {
+      "path": "onnx_model/config.json",
+      "size": 617,
+      "sha256": "4e1ca650eedb9f844c7124385f7f65e909bfb2c501aad513288b43286753daea"
+    },
+    {
+      "path": "onnx_model/model.onnx",
+      "size": 90282730,
+      "sha256": "1345b30f281e67e39c21fd4b2add9cc405dca8eadcc8072c62cd06d818ea2669"
+    },
+    {
+      "path": "onnx_model/onnx/model_quantized.onnx",
+      "size": 22813224,
+      "sha256": "c6b8b8a57467b40a465d059863bd2ef510340b69176d9a52b68b440a6fda603c"
+    },
+    {
+      "path": "onnx_model/ort_config.json",
+      "size": 1207,
+      "sha256": "2a4713a2760ac48b29c532d6f35735933cbef0451116d51688297bee1ab8a5e1"
+    },
+    {
+      "path": "onnx_model/special_tokens_map.json",
+      "size": 695,
+      "sha256": "5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a"
+    },
+    {
+      "path": "onnx_model/tokenizer.json",
+      "size": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+    },
+    {
+      "path": "onnx_model/tokenizer_config.json",
+      "size": 1464,
+      "sha256": "ccb4eb21a03e1442ee5c3f85431b9c307960a04579942537d74778dc8080a48c"
+    },
+    {
+      "path": "onnx_model/vocab.txt",
+      "size": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  ]
+}

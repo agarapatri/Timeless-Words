@@ -1,0 +1,459 @@
+{
+  "id": "sv",
+  "short": "SV",
+  "title": "Sāma Veda",
+  "author": "Veda Vyāsa (trad.)",
+  "type": "Veda",
+  "date_of_origin": "c. 1200–1000 BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Chapter 1",
+      "section": 1,
+      "section_title": "Pūrva-arcika — Āgneya Kāṇḍa (Book I)",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "अग्न आ याहि वीतये गृणानो हव्यदातये।\nनि होता सत्सि बर्हिषि ॥१॥",
+          "iast": "agna ā yāhi vītaye gṛṇāno havyadātaye\nni hotā satsi barhiṣi",
+          "word_by_word": [
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "ā yāhi", "english": "come" },
+            { "sanskrit": "vītaye", "english": "for the rite/feast" },
+            { "sanskrit": "havyadātaye", "english": "to receive offerings" },
+            { "sanskrit": "hotā", "english": "priest" },
+            { "sanskrit": "barhiṣi", "english": "on the sacred grass" }
+          ],
+          "translation": "O Agni, come to the offering, praised, to receive the oblation; be seated as the Hotar upon the sacred grass."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "त्वमग्ने यज्ञानां होता विश्वेषां हितः।\nदेवेभिर्मानुषे जने ॥२॥",
+          "iast": "tvam agne yajñānāṃ hotā viśveṣāṃ hitaḥ\ndevebhir mānuṣe jane",
+          "word_by_word": [
+            { "sanskrit": "tvam", "english": "you" },
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "yajñānām", "english": "of sacrifices" },
+            { "sanskrit": "hotā", "english": "priest" },
+            { "sanskrit": "devebhih", "english": "with the gods" }
+          ],
+          "translation": "You, Agni, are the priest of sacrifices, a helper of all—among gods and among men."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "अग्निं दूतं वृणीमहे होतारं विश्ववेदसम्।\nअस्य यज्ञस्य सुक्रम् ॥३॥",
+          "iast": "agniṃ dūtaṃ vṛṇīmahe hotāraṃ viśvavedasam\nasya yajñasya sukratum",
+          "word_by_word": [
+            { "sanskrit": "agniṃ", "english": "Agni (acc.)" },
+            { "sanskrit": "dūtam", "english": "messenger" },
+            { "sanskrit": "vṛṇīmahe", "english": "we choose" },
+            { "sanskrit": "hotāram", "english": "the priest" },
+            { "sanskrit": "viśvavedasam", "english": "all-knowing" }
+          ],
+          "translation": "We choose Agni as messenger, the all-knowing Hotar, skillful in this sacrifice."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "अग्निर्वृत्राणि जङ्घनद्द्रविणस्युर्विपन्यया।\nसमिद्धः शुक्र आहुतः ॥४॥",
+          "iast": "agnir vṛtrāṇi jaṅghanad draviṇasyur vipanyayā\nsamiddhaḥ śukra āhutaḥ",
+          "word_by_word": [
+            { "sanskrit": "agniḥ", "english": "Agni" },
+            { "sanskrit": "vṛtrāṇi", "english": "foes/obstacles" },
+            { "sanskrit": "jaṅghanat", "english": "smashes" },
+            { "sanskrit": "draviṇasyuḥ", "english": "bestower of wealth" },
+            { "sanskrit": "samiddhaḥ", "english": "kindled, bright" }
+          ],
+          "translation": "Agni, bestower of riches, smites the foes with skill; when kindled and bright, duly offered."
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "प्रेष्ठं वो अतिथिं स्तुषे मित्रमिव प्रियम्।\nअग्ने रथं न वेद्यम् ॥५॥",
+          "iast": "preṣṭhaṃ vo atithiṃ stuṣe mitram iva priyam\nagne rathaṃ na vedyam",
+          "word_by_word": [
+            { "sanskrit": "preṣṭham", "english": "most dear" },
+            { "sanskrit": "atithim", "english": "guest" },
+            { "sanskrit": "stuṣe", "english": "I praise" },
+            { "sanskrit": "mitram iva", "english": "like a friend" },
+            { "sanskrit": "ratham", "english": "a chariot (swift)" }
+          ],
+          "translation": "I praise the dearest guest, like a beloved friend—Agni, swift as a chariot upon the sacred ground."
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "त्वं नो अग्ने महोभिः पाहि विश्वस्या अरातेः।\nउत द्विषो मर्त्यस्य ॥६॥",
+          "iast": "tvaṃ no agne mahobhiḥ pāhi viśvasyā arāteḥ\nuta dviṣo martyasya",
+          "word_by_word": [
+            { "sanskrit": "tvaṃ", "english": "you" },
+            { "sanskrit": "naḥ", "english": "us" },
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "pāhi", "english": "protect" },
+            { "sanskrit": "arāteḥ", "english": "from enmity" }
+          ],
+          "translation": "Protect us, O Agni, with your great powers from all hostility—and from the hatred of mortal men."
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "एह्यू षु ब्रवाणि तेऽग्न इत्थेतरा गिरः।\nएभिर्वर्धास इन्दुभिः ॥७॥",
+          "iast": "ehy ūṣu bravāṇi te 'gna itthetarā giraḥ\nebhir vardhāsa indubhiḥ",
+          "word_by_word": [
+            { "sanskrit": "ehi", "english": "come" },
+            { "sanskrit": "bravāṇi", "english": "I speak" },
+            { "sanskrit": "te", "english": "to you" },
+            { "sanskrit": "agna/agne", "english": "Agni" },
+            { "sanskrit": "indubhiḥ", "english": "with libations" }
+          ],
+          "translation": "Come—let me speak diverse hymns to you, Agni; with these libations may you grow in strength."
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "आ ते वत्सो मनो यमत्परमाच्चित्सधस्थात्।\nअग्ने त्वां कामये गिरा ॥८॥",
+          "iast": "ā te vatso mano yamat paramāc cit sadhasthāt\nagne tvāṃ kāmaye girā",
+          "word_by_word": [
+            { "sanskrit": "ā te", "english": "unto you" },
+            { "sanskrit": "mano", "english": "the mind" },
+            { "sanskrit": "paramāt", "english": "from the highest" },
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "kāmaye", "english": "I long for (seek)" },
+            { "sanskrit": "girā", "english": "with song" }
+          ],
+          "translation": "To you the mind comes, as a calf to its dam, from the highest seat; O Agni, I yearn for you with song."
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "त्वामग्ने पुष्करादध्यथर्वा निरमन्थत।\nमूर्ध्नो विश्वस्य वाघतः ॥९॥",
+          "iast": "tvām agne puṣkarād adhy atharvā niramanthata\nmūrdhno viśvasya vāghataḥ",
+          "word_by_word": [
+            { "sanskrit": "tvām", "english": "you" },
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "atharvā", "english": "Atharvan" },
+            { "sanskrit": "niramanthata", "english": "churned forth" },
+            { "sanskrit": "mūrdhnaḥ", "english": "from the head/summit" },
+            { "sanskrit": "viśvasya", "english": "of the universe" }
+          ],
+          "translation": "Atharvan churned you forth, O Agni, from the lotus (wood), from the head—the summit—of the universe."
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "अग्ने विवस्वदा भरास्मभ्यमूतये महे।\nदेवो ह्यसि नो दृशे ॥१०॥",
+          "iast": "agne vivasvadā bharāsmabhyam ūtaye mahe\ndevo hy asi no dṛśe",
+          "word_by_word": [
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "vivasvadā", "english": "by Vivasvat" },
+            { "sanskrit": "bharā", "english": "bring/bear" },
+            { "sanskrit": "asmabhyam", "english": "for us" },
+            { "sanskrit": "ūtaye", "english": "for aid" },
+            { "sanskrit": "devaḥ", "english": "as a god" },
+            { "sanskrit": "dṛśe", "english": "for (our) sight" }
+          ],
+          "translation": "Agni, by Vivasvat’s (gift) bring us great help; for you are a god, visible to us."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Chapter 2",
+      "section": 1,
+      "section_title": "Pūrva-arcika — Āgneya Kāṇḍa (Book II)",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "2.1",
+          "devanagari": "अग्ने यं यज्ञमध्वरं विश्वतः परिभूरसि।\nस इद्देवेषु गच्छति ॥१॥",
+          "iast": "agne yaṃ yajñam adhvaraṃ viśvataḥ paribhūr asi\nsa id deveṣu gacchati",
+          "word_by_word": [
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "yajñam", "english": "sacrifice" },
+            { "sanskrit": "adhvaram", "english": "rite" },
+            { "sanskrit": "paribhūḥ", "english": "protector" },
+            { "sanskrit": "deveṣu", "english": "to the gods" }
+          ],
+          "translation": "O Agni, the sacrifice and rite you guard on every side—indeed that goes to the gods."
+        },
+        {
+          "number": 2,
+          "ref": "2.2",
+          "devanagari": "अग्ने त्वमसि होता सचा देवान् ऋतावृधः।\nयज्ञस्य पुरोहितः ॥२॥",
+          "iast": "agne tvam asi hotā sacā devān ṛtāvṛdhaḥ\nyajñasya purohitaḥ",
+          "word_by_word": [
+            { "sanskrit": "tvam", "english": "you" },
+            { "sanskrit": "hotā", "english": "priest" },
+            { "sanskrit": "devān", "english": "the gods" },
+            { "sanskrit": "purohitaḥ", "english": "house-priest" },
+            { "sanskrit": "ṛtāvṛdhaḥ", "english": "grown by truth/rite" }
+          ],
+          "translation": "You are the Hotar, O Agni—advancing the gods, the purohita of the sacrifice, grown strong by sacred order."
+        },
+        {
+          "number": 3,
+          "ref": "2.3",
+          "devanagari": "अग्निं स्तोमेभिरा वसं वनेषु शश्वतीरिषः।\nनरः सुदीति दीदिहि ॥३॥",
+          "iast": "agniṃ stomebhir ā vasaṃ vaneṣu śaśvatīr iṣaḥ\nnaraḥ sudīti dīdihi",
+          "word_by_word": [
+            { "sanskrit": "agniṃ", "english": "Agni" },
+            { "sanskrit": "stomebhiḥ", "english": "with hymns" },
+            { "sanskrit": "iṣaḥ", "english": "nourishments" },
+            { "sanskrit": "naraḥ", "english": "O men" },
+            { "sanskrit": "dīdihi", "english": "shine forth" }
+          ],
+          "translation": "With chants bring Agni, the wealth-bringer; O men, let him shine forth in the woods with everlasting nourishments."
+        },
+        {
+          "number": 4,
+          "ref": "2.4",
+          "devanagari": "अग्निर्होता न्यसदद् वसुर्यज्ञस्य निष्ठितः।\nविप्रः कवेन्द्र ईड्यः ॥४॥",
+          "iast": "agnir hotā ny asadad vasur yajñasya niṣṭhitaḥ\nvipraḥ kavendra īḍyaḥ",
+          "word_by_word": [
+            { "sanskrit": "agnir", "english": "Agni" },
+            { "sanskrit": "ny asadat", "english": "has sat down" },
+            { "sanskrit": "vasuḥ", "english": "a benefactor" },
+            { "sanskrit": "yajñasya", "english": "of the sacrifice" },
+            { "sanskrit": "īḍyaḥ", "english": "praiseworthy" }
+          ],
+          "translation": "Agni, the Hotar, has sat down—the benefactor fixed for the rite, the inspired seer and praiseworthy lord of poets."
+        },
+        {
+          "number": 5,
+          "ref": "2.5",
+          "devanagari": "अग्ने यक्षि त्वमिन्दुभिर् हव्या जुह्वा सुष्टुति।\nदेवाँ उशन् हुवेम ते ॥५॥",
+          "iast": "agne yakṣi tvam indubhir havyā juhvā suṣṭuti\ndevāṃ uśan huvema te",
+          "word_by_word": [
+            { "sanskrit": "yakṣi", "english": "worship" },
+            { "sanskrit": "indubhiḥ", "english": "with libations" },
+            { "sanskrit": "havyā", "english": "oblations" },
+            { "sanskrit": "juhvā", "english": "with the ladle" },
+            { "sanskrit": "hū", "english": "we invoke" }
+          ],
+          "translation": "Worship, O Agni, with libations; with the ladle well-praised offer the oblations; with you we call the gods."
+        },
+        {
+          "number": 6,
+          "ref": "2.6",
+          "devanagari": "अग्ने बृहद्भिर्महद्भिर् इळया याति नो गृहम्।\nसूनुḥ सहस्रवर्चसः ॥६॥",
+          "iast": "agne bṛhadbhir mahadbhir iḷayā yāti no gṛham\nsūnuḥ sahasravarcasaḥ",
+          "word_by_word": [
+            { "sanskrit": "bṛhadbhiḥ", "english": "with great (praises)" },
+            { "sanskrit": "mahadbhiḥ", "english": "mighty (ones)" },
+            { "sanskrit": "iḷayā", "english": "with refreshment" },
+            { "sanskrit": "yāti", "english": "comes" },
+            { "sanskrit": "gṛham", "english": "home" }
+          ],
+          "translation": "With lofty, mighty praises and refreshment he comes to our home—Agni, the son of thousandfold brilliance."
+        },
+        {
+          "number": 7,
+          "ref": "2.7",
+          "devanagari": "उत नो अग्ने सुवीरा स्तविष्ठा रयिमाशाः।\nधा नः सन्तु प्रचेतसः ॥७॥",
+          "iast": "uta no agne suvīrā staviṣṭhā rayim āśāḥ\ndhā naḥ santu pracetasaḥ",
+          "word_by_word": [
+            { "sanskrit": "uta", "english": "and" },
+            { "sanskrit": "suvīrāḥ", "english": "good heroes" },
+            { "sanskrit": "rayim", "english": "wealth" },
+            { "sanskrit": "āśāḥ", "english": "desires, hopes" },
+            { "sanskrit": "pracetasaḥ", "english": "the wise" }
+          ],
+          "translation": "And, O Agni, let there be to us wealth with brave men; may our hopes be upheld by the wise."
+        },
+        {
+          "number": 8,
+          "ref": "2.8",
+          "devanagari": "अग्ने भद्रा नि ते गिरोऽश्विना वा सुवृक्तिभिः।\nइन्द्रं वर्धन्तु सूक्तिभिः ॥८॥",
+          "iast": "agne bhadrā ni te giro 'śvinā vā suvṛktibhiḥ\nindraṃ vardhantu sūktibhiḥ",
+          "word_by_word": [
+            { "sanskrit": "bhadrāḥ", "english": "auspicious" },
+            { "sanskrit": "giraḥ", "english": "hymns" },
+            { "sanskrit": "aśvinā", "english": "the Aśvins" },
+            { "sanskrit": "indraṃ", "english": "Indra" },
+            { "sanskrit": "vardhantu", "english": "may they exalt" }
+          ],
+          "translation": "May auspicious hymns be set for you, O Agni; or with well-made verses may they magnify Indra and the Aśvins."
+        },
+        {
+          "number": 9,
+          "ref": "2.9",
+          "devanagari": "अग्ने शुचि श्रावय वाचं देवान् हविषा वयम्।\nआ वो यज्ञं तनूमहि ॥९॥",
+          "iast": "agne śuci śrāvaya vācaṃ devān haviṣā vayam\nā vo yajñaṃ tanūmahi",
+          "word_by_word": [
+            { "sanskrit": "śuci", "english": "pure, bright" },
+            { "sanskrit": "śrāvaya", "english": "make hear" },
+            { "sanskrit": "vācam", "english": "speech" },
+            { "sanskrit": "haviṣā", "english": "with oblation" },
+            { "sanskrit": "tanūmahi", "english": "let us extend" }
+          ],
+          "translation": "Pure Agni, make our speech heard; with oblation we call the gods—come, let us extend the sacrifice to you."
+        },
+        {
+          "number": 10,
+          "ref": "2.10",
+          "devanagari": "अग्ने मित्रो न शंस्यः प्रीणाय सुमनाः भवा।\nनः त्रातारं हवामहे ॥१०॥",
+          "iast": "agne mitro na śaṃsyaḥ prīṇāya sumanāḥ bhavā\nnaḥ trātāraṃ havāmahe",
+          "word_by_word": [
+            { "sanskrit": "mitraḥ", "english": "a friend" },
+            { "sanskrit": "śaṃsyaḥ", "english": "to be praised" },
+            { "sanskrit": "sumanāḥ", "english": "well-disposed" },
+            { "sanskrit": "trātāram", "english": "protector" },
+            { "sanskrit": "havāmahe", "english": "we invoke" }
+          ],
+          "translation": "Be, O Agni, as a friend worthy of praise, well-disposed for our delight; we invoke you as our protector."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Chapter 3",
+      "section": 1,
+      "section_title": "Pūrva-arcika — Āgneya Kāṇḍa (Book III)",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "3.1",
+          "devanagari": "अग्ने नय सुपथा राये अस्मान्।\nविश्वानि देव वैरणानि विद्वान्॥",
+          "iast": "agne naya supathā rāye asmān\nviśvāni deva vairāṇāni vidvān",
+          "word_by_word": [
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "naya", "english": "lead" },
+            { "sanskrit": "supathā", "english": "by the good path" },
+            { "sanskrit": "rāye", "english": "to wealth/welfare" },
+            { "sanskrit": "viśvāni", "english": "all" }
+          ],
+          "translation": "O Agni, lead us by the good path to prosperity, O god, knowing all struggles."
+        },
+        {
+          "number": 2,
+          "ref": "3.2",
+          "devanagari": "यजस्व होतः प्रया वाचा।\nअग्ने देवाँ इह वह नि षीद॥",
+          "iast": "yajasva hotaḥ prayā vācā\nagne devāñ iha vaha ni ṣīda",
+          "word_by_word": [
+            { "sanskrit": "yajasva", "english": "perform the rite" },
+            { "sanskrit": "hotaḥ", "english": "O Hotar" },
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "devān", "english": "the gods" },
+            { "sanskrit": "vaha", "english": "bring" }
+          ],
+          "translation": "Perform the rite, O Hotar; O Agni, bring the gods here and sit down."
+        },
+        {
+          "number": 3,
+          "ref": "3.3",
+          "devanagari": "अग्निर्नः पातु दुरितात् पुरःप्रजान्।\nउद्गातृभिर् हव्यवाहो नमोभिः॥",
+          "iast": "agnir naḥ pātu duritāt puraḥ-prajān\nudgātṛbhir havyavāho namobhiḥ",
+          "word_by_word": [
+            { "sanskrit": "agniḥ", "english": "Agni" },
+            { "sanskrit": "pātu", "english": "may protect" },
+            { "sanskrit": "duritāt", "english": "from misfortune" },
+            { "sanskrit": "havyavāhaḥ", "english": "carrier of oblations" },
+            { "sanskrit": "namo-bhiḥ", "english": "with obeisances" }
+          ],
+          "translation": "May Agni, the oblation-carrier, protect us and our people from trouble, with the chants of the singers and our reverence."
+        },
+        {
+          "number": 4,
+          "ref": "3.4",
+          "devanagari": "अग्ने मित्रो न शोभसे शुचिः।\nदेवो देवान् यजसि यज्ञियान्॥",
+          "iast": "agne mitro na śobhase śuciḥ\ndevo devān yajasi yajñiyān",
+          "word_by_word": [
+            { "sanskrit": "agne", "english": "O Agni" },
+            { "sanskrit": "mitraḥ na", "english": "like a friend" },
+            { "sanskrit": "śuciḥ", "english": "pure, bright" },
+            { "sanskrit": "yajasi", "english": "you worship" },
+            { "sanskrit": "yajñiyān", "english": "the worshipful" }
+          ],
+          "translation": "O Agni, bright and pure, you shine like a friend; a god, you worship the worshipful gods."
+        },
+        {
+          "number": 5,
+          "ref": "3.5",
+          "devanagari": "अग्ने मनुर्भव वसुर् वीतिहोत्रा।\nगृणानो रत्नधरः सूर्यस्य॥",
+          "iast": "agne manur bhava vasur vītihotrā\ngṛṇāno ratnadharaḥ sūryasya",
+          "word_by_word": [
+            { "sanskrit": "manuḥ-bhava", "english": "be as Manu (leader)" },
+            { "sanskrit": "vasuḥ", "english": "a benefactor" },
+            { "sanskrit": "vītihotrā", "english": "in the feast-rite" },
+            { "sanskrit": "gṛṇānaḥ", "english": "praised" },
+            { "sanskrit": "ratnadharaḥ", "english": "bearer of treasures" }
+          ],
+          "translation": "Be our Manu-like leader, O Agni, a benefactor at the rite, praised, bearer of treasures beneath the sun."
+        },
+        {
+          "number": 6,
+          "ref": "3.6",
+          "devanagari": "अग्ने वह समिधा देवान्।\nइह प्र याहि सुक्रतू यजत्र॥",
+          "iast": "agne vaha samidhā devān\niha pra yāhi sukratū yajatra",
+          "word_by_word": [
+            { "sanskrit": "vaha", "english": "bring" },
+            { "sanskrit": "samidhā", "english": "with kindling" },
+            { "sanskrit": "devān", "english": "the gods" },
+            { "sanskrit": "yāhi", "english": "come" },
+            { "sanskrit": "yajatra", "english": "worthy of worship" }
+          ],
+          "translation": "Bring the gods with the kindling, O Agni; come here, skillful and worship-worthy."
+        },
+        {
+          "number": 7,
+          "ref": "3.7",
+          "devanagari": "यं त्वा धिया सुष्टुतिं वर्धयाम।\nअग्ने अस्मे रयिं भूयसीम् दा॥",
+          "iast": "yaṃ tvā dhiyā suṣṭutiṃ vardhayāma\nagne asme rayiṃ bhūyasīm dā",
+          "word_by_word": [
+            { "sanskrit": "yaṃ", "english": "whom (you)" },
+            { "sanskrit": "dhiyā", "english": "with thought" },
+            { "sanskrit": "suṣṭutim", "english": "good praise" },
+            { "sanskrit": "rayim", "english": "wealth" },
+            { "sanskrit": "dā", "english": "grant" }
+          ],
+          "translation": "As we exalt you with clear thought and fair praise, O Agni, grant us abundant wealth."
+        },
+        {
+          "number": 8,
+          "ref": "3.8",
+          "devanagari": "अग्ने तव श्रवो बृहत् सुवीरम्।\nतुभ्यं दध्मो वचो वाजयन्तम्॥",
+          "iast": "agne tava śravo bṛhat suvīram\ntubhyaṃ dadhmo vaco vājayantam",
+          "word_by_word": [
+            { "sanskrit": "śravaḥ", "english": "fame" },
+            { "sanskrit": "bṛhat", "english": "great" },
+            { "sanskrit": "suvīram", "english": "rich in heroes" },
+            { "sanskrit": "vaco", "english": "speech" },
+            { "sanskrit": "vājayantam", "english": "winning strength" }
+          ],
+          "translation": "Great is your renown, O Agni, bringing brave men; to you we utter strength-winning speech."
+        },
+        {
+          "number": 9,
+          "ref": "3.9",
+          "devanagari": "अग्ने प्रःणो बृहन्न् इह सादि।\nविश्वानि पाहि सुक्रतो गृहे अस्मिन्॥",
+          "iast": "agne praḥṇo bṛhann iha sādi\nviśvāni pāhi sukrato gṛhe asmin",
+          "word_by_word": [
+            { "sanskrit": "praḥṇaḥ", "english": "mighty one" },
+            { "sanskrit": "bṛhat", "english": "vast" },
+            { "sanskrit": "sādi", "english": "be seated" },
+            { "sanskrit": "pāhi", "english": "protect" },
+            { "sanskrit": "gṛhe", "english": "in this house" }
+          ],
+          "translation": "Mighty and vast Agni, be seated here; protect all things in this house, O skillful one."
+        },
+        {
+          "number": 10,
+          "ref": "3.10",
+          "devanagari": "अग्ने देवान् उप वहा हविष्मान्।\nअस्मभ्यं द्युम्नं रयिम् अश्वसातिम्॥",
+          "iast": "agne devān upa vahā haviṣmān\nasmabhyaṃ dyumnaṃ rayim aśva-sātim",
+          "word_by_word": [
+            { "sanskrit": "upa vahā", "english": "bring near" },
+            { "sanskrit": "haviṣmān", "english": "with oblation" },
+            { "sanskrit": "dyumnam", "english": "splendor" },
+            { "sanskrit": "rayim", "english": "wealth" },
+            { "sanskrit": "aśva-sātim", "english": "abundance of horses" }
+          ],
+          "translation": "Bring the gods near with the oblation, O Agni; for us win splendor, wealth, and rich steeds."
+        }
+      ]
+    }
+  ]
+}

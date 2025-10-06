@@ -1,0 +1,1270 @@
+{
+  "id": "isa-up",
+  "short": "Īśa",
+  "title": "Isa Upanishad",
+  "author": "Vedic tradition (Śukla Yajurveda)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 1st millennium BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",
+          "iast": "īśāvāsyam idaṁ sarvaṁ yat kiñ ca jagatyāṁ jagat |\ntena tyaktena bhuñjīthā mā gṛdhaḥ kasyasvid dhanam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "ईशा-वास्यम्",
+              "english": "pervaded by the Lord"
+            },
+            {
+              "sanskrit": "इदम्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "सर्वम्",
+              "english": "all"
+            },
+            {
+              "sanskrit": "यत्-किञ्च",
+              "english": "whatever"
+            },
+            {
+              "sanskrit": "जगत्याम्",
+              "english": "in the world"
+            },
+            {
+              "sanskrit": "जगत्",
+              "english": "the moving (universe)"
+            },
+            {
+              "sanskrit": "तेन",
+              "english": "by that"
+            },
+            {
+              "sanskrit": "त्यक्तेन",
+              "english": "by what is set apart (through renunciation)"
+            },
+            {
+              "sanskrit": "भुञ्जीथा",
+              "english": "you should live/enjoy"
+            },
+            {
+              "sanskrit": "मा",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "गृधः",
+              "english": "covet"
+            },
+            {
+              "sanskrit": "कस्यस्वित्",
+              "english": "of anyone at all"
+            },
+            {
+              "sanskrit": "धनम्",
+              "english": "wealth"
+            }
+          ],
+          "translation": "All that exists within this world, moving and still, is enveloped by the Supreme Lord. Therefore live by His allotted share, through renunciation; do not grasp at anyone’s property.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "कुर्वन्नेवेह कर्माणि जिजीविषेत् शतं समाः ।\nएवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे ॥",
+          "iast": "kurvan neveha karmāṇi jijīviṣet śataṁ samāḥ |\nevaṁ tvayi nānyatheto 'sti na karma lipyate nare ||",
+          "word_by_word": [
+            {
+              "sanskrit": "कुर्वन्",
+              "english": "doing"
+            },
+            {
+              "sanskrit": "एव",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "इह",
+              "english": "here (in this life)"
+            },
+            {
+              "sanskrit": "कर्माणि",
+              "english": "duties/works"
+            },
+            {
+              "sanskrit": "जिजीविषेत्",
+              "english": "one should desire to live"
+            },
+            {
+              "sanskrit": "शतम्",
+              "english": "a hundred"
+            },
+            {
+              "sanskrit": "समाः",
+              "english": "years"
+            },
+            {
+              "sanskrit": "एवम्",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "त्वयि",
+              "english": "for you"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "अन्यथा",
+              "english": "otherwise"
+            },
+            {
+              "sanskrit": "इतः",
+              "english": "from this way"
+            },
+            {
+              "sanskrit": "अस्ति",
+              "english": "there is"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "कर्म",
+              "english": "work"
+            },
+            {
+              "sanskrit": "लिप्यते",
+              "english": "clings/binds"
+            },
+            {
+              "sanskrit": "नरे",
+              "english": "to the person"
+            }
+          ],
+          "translation": "By working dutifully here, one may aspire to live a full hundred years. In this way alone, for you, there is no other course; such work does not bind a person.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "असुर्या नाम ते लोका अन्धेन तमसा आवृताः ।\nतान् ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः ॥",
+          "iast": "asūryā nāma te lokā andhena tamasā āvṛtāḥ |\ntān te pretyābhigacchanti ye ke cātma-hano janāḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "असुर्या",
+              "english": "sunless"
+            },
+            {
+              "sanskrit": "नाम",
+              "english": "by name"
+            },
+            {
+              "sanskrit": "ते",
+              "english": "those"
+            },
+            {
+              "sanskrit": "लोका",
+              "english": "worlds"
+            },
+            {
+              "sanskrit": "अन्धेन",
+              "english": "with blinding"
+            },
+            {
+              "sanskrit": "तमसा",
+              "english": "darkness"
+            },
+            {
+              "sanskrit": "आवृताः",
+              "english": "covered"
+            },
+            {
+              "sanskrit": "तान्",
+              "english": "them"
+            },
+            {
+              "sanskrit": "ते",
+              "english": "they"
+            },
+            {
+              "sanskrit": "प्रेत्य",
+              "english": "having departed (this life)"
+            },
+            {
+              "sanskrit": "अभिगच्छन्ति",
+              "english": "approach/go to"
+            },
+            {
+              "sanskrit": "ये",
+              "english": "who"
+            },
+            {
+              "sanskrit": "के च",
+              "english": "whosoever"
+            },
+            {
+              "sanskrit": "आत्महन्",
+              "english": "self-slayers"
+            },
+            {
+              "sanskrit": "जनाः",
+              "english": "people"
+            }
+          ],
+          "translation": "To those realms called sunless, wrapped in blinding gloom, they go after death—whoever are destroyers of the Self.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "अनेजदेकं मनसो जवीयो नैनद् देवा आप्नुवन् पूर्वमर्षत् ।\nतद्धावतोऽन्यानत्येत तिष्ठत् तस्मिन्नपो मातरिश्वा दधाति ॥",
+          "iast": "anejad ekaṁ manaso javīyo nainad devā āpnuvan pūrvam arṣat |\ntad dhāvato 'nyān atyeti tiṣṭhat tasminn apo mātariśvā dadhāti ||",
+          "word_by_word": [
+            {
+              "sanskrit": "अनेजत्",
+              "english": "unmoving"
+            },
+            {
+              "sanskrit": "एकम्",
+              "english": "one"
+            },
+            {
+              "sanskrit": "मनसः",
+              "english": "than the mind"
+            },
+            {
+              "sanskrit": "जवीयो",
+              "english": "swifter"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "एनत्",
+              "english": "this (Him)"
+            },
+            {
+              "sanskrit": "देवाः",
+              "english": "the devas/senses"
+            },
+            {
+              "sanskrit": "आप्नुवन्",
+              "english": "have attained"
+            },
+            {
+              "sanskrit": "पूर्वम्",
+              "english": "before"
+            },
+            {
+              "sanskrit": "अर्षत्",
+              "english": "sped"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "धावतः",
+              "english": "of the runner"
+            },
+            {
+              "sanskrit": "अन्यान्",
+              "english": "others"
+            },
+            {
+              "sanskrit": "अत्येति",
+              "english": "overtakes"
+            },
+            {
+              "sanskrit": "तिष्ठत्",
+              "english": "while standing still"
+            },
+            {
+              "sanskrit": "तस्मिन्",
+              "english": "in Him"
+            },
+            {
+              "sanskrit": "अपः",
+              "english": "waters"
+            },
+            {
+              "sanskrit": "मातरिश्वा",
+              "english": "Mātariśvan (Vāyu)"
+            },
+            {
+              "sanskrit": "दधाति",
+              "english": "places/disposes"
+            }
+          ],
+          "translation": "Unmoving, the One is swifter than the mind; the gods (senses) cannot reach Him—for He has gone before. While remaining still, He outstrips all that runs; in Him the life‑wind arranges the waters.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "तदेजति तन्नैजति तद्दूरे तदन्तिके ।\nतदन्तरस्य सर्वस्य तदु सर्वस्यास्य बाह्यतः ॥",
+          "iast": "tad ejati tan naijati tad dūre tad antike |\ntad antar asya sarvasya tad u sarvasyāsya bāhyataḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "एजति",
+              "english": "moves"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "नैजति",
+              "english": "does not move"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "दूरे",
+              "english": "far away"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "अन्तिके",
+              "english": "very near"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "अन्तरस्य",
+              "english": "within"
+            },
+            {
+              "sanskrit": "सर्वस्य",
+              "english": "of everything"
+            },
+            {
+              "sanskrit": "तद् उ",
+              "english": "that indeed"
+            },
+            {
+              "sanskrit": "सर्वस्य-अस्य",
+              "english": "of all this"
+            },
+            {
+              "sanskrit": "बाह्यतः",
+              "english": "outside"
+            }
+          ],
+          "translation": "That moves and that does not move; that is far, and that is very near. That is within all this, and that indeed is also outside of all this.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "यस्मिन् सर्वाणि भूतान्यात्मैवाभूद् विजानतः ।\nतत्र को मोहः कः शोक एकत्वमनुपश्यतः ॥",
+          "iast": "yasmin sarvāṇi bhūtāny ātmaivābhūd vijānataḥ |\ntatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "यस्मिन्",
+              "english": "in whom"
+            },
+            {
+              "sanskrit": "सर्वाणि",
+              "english": "all"
+            },
+            {
+              "sanskrit": "भूतानि",
+              "english": "beings"
+            },
+            {
+              "sanskrit": "आत्मा-एव",
+              "english": "the Self alone"
+            },
+            {
+              "sanskrit": "अभूत्",
+              "english": "has become"
+            },
+            {
+              "sanskrit": "विजानतः",
+              "english": "for the knower"
+            },
+            {
+              "sanskrit": "तत्र",
+              "english": "there"
+            },
+            {
+              "sanskrit": "कः",
+              "english": "what"
+            },
+            {
+              "sanskrit": "मोहः",
+              "english": "delusion"
+            },
+            {
+              "sanskrit": "कः",
+              "english": "what"
+            },
+            {
+              "sanskrit": "शोकः",
+              "english": "grief"
+            },
+            {
+              "sanskrit": "एकत्वम्",
+              "english": "oneness"
+            },
+            {
+              "sanskrit": "अनुपश्यतः",
+              "english": "to one who beholds"
+            }
+          ],
+          "translation": "For one who knows that in Him all beings have become the very Self, what delusion or grief can exist for one who beholds oneness?",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "यस्मिन् सर्वाणि भूतान्यात्मानमेव पश्यति ।\nसर्वभूतेषु चात्मानं ततो न विजुगुप्सते ॥",
+          "iast": "yasmin sarvāṇi bhūtāny ātmānam eva paśyati |\nsarva-bhūteṣu cātmānaṁ tato na vijugupsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "यस्मिन्",
+              "english": "in whom"
+            },
+            {
+              "sanskrit": "सर्वाणि",
+              "english": "all"
+            },
+            {
+              "sanskrit": "भूतानि",
+              "english": "beings"
+            },
+            {
+              "sanskrit": "आत्मानम्-एव",
+              "english": "the Self alone"
+            },
+            {
+              "sanskrit": "पश्यति",
+              "english": "sees"
+            },
+            {
+              "sanskrit": "सर्वभूतेषु",
+              "english": "in all beings"
+            },
+            {
+              "sanskrit": "च",
+              "english": "and"
+            },
+            {
+              "sanskrit": "आत्मानम्",
+              "english": "the Self"
+            },
+            {
+              "sanskrit": "ततः",
+              "english": "thereupon/therefore"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "विजुगुप्सते",
+              "english": "shrinks/abhors"
+            }
+          ],
+          "translation": "He who sees the Self alone in all beings, and all beings within the Self—such a one does not recoil from any.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "स पर्यगाच्छुक्रमकायमव्रणमस्नाविरं शुद्धमपापविद्धम् ।\nकविर्मनीषी परिभूः स्वयम्भूर्याथातथ्यतोऽर्थान्व्यदधाच्छाश्वतीभ्यः समाभ्यः ॥",
+          "iast": "sa paryagāc chukram akāyam avraṇam asnāviraṁ śuddham apāpa-viddham |\nkavir manīṣī paribhūḥ svayambhūr yāthātathyato 'rthān vyadadhāc chāśvatībhyaḥ samābhyaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "सः",
+              "english": "He"
+            },
+            {
+              "sanskrit": "पर्यगात्",
+              "english": "has pervaded everywhere"
+            },
+            {
+              "sanskrit": "शुक्रम्",
+              "english": "pure effulgence"
+            },
+            {
+              "sanskrit": "अकायम्",
+              "english": "bodiless"
+            },
+            {
+              "sanskrit": "अव्रणम्",
+              "english": "woundless"
+            },
+            {
+              "sanskrit": "अस्नाविरम्",
+              "english": "without sinews"
+            },
+            {
+              "sanskrit": "शुद्धम्",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "अपाप-विद्धम्",
+              "english": "untouched by sin"
+            },
+            {
+              "sanskrit": "कविः",
+              "english": "seer/omniscient"
+            },
+            {
+              "sanskrit": "मनीषी",
+              "english": "wise thinker"
+            },
+            {
+              "sanskrit": "परिभूः",
+              "english": "supreme over all"
+            },
+            {
+              "sanskrit": "स्वयम्भूः",
+              "english": "self-born"
+            },
+            {
+              "sanskrit": "याथातथ्यतः",
+              "english": "according to reality"
+            },
+            {
+              "sanskrit": "अर्थान्",
+              "english": "entities/objects"
+            },
+            {
+              "sanskrit": "व्यदधात्",
+              "english": "has arranged"
+            },
+            {
+              "sanskrit": "शाश्वतीभ्यः",
+              "english": "for the eternal"
+            },
+            {
+              "sanskrit": "समाभ्यः",
+              "english": "orders/ages"
+            }
+          ],
+          "translation": "He pervades all—radiant, bodiless, without wound or sinew, ever pure, untouched by sin; the seer and sage, transcendent, self-born—He has ordered realities as they truly are for the eternal order.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽविद्यामुपासते ।\nततो भूय इव ते तमो य उ विद्यायां रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'vidyām upāsate |\ntato bhūya iva te tamo ya u vidyāyāṁ ratāḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "अन्धम्",
+              "english": "blind"
+            },
+            {
+              "sanskrit": "तमः",
+              "english": "darkness"
+            },
+            {
+              "sanskrit": "प्रविशन्ति",
+              "english": "enter"
+            },
+            {
+              "sanskrit": "ये",
+              "english": "those who"
+            },
+            {
+              "sanskrit": "अविद्याम्",
+              "english": "ignorance (mere rites)"
+            },
+            {
+              "sanskrit": "उपासते",
+              "english": "worship/pursue"
+            },
+            {
+              "sanskrit": "ततः",
+              "english": "than that"
+            },
+            {
+              "sanskrit": "भूयः",
+              "english": "even greater"
+            },
+            {
+              "sanskrit": "इव",
+              "english": "as if"
+            },
+            {
+              "sanskrit": "ते",
+              "english": "they"
+            },
+            {
+              "sanskrit": "तमः",
+              "english": "darkness"
+            },
+            {
+              "sanskrit": "यः उ",
+              "english": "who indeed"
+            },
+            {
+              "sanskrit": "विद्यायाम्",
+              "english": "in (mere) knowledge"
+            },
+            {
+              "sanskrit": "रताः",
+              "english": "are attached"
+            }
+          ],
+          "translation": "Into blind darkness enter those who are devoted to ignorance; into a darkness greater still, as it were, go those who are attached only to knowledge.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "अन्यदेवाहुर्विद्ययाऽन्यदाहुरविद्यया ।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे ॥",
+          "iast": "anyad evāhur vidyayā anyad āhur avidyayā |\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire ||",
+          "word_by_word": [
+            {
+              "sanskrit": "अन्यत्",
+              "english": "different"
+            },
+            {
+              "sanskrit": "एव",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "आहुः",
+              "english": "they say"
+            },
+            {
+              "sanskrit": "विद्यया",
+              "english": "by knowledge"
+            },
+            {
+              "sanskrit": "अन्यत्",
+              "english": "different"
+            },
+            {
+              "sanskrit": "आहुः",
+              "english": "they say"
+            },
+            {
+              "sanskrit": "अविद्यया",
+              "english": "by ignorance"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "शुश्रुम",
+              "english": "we have heard"
+            },
+            {
+              "sanskrit": "धीराणाम्",
+              "english": "from the sober wise"
+            },
+            {
+              "sanskrit": "ये",
+              "english": "who"
+            },
+            {
+              "sanskrit": "नः",
+              "english": "to us"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "विचचक्षिरे",
+              "english": "have explained distinctly"
+            }
+          ],
+          "translation": "One result, they say, comes by knowledge, and a different one by ignorance—so we have heard from the sober sages who have clearly taught this to us.",
+          "source": "Śukla Yajurveda (Vājasaneyī), Īśā Upaniṣad"
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "विद्यां चाविद्यां च यस्तद्वेदोभयं सह ।\nअविद्यया मृत्युं तीर्त्वा विद्ययाऽमृतमश्नुते ॥",
+          "iast": "vidyāṁ cāvidyāṁ ca yas tad vedobhayaṁ saha |\navidyayā mṛtyuṁ tīrtvā vidyayā'mṛtam aśnute ||",
+          "word_by_word": [
+            {
+              "sanskrit": "vidyām",
+              "english": "knowledge (spiritual insight)"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "avidyām",
+              "english": "ignorance (temporal arts/works)"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "one who"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "veda",
+              "english": "knows"
+            },
+            {
+              "sanskrit": "ubhayaṁ",
+              "english": "both"
+            },
+            {
+              "sanskrit": "saha",
+              "english": "together"
+            },
+            {
+              "sanskrit": "avidyayā",
+              "english": "by engagement with the perishable (works)"
+            },
+            {
+              "sanskrit": "mṛtyum",
+              "english": "death"
+            },
+            {
+              "sanskrit": "tīrtvā",
+              "english": "crossing"
+            },
+            {
+              "sanskrit": "vidyayā",
+              "english": "by true knowledge"
+            },
+            {
+              "sanskrit": "amṛtam",
+              "english": "immortality"
+            },
+            {
+              "sanskrit": "aśnute",
+              "english": "attains, enjoys"
+            }
+          ],
+          "translation": "He who understands both knowledge and nescience together crosses death by dealings with the perishable, and by true knowledge attains the immortal."
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "अन्धं तमः प्रविशन्ति येऽसम्भूतिमुपासते ।\nततो भूय इव ते तमो य उ सम्भूत्यां रताः ॥",
+          "iast": "andhaṁ tamaḥ praviśanti ye 'sambhūtim upāsate |\ntato bhūya iva te tamo ya u sambhūtyāṁ ratāḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "andham",
+              "english": "blind"
+            },
+            {
+              "sanskrit": "tamaḥ",
+              "english": "darkness"
+            },
+            {
+              "sanskrit": "praviśanti",
+              "english": "enter"
+            },
+            {
+              "sanskrit": "ye",
+              "english": "those who"
+            },
+            {
+              "sanskrit": "asambhūtim",
+              "english": "the unmanifest (insentient matter)"
+            },
+            {
+              "sanskrit": "upāsate",
+              "english": "worship, attend upon"
+            },
+            {
+              "sanskrit": "tataḥ",
+              "english": "than that"
+            },
+            {
+              "sanskrit": "bhūyaḥ",
+              "english": "greater"
+            },
+            {
+              "sanskrit": "iva",
+              "english": "indeed, as if"
+            },
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "tamaḥ",
+              "english": "darkness"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "u",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "sambhūtyām",
+              "english": "in the manifest source (the created, demigods)"
+            },
+            {
+              "sanskrit": "ratāḥ",
+              "english": "delighted, attached"
+            }
+          ],
+          "translation": "Into blinding gloom enter those who worship the unmanifest, and into an even deeper shadow go those who are solely attached to the manifest created powers."
+        },
+        {
+          "number": 13,
+          "ref": "1.13",
+          "devanagari": "अन्यदेवाहुः सम्भवादन्यदाहुरसम्भवात् ।\nइति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे ॥",
+          "iast": "anyad evāhuḥ sambhavād anyad āhur asambhavāt |\niti śuśruma dhīrāṇāṁ ye nas tad vicacakṣire ||",
+          "word_by_word": [
+            {
+              "sanskrit": "anyat",
+              "english": "different (result)"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "āhuḥ",
+              "english": "they say"
+            },
+            {
+              "sanskrit": "sambhavāt",
+              "english": "from sambhava (the manifest cause)"
+            },
+            {
+              "sanskrit": "anyat",
+              "english": "another"
+            },
+            {
+              "sanskrit": "āhuḥ",
+              "english": "they say"
+            },
+            {
+              "sanskrit": "asambhavāt",
+              "english": "from asambhava (the unmanifest)"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "śuśruma",
+              "english": "we have heard"
+            },
+            {
+              "sanskrit": "dhīrāṇām",
+              "english": "from the sober wise"
+            },
+            {
+              "sanskrit": "ye",
+              "english": "who"
+            },
+            {
+              "sanskrit": "naḥ",
+              "english": "to us"
+            },
+            {
+              "sanskrit": "tad",
+              "english": "that (truth)"
+            },
+            {
+              "sanskrit": "vicacakṣire",
+              "english": "made clear distinctly"
+            }
+          ],
+          "translation": "Different, they declare, is the outcome of sambhava and different of asambhava. Thus we have heard from the sober seers who clearly explained it to us."
+        },
+        {
+          "number": 14,
+          "ref": "1.14",
+          "devanagari": "सम्भूतिं च विनाशं च यस्तद्वेदोभयं सह ।\nविनाशेन मृत्युं तीर्त्वा सम्भूत्याऽमृतमश्नुते ॥",
+          "iast": "sambhūtiṁ ca vināśaṁ ca yas tad vedobhayaṁ saha |\nvināśena mṛtyuṁ tīrtvā sambhūtyā'mṛtam aśnute ||",
+          "word_by_word": [
+            {
+              "sanskrit": "sambhūtim",
+              "english": "the manifest cause (the Supreme Source)"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "vināśam",
+              "english": "the perishable (destruction)"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "he who"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "veda",
+              "english": "knows"
+            },
+            {
+              "sanskrit": "ubhayaṁ",
+              "english": "both"
+            },
+            {
+              "sanskrit": "saha",
+              "english": "together"
+            },
+            {
+              "sanskrit": "vināśena",
+              "english": "by the perishable (its proper use)"
+            },
+            {
+              "sanskrit": "mṛtyum",
+              "english": "death"
+            },
+            {
+              "sanskrit": "tīrtvā",
+              "english": "having crossed"
+            },
+            {
+              "sanskrit": "sambhūtyā",
+              "english": "by sambhūti (the Supreme)"
+            },
+            {
+              "sanskrit": "amṛtam",
+              "english": "immortality"
+            },
+            {
+              "sanskrit": "aśnute",
+              "english": "attains, enjoys"
+            }
+          ],
+          "translation": "One who knows both sambhūti and the perishable side by side crosses death through the perishable and, by sambhūti, comes to the immortal."
+        },
+        {
+          "number": 15,
+          "ref": "1.15",
+          "devanagari": "हिरण्मयेन पात्रेण सत्यस्यापिहितं मुखम् ।\nतत् त्वं पूषन्नपावृणु सत्यधर्माय दृष्टये ॥",
+          "iast": "hiraṇmayena pātreṇa satyasyāpihitaṁ mukham |\ntat tvaṁ pūṣann apāvṛṇu satyadharmāya dṛṣṭaye ||",
+          "word_by_word": [
+            {
+              "sanskrit": "hiraṇmayena",
+              "english": "with a golden"
+            },
+            {
+              "sanskrit": "pātreṇa",
+              "english": "covering, vessel"
+            },
+            {
+              "sanskrit": "satyasya",
+              "english": "of Truth"
+            },
+            {
+              "sanskrit": "āpihitam",
+              "english": "covered"
+            },
+            {
+              "sanskrit": "mukham",
+              "english": "face"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "tvaṁ",
+              "english": "you"
+            },
+            {
+              "sanskrit": "pūṣan",
+              "english": "O Pūṣan (Sustainer)"
+            },
+            {
+              "sanskrit": "apāvṛṇu",
+              "english": "uncover"
+            },
+            {
+              "sanskrit": "satya-dharmāya",
+              "english": "for the follower of truth"
+            },
+            {
+              "sanskrit": "dṛṣṭaye",
+              "english": "for vision"
+            }
+          ],
+          "translation": "The face of Truth is veiled by a golden covering. O Pūṣan, remove it, that the follower of truth may behold."
+        },
+        {
+          "number": 16,
+          "ref": "1.16",
+          "devanagari": "पूषन्नेकर्षे यम सूर्य प्राजापत्य ।\nव्यूह रश्मीन् समूह तेजो यत्ते रूपं कल्याणतमं तत्ते पश्यामि ।\nयोऽसावसौ पुरुषः सोऽहमस्मि ॥",
+          "iast": "pūṣann ekarṣe yama sūrya prājāpatya |\nvyūha raśmīn samūha tejo yat te rūpaṁ kalyāṇatamaṁ tat te paśyāmi |\nyo 'sāv asau puruṣaḥ so 'ham asmi ||",
+          "word_by_word": [
+            {
+              "sanskrit": "pūṣan",
+              "english": "O Pūṣan"
+            },
+            {
+              "sanskrit": "eka-ṛṣe",
+              "english": "O sole seer"
+            },
+            {
+              "sanskrit": "yama",
+              "english": "O controller"
+            },
+            {
+              "sanskrit": "sūrya",
+              "english": "O Sun"
+            },
+            {
+              "sanskrit": "prājāpatya",
+              "english": "O son of Prajāpati"
+            },
+            {
+              "sanskrit": "vyūha",
+              "english": "withdraw"
+            },
+            {
+              "sanskrit": "raśmīn",
+              "english": "rays"
+            },
+            {
+              "sanskrit": "samūha",
+              "english": "gather up"
+            },
+            {
+              "sanskrit": "tejaḥ",
+              "english": "radiance"
+            },
+            {
+              "sanskrit": "yat",
+              "english": "which"
+            },
+            {
+              "sanskrit": "te",
+              "english": "your"
+            },
+            {
+              "sanskrit": "rūpam",
+              "english": "form"
+            },
+            {
+              "sanskrit": "kalyāṇatamam",
+              "english": "most auspicious"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "te",
+              "english": "of Yours"
+            },
+            {
+              "sanskrit": "paśyāmi",
+              "english": "I behold"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "asau",
+              "english": "that (yonder)"
+            },
+            {
+              "sanskrit": "asau",
+              "english": "that (radiant)"
+            },
+            {
+              "sanskrit": "puruṣaḥ",
+              "english": "Person"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "He"
+            },
+            {
+              "sanskrit": "aham",
+              "english": "I"
+            },
+            {
+              "sanskrit": "asmi",
+              "english": "am"
+            }
+          ],
+          "translation": "O Pūṣan, sole seer, O controller, O sun, O son of Prajāpati—withdraw Your rays, gather up Your glare. Your most beneficent form—let me behold that. That Supreme Person there—He am I."
+        },
+        {
+          "number": 17,
+          "ref": "1.17",
+          "devanagari": "वायुरनिलममृतमथेदं भस्मान्तं शरीरम् ।\nॐ क्रतो स्मर कृतं स्मर क्रतो स्मर कृतं स्मर ॥",
+          "iast": "vāyur anilam amṛtam athedaṁ bhasmāntaṁ śarīram |\noṁ krato smara kṛtaṁ smara krato smara kṛtaṁ smara ||",
+          "word_by_word": [
+            {
+              "sanskrit": "vāyuḥ",
+              "english": "the air (life-breath)"
+            },
+            {
+              "sanskrit": "anilam",
+              "english": "into the wind"
+            },
+            {
+              "sanskrit": "amṛtam",
+              "english": "immortal"
+            },
+            {
+              "sanskrit": "atha",
+              "english": "then"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "bhasma-antaṁ",
+              "english": "ending in ashes"
+            },
+            {
+              "sanskrit": "śarīram",
+              "english": "body"
+            },
+            {
+              "sanskrit": "oṁ",
+              "english": "Oṁ"
+            },
+            {
+              "sanskrit": "krato",
+              "english": "O will (directed mind)"
+            },
+            {
+              "sanskrit": "smara",
+              "english": "remember"
+            },
+            {
+              "sanskrit": "kṛtam",
+              "english": "what has been done"
+            },
+            {
+              "sanskrit": "smara",
+              "english": "remember"
+            }
+          ],
+          "translation": "Let the life-air merge into the immortal wind; let this body become ashes. O Oṁ, O resolute will, remember—remember what has been done; remember indeed."
+        },
+        {
+          "number": 18,
+          "ref": "1.18",
+          "devanagari": "अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान् ।\nयुयोध्यस्मज्जुहुराणमेनो भूयिष्ठां ते नम उक्तिṁ विधेम ॥",
+          "iast": "agne naya supathā rāye asmān viśvāni deva vayunāni vidvān |\nyuyodhy asmaj juhurāṇam eno bhūyiṣṭhāṁ te nama uktiṁ vidhema ||",
+          "word_by_word": [
+            {
+              "sanskrit": "agne",
+              "english": "O Agni"
+            },
+            {
+              "sanskrit": "naya",
+              "english": "lead"
+            },
+            {
+              "sanskrit": "su-pathā",
+              "english": "by the auspicious path"
+            },
+            {
+              "sanskrit": "rāye",
+              "english": "to wealth, well-being"
+            },
+            {
+              "sanskrit": "asmān",
+              "english": "us"
+            },
+            {
+              "sanskrit": "viśvāni",
+              "english": "all"
+            },
+            {
+              "sanskrit": "deva",
+              "english": "O god"
+            },
+            {
+              "sanskrit": "vayunāni",
+              "english": "ways, works, understandings"
+            },
+            {
+              "sanskrit": "vidvān",
+              "english": "knowing"
+            },
+            {
+              "sanskrit": "yuyodhi",
+              "english": "ward off"
+            },
+            {
+              "sanskrit": "asmat",
+              "english": "from us"
+            },
+            {
+              "sanskrit": "juhurāṇam",
+              "english": "clinging, accumulated"
+            },
+            {
+              "sanskrit": "enaḥ",
+              "english": "sin, offense"
+            },
+            {
+              "sanskrit": "bhūyiṣṭhām",
+              "english": "abundant, most"
+            },
+            {
+              "sanskrit": "te",
+              "english": "to you"
+            },
+            {
+              "sanskrit": "nama",
+              "english": "homage"
+            },
+            {
+              "sanskrit": "uktiṁ",
+              "english": "utterance, words of praise"
+            },
+            {
+              "sanskrit": "vidhema",
+              "english": "we offer, perform"
+            }
+          ],
+          "translation": "O Agni, lead us on the noble path to true wealth; O divine knower of all ways, drive away from us the clinging sin. To You we shall render our richest words of obeisance."
+        }
+      ]
+    }
+  ]
+}
