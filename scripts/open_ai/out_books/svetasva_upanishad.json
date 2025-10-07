@@ -1,0 +1,606 @@
+{
+  "id": "svu",
+  "short": "ŚvU",
+  "title": "Svetasva Upanishad",
+  "author": "Unknown (Vedic seers)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 5th–2nd century BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "किं कारणं जगदिदं कुतो जातं कथं स्थितम्।\nकस्याधीनं प्रवर्तते कस्येशोऽस्य नियन्ता॥",
+          "iast": "kiṁ kāraṇaṁ jagad idaṁ kuto jātaṁ kathaṁ sthitam।\nkasyādhīnaṁ pravartate kasyeśo'sya niyantā॥",
+          "word_by_word": [
+            {
+              "sanskrit": "किम्",
+              "english": "what"
+            },
+            {
+              "sanskrit": "कारणम्",
+              "english": "cause"
+            },
+            {
+              "sanskrit": "जगत्",
+              "english": "universe"
+            },
+            {
+              "sanskrit": "इदम्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "कुतः",
+              "english": "from where"
+            },
+            {
+              "sanskrit": "जातम्",
+              "english": "born"
+            },
+            {
+              "sanskrit": "कथम्",
+              "english": "how"
+            },
+            {
+              "sanskrit": "स्थितम्",
+              "english": "situated"
+            },
+            {
+              "sanskrit": "कस्याधीनम्",
+              "english": "dependent on whom"
+            },
+            {
+              "sanskrit": "प्रवर्तते",
+              "english": "operates"
+            },
+            {
+              "sanskrit": "कस्य",
+              "english": "whose"
+            },
+            {
+              "sanskrit": "ईशः",
+              "english": "lord"
+            },
+            {
+              "sanskrit": "अस्य",
+              "english": "of this"
+            },
+            {
+              "sanskrit": "नियन्ता",
+              "english": "controller"
+            }
+          ],
+          "translation": "What is the cause of this world? From where has it arisen, and how does it stand? Under whose control does it act? Who is the Lord, the supreme regulator of all?",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "कालः स्वभावो नियतिर्यदृच्छा भूतसंयुतिः।\nनेतत् परं कारणं स्यादीशो हि परमः पुमान्॥",
+          "iast": "kālaḥ svabhāvo niyatir yadṛcchā bhūtasaṁyutiḥ।\nnetat paraṁ kāraṇaṁ syād īśo hi paramaḥ pumān॥",
+          "word_by_word": [
+            {
+              "sanskrit": "कालः",
+              "english": "time"
+            },
+            {
+              "sanskrit": "स्वभावः",
+              "english": "nature"
+            },
+            {
+              "sanskrit": "नियतिः",
+              "english": "destiny"
+            },
+            {
+              "sanskrit": "यदृच्छा",
+              "english": "chance"
+            },
+            {
+              "sanskrit": "भूत-सम्-युतिः",
+              "english": "combination of elements"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "परम्",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "कारणम्",
+              "english": "cause"
+            },
+            {
+              "sanskrit": "स्यात्",
+              "english": "is"
+            },
+            {
+              "sanskrit": "ईशः",
+              "english": "the Lord"
+            },
+            {
+              "sanskrit": "हि",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "परमः",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "पुमान्",
+              "english": "Person"
+            }
+          ],
+          "translation": "Neither time, nor nature, nor fate, nor chance, nor the mingling of elements is the ultimate cause. The Supreme Person, the Lord, is the cause of all causes.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "तं वेद वेदान्तविदो हृदि भावितचेतसः।\nभक्त्या सुसूक्ष्मया देवं सर्वहृद्यान्तरं स्थितम्॥",
+          "iast": "taṁ veda vedāntavido hṛdi bhāvitacetasaḥ।\nbhaktyā susūkṣmayā devaṁ sarvahṛdyāntaraṁ sthitam॥",
+          "word_by_word": [
+            {
+              "sanskrit": "तम्",
+              "english": "Him"
+            },
+            {
+              "sanskrit": "वेद",
+              "english": "know"
+            },
+            {
+              "sanskrit": "वेदान्त-विदः",
+              "english": "knowers of Vedānta"
+            },
+            {
+              "sanskrit": "हृदि",
+              "english": "in the heart"
+            },
+            {
+              "sanskrit": "भावित-चेतसः",
+              "english": "purified in consciousness"
+            },
+            {
+              "sanskrit": "भक्त्या",
+              "english": "by devotion"
+            },
+            {
+              "sanskrit": "सु-सूक्ष्मया",
+              "english": "most subtle"
+            },
+            {
+              "sanskrit": "देवम्",
+              "english": "the Lord"
+            },
+            {
+              "sanskrit": "सर्व-हृद्-अन्तरम्",
+              "english": "within all hearts"
+            },
+            {
+              "sanskrit": "स्थितम्",
+              "english": "situated"
+            }
+          ],
+          "translation": "The sages who know Vedānta realize Him within the heart. By fine and faithful devotion they perceive the Lord, dwelling within the hearts of all.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "एको बहूनां यः पतिर्भूतानां कारणं महत्।\nयस्याज्ञया वर्ततेदं तं देवमुपसिद्धये॥",
+          "iast": "eko bahūnāṁ yaḥ patiḥ bhūtānāṁ kāraṇaṁ mahat।\nyasyājñayā vartatedaṁ taṁ devam upasiddhaye॥",
+          "word_by_word": [
+            {
+              "sanskrit": "एकः",
+              "english": "one"
+            },
+            {
+              "sanskrit": "बहूनाम्",
+              "english": "of the many"
+            },
+            {
+              "sanskrit": "यः",
+              "english": "who"
+            },
+            {
+              "sanskrit": "पतिः",
+              "english": "lord"
+            },
+            {
+              "sanskrit": "भूतानाम्",
+              "english": "of beings"
+            },
+            {
+              "sanskrit": "कारणम्",
+              "english": "cause"
+            },
+            {
+              "sanskrit": "महत्",
+              "english": "great"
+            },
+            {
+              "sanskrit": "यस्य",
+              "english": "by whose"
+            },
+            {
+              "sanskrit": "आज्ञया",
+              "english": "command"
+            },
+            {
+              "sanskrit": "वर्तते",
+              "english": "operates"
+            },
+            {
+              "sanskrit": "इदम्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "तम्",
+              "english": "that Him"
+            },
+            {
+              "sanskrit": "देवम्",
+              "english": "the Lord"
+            },
+            {
+              "sanskrit": "उपसिद्धये",
+              "english": "for approaching/attaining"
+            }
+          ],
+          "translation": "He, the one Lord of the many, the great cause of all beings—by His order this universe moves. Unto that Supreme Lord we approach for shelter.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "तमो निहन्ता मोचयन् विद्यायामूलकारणः।\nनित्योनित्यानां स पतिः निरञ्जनो नारायणः॥",
+          "iast": "tamo nihantā mocayan vidyāyāmūlakāraṇaḥ।\nnityonityānāṁ sa patiḥ nirañjano nārāyaṇaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "तमः",
+              "english": "darkness (ignorance)"
+            },
+            {
+              "sanskrit": "निहन्ता",
+              "english": "destroyer"
+            },
+            {
+              "sanskrit": "मोचयन्",
+              "english": "liberating"
+            },
+            {
+              "sanskrit": "विद्यायाः",
+              "english": "of knowledge"
+            },
+            {
+              "sanskrit": "मूल-कारणः",
+              "english": "root cause"
+            },
+            {
+              "sanskrit": "नित्यो",
+              "english": "the eternal one"
+            },
+            {
+              "sanskrit": "नित्यानाम्",
+              "english": "of the eternals"
+            },
+            {
+              "sanskrit": "स",
+              "english": "he"
+            },
+            {
+              "sanskrit": "पतिः",
+              "english": "master"
+            },
+            {
+              "sanskrit": "निरञ्जनः",
+              "english": "stainless"
+            },
+            {
+              "sanskrit": "नारायणः",
+              "english": "Nārāyaṇa"
+            }
+          ],
+          "translation": "He cuts the darkness and grants release, the very source of true knowledge. He is the eternal Lord of all eternals—stainless Nārāyaṇa.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "यथा दारुषु निहितो अग्निर्गर्भो यथा कृतेः।\nहृदि प्राणेषु देवोऽयं दृश्यते भक्तियोगतः॥",
+          "iast": "yathā dāruṣu nihito agnir garbho yathā kṛteḥ।\nhṛdi prāṇeṣu devo'yaṁ dṛśyate bhaktiyogataḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "यथा",
+              "english": "as"
+            },
+            {
+              "sanskrit": "दारुषु",
+              "english": "in wood"
+            },
+            {
+              "sanskrit": "निहितः",
+              "english": "hidden"
+            },
+            {
+              "sanskrit": "अग्निः",
+              "english": "fire"
+            },
+            {
+              "sanskrit": "गर्भः",
+              "english": "embryo (latent)"
+            },
+            {
+              "sanskrit": "यथा",
+              "english": "as"
+            },
+            {
+              "sanskrit": "कृतेः",
+              "english": "in the implement (for kindling)"
+            },
+            {
+              "sanskrit": "हृदि",
+              "english": "in the heart"
+            },
+            {
+              "sanskrit": "प्राणेषु",
+              "english": "within the life-airs"
+            },
+            {
+              "sanskrit": "देवः",
+              "english": "the Lord"
+            },
+            {
+              "sanskrit": "अयम्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "दृश्यते",
+              "english": "is seen"
+            },
+            {
+              "sanskrit": "भक्ति-योगतः",
+              "english": "by the path of devotion"
+            }
+          ],
+          "translation": "As fire lies hidden in wood and appears by proper means, so the Lord abides within the heart and is seen by the way of bhakti-yoga.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "नियच्छेदिन्द्रियगणं मनसा शान्तचित्तताम्।\nअथो द्रक्ष्यति तं देवं ईश्वरं भूतभावनम्॥",
+          "iast": "niyacched indriyagaṇaṁ manasā śāntacittatām।\natho drakṣyati taṁ devaṁ īśvaraṁ bhūtabhāvanam॥",
+          "word_by_word": [
+            {
+              "sanskrit": "नियच्छेत्",
+              "english": "one should restrain"
+            },
+            {
+              "sanskrit": "इन्द्रिय-गणम्",
+              "english": "the group of senses"
+            },
+            {
+              "sanskrit": "मनसा",
+              "english": "by the mind"
+            },
+            {
+              "sanskrit": "शान्त-चित्तताम्",
+              "english": "a peaceful state of mind"
+            },
+            {
+              "sanskrit": "अथ",
+              "english": "then"
+            },
+            {
+              "sanskrit": "द्रक्ष्यति",
+              "english": "he will see"
+            },
+            {
+              "sanskrit": "तम्",
+              "english": "him"
+            },
+            {
+              "sanskrit": "देवम्",
+              "english": "the Lord"
+            },
+            {
+              "sanskrit": "ईश्वरम्",
+              "english": "the controller"
+            },
+            {
+              "sanskrit": "भूत-भावनम्",
+              "english": "the nourisher of beings"
+            }
+          ],
+          "translation": "By bringing the senses under control and steadying the mind, one then beholds that Lord—the supreme controller and benefactor of all creatures.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "अणोरणीयान् महतो महियान् सर्वतोमुखः।\nएको वसति भूतेषु सर्वभूत्यन्तरः स्थितः॥",
+          "iast": "aṇor aṇīyān mahato mahiyān sarvatomukhaḥ।\neko vasati bhūteṣu sarvabhūtyantaraḥ sthitaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "अणोः",
+              "english": "than the atom"
+            },
+            {
+              "sanskrit": "अणीयान्",
+              "english": "smaller"
+            },
+            {
+              "sanskrit": "महतः",
+              "english": "than the great"
+            },
+            {
+              "sanskrit": "महियान्",
+              "english": "greater"
+            },
+            {
+              "sanskrit": "सर्वतो-मुखः",
+              "english": "facing everywhere (all-pervading)"
+            },
+            {
+              "sanskrit": "एकः",
+              "english": "one"
+            },
+            {
+              "sanskrit": "वसति",
+              "english": "dwells"
+            },
+            {
+              "sanskrit": "भूतेषु",
+              "english": "in beings"
+            },
+            {
+              "sanskrit": "सर्व-भूत-अन्तरः",
+              "english": "the indweller of all beings"
+            },
+            {
+              "sanskrit": "स्थितः",
+              "english": "situated"
+            }
+          ],
+          "translation": "Smaller than the smallest, greater than the great, the all-pervading One dwells within all beings as their indwelling witness.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "तं ज्ञात्वा मुच्यते बन्धादविद्यायाविधूय तम्।\nभक्त्या गृहीत्वा पादाब्जं गच्छेत् पारं परं पदम्॥",
+          "iast": "taṁ jñātvā mucyate bandhād avidyāyā vidhūya tam।\nbhaktyā gṛhītvā pādābjaṁ gacchet pāraṁ paraṁ padam॥",
+          "word_by_word": [
+            {
+              "sanskrit": "तम्",
+              "english": "him"
+            },
+            {
+              "sanskrit": "ज्ञात्वा",
+              "english": "having known"
+            },
+            {
+              "sanskrit": "मुच्यते",
+              "english": "one is liberated"
+            },
+            {
+              "sanskrit": "बन्धात्",
+              "english": "from bondage"
+            },
+            {
+              "sanskrit": "अविद्यायाः",
+              "english": "of ignorance"
+            },
+            {
+              "sanskrit": "विधूय",
+              "english": "having cast off"
+            },
+            {
+              "sanskrit": "तम्",
+              "english": "darkness"
+            },
+            {
+              "sanskrit": "भक्त्या",
+              "english": "by devotion"
+            },
+            {
+              "sanskrit": "गृहीत्वा",
+              "english": "having taken"
+            },
+            {
+              "sanskrit": "पाद-अब्जम्",
+              "english": "the lotus feet"
+            },
+            {
+              "sanskrit": "गच्छेत्",
+              "english": "one should go"
+            },
+            {
+              "sanskrit": "पारम्",
+              "english": "to the far shore"
+            },
+            {
+              "sanskrit": "परम्",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "पदम्",
+              "english": "abode"
+            }
+          ],
+          "translation": "Knowing Him, one is freed from bondage; brushing away the gloom of ignorance. Taking hold of His lotus feet in devotion, one crosses to the supreme, eternal shore.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "यो वेदवेद्यो वेदानां प्रभवः प्रथितो महान्।\nसर्वस्य धाता संहर्ता भक्तानां परमं गतिः॥",
+          "iast": "yo vedavedyo vedānāṁ prabhavaḥ prathito mahān।\nsarvasya dhātā saṁhartā bhaktānāṁ paramaṁ gatiḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "यः",
+              "english": "who"
+            },
+            {
+              "sanskrit": "वेद-वेद्यः",
+              "english": "knowable by the Vedas"
+            },
+            {
+              "sanskrit": "वेदानाम्",
+              "english": "of the Vedas"
+            },
+            {
+              "sanskrit": "प्रभवः",
+              "english": "source"
+            },
+            {
+              "sanskrit": "प्रथितः",
+              "english": "celebrated"
+            },
+            {
+              "sanskrit": "महान्",
+              "english": "great"
+            },
+            {
+              "sanskrit": "सर्वस्य",
+              "english": "of all"
+            },
+            {
+              "sanskrit": "धाता",
+              "english": "sustainer"
+            },
+            {
+              "sanskrit": "संहर्ता",
+              "english": "withdrawer"
+            },
+            {
+              "sanskrit": "भक्तानाम्",
+              "english": "of devotees"
+            },
+            {
+              "sanskrit": "परमम्",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "गतिः",
+              "english": "destination"
+            }
+          ],
+          "translation": "He who is known through the Vedas, their very source and renowned Great One—He sustains and withdraws all. For the devotees, He is the supreme destination.",
+          "meter": "anuṣṭubh"
+        }
+      ]
+    }
+  ]
+}

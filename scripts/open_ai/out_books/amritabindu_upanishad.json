@@ -1,0 +1,1002 @@
+{
+  "id": "ABU-1.1-1.2",
+  "short": "ABU",
+  "title": "Amritabindu Upanishad",
+  "author": "Anonymous (Atharvaveda tradition)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 1st millennium CE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "मनो हि द्विविधं प्रोक्तं शुद्धं चाशुद्धमेव च ।\nअशुद्धं कामसङ्कल्पं शुद्धं कामविवर्जितम् ॥",
+          "iast": "mano hi dvividhaṁ proktaṁ śuddhaṁ cāśuddham eva ca |\naśuddhaṁ kāma-saṅkalpaṁ śuddhaṁ kāma-vivarjitam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "dvividham",
+              "english": "twofold"
+            },
+            {
+              "sanskrit": "proktam",
+              "english": "is declared"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "certainly"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "kāma-saṅkalpam",
+              "english": "filled with desire and scheming"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "kāma-vivarjitam",
+              "english": "free from desire"
+            }
+          ],
+          "translation": "The mind, it is said, is of two kinds—pure and impure. Impurity means plans born of lust and hankering; purity means the mind empty of desire.",
+          "padaccheda": "manaḥ hi dvividham proktam śuddham ca aśuddham eva ca | aśuddham kāma-saṅkalpam śuddham kāma-vivarjitam ||",
+          "meter": "anuṣṭubh",
+          "synonyms": [
+            {
+              "sanskrit": "kāmaḥ",
+              "english": "lust; desire"
+            },
+            {
+              "sanskrit": "saṅkalpaḥ",
+              "english": "determination; mental projection"
+            },
+            {
+              "sanskrit": "vivarjita",
+              "english": "devoid; free from"
+            }
+          ],
+          "source": "Atharvaveda minor Upaniṣad",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "मन एव मनुष्याणां कारणं बन्धमोक्षयोः ।\nबन्धाय विषयासङ्गो मुक्त्यै निर्विषयं मनः ॥",
+          "iast": "mana eva manuṣyāṇāṁ kāraṇaṁ bandhamokṣayoḥ |\nbandhāya viṣayāsaṅgo muktyai nirviṣayaṁ manaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "alone"
+            },
+            {
+              "sanskrit": "manuṣyāṇām",
+              "english": "of human beings"
+            },
+            {
+              "sanskrit": "kāraṇam",
+              "english": "the cause"
+            },
+            {
+              "sanskrit": "bandha-mokṣayoḥ",
+              "english": "of bondage and liberation"
+            },
+            {
+              "sanskrit": "bandhāya",
+              "english": "for bondage"
+            },
+            {
+              "sanskrit": "viṣaya-āsaṅgaḥ",
+              "english": "attachment to sense objects"
+            },
+            {
+              "sanskrit": "muktyai",
+              "english": "for liberation"
+            },
+            {
+              "sanskrit": "nirviṣayam",
+              "english": "free from sense objects"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            }
+          ],
+          "translation": "The mind alone is the cause of bondage and release for the human being. Fastened to sense objects it binds; when turned from the senses, that very mind leads to liberation.",
+          "padaccheda": "manaḥ eva manuṣyāṇām kāraṇam bandha-mokṣayoḥ | bandhāya viṣaya-āsaṅgaḥ muktyai nirviṣayam manaḥ ||",
+          "meter": "anuṣṭubh",
+          "synonyms": [
+            {
+              "sanskrit": "viṣayaḥ",
+              "english": "sense object"
+            },
+            {
+              "sanskrit": "āsaṅgaḥ",
+              "english": "attachment; clinging"
+            },
+            {
+              "sanskrit": "muktiḥ",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "bandhaḥ",
+              "english": "bondage"
+            }
+          ],
+          "source": "Atharvaveda minor Upaniṣad",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "मन एव मनुष्याणां कारणं बन्धमोक्षयोः ।\nबन्धाय विषयासक्तं मुक्त्यै निर्विषयं स्मृतम् ॥",
+          "iast": "mana eva manuṣyāṇām kāraṇaṁ bandhamokṣayoḥ |\nbandhāya viṣayāsaktaṁ muktyai nirviṣayaṁ smṛtam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed; alone"
+            },
+            {
+              "sanskrit": "manuṣyāṇām",
+              "english": "of human beings"
+            },
+            {
+              "sanskrit": "kāraṇam",
+              "english": "the cause"
+            },
+            {
+              "sanskrit": "bandha-mokṣayoḥ",
+              "english": "of bondage and liberation (dual)"
+            },
+            {
+              "sanskrit": "bandhāya",
+              "english": "for bondage"
+            },
+            {
+              "sanskrit": "viṣaya-āsaktam",
+              "english": "attached to sense-objects"
+            },
+            {
+              "sanskrit": "muktyai",
+              "english": "for liberation"
+            },
+            {
+              "sanskrit": "nirviṣayam",
+              "english": "free from sense-objects"
+            },
+            {
+              "sanskrit": "smṛtam",
+              "english": "is declared"
+            }
+          ],
+          "translation": "The mind alone is the cause of bondage and of release for mankind. When the mind clings to sense enjoyment it binds; when it turns away from sense objects, that is known as liberation.",
+          "padaccheda": "mana eva manuṣyāṇām kāraṇam bandhamokṣayoḥ bandhāya viṣayāsaktam muktyai nirviṣayaṁ smṛtam",
+          "anvaya": "mana eva manuṣyāṇām bandhamokṣayoḥ kāraṇam; viṣayāsaktam manaḥ bandhāya, nirviṣayaṁ manaḥ muktyai smṛtam.",
+          "meter": "anuṣṭubh (śloka)"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "मनो हि द्विविधं प्रोक्तं शुद्धं चाशुद्धमेव च ।\nअशुद्धं कामसङ्कल्पं शुद्धं कामविवर्जितम् ॥",
+          "iast": "mano hi dvividhaṁ proktaṁ śuddhaṁ cāśuddham eva ca |\naśuddhaṁ kāma-saṅkalpaṁ śuddhaṁ kāma-vivarjitam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "dvividham",
+              "english": "twofold"
+            },
+            {
+              "sanskrit": "proktam",
+              "english": "is said (to be)"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed; precisely"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "kāma-saṅkalpam",
+              "english": "shaped by desire and mental projections"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "kāma-vivarjitam",
+              "english": "devoid of desire"
+            }
+          ],
+          "translation": "The mind, it is said, is of two kinds—pure and impure. Impure means driven by desire and schemes; pure means free from hankering.",
+          "padaccheda": "mano hi dvividhaṁ proktaṁ śuddhaṁ ca aśuddham eva ca aśuddhaṁ kāma-saṅkalpam śuddhaṁ kāma-vivarjitam",
+          "anvaya": "manaḥ hi dvividham proktam—śuddham ca aśuddham ca; aśuddham (yat) kāma-saṅkalpam, śuddham (yat) kāma-vivarjitam.",
+          "meter": "anuṣṭubh (śloka)"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "मनो हि द्विविधं प्रोक्तं शुद्धं चाशुद्धमेव च । अशुद्धं कामसङ्कल्पं शुद्धं कामविवर्जितम् ॥",
+          "iast": "mano hi dvividhaṁ proktaṁ śuddhaṁ cāśuddham eva ca | aśuddhaṁ kāma-saṅkalpaṁ śuddhaṁ kāma-vivarjitam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "mano",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "dvividham",
+              "english": "twofold"
+            },
+            {
+              "sanskrit": "proktam",
+              "english": "is said"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "certainly"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "kāma-saṅkalpam",
+              "english": "resolve born of desire"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "kāma-vivarjitam",
+              "english": "free from desire"
+            }
+          ],
+          "translation": "The mind is declared of two kinds—pure and impure. When driven by schemes of lust it is impure; when free of hankering it stands pure.",
+          "padaccheda": "mano hi dvividham proktam | śuddham ca aśuddham eva ca | aśuddham kāma-saṅkalpam | śuddham kāma-vivarjitam",
+          "anvaya": "hi mano dvividham proktam—śuddham ca aśuddham ca; aśuddham (tat) kāma-saṅkalpam, śuddham (tat) kāma-vivarjitam.",
+          "meter": "anuṣṭubh",
+          "synonyms": [
+            {
+              "sanskrit": "manas",
+              "english": "mind"
+            },
+            {
+              "sanskrit": "dvividham",
+              "english": "twofold"
+            },
+            {
+              "sanskrit": "kāma",
+              "english": "desire"
+            },
+            {
+              "sanskrit": "saṅkalpa",
+              "english": "mental resolve"
+            },
+            {
+              "sanskrit": "vivarjita",
+              "english": "devoid of"
+            }
+          ],
+          "variants": [
+            "मनसो हि द्विविधं प्रोक्तं ..."
+          ]
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "मन एव मनुष्याणां कारणं बन्धमोक्षयोः । बन्धाय विषयासक्तं मुक्त्यै निर्विषयं स्मृतम् ॥",
+          "iast": "mana eva manuṣyāṇāṁ kāraṇaṁ bandhamokṣayoḥ | bandhāya viṣayāsaktaṁ muktyai nirviṣayaṁ smṛtam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "mana",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "alone"
+            },
+            {
+              "sanskrit": "manuṣyāṇām",
+              "english": "of human beings"
+            },
+            {
+              "sanskrit": "kāraṇam",
+              "english": "the cause"
+            },
+            {
+              "sanskrit": "bandha-mokṣayoḥ",
+              "english": "of bondage and liberation"
+            },
+            {
+              "sanskrit": "bandhāya",
+              "english": "for bondage"
+            },
+            {
+              "sanskrit": "viṣaya-āsaktam",
+              "english": "attached to sense-objects"
+            },
+            {
+              "sanskrit": "muktyai",
+              "english": "for liberation"
+            },
+            {
+              "sanskrit": "nirviṣayam",
+              "english": "free from sense-objects"
+            },
+            {
+              "sanskrit": "smṛtam",
+              "english": "is understood"
+            }
+          ],
+          "translation": "The mind alone is the cause of bondage and release. Bound when tied to sense enjoyment; liberated when freed from such taste—this is the verdict.",
+          "padaccheda": "mana eva manuṣyāṇām kāraṇam bandha-mokṣayoḥ | bandhāya viṣayāsaktam | muktyai nirviṣayam smṛtam",
+          "anvaya": "mana eva manuṣyāṇām bandha-mokṣayoḥ kāraṇam; viṣayāsaktam (manaḥ) bandhāya, nirviṣayam (manaḥ) muktyai smṛtam.",
+          "meter": "anuṣṭubh",
+          "synonyms": [
+            {
+              "sanskrit": "manas",
+              "english": "mind"
+            },
+            {
+              "sanskrit": "bandha",
+              "english": "bondage"
+            },
+            {
+              "sanskrit": "mokṣa",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "viṣaya",
+              "english": "sense object"
+            },
+            {
+              "sanskrit": "āsakti",
+              "english": "attachment"
+            },
+            {
+              "sanskrit": "nirviṣaya",
+              "english": "without sense-objects"
+            }
+          ],
+          "variants": [
+            "मन एव मनुष्याणां कारणं बन्धमोक्षयोः ..."
+          ]
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "मन एव मनुष्याणां कारणं बन्धमोक्षयोः ।\nबन्धाय विषयासक्तं मुक्त्यै निर्विषयं स्मृतम् ॥",
+          "iast": "mana eva manuṣyāṇāṁ kāraṇaṁ bandhamokṣayoḥ |\nbandhāya viṣayāsaktaṁ muktyai nirviṣayaṁ smṛtam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "manas",
+              "english": "mind"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "manuṣyāṇām",
+              "english": "of human beings"
+            },
+            {
+              "sanskrit": "kāraṇam",
+              "english": "the cause"
+            },
+            {
+              "sanskrit": "bandha-mokṣayoḥ",
+              "english": "of bondage and liberation"
+            },
+            {
+              "sanskrit": "bandhāya",
+              "english": "for bondage"
+            },
+            {
+              "sanskrit": "viṣaya-āsaktam",
+              "english": "attached to sense objects"
+            },
+            {
+              "sanskrit": "muktyai",
+              "english": "for liberation"
+            },
+            {
+              "sanskrit": "nirviṣayam",
+              "english": "free from sense-objects"
+            },
+            {
+              "sanskrit": "smṛtam",
+              "english": "is understood"
+            }
+          ],
+          "translation": "The mind alone stands as the cause of bondage and release. Attached to sense pleasure it binds; freed from such objects it leads to deliverance.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "मनः हि द्विविधं प्रोक्तं शुद्धं चाशुद्धमेव च ।\nअशुद्धं कामसङ्कल्पं शुद्धं कामनिवर्जितम् ॥",
+          "iast": "manaḥ hi dvividhaṁ proktaṁ śuddhaṁ cāśuddham eva ca |\naśuddhaṁ kāmasaṅkalpaṁ śuddhaṁ kāmanivarjitam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "manaḥ",
+              "english": "mind"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "dvividham",
+              "english": "of two kinds"
+            },
+            {
+              "sanskrit": "proktam",
+              "english": "is said"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "aśuddham",
+              "english": "impure"
+            },
+            {
+              "sanskrit": "kāma-saṅkalpam",
+              "english": "shaped by desire"
+            },
+            {
+              "sanskrit": "śuddham",
+              "english": "pure"
+            },
+            {
+              "sanskrit": "kāma-nivarjitam",
+              "english": "free from desire"
+            }
+          ],
+          "translation": "The mind is declared twofold: pure and impure. Impure means driven by craving; pure means devoid of hankering.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "निर्विषयं मनः कृत्वा स्वात्मन्येव निवेशयेत् ।\nयदा यदा मनो नास्ति तदा तदा भवक्षयः ॥",
+          "iast": "nirviṣayaṁ manaḥ kṛtvā svātmanyeva niveśayet |\nyadā yadā mano nāsti tadā tadā bhavakṣayaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "nirviṣayam",
+              "english": "free from objects"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "kṛtvā",
+              "english": "having made"
+            },
+            {
+              "sanskrit": "svātmani",
+              "english": "in the Self"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "alone"
+            },
+            {
+              "sanskrit": "niveśayet",
+              "english": "should place"
+            },
+            {
+              "sanskrit": "yadā yadā",
+              "english": "whenever"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "nāsti",
+              "english": "is absent"
+            },
+            {
+              "sanskrit": "tadā tadā",
+              "english": "then and then"
+            },
+            {
+              "sanskrit": "bhava-kṣayaḥ",
+              "english": "ending of becoming"
+            }
+          ],
+          "translation": "Make the mind objectless and settle it only in the Self. Whenever the mind falls silent, the flow of material becoming wanes.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "मनोलयः प्रसादेन भवेत् शान्ते निरामये ।\nमनोनाशे कृते शान्ते केवलोऽहमिति स्थितिः ॥",
+          "iast": "manolayaḥ prasādena bhavet śānte nirāmaye |\nmanonāśe kṛte śānte kevalo ’ham iti sthitiḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "mano-layaḥ",
+              "english": "dissolution of mind"
+            },
+            {
+              "sanskrit": "prasādena",
+              "english": "by inner clarity"
+            },
+            {
+              "sanskrit": "bhavet",
+              "english": "arises"
+            },
+            {
+              "sanskrit": "śānte",
+              "english": "in tranquility"
+            },
+            {
+              "sanskrit": "nirāmaye",
+              "english": "free from affliction"
+            },
+            {
+              "sanskrit": "mano-nāśe",
+              "english": "when the mind is ended"
+            },
+            {
+              "sanskrit": "kṛte",
+              "english": "having been done"
+            },
+            {
+              "sanskrit": "śānte",
+              "english": "in peace"
+            },
+            {
+              "sanskrit": "kevalaḥ",
+              "english": "only, pure"
+            },
+            {
+              "sanskrit": "aham",
+              "english": "I"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "sthitiḥ",
+              "english": "established state"
+            }
+          ],
+          "translation": "Through serenity the mind comes to rest; when the mind is finished, peace prevails, and one stands fixed in the simple truth: I am the pure one.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "यत्र यत्र मनो याति तत्र तत्र निवर्तयेत् ।\nतस्मात् सर्वप्रयत्नेन मनः संयच्छ बुद्धिमान् ॥",
+          "iast": "yatra yatra mano yāti tatra tatra nivartayet |\ntasmāt sarvaprayatnena manaḥ saṁyaccha buddhimān ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yatra yatra",
+              "english": "wherever"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "yāti",
+              "english": "goes"
+            },
+            {
+              "sanskrit": "tatra tatra",
+              "english": "there, there"
+            },
+            {
+              "sanskrit": "nivartayet",
+              "english": "should turn back"
+            },
+            {
+              "sanskrit": "tasmāt",
+              "english": "therefore"
+            },
+            {
+              "sanskrit": "sarva-prayatnena",
+              "english": "with full endeavor"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "saṁyaccha",
+              "english": "restrain"
+            },
+            {
+              "sanskrit": "buddhimān",
+              "english": "the wise person"
+            }
+          ],
+          "translation": "Wherever the mind wanders, bring it back. Thus, with steady effort, the intelligent restrain the fickle mind.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "आत्मनि लीयते यस्य मनः शान्तं निरामयम् ।\nतस्य भयं न विद्येत ब्रह्मैव स भवेद् ध्रुवम् ॥",
+          "iast": "ātmani līyate yasya manaḥ śāntaṁ nirāmayam |\ntasya bhayaṁ na vidyeta brahmaiva sa bhaved dhruvam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "ātmani",
+              "english": "in the Self"
+            },
+            {
+              "sanskrit": "līyate",
+              "english": "is dissolved"
+            },
+            {
+              "sanskrit": "yasya",
+              "english": "of whom"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "śāntam",
+              "english": "peaceful"
+            },
+            {
+              "sanskrit": "nirāmayam",
+              "english": "free of disease"
+            },
+            {
+              "sanskrit": "tasya",
+              "english": "for him"
+            },
+            {
+              "sanskrit": "bhayam",
+              "english": "fear"
+            },
+            {
+              "sanskrit": "na vidyeta",
+              "english": "does not exist"
+            },
+            {
+              "sanskrit": "brahma eva",
+              "english": "Brahman alone"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "bhavet",
+              "english": "becomes"
+            },
+            {
+              "sanskrit": "dhruvam",
+              "english": "surely"
+            }
+          ],
+          "translation": "When one’s mind, pacified and pure, dissolves in the Self, fear departs; surely he becomes Brahman only.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 13,
+          "ref": "1.13",
+          "devanagari": "शब्दादिषु न संलग्नं मनो यस्य कदाचन ।\nस एव मुच्यते धीरः स बन्धैः परिमुच्यते ॥",
+          "iast": "śabdādiṣu na saṁlagnaṁ mano yasya kadācana |\nsa eva mucyate dhīraḥ sa bandhaiḥ parimucyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "śabda-ādiṣu",
+              "english": "in sound and other objects"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "saṁlagnam",
+              "english": "attached"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "yasya",
+              "english": "of whom"
+            },
+            {
+              "sanskrit": "kadācana",
+              "english": "at any time"
+            },
+            {
+              "sanskrit": "saḥ eva",
+              "english": "he alone"
+            },
+            {
+              "sanskrit": "mucyate",
+              "english": "is liberated"
+            },
+            {
+              "sanskrit": "dhīraḥ",
+              "english": "steadfast one"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "bandhaiḥ",
+              "english": "from bonds"
+            },
+            {
+              "sanskrit": "parimucyate",
+              "english": "is completely freed"
+            }
+          ],
+          "translation": "He whose mind does not stick to sound and the like—such a steady soul becomes free, released from bondage altogether.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 14,
+          "ref": "1.14",
+          "devanagari": "ओङ्कारं बिन्दुनादात्मकं ध्यायन् निरन्तरम् ।\nमनः प्रसादमाप्नोति मोक्षमर्हति मानवः ॥",
+          "iast": "oṅkāraṁ bindunādātmakaṁ dhyāyan nirantaram |\nmanaḥ prasādam āpnoti mokṣam arhati mānavaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "oṅkāram",
+              "english": "the syllable Om"
+            },
+            {
+              "sanskrit": "bindu-nāda-ātmakam",
+              "english": "as endowed with point and resonance"
+            },
+            {
+              "sanskrit": "dhyāyan",
+              "english": "meditating"
+            },
+            {
+              "sanskrit": "nirantaram",
+              "english": "unceasingly"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "prasādam",
+              "english": "clarity, grace"
+            },
+            {
+              "sanskrit": "āpnoti",
+              "english": "attains"
+            },
+            {
+              "sanskrit": "mokṣam",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "arhati",
+              "english": "becomes worthy of"
+            },
+            {
+              "sanskrit": "mānavaḥ",
+              "english": "the person"
+            }
+          ],
+          "translation": "Meditating constantly upon Om, with its bindu and nāda, one’s mind becomes clear, and a person becomes fit for liberation.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 15,
+          "ref": "1.15",
+          "devanagari": "प्राणापानौ समौ कृत्वा मनो धैर्येण धारयेत् ।\nप्राणापाननिरोधे तु मनः शान्तिं निगच्छति ॥",
+          "iast": "prāṇāpānau samau kṛtvā mano dhairyeṇa dhārayet |\nprāṇāpānanirodhe tu manaḥ śāntiṁ nigacchati ||",
+          "word_by_word": [
+            {
+              "sanskrit": "prāṇa-apānau",
+              "english": "the outgoing and incoming breath"
+            },
+            {
+              "sanskrit": "samau kṛtvā",
+              "english": "making even"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "dhairyeṇa",
+              "english": "with steadiness"
+            },
+            {
+              "sanskrit": "dhārayet",
+              "english": "should hold"
+            },
+            {
+              "sanskrit": "prāṇa-apāna-nirodhe",
+              "english": "when prāṇa and apāna are restrained"
+            },
+            {
+              "sanskrit": "tu",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "śāntim",
+              "english": "peace"
+            },
+            {
+              "sanskrit": "nigacchati",
+              "english": "attains"
+            }
+          ],
+          "translation": "Balancing prāṇa and apāna, hold the mind with firm composure. When the breaths are checked, the mind descends into peace.",
+          "meter": "anuṣṭubh"
+        },
+        {
+          "number": 16,
+          "ref": "1.16",
+          "devanagari": "सर्वभूतेषु चात्मानं ब्रह्म रूपं विलोकयेत् ।\nतदा तस्य भवेद् मोक्षो नान्यथैतत् कथंचन ॥",
+          "iast": "sarvabhūteṣu cātmānaṁ brahma rūpaṁ vilokayet |\ntadā tasya bhaved mokṣo nānyathaitad kathaṁcana ||",
+          "word_by_word": [
+            {
+              "sanskrit": "sarva-bhūteṣu",
+              "english": "in all beings"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "ātmānam",
+              "english": "the Self"
+            },
+            {
+              "sanskrit": "brahma-rūpam",
+              "english": "as Brahman-form"
+            },
+            {
+              "sanskrit": "vilokayet",
+              "english": "one should behold"
+            },
+            {
+              "sanskrit": "tadā",
+              "english": "then"
+            },
+            {
+              "sanskrit": "tasya",
+              "english": "for him"
+            },
+            {
+              "sanskrit": "bhavet",
+              "english": "there is"
+            },
+            {
+              "sanskrit": "mokṣaḥ",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "na anyathā",
+              "english": "not otherwise"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "kathaṁcana",
+              "english": "in any way"
+            }
+          ],
+          "translation": "Seeing one’s own Self as Brahman within all beings, one attains freedom—there is no other way to it.",
+          "meter": "anuṣṭubh"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+{
+  "id": "narayana-upanishad",
+  "short": "NārUp",
+  "title": "Narayana Upanishad",
+  "author": "Unknown (Vedic tradition)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 1st millennium CE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "नारायणः परोऽव्यक्तात् अण्डम् अव्यक्तसंभवम्।",
+          "iast": "nārāyaṇaḥ paro'vyaktāt aṇḍam avyakta-sambhavam.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणः",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "परः",
+              "english": "beyond, supreme"
+            },
+            {
+              "sanskrit": "अव्यक्तात्",
+              "english": "than the unmanifest"
+            },
+            {
+              "sanskrit": "अण्डम्",
+              "english": "the cosmic egg"
+            },
+            {
+              "sanskrit": "अव्यक्त-सम्भवम्",
+              "english": "born from the unmanifest"
+            }
+          ],
+          "translation": "Nārāyaṇa is beyond the unmanifest; from the unmanifest arises the cosmic egg.",
+          "meter": "prose"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "अण्डस्यान्तस्तु इमे लोकाः सप्तद्वीपा च मेदिनी।",
+          "iast": "aṇḍasyāntas tu ime lokāḥ saptadvīpā ca medinī.",
+          "word_by_word": [
+            {
+              "sanskrit": "अण्डस्य",
+              "english": "of the cosmic egg"
+            },
+            {
+              "sanskrit": "अन्तः",
+              "english": "within"
+            },
+            {
+              "sanskrit": "तु",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "इमे",
+              "english": "these"
+            },
+            {
+              "sanskrit": "लोकाः",
+              "english": "worlds"
+            },
+            {
+              "sanskrit": "सप्तद्वीपा",
+              "english": "seven-islanded"
+            },
+            {
+              "sanskrit": "च",
+              "english": "and"
+            },
+            {
+              "sanskrit": "मेदिनी",
+              "english": "the earth"
+            }
+          ],
+          "translation": "Within that egg are these worlds—the earth with her seven islands.",
+          "meter": "prose"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "नारायणः परं ब्रह्म तत्त्वं नारायणः परः।",
+          "iast": "nārāyaṇaḥ paraṁ brahma tattvaṁ nārāyaṇaḥ paraḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "നारायणः",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "परम्",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "ब्रह्म",
+              "english": "Brahman"
+            },
+            {
+              "sanskrit": "तत्त्वम्",
+              "english": "the principle, reality"
+            },
+            {
+              "sanskrit": "नारायणः",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "परः",
+              "english": "is the highest"
+            }
+          ],
+          "translation": "Nārāyaṇa is the Supreme Brahman; the ultimate principle is Nārāyaṇa, the highest.",
+          "meter": "prose"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "नारायणः परो ज्योतिरात्मा नारायणः परः।",
+          "iast": "nārāyaṇaḥ paro jyotir ātmā nārāyaṇaḥ paraḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणः",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "परः",
+              "english": "supreme, transcendent"
+            },
+            {
+              "sanskrit": "ज्योतिः",
+              "english": "light"
+            },
+            {
+              "sanskrit": "आत्मा",
+              "english": "Self"
+            },
+            {
+              "sanskrit": "नारायणः",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "परः",
+              "english": "is supreme"
+            }
+          ],
+          "translation": "Nārāyaṇa is the supreme light; He is the Self—Nārāyaṇa alone is supreme.",
+          "meter": "prose"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "नारायणः परो देवो, एको नारायणो न द्वितीयोऽस्ति कश्चन।",
+          "iast": "nārāyaṇaḥ paro devo, eko nārāyaṇo na dvitīyo'sti kaścana.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणः",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "परः",
+              "english": "highest"
+            },
+            {
+              "sanskrit": "देवः",
+              "english": "Lord, Deity"
+            },
+            {
+              "sanskrit": "एकः",
+              "english": "one, alone"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "द्वितीयः",
+              "english": "a second"
+            },
+            {
+              "sanskrit": "अस्ति",
+              "english": "exists"
+            },
+            {
+              "sanskrit": "कश्चन",
+              "english": "anyone, anything"
+            }
+          ],
+          "translation": "Nārāyaṇa is the highest Lord—He alone; there is no second beside Him.",
+          "meter": "prose"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "नारायणाद् ब्रह्मा जायते।",
+          "iast": "nārāyaṇād brahmā jāyate.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणात्",
+              "english": "from Nārāyaṇa"
+            },
+            {
+              "sanskrit": "ब्रह्मा",
+              "english": "Brahmā"
+            },
+            {
+              "sanskrit": "जायते",
+              "english": "is born"
+            }
+          ],
+          "translation": "From Nārāyaṇa, Brahmā takes birth.",
+          "meter": "prose"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "नारायणात् रुद्रो जायते।",
+          "iast": "nārāyaṇāt rudro jāyate.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणात्",
+              "english": "from Nārāyaṇa"
+            },
+            {
+              "sanskrit": "रुद्रः",
+              "english": "Rudra"
+            },
+            {
+              "sanskrit": "जायते",
+              "english": "arises, is born"
+            }
+          ],
+          "translation": "From Nārāyaṇa, Rudra arises.",
+          "meter": "prose"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "नारायणादिन्द्रो जायते देवाः सर्वे च।",
+          "iast": "nārāyaṇād indro jāyate devāḥ sarve ca.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणात्",
+              "english": "from Nārāyaṇa"
+            },
+            {
+              "sanskrit": "इन्द्रः",
+              "english": "Indra"
+            },
+            {
+              "sanskrit": "जायते",
+              "english": "is born"
+            },
+            {
+              "sanskrit": "देवाः",
+              "english": "the gods"
+            },
+            {
+              "sanskrit": "सर्वे",
+              "english": "all"
+            },
+            {
+              "sanskrit": "च",
+              "english": "and"
+            }
+          ],
+          "translation": "From Nārāyaṇa, Indra appears—and all the gods as well.",
+          "meter": "prose"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "नारायणाद् वसवोऽष्टौ रुद्राश्चैकादश आदित्याः द्वादश।",
+          "iast": "nārāyaṇād vasavo'ṣṭau rudrāś caikādaśa ādityāḥ dvādaśa.",
+          "word_by_word": [
+            {
+              "sanskrit": "नारायणात्",
+              "english": "from Nārāyaṇa"
+            },
+            {
+              "sanskrit": "वसवः",
+              "english": "the Vasus"
+            },
+            {
+              "sanskrit": "अष्टौ",
+              "english": "eight"
+            },
+            {
+              "sanskrit": "रुद्राः",
+              "english": "the Rudras"
+            },
+            {
+              "sanskrit": "च",
+              "english": "and"
+            },
+            {
+              "sanskrit": "एकादश",
+              "english": "eleven"
+            },
+            {
+              "sanskrit": "आदित्याः",
+              "english": "the Ādityas"
+            },
+            {
+              "sanskrit": "द्वादश",
+              "english": "twelve"
+            }
+          ],
+          "translation": "From Nārāyaṇa come the eight Vasus, the eleven Rudras, and the twelve Ādityas.",
+          "meter": "prose"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "ॐ नारायणाय विद्महे वासुदेवाय धीमहि तन्नो विष्णुः प्रचोदयात्।",
+          "iast": "oṁ nārāyaṇāya vidmahe vāsudevāya dhīmahi tanno viṣṇuḥ pracodayāt.",
+          "word_by_word": [
+            {
+              "sanskrit": "ॐ",
+              "english": "Om"
+            },
+            {
+              "sanskrit": "नारायणाय",
+              "english": "unto Nārāyaṇa"
+            },
+            {
+              "sanskrit": "विद्महे",
+              "english": "may we know"
+            },
+            {
+              "sanskrit": "वासुदेवाय",
+              "english": "unto Vāsudeva"
+            },
+            {
+              "sanskrit": "धीमहि",
+              "english": "may we meditate"
+            },
+            {
+              "sanskrit": "तत्-नः",
+              "english": "that (Lord) our"
+            },
+            {
+              "sanskrit": "विष्णुः",
+              "english": "Viṣṇu"
+            },
+            {
+              "sanskrit": "प्रचोदयात्",
+              "english": "may impel, enlighten"
+            }
+          ],
+          "translation": "Om. May we know Nārāyaṇa; may we meditate on Vāsudeva; may that Viṣṇu stir our intelligence.",
+          "meter": "gāyatrī-like mantra"
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "एको नारायण आसीत् न ब्रह्मा न ईशानः, नापो नाऽग्निर्न सूर्यः। स एकाकी न रमते; स ईक्षत — लोकान् सृजानीति॥",
+          "iast": "eko nārāyaṇa āsīt na brahmā na īśānaḥ, nāpo nāgnir na sūryaḥ. sa ekākī na ramate; sa īkṣata — lokān sṛjānīti.",
+          "word_by_word": [
+            {
+              "sanskrit": "ekaḥ",
+              "english": "one, alone"
+            },
+            {
+              "sanskrit": "nārāyaṇaḥ",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "āsīt",
+              "english": "was"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "brahmā",
+              "english": "Brahmā"
+            },
+            {
+              "sanskrit": "īśānaḥ",
+              "english": "Īśāna (Rudra)"
+            },
+            {
+              "sanskrit": "āpaḥ",
+              "english": "waters"
+            },
+            {
+              "sanskrit": "agniḥ",
+              "english": "fire"
+            },
+            {
+              "sanskrit": "sūryaḥ",
+              "english": "the sun"
+            },
+            {
+              "sanskrit": "ekākī",
+              "english": "solitary"
+            },
+            {
+              "sanskrit": "ramate",
+              "english": "enjoys, delights"
+            },
+            {
+              "sanskrit": "īkṣata",
+              "english": "he contemplated"
+            },
+            {
+              "sanskrit": "lokān",
+              "english": "worlds"
+            },
+            {
+              "sanskrit": "sṛjānīti",
+              "english": "‘let me create’"
+            }
+          ],
+          "translation": "Nārāyaṇa alone existed—no Brahmā, no Īśāna, no waters, no fire, no sun. Standing solitary, He did not relish; He then considered, “Let Me manifest the worlds.”"
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "ततो नारायणस्तपोऽतप्यत। तपोऽतप्त्वा सृष्टिमसृजत। नारायणाद् ब्रह्मा जायते, नारायणाद् रुद्रो जायते, नारायणाद् इन्द्रो जायते॥",
+          "iast": "tato nārāyaṇas tapo'tapyata. tapo'taptvā sṛṣṭim asṛjata. nārāyaṇād brahmā jāyate, nārāyaṇād rudro jāyate, nārāyaṇād indro jāyate.",
+          "word_by_word": [
+            {
+              "sanskrit": "tataḥ",
+              "english": "then"
+            },
+            {
+              "sanskrit": "nārāyaṇaḥ",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "tapas",
+              "english": "austerity, contemplation"
+            },
+            {
+              "sanskrit": "atapyata",
+              "english": "performed"
+            },
+            {
+              "sanskrit": "taptvā",
+              "english": "having perfected"
+            },
+            {
+              "sanskrit": "sṛṣṭim",
+              "english": "creation"
+            },
+            {
+              "sanskrit": "asṛjata",
+              "english": "He brought forth"
+            },
+            {
+              "sanskrit": "nārāyaṇāt",
+              "english": "from Nārāyaṇa"
+            },
+            {
+              "sanskrit": "brahmā",
+              "english": "Brahmā"
+            },
+            {
+              "sanskrit": "rudraḥ",
+              "english": "Rudra"
+            },
+            {
+              "sanskrit": "indraḥ",
+              "english": "Indra"
+            },
+            {
+              "sanskrit": "jāyate",
+              "english": "arises, is born"
+            }
+          ],
+          "translation": "Thereafter the Lord engaged in divine contemplation, and by that potency He unfolded the creation. From Nārāyaṇa spring Brahmā, from Nārāyaṇa Rudra, from Nārāyaṇa Indra."
+        },
+        {
+          "number": 13,
+          "ref": "1.13",
+          "devanagari": "नारायणाद् देवाः प्रवर्तन्ते, नारायणात् प्रजापतयः; नारायणाद् ऋषयो जायन्ते, नारायणाद् ऋचः यजूंषि सामानि प्रसूयन्ते॥",
+          "iast": "nārāyaṇād devāḥ pravartante, nārāyaṇāt prajāpatayaḥ; nārāyaṇād ṛṣayo jāyante, nārāyaṇād ṛcaḥ yajūṁṣi sāmāni prasūyante.",
+          "word_by_word": [
+            {
+              "sanskrit": "nārāyaṇāt",
+              "english": "from Nārāyaṇa"
+            },
+            {
+              "sanskrit": "devāḥ",
+              "english": "the gods"
+            },
+            {
+              "sanskrit": "pravartante",
+              "english": "proceed, function"
+            },
+            {
+              "sanskrit": "prajāpatayaḥ",
+              "english": "progenitors"
+            },
+            {
+              "sanskrit": "ṛṣayaḥ",
+              "english": "sages"
+            },
+            {
+              "sanskrit": "ṛcaḥ",
+              "english": "the Ṛg-hymns"
+            },
+            {
+              "sanskrit": "yajūṁṣi",
+              "english": "the Yajus-formulas"
+            },
+            {
+              "sanskrit": "sāmāni",
+              "english": "the Sāman-chants"
+            },
+            {
+              "sanskrit": "prasūyante",
+              "english": "are generated"
+            }
+          ],
+          "translation": "From Nārāyaṇa the gods take up their offices, from Him come the Prajāpatis; from Nārāyaṇa arise the seers; from Nārāyaṇa are produced the Ṛg, Yajus, and Sāma revelations."
+        },
+        {
+          "number": 14,
+          "ref": "1.14",
+          "devanagari": "नारायणाद् प्राणो जायते मनश्च सर्वेन्द्रियाणि; नारायणाद् भूरापोऽनलो वायुर् नभश्च॥",
+          "iast": "nārāyaṇād prāṇo jāyate manaś ca sarvendriyāṇi; nārāyaṇād bhūr āpo'nalo vāyur nabhaś ca.",
+          "word_by_word": [
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "vital air"
+            },
+            {
+              "sanskrit": "jāyate",
+              "english": "arises"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "mind"
+            },
+            {
+              "sanskrit": "sarva-indriyāṇi",
+              "english": "all senses"
+            },
+            {
+              "sanskrit": "bhūḥ",
+              "english": "earth"
+            },
+            {
+              "sanskrit": "āpaḥ",
+              "english": "waters"
+            },
+            {
+              "sanskrit": "analaḥ",
+              "english": "fire"
+            },
+            {
+              "sanskrit": "vāyuḥ",
+              "english": "air"
+            },
+            {
+              "sanskrit": "nabhaḥ",
+              "english": "ether/sky"
+            }
+          ],
+          "translation": "From Nārāyaṇa are born the vital airs, the mind, and all the senses; from Nārāyaṇa emerge earth, waters, fire, air, and the expanse of sky."
+        },
+        {
+          "number": 15,
+          "ref": "1.15",
+          "devanagari": "नारायण एवेदं सर्वं यद्भूतं यच्च भव्यम्। निष्कलं निष्क्रियं शान्तं निरवद्यं निरञ्जनम्॥",
+          "iast": "nārāyaṇa evedaṁ sarvaṁ yad bhūtaṁ yac ca bhavyam. niṣkalaṁ niṣkriyaṁ śāntaṁ niravadyaṁ nirañjanam.",
+          "word_by_word": [
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "idaṁ sarvam",
+              "english": "this all"
+            },
+            {
+              "sanskrit": "yat bhūtam",
+              "english": "what has been"
+            },
+            {
+              "sanskrit": "yac ca bhavyam",
+              "english": "and what will be"
+            },
+            {
+              "sanskrit": "niṣkalam",
+              "english": "without parts"
+            },
+            {
+              "sanskrit": "niṣkriyam",
+              "english": "without action"
+            },
+            {
+              "sanskrit": "śāntam",
+              "english": "peaceful"
+            },
+            {
+              "sanskrit": "niravadyam",
+              "english": "faultless"
+            },
+            {
+              "sanskrit": "nirañjanam",
+              "english": "stainless"
+            }
+          ],
+          "translation": "All that exists and all that is to be—this is but Nārāyaṇa. He is without parts, without material activity, ever peaceful, faultless, and stainless."
+        },
+        {
+          "number": 16,
+          "ref": "1.16",
+          "devanagari": "नारायणः परं ब्रह्म, नारायणः परो ह्यात्मा, नारायणः परं ज्योतिः, नारायणः परः प्रभुः॥",
+          "iast": "nārāyaṇaḥ paraṁ brahma, nārāyaṇaḥ paro hy ātmā, nārāyaṇaḥ paraṁ jyotiḥ, nārāyaṇaḥ paraḥ prabhuḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "paraṁ brahma",
+              "english": "the supreme Brahman"
+            },
+            {
+              "sanskrit": "ātmā",
+              "english": "the Self"
+            },
+            {
+              "sanskrit": "paraṁ jyotiḥ",
+              "english": "the supreme light"
+            },
+            {
+              "sanskrit": "paraḥ prabhuḥ",
+              "english": "the supreme Lord"
+            }
+          ],
+          "translation": "Nārāyaṇa is the Supreme Brahman; Nārāyaṇa is verily the Supreme Self; Nārāyaṇa is the highest effulgence; Nārāyaṇa is the ultimate Lord."
+        },
+        {
+          "number": 17,
+          "ref": "1.17",
+          "devanagari": "अतः प्रणवपूर्वकं \"नमो नारायणाय\" इत्यष्टाक्षरं ब्रह्ममन्त्रं जपेत्; यस्य स्मरणमात्रेण पापं नश्यति ध्रुवम्॥",
+          "iast": "ataḥ praṇava-pūrvakaṁ \"namo nārāyaṇāya\" ity aṣṭākṣaraṁ brahma-mantraṁ japet; yasya smaraṇa-mātreṇa pāpaṁ naśyati dhruvam.",
+          "word_by_word": [
+            {
+              "sanskrit": "ataḥ",
+              "english": "therefore"
+            },
+            {
+              "sanskrit": "praṇava-pūrvakam",
+              "english": "preceded by Oṁ"
+            },
+            {
+              "sanskrit": "namo nārāyaṇāya",
+              "english": "obeisance unto Nārāyaṇa"
+            },
+            {
+              "sanskrit": "aṣṭākṣaram",
+              "english": "eight-syllabled"
+            },
+            {
+              "sanskrit": "brahma-mantram",
+              "english": "the Vedic mantra of Brahman"
+            },
+            {
+              "sanskrit": "japet",
+              "english": "should chant"
+            },
+            {
+              "sanskrit": "smaraṇa-mātreṇa",
+              "english": "by mere remembrance"
+            },
+            {
+              "sanskrit": "pāpam",
+              "english": "sin"
+            },
+            {
+              "sanskrit": "naśyati",
+              "english": "is destroyed"
+            },
+            {
+              "sanskrit": "dhruvam",
+              "english": "surely"
+            }
+          ],
+          "translation": "Hence one should chant the eight-syllabled Brahma-mantra, prefaced with Oṁ—“namo nārāyaṇāya.” By its remembrance alone, sins are certainly vanquished."
+        },
+        {
+          "number": 18,
+          "ref": "1.18",
+          "devanagari": "एष मन्त्रः वेदवेद्यः, सर्वकामप्रदः स्मृतः; जपो न्याससमायुक्तः सिद्धिदः पापनाशनः॥",
+          "iast": "eṣa mantraḥ veda-vedyaḥ, sarva-kāma-pradaḥ smṛtaḥ; japo nyāsa-samāyuktaḥ siddhidaḥ pāpanāśanaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "eṣaḥ",
+              "english": "this"
+            },
+            {
+              "sanskrit": "mantraḥ",
+              "english": "mantra"
+            },
+            {
+              "sanskrit": "veda-vedyaḥ",
+              "english": "known through the Veda"
+            },
+            {
+              "sanskrit": "sarva-kāma-pradaḥ",
+              "english": "granting all desires"
+            },
+            {
+              "sanskrit": "smṛtaḥ",
+              "english": "is remembered as"
+            },
+            {
+              "sanskrit": "japaḥ",
+              "english": "chanting"
+            },
+            {
+              "sanskrit": "nyāsa-samāyuktaḥ",
+              "english": "joined with nyāsa (ritual placement)"
+            },
+            {
+              "sanskrit": "siddhidaḥ",
+              "english": "bestowing perfection"
+            },
+            {
+              "sanskrit": "pāpa-nāśanaḥ",
+              "english": "destroying sin"
+            }
+          ],
+          "translation": "This mantra is Veda-affirmed and famed to bestow all worthy aims; chanted with proper nyāsa, it awards perfection and eliminates sin."
+        },
+        {
+          "number": 19,
+          "ref": "1.19",
+          "devanagari": "यो ध्यायति पुरूषो नारायणं परात्परम्, स सर्वपापविनिर्मुक्तो विष्णोर्लोकमवाप्नुयात्॥",
+          "iast": "yo dhyāyati purūṣo nārāyaṇaṁ parātparam, sa sarva-pāpa-vinirmukto viṣṇor lokam avāpnuyāt.",
+          "word_by_word": [
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "dhyāyati",
+              "english": "meditates"
+            },
+            {
+              "sanskrit": "puruṣaḥ",
+              "english": "a person"
+            },
+            {
+              "sanskrit": "nārāyaṇam",
+              "english": "Nārāyaṇa"
+            },
+            {
+              "sanskrit": "parātparam",
+              "english": "beyond the beyond"
+            },
+            {
+              "sanskrit": "sarva-pāpa-vinirmuktaḥ",
+              "english": "freed from all sin"
+            },
+            {
+              "sanskrit": "viṣṇoḥ lokam",
+              "english": "the abode of Viṣṇu"
+            },
+            {
+              "sanskrit": "avāpnuyāt",
+              "english": "attains"
+            }
+          ],
+          "translation": "Whoever meditates upon Lord Nārāyaṇa, the Supreme beyond all, becomes rid of every sin and gains entrance to the abode of Viṣṇu."
+        },
+        {
+          "number": 20,
+          "ref": "1.20",
+          "devanagari": "इति नारायणोपनिषदि गुह्यविद्या प्रकीर्तिता; योऽधीते श्रद्धया नित्यं स मुच्यते न संशयः॥",
+          "iast": "iti nārāyaṇopaniṣadi guhya-vidyā prakīrtitā; yo'dhīte śraddhayā nityaṁ sa mucyate na saṁśayaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "nārāyaṇa-upaniṣadi",
+              "english": "in the Nārāyaṇa Upaniṣad"
+            },
+            {
+              "sanskrit": "guhya-vidyā",
+              "english": "secret wisdom"
+            },
+            {
+              "sanskrit": "prakīrtitā",
+              "english": "has been declared"
+            },
+            {
+              "sanskrit": "yaḥ adhīte",
+              "english": "who studies"
+            },
+            {
+              "sanskrit": "śraddhayā",
+              "english": "with faith"
+            },
+            {
+              "sanskrit": "nityam",
+              "english": "daily"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "mucyate",
+              "english": "is liberated"
+            },
+            {
+              "sanskrit": "na saṁśayaḥ",
+              "english": "without doubt"
+            }
+          ],
+          "translation": "Thus the confidential knowledge is proclaimed in the Nārāyaṇa Upaniṣad. He who faithfully recites it daily is delivered—of this there is no doubt."
+        }
+      ]
+    }
+  ]
+}

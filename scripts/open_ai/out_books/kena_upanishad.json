@@ -1,0 +1,2016 @@
+{
+  "id": "kena-up",
+  "short": "Kena",
+  "title": "Kena Upanishad",
+  "author": "Unknown (Tālavakāra, Sāmaveda)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 8th–5th century BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 1,
+      "section_title": "Khanda 1",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "केनेषितं पतति प्रेषितं मनः ।\nकेन प्राणः प्रथमः प्रैति युक्तः ।\nकेनेषिता वाचमिमां वदन्ति ।\nचक्षुः श्रोत्रं क उ देवो युनक्ति ॥",
+          "iast": "keneṣitaṁ patati preṣitaṁ manaḥ |\nkena prāṇaḥ prathamaḥ praiti yuktaḥ |\nkeneṣitā vācam imāṁ vadanti |\ncakṣuḥ śrotraṁ ka u devo yunakti ||",
+          "word_by_word": [
+            {
+              "sanskrit": "kena",
+              "english": "by whom"
+            },
+            {
+              "sanskrit": "iṣitam",
+              "english": "impelled"
+            },
+            {
+              "sanskrit": "patati",
+              "english": "does it rush forth"
+            },
+            {
+              "sanskrit": "preṣitam",
+              "english": "being sent"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "the vital breath"
+            },
+            {
+              "sanskrit": "prathamaḥ",
+              "english": "the foremost"
+            },
+            {
+              "sanskrit": "praitī",
+              "english": "goes, acts"
+            },
+            {
+              "sanskrit": "yuktaḥ",
+              "english": "being yoked"
+            },
+            {
+              "sanskrit": "vācām",
+              "english": "speech"
+            },
+            {
+              "sanskrit": "vadanti",
+              "english": "do they speak"
+            },
+            {
+              "sanskrit": "cakṣuḥ",
+              "english": "the eye"
+            },
+            {
+              "sanskrit": "śrotram",
+              "english": "the ear"
+            },
+            {
+              "sanskrit": "ka u",
+              "english": "who indeed"
+            },
+            {
+              "sanskrit": "devaḥ",
+              "english": "the shining controller"
+            },
+            {
+              "sanskrit": "yunakti",
+              "english": "harnesses, energizes"
+            }
+          ],
+          "translation": "By whose direction does the mind, being driven, race forth? By whose order does the chief prāṇa move, being yoked? By whose will do speakers utter this speech? Who, indeed, is that deva who empowers the eye and the ear?"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "श्रोत्रस्य श्रोत्रं मनसो मनो यद् ।\nवाचो ह वाचं स उ प्राणस्य प्राणः ।\nचक्षुषश्चक्षुरतिमुच्य धीराः ।\nप्रेत्यास्माल्लोकादमृता भवन्ति ॥",
+          "iast": "śrotrasya śrotraṁ manaso mano yad |\nvāco ha vācaṁ sa u prāṇasya prāṇaḥ |\ncakṣuṣaś cakṣur atimucya dhīrāḥ |\npretyāsmāl lokād amṛtā bhavanti ||",
+          "word_by_word": [
+            {
+              "sanskrit": "śrotrasya śrotram",
+              "english": "the hearing of the ear"
+            },
+            {
+              "sanskrit": "manasaḥ manaḥ",
+              "english": "the mind of the mind"
+            },
+            {
+              "sanskrit": "vāco vācam",
+              "english": "the speech of speech"
+            },
+            {
+              "sanskrit": "saḥ u",
+              "english": "He indeed"
+            },
+            {
+              "sanskrit": "prāṇasya prāṇaḥ",
+              "english": "the life of prāṇa"
+            },
+            {
+              "sanskrit": "cakṣuṣaḥ cakṣuḥ",
+              "english": "the sight of the eye"
+            },
+            {
+              "sanskrit": "atimucya",
+              "english": "having detached, releasing"
+            },
+            {
+              "sanskrit": "dhīrāḥ",
+              "english": "the sober, wise"
+            },
+            {
+              "sanskrit": "pretya",
+              "english": "departing (after death)"
+            },
+            {
+              "sanskrit": "asmāt lokāt",
+              "english": "from this world"
+            },
+            {
+              "sanskrit": "amṛtāḥ bhavanti",
+              "english": "become immortal"
+            }
+          ],
+          "translation": "He is the hearing of the ear, the mind’s mind, the speech of speech; He indeed is the life of life-breath and the eye’s sight. The sober, loosening themselves from sense-clinging, depart this world and attain immortality."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "यद्वाचा नाभ्युदितं येन वागभ्युद्यते ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yadvācā nābhyuditaṁ yena vāg abhyudyate |\ntadeva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "vācā",
+              "english": "by speech"
+            },
+            {
+              "sanskrit": "na abhyuditam",
+              "english": "is not expressed"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "vāk",
+              "english": "speech"
+            },
+            {
+              "sanskrit": "abhyudyate",
+              "english": "is made to manifest"
+            },
+            {
+              "sanskrit": "tad eva",
+              "english": "that alone"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "the Absolute"
+            },
+            {
+              "sanskrit": "tvam viddhi",
+              "english": "know you"
+            },
+            {
+              "sanskrit": "na idam",
+              "english": "not this"
+            },
+            {
+              "sanskrit": "yat idam upāsate",
+              "english": "which people worship (as an object)"
+            }
+          ],
+          "translation": "That which speech cannot announce, yet by which speech is impelled—know that alone to be Brahman, not this that people adore as an object."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "यन्मनसा न मनुते येनाहुर्मनो मतम् ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yan manasā na manute yenāhur mano matam |\ntadeva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "what"
+            },
+            {
+              "sanskrit": "manasā",
+              "english": "by the mind"
+            },
+            {
+              "sanskrit": "na manute",
+              "english": "is not conceived"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "āhuḥ",
+              "english": "they say"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "the mind"
+            },
+            {
+              "sanskrit": "matam",
+              "english": "thinks, knows"
+            },
+            {
+              "sanskrit": "tad eva brahma",
+              "english": "that alone is Brahman"
+            },
+            {
+              "sanskrit": "tvam viddhi",
+              "english": "know it"
+            },
+            {
+              "sanskrit": "na idam yat idam upāsate",
+              "english": "not this that is worshiped as such"
+            }
+          ],
+          "translation": "What the mind cannot grasp, yet by which the mind is said to think—know that alone to be Brahman, not this that people put before themselves for worship."
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "यच्चक्षुषा न पश्यति येन चक्षूंषि पश्यति ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yac cakṣuṣā na paśyati yena cakṣūṁṣi paśyati |\ntadeva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "cakṣuṣā",
+              "english": "with the eye"
+            },
+            {
+              "sanskrit": "na paśyati",
+              "english": "one does not see"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "cakṣūṁṣi",
+              "english": "the eyes"
+            },
+            {
+              "sanskrit": "paśyati",
+              "english": "see"
+            },
+            {
+              "sanskrit": "tad eva brahma",
+              "english": "that alone is Brahman"
+            },
+            {
+              "sanskrit": "tvam viddhi",
+              "english": "know it"
+            },
+            {
+              "sanskrit": "na idam",
+              "english": "not this"
+            },
+            {
+              "sanskrit": "yat idam upāsate",
+              "english": "which is worshiped as an object"
+            }
+          ],
+          "translation": "That which the eye does not see, yet by which the eyes see—know that alone to be Brahman, not this that people worship as an object."
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "यच्छ्रोत्रेण न शृणोति येन श्रोत्रमिदं श्रुतम् ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yac chrotreṇa na śṛṇoti yena śrotram idaṁ śrutam |\ntadeva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "śrotreṇa",
+              "english": "with the ear"
+            },
+            {
+              "sanskrit": "na śṛṇoti",
+              "english": "one does not hear"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "śrotram",
+              "english": "the organ of hearing"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "śrutam",
+              "english": "is enabled to hear"
+            },
+            {
+              "sanskrit": "tad eva brahma",
+              "english": "that alone is Brahman"
+            },
+            {
+              "sanskrit": "tvam viddhi",
+              "english": "know it"
+            },
+            {
+              "sanskrit": "na idam yad idam upāsate",
+              "english": "not this that is worshiped here"
+            }
+          ],
+          "translation": "That which one does not hear with the ear, yet by which the ear hears—know that alone to be Brahman, not this that people honor as an object."
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "यत्प्राणेन न प्रणिति येन प्राणः प्रणीयते ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yat prāṇena na praṇiti yena prāṇaḥ praṇīyate |\ntadeva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "prāṇena",
+              "english": "by prāṇa (life-breath)"
+            },
+            {
+              "sanskrit": "na praṇiti",
+              "english": "is not breathed/moved"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "the life-breath"
+            },
+            {
+              "sanskrit": "praṇīyate",
+              "english": "is made to function"
+            },
+            {
+              "sanskrit": "tad eva brahma",
+              "english": "that alone is Brahman"
+            },
+            {
+              "sanskrit": "tvam viddhi",
+              "english": "know it"
+            },
+            {
+              "sanskrit": "na idam",
+              "english": "not this"
+            },
+            {
+              "sanskrit": "yat idam upāsate",
+              "english": "which is worshiped as an object"
+            }
+          ],
+          "translation": "That by which prāṇa is moved, while prāṇa cannot move It—know that alone to be Brahman, not this that men worship as an object."
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "यद् श्रोत्रेण न शृणोति येन श्रोत्रमिदं श्रुतम् ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yad śrotreṇa na śṛṇoti yena śrotram idaṃ śrutam |\ntadeva brahma tvaṃ viddhi nedaṃ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yad",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "śrotreṇa",
+              "english": "by the ear"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "śṛṇoti",
+              "english": "hears"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "śrotram",
+              "english": "the ear"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "śrutam",
+              "english": "has the act of hearing"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "the Absolute (Brahman)"
+            },
+            {
+              "sanskrit": "tvam",
+              "english": "you"
+            },
+            {
+              "sanskrit": "viddhi",
+              "english": "know"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "yat",
+              "english": "which"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "upāsate",
+              "english": "people worship"
+            }
+          ],
+          "translation": "That which the ear cannot hear, yet by which the ear hears—know that alone to be Brahman; not this thing that men worship.",
+          "padaccheda": "yad śrotreṇa na śṛṇoti | yena śrotram idaṃ śrutam | tat eva brahma tvam viddhi | na idaṃ yat idam upāsate",
+          "context": "Part of the series declaring Brahman as the inner power of the senses, yet beyond them."
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "यत् प्राणेन न प्राणिति येन प्राणः प्राणीयते ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+          "iast": "yat prāṇena na prāṇiti yena prāṇaḥ prāṇīyate |\ntadeva brahma tvaṃ viddhi nedaṃ yad idam upāsate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "prāṇena",
+              "english": "by prāṇa (vital force)"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "prāṇiti",
+              "english": "breathes/acts as breath"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "the life-breath"
+            },
+            {
+              "sanskrit": "prāṇīyate",
+              "english": "is made to function"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "Brahman, the Absolute"
+            },
+            {
+              "sanskrit": "tvam",
+              "english": "you"
+            },
+            {
+              "sanskrit": "viddhi",
+              "english": "know"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "yat",
+              "english": "which"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "upāsate",
+              "english": "they worship"
+            }
+          ],
+          "translation": "That which does not live by the prāṇa, yet by which prāṇa is moved—know that alone to be Brahman; not this object that people revere.",
+          "padaccheda": "yat prāṇena na prāṇiti | yena prāṇaḥ prāṇīyate | tat eva brahma tvam viddhi | na idaṃ yat idam upāsate",
+          "context": "Concludes the sense-series, pointing beyond vital breath to the sustaining Brahman."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Dvitīya-khaṇḍa",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "2.1",
+          "devanagari": "यदि मन्यसे सुवेदेति दहरमेवापि नूनं त्वं वेत्थ ब्रह्मणो रूपम् । यदस्य त्वं यदस्मिन् देवा इति ॥",
+          "iast": "yadi manyase suvedeti daharamevāpi nūnaṁ tvaṁ vettha brahmaṇo rūpam | yadasya tvaṁ yadasmin devā iti ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yadi",
+              "english": "if"
+            },
+            {
+              "sanskrit": "manyase",
+              "english": "you think"
+            },
+            {
+              "sanskrit": "su-veda-iti",
+              "english": "‘I know well’"
+            },
+            {
+              "sanskrit": "daharām-eva-api",
+              "english": "only a very little indeed"
+            },
+            {
+              "sanskrit": "nūnam",
+              "english": "surely"
+            },
+            {
+              "sanskrit": "tvam",
+              "english": "you"
+            },
+            {
+              "sanskrit": "vettha",
+              "english": "know"
+            },
+            {
+              "sanskrit": "brahmaṇaḥ",
+              "english": "of Brahman"
+            },
+            {
+              "sanskrit": "rūpam",
+              "english": "the form/aspect"
+            },
+            {
+              "sanskrit": "yad-asya",
+              "english": "what of it"
+            },
+            {
+              "sanskrit": "tvam",
+              "english": "you"
+            },
+            {
+              "sanskrit": "yad-asmin",
+              "english": "what in (regard to)"
+            },
+            {
+              "sanskrit": "devāḥ",
+              "english": "the gods"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            }
+          ],
+          "translation": "If you are thinking, ‘I know Brahman well,’ then surely you have only touched a tiny portion of His feature—what it is for you, or even among the gods. Therefore seek again, more deeply.",
+          "variants": [
+            "dharamevāpi for daharamevāpi in some recensions",
+            "devā iti sometimes read as devāḥ iti"
+          ],
+          "speaker": "Ācārya",
+          "addressed_to": "Śiṣya"
+        },
+        {
+          "number": 2,
+          "ref": "2.2",
+          "devanagari": "नाहं मन्ये सुवेदेति नो न वेदेति वेद च । यो नस्तद्वेद तद्वेद नो न वेदेति वेद च ॥",
+          "iast": "nāhaṁ manye suvedeti no na vedeti veda ca | yo nas tad veda tad veda no na vedeti veda ca ||",
+          "word_by_word": [
+            {
+              "sanskrit": "na aham",
+              "english": "not I"
+            },
+            {
+              "sanskrit": "manye",
+              "english": "think"
+            },
+            {
+              "sanskrit": "su-veda-iti",
+              "english": "‘I know well’"
+            },
+            {
+              "sanskrit": "no na vedeti",
+              "english": "nor ‘I do not know’"
+            },
+            {
+              "sanskrit": "veda ca",
+              "english": "and yet I know"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "naḥ",
+              "english": "among us"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "veda",
+              "english": "knows"
+            },
+            {
+              "sanskrit": "tat veda",
+              "english": "he knows that"
+            },
+            {
+              "sanskrit": "no na vedeti",
+              "english": "not as ‘I do not know’"
+            },
+            {
+              "sanskrit": "veda ca",
+              "english": "and yet as knowing"
+            }
+          ],
+          "translation": "I do not maintain, ‘I know it well,’ nor do I say, ‘I know it not.’ He among us who grasps this paradox—he knows; not as ignorance, and yet knowing indeed.",
+          "variants": [
+            "yo naḥ tad veda sometimes written as yo nastad veda"
+          ],
+          "speaker": "Śiṣya",
+          "addressed_to": "Ācārya"
+        },
+        {
+          "number": 3,
+          "ref": "2.3",
+          "devanagari": "यस्यामतं तस्य मतं मतं यस्य न वेद सः । अविज्ञातं विजानतां विज्ञातमविजानताम् ॥",
+          "iast": "yasyāmataṁ tasya mataṁ mataṁ yasya na veda saḥ | avijñātaṁ vijānātāṁ vijñātam avijānātām ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yasya",
+              "english": "for whom"
+            },
+            {
+              "sanskrit": "amatam",
+              "english": "it is not an object of conception"
+            },
+            {
+              "sanskrit": "tasya",
+              "english": "for him"
+            },
+            {
+              "sanskrit": "matam",
+              "english": "it is truly understood"
+            },
+            {
+              "sanskrit": "matam",
+              "english": "as known"
+            },
+            {
+              "sanskrit": "yasya",
+              "english": "for whom"
+            },
+            {
+              "sanskrit": "na veda saḥ",
+              "english": "he knows it (as merely known) not"
+            },
+            {
+              "sanskrit": "avijñātam",
+              "english": "unknown (to the knower of objects)"
+            },
+            {
+              "sanskrit": "vijānātām",
+              "english": "to those who think they know"
+            },
+            {
+              "sanskrit": "vijñātam",
+              "english": "known"
+            },
+            {
+              "sanskrit": "avijānātām",
+              "english": "to those who know they do not objectify"
+            }
+          ],
+          "translation": "To the one who refuses to objectify it, it is realized; but he who claims a mere conceptual grasp—he knows it not. Unknown to the conceit of knowers; known to those who admit their not-knowing.",
+          "variants": [
+            "amatam sometimes glossed as ‘not thought of as an object’"
+          ]
+        },
+        {
+          "number": 4,
+          "ref": "2.4",
+          "devanagari": "प्रतिबोधविदितं मतममृतत्वं हि विन्दते । आत्मना विन्दते वीर्यं विद्यया विन्दतेऽमृतम् ॥",
+          "iast": "pratibodhaviditaṁ matam amṛtatvaṁ hi vindate | ātmanā vindate vīryaṁ vidyayā vindate 'mṛtam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "pratibodha-viditam",
+              "english": "known in and through each state of awareness"
+            },
+            {
+              "sanskrit": "matam",
+              "english": "that is the understanding"
+            },
+            {
+              "sanskrit": "amṛtatvam",
+              "english": "immortality"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "vindate",
+              "english": "one attains"
+            },
+            {
+              "sanskrit": "ātmanā",
+              "english": "by the Self"
+            },
+            {
+              "sanskrit": "vindate",
+              "english": "one gains"
+            },
+            {
+              "sanskrit": "vīryam",
+              "english": "spiritual strength"
+            },
+            {
+              "sanskrit": "vidyayā",
+              "english": "by knowledge"
+            },
+            {
+              "sanskrit": "vindate",
+              "english": "one attains"
+            },
+            {
+              "sanskrit": "amṛtam",
+              "english": "the deathless state"
+            }
+          ],
+          "translation": "When realized through every stir of consciousness—that is true knowing. By the Self one gains strength; by wisdom one attains the deathless goal.",
+          "notes": "pratibodha-viditam indicates recognition of Brahman as the ground in every cognition."
+        },
+        {
+          "number": 5,
+          "ref": "2.5",
+          "devanagari": "इह चेदवेदित् अथ सत्यं अस्ति । न चेदिहावेदित् महती विनष्टिः ॥",
+          "iast": "iha ced avedit atha satyaṁ asti | na ced ihāvedit mahatī vinaṣṭiḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "iha",
+              "english": "here (in this life)"
+            },
+            {
+              "sanskrit": "cet",
+              "english": "if"
+            },
+            {
+              "sanskrit": "avedit",
+              "english": "one knows/realizes"
+            },
+            {
+              "sanskrit": "atha",
+              "english": "then"
+            },
+            {
+              "sanskrit": "satyam",
+              "english": "the truth (is attained)"
+            },
+            {
+              "sanskrit": "asti",
+              "english": "is"
+            },
+            {
+              "sanskrit": "na cet",
+              "english": "if not"
+            },
+            {
+              "sanskrit": "iha",
+              "english": "here"
+            },
+            {
+              "sanskrit": "avedit",
+              "english": "one realizes"
+            },
+            {
+              "sanskrit": "mahatī",
+              "english": "great"
+            },
+            {
+              "sanskrit": "vinaṣṭiḥ",
+              "english": "loss, ruin"
+            }
+          ],
+          "translation": "If one realizes here, then the Truth is secured; if one fails to know it here, great is the loss indeed.",
+          "variants": [
+            "avedit sometimes read as avedīt (aorist form)"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Yakṣopākhyāna",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "3.1",
+          "devanagari": "तद् ह देवानां विजयोऽभूत्। ते ह्यभिमाना बभूवुः— ‘अस्माकमेवायं विजयः, अस्माकमेवायं महिमा’ इति।",
+          "iast": "tad ha devānāṁ vijayo ’bhūt. te hy abhimānā babhūvuḥ— ‘asmākam evāyaṁ vijayaḥ, asmākam evāyaṁ mahimā’ iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "tad",
+              "english": "then"
+            },
+            {
+              "sanskrit": "ha",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "devānām",
+              "english": "of the gods"
+            },
+            {
+              "sanskrit": "vijayaḥ",
+              "english": "victory"
+            },
+            {
+              "sanskrit": "abhūt",
+              "english": "was/became"
+            },
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "abhimānāḥ",
+              "english": "proud"
+            },
+            {
+              "sanskrit": "babhūvuḥ",
+              "english": "became"
+            },
+            {
+              "sanskrit": "asmākam",
+              "english": "of us"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "ayaṁ",
+              "english": "this"
+            },
+            {
+              "sanskrit": "mahimā",
+              "english": "glory"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            }
+          ],
+          "translation": "There was a victory for the gods, and they swelled with pride, saying, ‘This victory is ours, this glory is ours.’",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "The devas become conceited after triumph."
+        },
+        {
+          "number": 2,
+          "ref": "3.2",
+          "devanagari": "तद् ब्रह्म विजज्ञौ— ‘तेषामेवायं विजयः, तेषामेवायं महिमा’ इति। तेभ्यः प्रादुर्बभूव ब्रह्म यक्षरूपम्। तं ह देवाः न विजज्ञुः— ‘किमिदं यक्षम्’ इति।",
+          "iast": "tad brahma vijajñe— ‘teṣām evāyaṁ vijayaḥ, teṣām evāyaṁ mahimā’ iti. tebhyaḥ prādur babhūva brahma yakṣarūpam. taṁ ha devā na vijajñuḥ— ‘kim idaṁ yakṣam’ iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "tad",
+              "english": "that"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "Brahman"
+            },
+            {
+              "sanskrit": "vijajñe",
+              "english": "knew"
+            },
+            {
+              "sanskrit": "teṣām",
+              "english": "of them"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "ayaṁ",
+              "english": "this"
+            },
+            {
+              "sanskrit": "vijayaḥ",
+              "english": "victory"
+            },
+            {
+              "sanskrit": "mahimā",
+              "english": "glory"
+            },
+            {
+              "sanskrit": "tebhyaḥ",
+              "english": "to them"
+            },
+            {
+              "sanskrit": "prādur babhūva",
+              "english": "manifested"
+            },
+            {
+              "sanskrit": "yakṣarūpam",
+              "english": "in a Yaksha form"
+            },
+            {
+              "sanskrit": "devāḥ",
+              "english": "the gods"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "vijajñuḥ",
+              "english": "recognized"
+            },
+            {
+              "sanskrit": "kim",
+              "english": "what"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "yakṣam",
+              "english": "mysterious being"
+            }
+          ],
+          "translation": "Brahman knew it and thought, ‘This victory and this glory are Theirs alone.’ He appeared before them as a Yaksha; the gods did not know what that wondrous being was.",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Brahman manifests to humble the gods’ pride."
+        },
+        {
+          "number": 3,
+          "ref": "3.3",
+          "devanagari": "ते अग्निम् अब्रुवन्— ‘अग्ने, एतद् विजानीहि— किमिदं यक्षम्’ इति। ‘तथे’त्युवाच।",
+          "iast": "te agnim abruvan— ‘agne, etad vijānīhi— kim idaṁ yakṣam’ iti. ‘tathe’ty uvāca.",
+          "word_by_word": [
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "agnim",
+              "english": "Agni"
+            },
+            {
+              "sanskrit": "abruvan",
+              "english": "addressed"
+            },
+            {
+              "sanskrit": "agne",
+              "english": "O Agni"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "vijānīhi",
+              "english": "learn/know"
+            },
+            {
+              "sanskrit": "kim",
+              "english": "what"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "yakṣam",
+              "english": "Yaksha"
+            },
+            {
+              "sanskrit": "tatheti",
+              "english": "so be it"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "he said"
+            }
+          ],
+          "translation": "They said to Agni, ‘O Agni, find out what this Yaksha is.’ He replied, ‘So be it.’",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Agni is sent to inquire about the Yaksha."
+        },
+        {
+          "number": 4,
+          "ref": "3.4",
+          "devanagari": "सोऽभ्यद्रवत्। तम् अभ्यवदत्— ‘कोऽसी’ति। ‘अग्निरस्मि, जातवेदः’ इति। ‘किं शक्तिस्ते’ति। ‘यदिदं पृथिव्याम् अस्ति किं च, सर्वं दहेयम्’ इति।",
+          "iast": "so ’bhyadravat. tam abhyavadat— ‘ko ’sī’ ti. ‘agnir asmi, jātavedaḥ’ iti. ‘kiṁ śaktis te’ ti. ‘yad idaṁ pṛthivyām asti kiṁ ca, sarvaṁ daheyam’ iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "abhyadravat",
+              "english": "approached"
+            },
+            {
+              "sanskrit": "tam",
+              "english": "him/it"
+            },
+            {
+              "sanskrit": "abhyavadat",
+              "english": "addressed"
+            },
+            {
+              "sanskrit": "kaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "asi",
+              "english": "are (you)"
+            },
+            {
+              "sanskrit": "agniḥ",
+              "english": "Agni"
+            },
+            {
+              "sanskrit": "asmi",
+              "english": "am"
+            },
+            {
+              "sanskrit": "jātavedaḥ",
+              "english": "Jātavedas"
+            },
+            {
+              "sanskrit": "kiṁ",
+              "english": "what"
+            },
+            {
+              "sanskrit": "śaktiḥ",
+              "english": "power"
+            },
+            {
+              "sanskrit": "te",
+              "english": "of you"
+            },
+            {
+              "sanskrit": "yad",
+              "english": "whatever"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "pṛthivyām",
+              "english": "on earth"
+            },
+            {
+              "sanskrit": "asti",
+              "english": "exists"
+            },
+            {
+              "sanskrit": "sarvam",
+              "english": "all"
+            },
+            {
+              "sanskrit": "daheyam",
+              "english": "I can burn"
+            }
+          ],
+          "translation": "He went up and was asked, ‘Who are you?’ ‘I am Agni, Jātavedas,’ he said. ‘What power is yours?’ ‘Whatever exists upon earth, I can burn it to ashes.’",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Agni boasts of his potency before the Yaksha."
+        },
+        {
+          "number": 5,
+          "ref": "3.5",
+          "devanagari": "तस्मै तृणं निधायोवाच— ‘एतद् दह’ इति। तद् उपप्रेयाय; तन्नाशक्नोद् दग्धुम्। स ततो निववृते।",
+          "iast": "tasmai tṛṇaṁ nidhāyovāca— ‘etad daha’ iti. tad upapreyāya; tan nāśaknod dagdhum. sa tato nivavṛte.",
+          "word_by_word": [
+            {
+              "sanskrit": "tasmai",
+              "english": "to him"
+            },
+            {
+              "sanskrit": "tṛṇam",
+              "english": "a blade of grass"
+            },
+            {
+              "sanskrit": "nidhāya",
+              "english": "placing"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "he said"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "daha",
+              "english": "burn"
+            },
+            {
+              "sanskrit": "tad",
+              "english": "that"
+            },
+            {
+              "sanskrit": "upapreyāya",
+              "english": "he advanced"
+            },
+            {
+              "sanskrit": "tan",
+              "english": "it"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "aśaknot",
+              "english": "was able"
+            },
+            {
+              "sanskrit": "dagdhum",
+              "english": "to burn"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "tataḥ",
+              "english": "then"
+            },
+            {
+              "sanskrit": "nivavṛte",
+              "english": "turned back"
+            }
+          ],
+          "translation": "He placed a blade of grass and said, ‘Burn this.’ Agni rushed at it but could not burn it; humbled, he turned back.",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Agni fails to burn even a blade of grass presented by the Yaksha."
+        },
+        {
+          "number": 6,
+          "ref": "3.6",
+          "devanagari": "ते वायुं अब्रुवन्— ‘वायो, एतद् विजानीहि— किमिदं यक्षम्’ इति। ‘तथे’त्युवाच।",
+          "iast": "te vāyuṁ abruvan— ‘vāyo, etad vijānīhi— kim idaṁ yakṣam’ iti. ‘tathe’ty uvāca.",
+          "word_by_word": [
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "vāyum",
+              "english": "Vāyu"
+            },
+            {
+              "sanskrit": "abruvan",
+              "english": "addressed"
+            },
+            {
+              "sanskrit": "vāyo",
+              "english": "O Vāyu"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "vijānīhi",
+              "english": "find out"
+            },
+            {
+              "sanskrit": "kim",
+              "english": "what"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "yakṣam",
+              "english": "Yaksha"
+            },
+            {
+              "sanskrit": "tatheti",
+              "english": "so be it"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "he said"
+            }
+          ],
+          "translation": "Then they addressed Vāyu: ‘O Vāyu, discover what this Yaksha is.’ He said, ‘So be it.’",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "After Agni’s failure, Vāyu is sent."
+        },
+        {
+          "number": 7,
+          "ref": "3.7",
+          "devanagari": "सोऽभ्यद्रवत्। तम् अभ्यवदत्— ‘कोऽसी’ति। ‘वायुरस्मि, मातरिश्वा’ इति। ‘किं शक्तिस्ते’ति। ‘यदिदं पृथिव्याम् अस्ति किं च, सर्वं वाहयामि’ इति।",
+          "iast": "so ’bhyadravat. tam abhyavadat— ‘ko ’sī’ ti. ‘vāyur asmi, mātariśvā’ iti. ‘kiṁ śaktis te’ ti. ‘yad idaṁ pṛthivyām asti kiṁ ca, sarvaṁ vāhayāmi’ iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "abhyadravat",
+              "english": "approached"
+            },
+            {
+              "sanskrit": "tam",
+              "english": "him/it"
+            },
+            {
+              "sanskrit": "abhyavadat",
+              "english": "addressed"
+            },
+            {
+              "sanskrit": "kaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "asi",
+              "english": "are (you)"
+            },
+            {
+              "sanskrit": "vāyuḥ",
+              "english": "Vāyu"
+            },
+            {
+              "sanskrit": "asmi",
+              "english": "am"
+            },
+            {
+              "sanskrit": "mātariśvā",
+              "english": "Mātariśvan"
+            },
+            {
+              "sanskrit": "kiṁ",
+              "english": "what"
+            },
+            {
+              "sanskrit": "śaktiḥ",
+              "english": "power"
+            },
+            {
+              "sanskrit": "te",
+              "english": "of you"
+            },
+            {
+              "sanskrit": "yad",
+              "english": "whatever"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "pṛthivyām",
+              "english": "on earth"
+            },
+            {
+              "sanskrit": "asti",
+              "english": "exists"
+            },
+            {
+              "sanskrit": "sarvam",
+              "english": "all"
+            },
+            {
+              "sanskrit": "vāhayāmi",
+              "english": "I waft/carry away"
+            }
+          ],
+          "translation": "He went up. Asked, ‘Who are you?’ he answered, ‘I am Vāyu, Mātariśvan.’ ‘What is your power?’ ‘Whatever is upon earth, I can sweep it away.’",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Vāyu proclaims his might before the Yaksha."
+        },
+        {
+          "number": 8,
+          "ref": "3.8",
+          "devanagari": "तस्मै तृणं निधायोवाच— ‘एतद् वह’ इति। तद् उपप्रेयाय; नाशक्नोद् वाहयितुम्। स ततो निववृते।",
+          "iast": "tasmai tṛṇaṁ nidhāyovāca— ‘etad vaha’ iti. tad upapreyāya; nāśaknod vāhayitum. sa tato nivavṛte.",
+          "word_by_word": [
+            {
+              "sanskrit": "tasmai",
+              "english": "to him"
+            },
+            {
+              "sanskrit": "tṛṇam",
+              "english": "a blade of grass"
+            },
+            {
+              "sanskrit": "nidhāya",
+              "english": "placing"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "he said"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "vaha",
+              "english": "carry"
+            },
+            {
+              "sanskrit": "tad",
+              "english": "that"
+            },
+            {
+              "sanskrit": "upapreyāya",
+              "english": "he approached"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "aśaknod",
+              "english": "was able"
+            },
+            {
+              "sanskrit": "vāhayitum",
+              "english": "to waft/move"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "tataḥ",
+              "english": "then"
+            },
+            {
+              "sanskrit": "nivavṛte",
+              "english": "turned back"
+            }
+          ],
+          "translation": "He set a blade of grass and said, ‘Carry this.’ Vāyu drew near, yet could not move it, and returned.",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Vāyu, too, fails before Brahman’s power."
+        },
+        {
+          "number": 9,
+          "ref": "3.9",
+          "devanagari": "ते इन्द्रम् अब्रुवन्— ‘मघवन्, एतद् विजानीहि— किमिदं यक्षम्’ इति। ‘तथे’त्युवाच। सोऽभ्यद्रवत्।",
+          "iast": "te indram abruvan— ‘maghavan, etad vijānīhi— kim idaṁ yakṣam’ iti. ‘tathe’ty uvāca. so ’bhyadravat.",
+          "word_by_word": [
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "indram",
+              "english": "Indra"
+            },
+            {
+              "sanskrit": "abruvan",
+              "english": "addressed"
+            },
+            {
+              "sanskrit": "maghavan",
+              "english": "O Maghavan (Indra)"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "vijānīhi",
+              "english": "know"
+            },
+            {
+              "sanskrit": "kim",
+              "english": "what"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "yakṣam",
+              "english": "Yaksha"
+            },
+            {
+              "sanskrit": "tatheti",
+              "english": "so be it"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "he said"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "abhyadravat",
+              "english": "approached"
+            }
+          ],
+          "translation": "Then they said to Indra: ‘O Maghavan, learn what this Yaksha is.’ He agreed and went forward.",
+          "meter": "prose",
+          "speaker": "Śruti",
+          "context": "Indra himself goes to meet the mysterious Yaksha."
+        },
+        {
+          "number": 10,
+          "ref": "3.10",
+          "devanagari": "ते वायुम् अब्रुवन् — वायो, एतद् विजानीहि; किम् एतद् यक्षम् इति।",
+          "iast": "te vāyum abruvan — vāyo, etad vijānīhi; kim etad yakṣam iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "ते",
+              "english": "they"
+            },
+            {
+              "sanskrit": "वायुम्",
+              "english": "Vāyu (the Wind-god, acc.)"
+            },
+            {
+              "sanskrit": "अब्रुवन्",
+              "english": "said"
+            },
+            {
+              "sanskrit": "वायो",
+              "english": "O Vāyu"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "विजानीहि",
+              "english": "know/ascertain"
+            },
+            {
+              "sanskrit": "किम्",
+              "english": "what"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "यक्षम्",
+              "english": "the mysterious being (Yakṣa)"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            }
+          ],
+          "translation": "The gods said to Vāyu, “O Vāyu, kindly find out—what is this wondrous Yakṣa?”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 11,
+          "ref": "3.11",
+          "devanagari": "तथेति।",
+          "iast": "tatheti.",
+          "word_by_word": [
+            {
+              "sanskrit": "तथा",
+              "english": "so; thus"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "said"
+            }
+          ],
+          "translation": "“So be it,” he agreed.",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 12,
+          "ref": "3.12",
+          "devanagari": "स त्वारित्वा अभ्यद्रवत्। तम् अब्रवीत् — कोऽसि? सोऽब्रवीत् — वायुरहमस्मि, मातरिश्वा इति।",
+          "iast": "sa tvaritvā abhyadravat. tam abravīt — ko'si? so'bravīt — vāyur aham asmi, mātariśvā iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "स",
+              "english": "he"
+            },
+            {
+              "sanskrit": "त्वारित्वा",
+              "english": "having hastened"
+            },
+            {
+              "sanskrit": "अभ्यद्रवत्",
+              "english": "approached"
+            },
+            {
+              "sanskrit": "तम्",
+              "english": "him (the Yakṣa)"
+            },
+            {
+              "sanskrit": "अब्रवीत्",
+              "english": "said"
+            },
+            {
+              "sanskrit": "कः",
+              "english": "who"
+            },
+            {
+              "sanskrit": "असि",
+              "english": "are you"
+            },
+            {
+              "sanskrit": "वायुः",
+              "english": "Vāyu"
+            },
+            {
+              "sanskrit": "अहम्",
+              "english": "I"
+            },
+            {
+              "sanskrit": "अस्मि",
+              "english": "am"
+            },
+            {
+              "sanskrit": "मातरिश्वा",
+              "english": "Mātariśvā (another name of Vāyu)"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            }
+          ],
+          "translation": "He sped forward. The Yakṣa asked, “Who are you?” He replied, “I am Vāyu, called Mātariśvā.”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 13,
+          "ref": "3.13",
+          "devanagari": "किं ते शक्तिरिति? यदिदं पृथिव्यां सर्वम् आवायेयम् इति।",
+          "iast": "kiṁ te śaktir iti? yad idaṁ pṛthivyāṁ sarvam āvāyeyam iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "किम्",
+              "english": "what"
+            },
+            {
+              "sanskrit": "ते",
+              "english": "your"
+            },
+            {
+              "sanskrit": "शक्तिḥ",
+              "english": "power"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "यत्",
+              "english": "whatever"
+            },
+            {
+              "sanskrit": "इदम्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "पृथिव्याम्",
+              "english": "on earth"
+            },
+            {
+              "sanskrit": "सर्वम्",
+              "english": "all"
+            },
+            {
+              "sanskrit": "आवायेयम्",
+              "english": "I could blow away"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "so he said"
+            }
+          ],
+          "translation": "“What power is yours?”—“Whatever is here upon the earth, I could carry it off with my wind.”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 14,
+          "ref": "3.14",
+          "devanagari": "तस्मै तृणं न्यदधात् — आवायेति। तत् उपप्रेयाय; नाशक्नोत्। स निववृते — न एनम् अविन्दं, किमेतद् यक्षम् इति।",
+          "iast": "tasmai tṛṇaṁ nyadadhāt — āvāyeti. tat upapreyāya; nāśaknot. sa nivavṛte — na enam avindaṁ, kim etad yakṣam iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "तस्मै",
+              "english": "to him"
+            },
+            {
+              "sanskrit": "तृणम्",
+              "english": "a blade of grass"
+            },
+            {
+              "sanskrit": "न्यदधात्",
+              "english": "placed down"
+            },
+            {
+              "sanskrit": "आवाय",
+              "english": "blow (this)"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "तत्",
+              "english": "that (grass)"
+            },
+            {
+              "sanskrit": "उपप्रेयाय",
+              "english": "he rushed at"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "अशक्नोत्",
+              "english": "was able"
+            },
+            {
+              "sanskrit": "स",
+              "english": "he"
+            },
+            {
+              "sanskrit": "निववृते",
+              "english": "returned"
+            },
+            {
+              "sanskrit": "न",
+              "english": "not"
+            },
+            {
+              "sanskrit": "एनम्",
+              "english": "him/it"
+            },
+            {
+              "sanskrit": "अविन्दम्",
+              "english": "did I know/find"
+            },
+            {
+              "sanskrit": "किम्",
+              "english": "what"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "यक्षम्",
+              "english": "Yakṣa"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            }
+          ],
+          "translation": "He placed a straw before him: “Blow this.” Vāyu rushed upon it, yet could not move it. He returned, saying, “I could not discern who that Yakṣa was.”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "4.1",
+          "devanagari": "ते इन्द्रम् अब्रुवन् — मघवन्, एतद् विजानीहि; किम् एतद् यक्षम् इति।",
+          "iast": "te indram abruvan — maghavan, etad vijānīhi; kim etad yakṣam iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "ते",
+              "english": "they"
+            },
+            {
+              "sanskrit": "इन्द्रम्",
+              "english": "Indra (acc.)"
+            },
+            {
+              "sanskrit": "अब्रुवन्",
+              "english": "said"
+            },
+            {
+              "sanskrit": "मघवन्",
+              "english": "O Maghavan (Indra)"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "विजानीहि",
+              "english": "ascertain"
+            },
+            {
+              "sanskrit": "किम्",
+              "english": "what"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "यक्षम्",
+              "english": "Yakṣa"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            }
+          ],
+          "translation": "Then they addressed Indra: “O Maghavan, find out—what is this Yakṣa?”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 2,
+          "ref": "4.2",
+          "devanagari": "तथेति। स त्वारित्वा अभ्यद्रवत्। स तत्र न ददर्श तं यक्षम्।",
+          "iast": "tatheti. sa tvaritvā abhyadravat. sa tatra na dadarśa taṁ yakṣam.",
+          "word_by_word": [
+            {
+              "sanskrit": "तथेति",
+              "english": "‘so be it,’ thus"
+            },
+            {
+              "sanskrit": "स",
+              "english": "he"
+            },
+            {
+              "sanskrit": "त्वारित्वा",
+              "english": "having hastened"
+            },
+            {
+              "sanskrit": "अभ्यद्रवत्",
+              "english": "approached"
+            },
+            {
+              "sanskrit": "स",
+              "english": "he"
+            },
+            {
+              "sanskrit": "तत्र",
+              "english": "there"
+            },
+            {
+              "sanskrit": "न",
+              "english": "did not"
+            },
+            {
+              "sanskrit": "ददर्श",
+              "english": "see"
+            },
+            {
+              "sanskrit": "तम्",
+              "english": "that"
+            },
+            {
+              "sanskrit": "यक्षम्",
+              "english": "Yakṣa"
+            }
+          ],
+          "translation": "“So be it.” He sped forward; but there he did not see that Yakṣa at all.",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 3,
+          "ref": "4.3",
+          "devanagari": "तस्मिन्नेवाकाशे स्त्रीं ददर्श बहुशोभमानाम् — उमां हैमवतीम्।",
+          "iast": "tasminn evākāśe strīṁ dadarśa bahuśobhamānām — umāṁ haimavatīm.",
+          "word_by_word": [
+            {
+              "sanskrit": "तस्मिन्",
+              "english": "in that"
+            },
+            {
+              "sanskrit": "एव",
+              "english": "very"
+            },
+            {
+              "sanskrit": "आकाशे",
+              "english": "sky/space"
+            },
+            {
+              "sanskrit": "स्त्रीम्",
+              "english": "a woman"
+            },
+            {
+              "sanskrit": "ददर्श",
+              "english": "he saw"
+            },
+            {
+              "sanskrit": "बहुशोभमानाम्",
+              "english": "of great splendor"
+            },
+            {
+              "sanskrit": "उमाम्",
+              "english": "Umā"
+            },
+            {
+              "sanskrit": "हैमवतीम्",
+              "english": "the daughter of Himavat"
+            }
+          ],
+          "translation": "In that very expanse he beheld a radiant woman—Umā, the daughter of Himavat.",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 4,
+          "ref": "4.4",
+          "devanagari": "तां होवाच — किमेतद् यक्षम् इति?",
+          "iast": "tāṁ hovāca — kim etad yakṣam iti?",
+          "word_by_word": [
+            {
+              "sanskrit": "ताम्",
+              "english": "to her"
+            },
+            {
+              "sanskrit": "होवाच",
+              "english": "he said"
+            },
+            {
+              "sanskrit": "किम्",
+              "english": "what"
+            },
+            {
+              "sanskrit": "एतत्",
+              "english": "this"
+            },
+            {
+              "sanskrit": "यक्षम्",
+              "english": "Yakṣa"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            }
+          ],
+          "translation": "He inquired of her, “What was that Yakṣa?”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        },
+        {
+          "number": 5,
+          "ref": "4.5",
+          "devanagari": "सा होवाच — ब्रह्मणो ह्येवेदं विजयः, ब्रह्मणो ह्येवेदं महिमेति।",
+          "iast": "sā hovāca — brahmaṇo hyevedaṁ vijayaḥ, brahmaṇo hyevedaṁ mahimeti.",
+          "word_by_word": [
+            {
+              "sanskrit": "सा",
+              "english": "she"
+            },
+            {
+              "sanskrit": "होवाच",
+              "english": "said"
+            },
+            {
+              "sanskrit": "ब्रह्मणः",
+              "english": "of Brahman"
+            },
+            {
+              "sanskrit": "हि",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "एव",
+              "english": "alone"
+            },
+            {
+              "sanskrit": "इदं",
+              "english": "this"
+            },
+            {
+              "sanskrit": "विजयः",
+              "english": "victory"
+            },
+            {
+              "sanskrit": "ब्रह्मणः",
+              "english": "of Brahman"
+            },
+            {
+              "sanskrit": "हि",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "एव",
+              "english": "alone"
+            },
+            {
+              "sanskrit": "इदं",
+              "english": "this"
+            },
+            {
+              "sanskrit": "महिमा",
+              "english": "glory"
+            },
+            {
+              "sanskrit": "इति",
+              "english": "thus"
+            }
+          ],
+          "translation": "She said, “It was the victory of Brahman alone; yes, the glory belongs to Brahman alone.”",
+          "meter": "prose",
+          "source": "Sāmaveda, Talavakāra (Kena) Upaniṣad"
+        }
+      ]
+    }
+  ]
+}

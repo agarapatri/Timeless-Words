@@ -1,0 +1,274 @@
+{
+  "id": "kaivalya-upanishad",
+  "short": "KaivU",
+  "title": "Kaivalya Upanishad",
+  "author": "Anonymous (Atharva Veda tradition)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 1st millennium BCE–CE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "आश्वलायन उवाच —\nअधीहि भगवन् ब्रह्मविद्यां वरीष्ठां येनाहम् अमृतः भवामि।",
+          "iast": "āśvalāyana uvāca —\nadhīhi bhagavan brahmavidyāṁ varīṣṭhāṁ yenāham amṛtaḥ bhavāmi.",
+          "word_by_word": [
+            {
+              "sanskrit": "āśvalāyana",
+              "english": "Aśvalāyana"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "said"
+            },
+            {
+              "sanskrit": "adhīhi",
+              "english": "please teach"
+            },
+            {
+              "sanskrit": "bhagavan",
+              "english": "O venerable lord"
+            },
+            {
+              "sanskrit": "brahmavidyām",
+              "english": "the science of Brahman"
+            },
+            {
+              "sanskrit": "varīṣṭhām",
+              "english": "supreme, foremost"
+            },
+            {
+              "sanskrit": "yena",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "aham",
+              "english": "I"
+            },
+            {
+              "sanskrit": "amṛtaḥ",
+              "english": "deathless, immortal"
+            },
+            {
+              "sanskrit": "bhavāmi",
+              "english": "become"
+            }
+          ],
+          "translation": "Aśvalāyana said: O my lord, kindly instruct me in the foremost knowledge of Brahman, by which I may become free from death.",
+          "speaker": "Āśvalāyana",
+          "addressed_to": "Brahmā",
+          "context": "A disciple approaches the self-born Lord and requests Brahmavidyā."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "ब्रह्मोवाच —\nश्रद्धा-भक्ति-ध्यान-योगाद् अवैहि।\nन कर्मणा न प्रजया धनेन।\nत्यागेनैके अमृतत्वम् आनशुः।",
+          "iast": "brahmovāca —\nśraddhā-bhakti-dhyāna-yogād avaihi.\nna karmaṇā na prajayā dhanena.\ntyāgenaike amṛtatvam ānaśuḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "brahma",
+              "english": "Brahmā (the self-born Lord)"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "said"
+            },
+            {
+              "sanskrit": "śraddhā",
+              "english": "faith"
+            },
+            {
+              "sanskrit": "bhakti",
+              "english": "devotion"
+            },
+            {
+              "sanskrit": "dhyāna",
+              "english": "meditation"
+            },
+            {
+              "sanskrit": "yogāt",
+              "english": "by the discipline of"
+            },
+            {
+              "sanskrit": "avaihi",
+              "english": "know, realize"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "karmaṇā",
+              "english": "by works"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "prajayā",
+              "english": "by progeny"
+            },
+            {
+              "sanskrit": "dhanena",
+              "english": "by wealth"
+            },
+            {
+              "sanskrit": "tyāgena",
+              "english": "by renunciation"
+            },
+            {
+              "sanskrit": "eke",
+              "english": "the select, some alone"
+            },
+            {
+              "sanskrit": "amṛtatvam",
+              "english": "immortality"
+            },
+            {
+              "sanskrit": "ānaśuḥ",
+              "english": "have attained"
+            }
+          ],
+          "translation": "Brahmā said: Realize it by faith, by loving devotion, and by steady meditation. Not by fruitive work, nor by offspring, nor by riches; only by renunciation do the rare souls attain immortality.",
+          "speaker": "Brahmā",
+          "addressed_to": "Āśvalāyana",
+          "context": "The Lord outlines the means to Brahman-realization."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "परेण नाकं निहितं गुहायां विभ्रजते यद् यतयो विशन्ति।",
+          "iast": "pareṇa nākaṁ nihitaṁ guhāyāṁ vibhrajate yad yatayo viśanti.",
+          "word_by_word": [
+            {
+              "sanskrit": "pareṇa",
+              "english": "supreme, transcendent"
+            },
+            {
+              "sanskrit": "nākam",
+              "english": "the highest heaven, blissful state"
+            },
+            {
+              "sanskrit": "nihitam",
+              "english": "hidden, lodged"
+            },
+            {
+              "sanskrit": "guhāyām",
+              "english": "in the cave (of the heart)"
+            },
+            {
+              "sanskrit": "vibhrajate",
+              "english": "it shines forth"
+            },
+            {
+              "sanskrit": "yat",
+              "english": "which"
+            },
+            {
+              "sanskrit": "yatayaḥ",
+              "english": "the striving sages"
+            },
+            {
+              "sanskrit": "viśanti",
+              "english": "enter"
+            }
+          ],
+          "translation": "That supreme abode is hidden within the heart’s cave; it shines there, and into that radiance the saintly strivers enter.",
+          "speaker": "Brahmā",
+          "addressed_to": "Āśvalāyana",
+          "context": "He points to the inward locus of realization."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "वेदान्त-विज्ञान-सुनिश्चितार्थाः संन्यास-योगाद् यत-शुद्ध-सत्त्वाः।",
+          "iast": "vedānta-vijñāna-suniścitarthāḥ saṁnyāsa-yogād yata-śuddha-sattvāḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "vedānta",
+              "english": "the end of the Veda, Vedānta"
+            },
+            {
+              "sanskrit": "vijñāna",
+              "english": "realization, discernment"
+            },
+            {
+              "sanskrit": "suniścita-arthāḥ",
+              "english": "whose purport is firmly ascertained"
+            },
+            {
+              "sanskrit": "saṁnyāsa",
+              "english": "renunciation"
+            },
+            {
+              "sanskrit": "yogāt",
+              "english": "by the discipline of"
+            },
+            {
+              "sanskrit": "yata",
+              "english": "controlled, restrained"
+            },
+            {
+              "sanskrit": "śuddha",
+              "english": "purified"
+            },
+            {
+              "sanskrit": "sattvāḥ",
+              "english": "in their being; pure-hearted"
+            }
+          ],
+          "translation": "Those who have thoroughly grasped the purport of Vedānta, whose hearts are purified by the yoga of renunciation and self-restraint—",
+          "speaker": "Brahmā",
+          "addressed_to": "Āśvalāyana",
+          "context": "A description of the qualified knowers precedes the fruit."
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "ते ब्रह्मलोके तु परान्तकाले परामृताः परिमुच्यन्ति सर्वे।",
+          "iast": "te brahma-loke tu parānta-kāle parāmṛtāḥ parimucyanti sarve.",
+          "word_by_word": [
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "brahma-loke",
+              "english": "in the realm of Brahman"
+            },
+            {
+              "sanskrit": "tu",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "parānta-kāle",
+              "english": "at the end of the sojourn (at life’s end)"
+            },
+            {
+              "sanskrit": "parāmṛtāḥ",
+              "english": "fully immortal"
+            },
+            {
+              "sanskrit": "parimucyanti",
+              "english": "are completely liberated"
+            },
+            {
+              "sanskrit": "sarve",
+              "english": "all"
+            }
+          ],
+          "translation": "—they attain the Brahman realm; and at life’s end, being established in the supreme immortal, they are wholly released, all of them.",
+          "speaker": "Brahmā",
+          "addressed_to": "Āśvalāyana",
+          "context": "The fruit of realization is complete liberation."
+        }
+      ]
+    }
+  ]
+}

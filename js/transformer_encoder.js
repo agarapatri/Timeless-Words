@@ -1,7 +1,7 @@
 // Transformer-based query encoder using Xenova transformers.js and local ONNX assets.
 // Produces pooled (mean) and L2-normalized sentence embeddings.
 
-import { pipeline, env } from "./vendor/transformers/transformers.min.js?v=c5a72846";
+import { pipeline, env } from "./vendor/transformers/transformers.min.js?v=17e6a869";
 import { SEM_VERSION, APP_VERSION } from "./constants.js";
 
 // Configure to load local model assets only (GitHub Pages friendly)

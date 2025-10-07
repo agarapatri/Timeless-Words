@@ -1,0 +1,1727 @@
+{
+  "id": "TU-1.1-1.2",
+  "short": "TU",
+  "title": "Taittiri Upanishad",
+  "author": "Anonymous (Vedic seers of the Taittirīya-śākhā)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 800–300 BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Śikṣā-vallī",
+      "section": 1,
+      "section_title": "Śikṣā (phonetic discipline)",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "शिक्षां व्याख्यास्यामः। वर्णः स्वरः मात्रा बलम् साम सन्तानः इति।",
+          "iast": "śikṣāṁ vyākhyāsyāmaḥ. varṇaḥ svaraḥ mātrā balam sāma santānaḥ iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "śikṣām",
+              "english": "phonetic instruction"
+            },
+            {
+              "sanskrit": "vyākhyāsyāmaḥ",
+              "english": "we shall explain"
+            },
+            {
+              "sanskrit": "varṇaḥ",
+              "english": "phoneme; letter"
+            },
+            {
+              "sanskrit": "svaraḥ",
+              "english": "accent"
+            },
+            {
+              "sanskrit": "mātrā",
+              "english": "time-measure"
+            },
+            {
+              "sanskrit": "balam",
+              "english": "force; emphasis"
+            },
+            {
+              "sanskrit": "sāma",
+              "english": "chanting tone"
+            },
+            {
+              "sanskrit": "santānaḥ",
+              "english": "continuity; linkage"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            }
+          ],
+          "translation": "We shall set forth the discipline of sound—its letters, accents, measures, strength, chant, and the flow by which they are linked.",
+          "meter": "prose"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "सह नाववतु। सह नौ भुनक्तु। सह वीर्यं करवावहै। तेजस्विनावधीतमस्तु। मा विद्विषावहै। ॐ शान्तिः शान्तिः शान्तिः॥",
+          "iast": "saha nāv avatu. saha nau bhunaktu. saha vīryaṁ karavāvahai. tejasvināv adhītam astu. mā vidviṣāvahai. oṁ śāntiḥ śāntiḥ śāntiḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "saha",
+              "english": "together"
+            },
+            {
+              "sanskrit": "nau",
+              "english": "us two"
+            },
+            {
+              "sanskrit": "avatu",
+              "english": "may He protect"
+            },
+            {
+              "sanskrit": "bhunaktu",
+              "english": "may He nourish"
+            },
+            {
+              "sanskrit": "vīryam",
+              "english": "strength"
+            },
+            {
+              "sanskrit": "karavāvahai",
+              "english": "may we exert"
+            },
+            {
+              "sanskrit": "tejasvinau",
+              "english": "brilliant be we two"
+            },
+            {
+              "sanskrit": "adhītam",
+              "english": "what is studied"
+            },
+            {
+              "sanskrit": "astu",
+              "english": "let it be"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "let not"
+            },
+            {
+              "sanskrit": "vidviṣāvahai",
+              "english": "we two be at odds"
+            },
+            {
+              "sanskrit": "oṁ",
+              "english": "sacred syllable"
+            },
+            {
+              "sanskrit": "śāntiḥ (x3)",
+              "english": "peace (thrice)"
+            }
+          ],
+          "translation": "May He guard us both; may He sustain us both; together may we strive with vigor. May our study be bright, and may we not envy one another. Om—peace, peace, peace.",
+          "meter": "prose"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "सह नाववतु । सह नौ भुनक्तु । सह वीर्यं करवावहै । तेजस्वि नावधीतमस्तु । मा विद्विषावहै । ॐ शान्तिः शान्तिः शान्तिः ॥",
+          "iast": "saha nāv avatu | saha nau bhunaktu | saha vīryaṃ karavāvahai | tejasvi nāv adhītam astu | mā vidviṣāvahai | oṃ śāntiḥ śāntiḥ śāntiḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "saha",
+              "english": "together"
+            },
+            {
+              "sanskrit": "nau",
+              "english": "us two"
+            },
+            {
+              "sanskrit": "avatu",
+              "english": "may protect"
+            },
+            {
+              "sanskrit": "bhunaktu",
+              "english": "may nourish"
+            },
+            {
+              "sanskrit": "vīryam",
+              "english": "strength"
+            },
+            {
+              "sanskrit": "karavāvahai",
+              "english": "let us endeavor"
+            },
+            {
+              "sanskrit": "tejasvi",
+              "english": "brilliant"
+            },
+            {
+              "sanskrit": "adhītam",
+              "english": "study"
+            },
+            {
+              "sanskrit": "astu",
+              "english": "let it be"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "let not"
+            },
+            {
+              "sanskrit": "vidviṣāvahai",
+              "english": "we hate each other"
+            }
+          ],
+          "translation": "May the Supreme protect us both and maintain us both. Let us work together with vigor; may our study be illumined, and let there be no envy between us. Om—peace, peace, peace.",
+          "meter": "prose",
+          "notes": "Śānti-mantra traditionally recited before study."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "शिक्षां व्याख्यास्यामः । वर्णः स्वरः मात्रा बलं साम सन्तानः । इति शिक्षाध्यायः ॥",
+          "iast": "śikṣāṃ vyākhyāsyāmaḥ | varṇaḥ svaraḥ mātrā balaṃ sāma santānaḥ | iti śikṣādhyāyaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "śikṣām",
+              "english": "phonetics"
+            },
+            {
+              "sanskrit": "vyākhyāsyāmaḥ",
+              "english": "we shall explain"
+            },
+            {
+              "sanskrit": "varṇaḥ",
+              "english": "sound/letter"
+            },
+            {
+              "sanskrit": "svaraḥ",
+              "english": "accent"
+            },
+            {
+              "sanskrit": "mātrā",
+              "english": "measure"
+            },
+            {
+              "sanskrit": "balaṃ",
+              "english": "force"
+            },
+            {
+              "sanskrit": "sāma",
+              "english": "chanting"
+            },
+            {
+              "sanskrit": "santānaḥ",
+              "english": "continuity"
+            }
+          ],
+          "translation": "Now we expound śikṣā—phonetic discipline: sound, accent, measure, strength, chant, and continuity. Thus ends the lesson on śikṣā.",
+          "meter": "prose"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "भूरिति व्याहृतिर्भवति । भुव इति व्याहृतिर्भवति । सुवरिति व्याहृतिर्भवति । मह इति चतुर्थी व्याहृतिर्भवति । मह इति ब्रह्म । ब्रह्मणा लोका महीयन्ते । तस्मात् मह इत्युच्यते ॥",
+          "iast": "bhūr iti vyāhṛtir bhavati | bhuva iti vyāhṛtir bhavati | suvar iti vyāhṛtir bhavati | maha iti caturthī vyāhṛtir bhavati | maha iti brahma | brahmaṇā lokāḥ mahīyante | tasmāt maha ity ucyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "bhūḥ",
+              "english": "bhūḥ"
+            },
+            {
+              "sanskrit": "vyāhṛtiḥ",
+              "english": "sacred utterance"
+            },
+            {
+              "sanskrit": "bhuvaḥ",
+              "english": "bhuvaḥ"
+            },
+            {
+              "sanskrit": "suvar",
+              "english": "suvar"
+            },
+            {
+              "sanskrit": "mahaḥ",
+              "english": "mahaḥ"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "Brahman"
+            },
+            {
+              "sanskrit": "brahmaṇā",
+              "english": "by Brahman"
+            },
+            {
+              "sanskrit": "lokāḥ",
+              "english": "worlds"
+            },
+            {
+              "sanskrit": "mahīyante",
+              "english": "are made great"
+            },
+            {
+              "sanskrit": "tasmāt",
+              "english": "therefore"
+            },
+            {
+              "sanskrit": "ucyate",
+              "english": "is called"
+            }
+          ],
+          "translation": "Bhūḥ, bhuvaḥ, suvar—these are vyāhṛtis; mahaḥ is the fourth. Maha is Brahman; by Brahman the worlds become exalted—thus it is called mahaḥ.",
+          "meter": "prose"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "भूरिति वै पृथिवी । भुव इत्यन्तरिक्षम् । सुवरिति द्यौः । मह इत्यादित्यः । आदित्यो वै महान् । तस्मात् मह इत्युच्यते ॥",
+          "iast": "bhūr iti vai pṛthivī | bhuva ity antarīkṣam | suvar iti dyauḥ | maha ity ādityaḥ | ādityo vai mahān | tasmāt maha ity ucyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "pṛthivī",
+              "english": "earth"
+            },
+            {
+              "sanskrit": "antarīkṣam",
+              "english": "mid-space"
+            },
+            {
+              "sanskrit": "dyauḥ",
+              "english": "heaven"
+            },
+            {
+              "sanskrit": "ādityaḥ",
+              "english": "sun"
+            },
+            {
+              "sanskrit": "mahān",
+              "english": "great"
+            }
+          ],
+          "translation": "Bhūḥ is earth, bhuvaḥ the mid-region, suvar the heaven; mahaḥ is the sun—indeed the sun is great; therefore it is named mahaḥ.",
+          "meter": "prose"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "भूरिति वै प्राणः । भुव इत्यपानः । सुवरिति व्यानः । मह इति भोजनम् । प्राणेन वै प्राणिनो महीयन्ते । तस्मात् मह इत्युच्यते ॥",
+          "iast": "bhūr iti vai prāṇaḥ | bhuva ity apānaḥ | suvar iti vyānaḥ | maha iti bhojanam | prāṇena vai prāṇino mahīyante | tasmāt maha ity ucyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "in-breath/life-air"
+            },
+            {
+              "sanskrit": "apānaḥ",
+              "english": "down-breath"
+            },
+            {
+              "sanskrit": "vyānaḥ",
+              "english": "diffused breath"
+            },
+            {
+              "sanskrit": "bhojanam",
+              "english": "food"
+            },
+            {
+              "sanskrit": "prāṇinaḥ",
+              "english": "living beings"
+            },
+            {
+              "sanskrit": "mahīyante",
+              "english": "are sustained/exalted"
+            }
+          ],
+          "translation": "Bhūḥ is prāṇa, bhuvaḥ is apāna, suvar is vyāna; mahaḥ is nourishment. By prāṇa the living are upheld and made prominent; therefore it is called mahaḥ.",
+          "meter": "prose"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "अन्नं न निन्द्यात् । अन्नं न परिचक्षीत । अन्नं बहु कुर्वीत । अन्नादो भवति । अन्नं हि भूतानां प्राणः ॥",
+          "iast": "annaṃ na nindyāt | annaṃ na paricakṣīta | annaṃ bahu kurvīta | annādo bhavati | annaṃ hi bhūtānāṃ prāṇaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "annam",
+              "english": "food"
+            },
+            {
+              "sanskrit": "na nindyāt",
+              "english": "should not despise"
+            },
+            {
+              "sanskrit": "na paricakṣīta",
+              "english": "should not waste/deny"
+            },
+            {
+              "sanskrit": "bahu kurvīta",
+              "english": "should produce abundantly"
+            },
+            {
+              "sanskrit": "annādaḥ",
+              "english": "giver/enjoyer of food"
+            },
+            {
+              "sanskrit": "bhūtānām",
+              "english": "of beings"
+            },
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "life-breath"
+            }
+          ],
+          "translation": "Do not revile food; do not withhold it. Produce food in plenty, and become a giver of food, for food indeed is the life of all creatures.",
+          "meter": "prose"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "अन्नं ब्रह्मेति विजानीयात् । ब्रह्मैव स्यादन्नादः ॥",
+          "iast": "annaṃ brahmeti vijānīyāt | brahmaiva syād annādaḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "annam",
+              "english": "food"
+            },
+            {
+              "sanskrit": "brahma iti",
+              "english": "as Brahman"
+            },
+            {
+              "sanskrit": "vijānīyāt",
+              "english": "one should know"
+            },
+            {
+              "sanskrit": "brahma eva",
+              "english": "Brahman alone"
+            },
+            {
+              "sanskrit": "syāt",
+              "english": "one becomes"
+            },
+            {
+              "sanskrit": "annādaḥ",
+              "english": "a giver/enjoyer of food"
+            }
+          ],
+          "translation": "Know food to be Brahman; by such realization one becomes blessed as the provider of food.",
+          "meter": "prose"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "सत्यं वद । धर्मं चर । स्वाध्यायान्मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः । सत्यान्न प्रमदितव्यम् । धर्मान्न प्रमदितव्यम् । कुशलान्न प्रमदितव्यम् । भूत्यै न प्रमदितव्यम् । स्वाध्यायप्रवचने च न प्रमदितव्यम् ॥",
+          "iast": "satyaṃ vada | dharmaṃ cara | svādhyāyān mā pramadaḥ | ācāryāya priyaṃ dhanam āhṛtya prajā-tantuṃ mā vyavacchetsīḥ | satyān na pramaditavyam | dharmān na pramaditavyam | kuśalān na pramaditavyam | bhūtyai na pramaditavyam | svādhyāya-pravacane ca na pramaditavyam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "satyaṃ",
+              "english": "truth"
+            },
+            {
+              "sanskrit": "vada",
+              "english": "speak"
+            },
+            {
+              "sanskrit": "dharmaṃ",
+              "english": "righteousness"
+            },
+            {
+              "sanskrit": "cara",
+              "english": "follow"
+            },
+            {
+              "sanskrit": "svādhyāyāt",
+              "english": "from self-study"
+            },
+            {
+              "sanskrit": "mā pramadaḥ",
+              "english": "do not neglect"
+            },
+            {
+              "sanskrit": "ācāryāya",
+              "english": "to the teacher"
+            },
+            {
+              "sanskrit": "priyam dhanam",
+              "english": "dear wealth/gift"
+            },
+            {
+              "sanskrit": "āhṛtya",
+              "english": "having brought"
+            },
+            {
+              "sanskrit": "prajā-tantum",
+              "english": "line of progeny"
+            },
+            {
+              "sanskrit": "mā vyavacchetsīḥ",
+              "english": "do not cut off"
+            }
+          ],
+          "translation": "Speak truth. Walk in dharma. Never slacken in your own study. Having offered pleasing wealth to the teacher, do not break the family line. Do not neglect truth, nor dharma, nor welfare, nor prosperity, nor the study and teaching of sacred knowledge.",
+          "meter": "prose"
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "सत्यं वद। धर्मं चर। स्वाध्यायान् मा प्रमदः। आचार्याय प्रियम् धनम् आहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः। सत्यान् न प्रमदितव्यम्। धर्मान् न प्रमदितव्यम्। कुशलान् न प्रमदितव्यम्। भूत्यै न प्रमदितव्यम्। स्वाध्याय-प्रवचने च। देव-पितृ-कार्याभ्यां न प्रमदितव्यम्। मातृदेवो भव। पितृदेवो भव। आचार्यदेवो भव। अतिथिदेवो भव। यानि अनवद्यानि कर्माणि तानि सेवितव्यानि, नो इतराणि। यान्यस्माकं सुचरितानि तानि त्वयोपास्यानि, नो इतराणि।",
+          "iast": "satyam vada. dharmam cara. svādhyāyān mā pramadaḥ. ācāryāya priyaṁ dhanam āhṛtya prajātantuṁ mā vyavacchetsīḥ. satyān na pramaditavyam. dharmān na pramaditavyam. kuśalān na pramaditavyam. bhūtyai na pramaditavyam. svādhyāya-pravacane ca. deva-pitṛ-kāryābhyāṁ na pramaditavyam. mātṛdevo bhava. pitṛdevo bhava. ācāryadevo bhava. atithidevo bhava. yāny anavadyāni karmāṇi tāni sevitavyāni, no itarāṇi. yāny asmākaṁ sucaritāni tāni tvayopāsyāni, no itarāṇi.",
+          "word_by_word": [
+            {
+              "sanskrit": "satyam",
+              "english": "truth"
+            },
+            {
+              "sanskrit": "vada",
+              "english": "speak"
+            },
+            {
+              "sanskrit": "dharmam",
+              "english": "righteous duty"
+            },
+            {
+              "sanskrit": "cara",
+              "english": "practice; walk in"
+            },
+            {
+              "sanskrit": "svādhyāya",
+              "english": "self-study of scripture"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "pramadaḥ",
+              "english": "be negligent"
+            },
+            {
+              "sanskrit": "ācāryāya",
+              "english": "unto the teacher"
+            },
+            {
+              "sanskrit": "priyaṁ dhanam",
+              "english": "a pleasing gift"
+            },
+            {
+              "sanskrit": "āhṛtya",
+              "english": "having brought"
+            },
+            {
+              "sanskrit": "prajātantuṁ",
+              "english": "the thread of progeny (family line)"
+            },
+            {
+              "sanskrit": "vyavacchetsīḥ",
+              "english": "you should not cut off"
+            },
+            {
+              "sanskrit": "mātṛdevo bhava",
+              "english": "see the mother as divine"
+            },
+            {
+              "sanskrit": "pitṛdevo bhava",
+              "english": "see the father as divine"
+            },
+            {
+              "sanskrit": "ācāryadevo bhava",
+              "english": "see the teacher as divine"
+            },
+            {
+              "sanskrit": "atithidevo bhava",
+              "english": "see the guest as divine"
+            },
+            {
+              "sanskrit": "anavadyāni karmāṇi",
+              "english": "blameless acts"
+            },
+            {
+              "sanskrit": "sevitavyāni",
+              "english": "are to be followed"
+            },
+            {
+              "sanskrit": "sucarita",
+              "english": "commendable conduct"
+            }
+          ],
+          "translation": "Speak truth. Walk in dharma. Do not grow slack in study. After bringing a pleasing offering to the ācārya, do not sever the family line. Do not neglect truth; do not neglect duty; do not neglect what is wholesome; do not neglect prosperity. Do not neglect study and teaching. Do not neglect service to the gods and to the forefathers. See the mother as divine, the father as divine, the teacher as divine, and the guest as divine. Only the blameless deeds are to be adopted, not the others. Whatever among our conduct is worthy, that you should hold and follow—not the rest.",
+          "meter": "prose (anuvāka)",
+          "synonyms": [
+            {
+              "sanskrit": "pravacana",
+              "english": "recitation, teaching"
+            },
+            {
+              "sanskrit": "deva-pitṛ-kārya",
+              "english": "rites for gods and ancestors"
+            },
+            {
+              "sanskrit": "bhūti",
+              "english": "welfare, prosperity"
+            }
+          ],
+          "notes": "The famed convocation address to the graduating student (snātaka) summarizing Vedic duty and conduct.",
+          "variants": [
+            "prajātantuṁ/prajā-tantuṁ",
+            "svādhyāya-pravacane (na pramaditavyam) understood by ellipsis",
+            "kuśalān na/kuśalāt na (regional recensional variations)"
+          ],
+          "source": "Taittirīya Upaniṣad 1.11 (Śīkṣāvallī)",
+          "speaker": "Ācārya (convocation address)",
+          "addressed_to": "Snātaka (graduating student)",
+          "context": "Instructions at the conclusion of brahmacarya, enjoining truthfulness, duty, study, and reverence."
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "शं नो मित्रः शं वरुणः । शं नो भवत्वर्यमा । शं न इन्द्रो बृहस्पतिः । शं नो विष्णुरुरुक्रमः ॥ नमो ब्रह्मणे । नमस्ते वायो । त्वमेव प्रत्यक्षं ब्रह्मासि । त्वामेव प्रत्यक्षं ब्रह्म वदिष्यामि । ऋतं वदिष्यामि । सत्यम् वदिष्यामि । तन् माम् अवतु । तद् वक्तारम् अवतु । अवतु माम् । अवतु वक्तारम् ॥",
+          "iast": "śaṁ no mitraḥ śaṁ varuṇaḥ | śaṁ no bhavatv aryamā | śaṁ na indro bṛhaspatiḥ | śaṁ no viṣṇur urukramaḥ || namo brahmaṇe | namaste vāyo | tvam eva pratyakṣaṁ brahmāsi | tvām eva pratyakṣaṁ brahma vadiṣyāmi | ṛtaṁ vadiṣyāmi | satyam vadiṣyāmi | tan mām avatu | tad vaktāram avatu | avatu mām | avatu vaktāram ||",
+          "word_by_word": [
+            {
+              "sanskrit": "śam",
+              "english": "auspiciousness, peace"
+            },
+            {
+              "sanskrit": "naḥ",
+              "english": "to us"
+            },
+            {
+              "sanskrit": "mitraḥ",
+              "english": "Mitra"
+            },
+            {
+              "sanskrit": "varuṇaḥ",
+              "english": "Varuṇa"
+            },
+            {
+              "sanskrit": "bhavatv",
+              "english": "may it be (become)"
+            },
+            {
+              "sanskrit": "aryamā",
+              "english": "Aryaman"
+            },
+            {
+              "sanskrit": "indraḥ",
+              "english": "Indra"
+            },
+            {
+              "sanskrit": "bṛhaspatiḥ",
+              "english": "Bṛhaspati"
+            },
+            {
+              "sanskrit": "viṣṇuḥ",
+              "english": "Viṣṇu"
+            },
+            {
+              "sanskrit": "urukramaḥ",
+              "english": "the wide-strider"
+            },
+            {
+              "sanskrit": "namo",
+              "english": "obeisance"
+            },
+            {
+              "sanskrit": "brahmaṇe",
+              "english": "unto Brahman"
+            },
+            {
+              "sanskrit": "namaste",
+              "english": "obeisances unto you"
+            },
+            {
+              "sanskrit": "vāyo",
+              "english": "O Vāyu"
+            },
+            {
+              "sanskrit": "tvam",
+              "english": "you"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "pratyakṣam",
+              "english": "visible, manifest"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "Brahman"
+            },
+            {
+              "sanskrit": "asi",
+              "english": "are"
+            },
+            {
+              "sanskrit": "tvām",
+              "english": "you"
+            },
+            {
+              "sanskrit": "vadiṣyāmi",
+              "english": "I shall speak"
+            },
+            {
+              "sanskrit": "ṛtam",
+              "english": "cosmic order, right"
+            },
+            {
+              "sanskrit": "satyam",
+              "english": "truth"
+            },
+            {
+              "sanskrit": "tan",
+              "english": "that"
+            },
+            {
+              "sanskrit": "mām",
+              "english": "me"
+            },
+            {
+              "sanskrit": "avatu",
+              "english": "may protect"
+            },
+            {
+              "sanskrit": "tad",
+              "english": "that"
+            },
+            {
+              "sanskrit": "vaktāram",
+              "english": "the speaker"
+            }
+          ],
+          "translation": "May Mitra bless us; may Varuṇa bless us; may Aryamā favor us; may Indra and Bṛhaspati bless us; may Viṣṇu, the wide-strider, bring auspiciousness. Obeisances unto Brahman. O Vāyu, our respects unto you; you are verily the manifest Brahman. Thus shall I proclaim Brahman—ṛta I shall declare, and satya I shall declare. May that Supreme protect me; may it protect the speaker. May it protect me; may it protect the speaker.",
+          "meter": "prose"
+        },
+        {
+          "number": 13,
+          "ref": "1.13",
+          "devanagari": "ॐ सह नाववतु । सह नौ भुनक्तु । सह वीर्यं करवावहै । तेजस्वि नौ अधीतम् अस्तु । मा विद्विषावहै ॥ ॐ शान्तिः शान्तिः शान्तिः ॥",
+          "iast": "oṁ saha nāv avatu | saha nau bhunaktu | saha vīryaṁ karavāvahai | tejasvi nau adhītam astu | mā vidviṣāvahai || oṁ śāntiḥ śāntiḥ śāntiḥ ||",
+          "word_by_word": [
+            {
+              "sanskrit": "oṁ",
+              "english": "sacred syllable"
+            },
+            {
+              "sanskrit": "saha",
+              "english": "together"
+            },
+            {
+              "sanskrit": "nau",
+              "english": "us both"
+            },
+            {
+              "sanskrit": "avatu",
+              "english": "may protect"
+            },
+            {
+              "sanskrit": "bhunaktu",
+              "english": "may nourish"
+            },
+            {
+              "sanskrit": "vīryam",
+              "english": "vigor, strength"
+            },
+            {
+              "sanskrit": "karavāvahai",
+              "english": "let us perform"
+            },
+            {
+              "sanskrit": "tejasvi",
+              "english": "bright, effulgent"
+            },
+            {
+              "sanskrit": "adhītam",
+              "english": "study, that which is learned"
+            },
+            {
+              "sanskrit": "astu",
+              "english": "let it be"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "not"
+            },
+            {
+              "sanskrit": "vidviṣāvahai",
+              "english": "let us hate (each other)"
+            },
+            {
+              "sanskrit": "śāntiḥ",
+              "english": "peace"
+            }
+          ],
+          "translation": "Om. May He protect us both; may He nourish us both. May we work together with heroic strength. May our study be radiant, and may we not quarrel with one another. Om, peace, peace, peace.",
+          "meter": "prose"
+        },
+        {
+          "number": 14,
+          "ref": "1.14",
+          "devanagari": "सत्यं वद । धर्मं चर । स्वाध्यायान् मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजा तन्तुं मा व्यवच्छेत्सीः । सत्यान्न प्रमदितव्यम् । धर्मान्न प्रमदितव्यम् । कुशलान्न प्रमदितव्यम् । भूत्यै न प्रमदितव्यम् । स्वाध्यायप्रवचने न प्रमदितव्यम् ॥",
+          "iast": "satyaṁ vada. dharmaṁ cara. svādhyāyān mā pramadaḥ. ācāryāya priyaṁ dhanam āhṛtya prajā tantuṁ mā vyavacchetsīḥ. satyānna pramaditavyam. dharmānna pramaditavyam. kuśalānna pramaditavyam. bhūtyai na pramaditavyam. svādhyāyapravacane na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "satyaṁ",
+              "english": "truth"
+            },
+            {
+              "sanskrit": "vada",
+              "english": "speak"
+            },
+            {
+              "sanskrit": "dharmaṁ",
+              "english": "righteous duty"
+            },
+            {
+              "sanskrit": "cara",
+              "english": "live/practice"
+            },
+            {
+              "sanskrit": "svādhyāyāt",
+              "english": "from self-study"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "pramadaḥ",
+              "english": "be negligent"
+            },
+            {
+              "sanskrit": "ācāryāya",
+              "english": "to the teacher"
+            },
+            {
+              "sanskrit": "priyam",
+              "english": "pleasing"
+            },
+            {
+              "sanskrit": "dhanam",
+              "english": "gift/fee"
+            },
+            {
+              "sanskrit": "āhṛtya",
+              "english": "having brought"
+            },
+            {
+              "sanskrit": "prajā-tantuṁ",
+              "english": "the thread of progeny"
+            },
+            {
+              "sanskrit": "mā vyavacchetsīḥ",
+              "english": "do not sever"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "to be neglected"
+            },
+            {
+              "sanskrit": "bhūtyai",
+              "english": "for welfare/prosperity"
+            },
+            {
+              "sanskrit": "svādhyāya-pravacane",
+              "english": "study and teaching"
+            }
+          ],
+          "translation": "Speak the truth. Walk in dharma. Do not slacken in svādhyāya. Having brought the teacher a pleasing offering, do not break the thread of family. Do not neglect truth, do not neglect duty, do not neglect wholesome works, do not neglect prosperity, and do not neglect the study and teaching of the Veda.",
+          "notes": "The phrase prajā tantuṁ refers to maintaining the household order after studentship.",
+          "variants": [
+            "svādhyāyāt mā pramadaḥ",
+            "svādhyāya-pravacane → svādhyāyapravacane"
+          ],
+          "speaker": "Convocation injunction (ācārya)",
+          "addressed_to": "Snātaka (graduating student)",
+          "context": "Closing counsel at the completion of Vedic study (snātaka-dharma)."
+        },
+        {
+          "number": 15,
+          "ref": "1.15",
+          "devanagari": "देवपितृकार्याभ्यां न प्रमदितव्यम् । मातृदेवो भव । पितृदेवो भव । आचार्यदेवो भव । अतिथिदेवो भव ॥",
+          "iast": "devapitṛkāryābhyāṁ na pramaditavyam. mātṛdevo bhava. pitṛdevo bhava. ācāryadevo bhava. atithidevo bhava.",
+          "word_by_word": [
+            {
+              "sanskrit": "deva-pitṛ-kāryābhyām",
+              "english": "in duties to gods and ancestors"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "to be neglected"
+            },
+            {
+              "sanskrit": "mātṛ-devaḥ",
+              "english": "mother is as God"
+            },
+            {
+              "sanskrit": "bhava",
+              "english": "be/consider"
+            },
+            {
+              "sanskrit": "pitṛ-devaḥ",
+              "english": "father is as God"
+            },
+            {
+              "sanskrit": "ācārya-devaḥ",
+              "english": "teacher is as God"
+            },
+            {
+              "sanskrit": "atithi-devaḥ",
+              "english": "guest is as God"
+            }
+          ],
+          "translation": "Do not be careless in your obligations to the devas and the forefathers. Regard your mother as divine, your father as divine, your preceptor as divine, and your guest as divine.",
+          "speaker": "Convocation injunction (ācārya)",
+          "addressed_to": "Snātaka (graduating student)",
+          "context": "Foundational ethical reverences for household life."
+        },
+        {
+          "number": 16,
+          "ref": "1.16",
+          "devanagari": "यान्यनवद्यानि कर्माणि तानि सेवितव्यानि नो इतराणि । यान्यस्माकं सुचरितानि तानि त्वयोपास्यानि नो इतराणि ॥",
+          "iast": "yāny anavadyāni karmāṇi tāni sevitavyāni no itarāṇi. yāny asmākaṁ sucaritāni tāni tvayopāsyāni no itarāṇi.",
+          "word_by_word": [
+            {
+              "sanskrit": "yāni",
+              "english": "which"
+            },
+            {
+              "sanskrit": "anavadyāni",
+              "english": "blameless"
+            },
+            {
+              "sanskrit": "karmāṇi",
+              "english": "acts"
+            },
+            {
+              "sanskrit": "tāni",
+              "english": "those"
+            },
+            {
+              "sanskrit": "sevitavyāni",
+              "english": "are to be practiced"
+            },
+            {
+              "sanskrit": "no/na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "itarāṇi",
+              "english": "the others"
+            },
+            {
+              "sanskrit": "asmākam",
+              "english": "of us"
+            },
+            {
+              "sanskrit": "sucaritāni",
+              "english": "good conduct"
+            },
+            {
+              "sanskrit": "tvayā",
+              "english": "by you"
+            },
+            {
+              "sanskrit": "upāsyāni",
+              "english": "to be emulated"
+            }
+          ],
+          "translation": "Those deeds that are without blame are to be embraced, not the others. The practices of ours that are well-conducted—those you should follow, not the others.",
+          "speaker": "Convocation injunction (ācārya)"
+        },
+        {
+          "number": 17,
+          "ref": "1.17",
+          "devanagari": "श्रद्धया देयं । अश्रद्धया अदेयम् । श्रिया देयं । ह्रिया देयं । भिया देयं । संविदा देयं ॥",
+          "iast": "śraddhayā deyaṁ. aśraddhayā adeyam. śriyā deyaṁ. hriyā deyaṁ. bhiyā deyaṁ. saṁvidā deyaṁ.",
+          "word_by_word": [
+            {
+              "sanskrit": "śraddhayā",
+              "english": "with faith"
+            },
+            {
+              "sanskrit": "deyam",
+              "english": "should be given"
+            },
+            {
+              "sanskrit": "aśraddhayā",
+              "english": "without faith"
+            },
+            {
+              "sanskrit": "adeyam",
+              "english": "should not be given"
+            },
+            {
+              "sanskrit": "śriyā",
+              "english": "with generosity/prosperity"
+            },
+            {
+              "sanskrit": "hriyā",
+              "english": "with modesty"
+            },
+            {
+              "sanskrit": "bhiyā",
+              "english": "with a wholesome fear"
+            },
+            {
+              "sanskrit": "saṁvidā",
+              "english": "with understanding"
+            }
+          ],
+          "translation": "Give in faith; do not give faithless. Give with affluence of heart, with modesty, with a due fear of transgression, and with discernment.",
+          "speaker": "Convocation injunction (ācārya)"
+        },
+        {
+          "number": 18,
+          "ref": "1.18",
+          "devanagari": "अथ यदि ते कर्मविचिकित्सा वा वृत्तविचिकित्सा वा स्यात् ये तत्र ब्राह्मणाः सम्मर्शिनः युक्ता अयुक्ता अलूक्षा धर्मकामाः स्युः यथा ते तत्र वर्तेरन् तथा तत्र वर्तेथाः ॥",
+          "iast": "atha yadi te karmavicikitsā vā vṛttavicikitsā vā syāt ye tatra brāhmaṇāḥ sammarśinaḥ yuktā ayuktā alūkṣā dharmakāmāḥ syuḥ yathā te tatra varteran tathā tatra vartethāḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "atha",
+              "english": "then"
+            },
+            {
+              "sanskrit": "yadi",
+              "english": "if"
+            },
+            {
+              "sanskrit": "te",
+              "english": "to you"
+            },
+            {
+              "sanskrit": "karmavicikitsā",
+              "english": "doubt about an act"
+            },
+            {
+              "sanskrit": "vā",
+              "english": "or"
+            },
+            {
+              "sanskrit": "vṛttavicikitsā",
+              "english": "doubt about conduct"
+            },
+            {
+              "sanskrit": "syāt",
+              "english": "should arise"
+            },
+            {
+              "sanskrit": "ye",
+              "english": "those who"
+            },
+            {
+              "sanskrit": "brāhmaṇāḥ",
+              "english": "brāhmaṇas"
+            },
+            {
+              "sanskrit": "sammarśinaḥ",
+              "english": "discerning/considerate"
+            },
+            {
+              "sanskrit": "yuktā ayuktā",
+              "english": "competent and impartial"
+            },
+            {
+              "sanskrit": "alūkṣā",
+              "english": "gentle/not harsh"
+            },
+            {
+              "sanskrit": "dharmakāmāḥ",
+              "english": "desirous of dharma"
+            },
+            {
+              "sanskrit": "yathā",
+              "english": "as"
+            },
+            {
+              "sanskrit": "varteran",
+              "english": "they would act"
+            },
+            {
+              "sanskrit": "tathā",
+              "english": "so"
+            },
+            {
+              "sanskrit": "vartethāḥ",
+              "english": "you should act"
+            }
+          ],
+          "translation": "If a doubt should arise for you—about an action or about your conduct—then as those brāhmaṇas there who are thoughtful, competent, impartial, gentle, and devoted to dharma would act, so should you conduct yourself.",
+          "speaker": "Convocation injunction (ācārya)"
+        },
+        {
+          "number": 19,
+          "ref": "1.19",
+          "devanagari": "एष आदेशः । एष उपदेशः । एष वेदोपनिषत् । एतदनुशासनम् ॥",
+          "iast": "eṣa ādeśaḥ. eṣa upadeśaḥ. eṣa vedopaniṣat. etad anuśāsanam.",
+          "word_by_word": [
+            {
+              "sanskrit": "eṣaḥ",
+              "english": "this"
+            },
+            {
+              "sanskrit": "ādeśaḥ",
+              "english": "injunction"
+            },
+            {
+              "sanskrit": "upadeśaḥ",
+              "english": "instruction"
+            },
+            {
+              "sanskrit": "vedopaniṣat",
+              "english": "the Upaniṣad of the Veda (secret teaching)"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "anuśāsanam",
+              "english": "ordinance/discipline"
+            }
+          ],
+          "translation": "This is the directive. This is the instruction. This is the secret teaching of the Veda. This is the ordinance.",
+          "speaker": "Convocation injunction (ācārya)"
+        },
+        {
+          "number": 20,
+          "ref": "1.20",
+          "devanagari": "एवं उपासितव्यम् । एवं उ चैतदुपास्यं ॥",
+          "iast": "evaṁ upāsitavyam. evaṁ u caitad upāsyaṁ.",
+          "word_by_word": [
+            {
+              "sanskrit": "evaṁ",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "upāsitavyam",
+              "english": "is to be practiced/worshiped"
+            },
+            {
+              "sanskrit": "evaṁ u",
+              "english": "even so, indeed"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "upāsyaṁ",
+              "english": "is to be held in devotion/practice"
+            }
+          ],
+          "translation": "Thus it is to be practiced. Indeed, thus this is to be embraced in devotion and conduct.",
+          "speaker": "Convocation injunction (ācārya)"
+        },
+        {
+          "number": 21,
+          "ref": "1.21",
+          "devanagari": "सत्यं वद । धर्मं चर । स्वाध्यायान् मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः ॥",
+          "iast": "satyam vada. dharmaṁ cara. svādhyāyān mā pramadaḥ. ācāryāya priyaṁ dhanam āhṛtya prajātantuṁ mā vyavacchetsīḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "satyam",
+              "english": "truth"
+            },
+            {
+              "sanskrit": "vada",
+              "english": "speak"
+            },
+            {
+              "sanskrit": "dharmaṁ",
+              "english": "righteous duty"
+            },
+            {
+              "sanskrit": "cara",
+              "english": "follow; practice"
+            },
+            {
+              "sanskrit": "svādhyāyān",
+              "english": "from self-study"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "pramadaḥ",
+              "english": "be negligent"
+            },
+            {
+              "sanskrit": "ācāryāya",
+              "english": "to the teacher"
+            },
+            {
+              "sanskrit": "priyam",
+              "english": "pleasing"
+            },
+            {
+              "sanskrit": "dhanam",
+              "english": "gift"
+            },
+            {
+              "sanskrit": "āhṛtya",
+              "english": "having brought"
+            },
+            {
+              "sanskrit": "prajātantuṁ",
+              "english": "the thread of progeny"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "vyavacchetsīḥ",
+              "english": "sever; cut off"
+            }
+          ],
+          "translation": "Speak the truth. Walk in dharma. Do not neglect your own study. After offering a pleasing gift to the ācārya, never sever the line of family and duty.",
+          "meter": "prose",
+          "context": "Convocation counsel to the departing student."
+        },
+        {
+          "number": 22,
+          "ref": "1.22",
+          "devanagari": "सत्यान्न प्रमदितव्यम् । धर्मान्न प्रमदितव्यम् । कुशलान्न प्रमदितव्यम् । भूत्यै न प्रमदितव्यम् । स्वाध्यायप्रवचनाभ्यां न प्रमदितव्यम् ॥",
+          "iast": "satyān na pramaditavyam. dharmān na pramaditavyam. kuśalān na pramaditavyam. bhūtyai na pramaditavyam. svādhyāya-pravacanābhyāṁ na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "satyāt",
+              "english": "from truth"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "to be neglected"
+            },
+            {
+              "sanskrit": "dharmāt",
+              "english": "from righteousness"
+            },
+            {
+              "sanskrit": "kuśalāt",
+              "english": "from welfare; good works"
+            },
+            {
+              "sanskrit": "bhūtyai",
+              "english": "for prosperity; well-being"
+            },
+            {
+              "sanskrit": "svādhyāya",
+              "english": "self-study"
+            },
+            {
+              "sanskrit": "pravacanābhyām",
+              "english": "and teaching (both)"
+            }
+          ],
+          "translation": "Do not neglect truth; do not neglect dharma; do not neglect works of true welfare; do not neglect what brings auspicious prosperity; never neglect study and teaching of the sacred lore.",
+          "meter": "prose",
+          "context": "Further injunctions on priorities of life."
+        },
+        {
+          "number": 23,
+          "ref": "1.23",
+          "devanagari": "देवपितृकार्याभ्यां न प्रमदितव्यम् । मातृदेवो भव । पितृदेवो भव । आचार्यदेवो भव । अतिथिदेवो भव ॥",
+          "iast": "devapitṛkāryābhyāṁ na pramaditavyam. mātṛdevo bhava. pitṛdevo bhava. ācāryadevo bhava. atithidevo bhava.",
+          "word_by_word": [
+            {
+              "sanskrit": "deva-pitṛ-kāryābhyām",
+              "english": "the duties to gods and ancestors"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "to be neglected"
+            },
+            {
+              "sanskrit": "mātṛ-devaḥ",
+              "english": "mother as a god"
+            },
+            {
+              "sanskrit": "bhava",
+              "english": "be; regard"
+            },
+            {
+              "sanskrit": "pitṛ-devaḥ",
+              "english": "father as a god"
+            },
+            {
+              "sanskrit": "ācārya-devaḥ",
+              "english": "teacher as a god"
+            },
+            {
+              "sanskrit": "atithi-devaḥ",
+              "english": "guest as a god"
+            }
+          ],
+          "translation": "Do not neglect the obligations to the devas and the forefathers. See the mother as god; see the father as god; see the teacher as god; see the guest as god.",
+          "meter": "prose",
+          "context": "Sacral regard for foundational relationships."
+        },
+        {
+          "number": 24,
+          "ref": "1.24",
+          "devanagari": "यान्यनवद्यानि कर्माणि तानि सेवितव्यानि । नो इतराणि । यान्यस्माकं सुचरितानि तानि त्वयोपास्यानि । नो इतराणि ॥",
+          "iast": "yāny anavadyāni karmāṇi tāni sevitavyāni. no itarāṇi. yāny asmākaṁ sucaritāni tāni tvayopāsyāni. no itarāṇi.",
+          "word_by_word": [
+            {
+              "sanskrit": "yāni",
+              "english": "whatever"
+            },
+            {
+              "sanskrit": "anavadyāni",
+              "english": "blameless; irreproachable"
+            },
+            {
+              "sanskrit": "karmāṇi",
+              "english": "acts"
+            },
+            {
+              "sanskrit": "tāni",
+              "english": "those"
+            },
+            {
+              "sanskrit": "sevitavyāni",
+              "english": "are to be practiced"
+            },
+            {
+              "sanskrit": "no",
+              "english": "not"
+            },
+            {
+              "sanskrit": "itarāṇi",
+              "english": "the others"
+            },
+            {
+              "sanskrit": "asmākam",
+              "english": "of us; our"
+            },
+            {
+              "sanskrit": "sucaritāni",
+              "english": "good conduct(s)"
+            },
+            {
+              "sanskrit": "tvayā",
+              "english": "by you"
+            },
+            {
+              "sanskrit": "upāsyāni",
+              "english": "to be followed; emulated"
+            }
+          ],
+          "translation": "Whatever deeds are beyond reproach—those you should adopt, not the others. Whatever are our worthy ways—those you should emulate, not the others.",
+          "meter": "prose",
+          "context": "Template for ethical imitation."
+        },
+        {
+          "number": 25,
+          "ref": "1.25",
+          "devanagari": "श्रद्धया देयम् । अश्रद्धया अदेयम् । श्रिया देयम् । ह्रिया देयम् । भिया देयम् । संविदा देयम् ॥",
+          "iast": "śraddhayā deyam. aśraddhayā adeyam. śriyā deyam. hriyā deyam. bhiyā deyam. saṁvidā deyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "śraddhayā",
+              "english": "with faith"
+            },
+            {
+              "sanskrit": "deyam",
+              "english": "it should be given"
+            },
+            {
+              "sanskrit": "aśraddhayā",
+              "english": "without faith"
+            },
+            {
+              "sanskrit": "adeyam",
+              "english": "it should not be given"
+            },
+            {
+              "sanskrit": "śriyā",
+              "english": "with prosperity; generosity"
+            },
+            {
+              "sanskrit": "hriyā",
+              "english": "with modesty"
+            },
+            {
+              "sanskrit": "bhiyā",
+              "english": "with respectful fear (of transgression)"
+            },
+            {
+              "sanskrit": "saṁvidā",
+              "english": "with understanding; discernment"
+            }
+          ],
+          "translation": "Give with faith; without faith do not give. Give with abundance, with modesty, with a sober fear of lapsing, and with thoughtful understanding.",
+          "meter": "prose",
+          "context": "Guidelines for right giving (dāna)."
+        },
+        {
+          "number": 26,
+          "ref": "1.26",
+          "devanagari": "अथ यदि ते कर्म विचिकित्सा वा वृत्ते विचिकित्सा वा स्यात् । ये तत्र ब्राह्मणाः संमर्शिनो युक्ता आयतयासाः धर्मकामाः स्युः, यथा ते तत्र वर्तेरन् तथा तत्र वर्तेथाः ॥",
+          "iast": "atha yadi te karma vicikitsā vā vṛtte vicikitsā vā syāt. ye tatra brāhmaṇāḥ saṁmarśino yuktā āyatayāsāḥ dharmakāmāḥ syuḥ, yathā te tatra varteran tathā tatra vartethāḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "atha",
+              "english": "then; now"
+            },
+            {
+              "sanskrit": "yadi",
+              "english": "if"
+            },
+            {
+              "sanskrit": "te",
+              "english": "to you"
+            },
+            {
+              "sanskrit": "karma",
+              "english": "an act; rite"
+            },
+            {
+              "sanskrit": "vicikitsā",
+              "english": "doubt; indecision"
+            },
+            {
+              "sanskrit": "vā",
+              "english": "or"
+            },
+            {
+              "sanskrit": "vṛtte",
+              "english": "in conduct"
+            },
+            {
+              "sanskrit": "brāhmaṇāḥ",
+              "english": "brāhmaṇas; learned elders"
+            },
+            {
+              "sanskrit": "saṁmarśinaḥ",
+              "english": "deliberative; discerning"
+            },
+            {
+              "sanskrit": "yuktāḥ",
+              "english": "well-grounded"
+            },
+            {
+              "sanskrit": "āyatayāsāḥ",
+              "english": "steadfast in long effort"
+            },
+            {
+              "sanskrit": "dharmakāmāḥ",
+              "english": "desiring righteousness"
+            },
+            {
+              "sanskrit": "syuḥ",
+              "english": "may be; are"
+            },
+            {
+              "sanskrit": "yathā",
+              "english": "as"
+            },
+            {
+              "sanskrit": "te",
+              "english": "they"
+            },
+            {
+              "sanskrit": "varteran",
+              "english": "would conduct themselves"
+            },
+            {
+              "sanskrit": "tathā",
+              "english": "so; in that way"
+            },
+            {
+              "sanskrit": "vartethāḥ",
+              "english": "you should conduct yourself"
+            }
+          ],
+          "translation": "If a doubt arises for you—about a work to be done or about right conduct—approach those brāhmaṇas who are thoughtful, well-anchored, long-practiced, and intent on dharma; as they would act, so you should act.",
+          "meter": "prose",
+          "context": "How to resolve ethical and ritual doubts."
+        },
+        {
+          "number": 27,
+          "ref": "1.27",
+          "devanagari": "एष आदेशः । एष उपदेशः । एतदनुशासनम् । एवं उपासितव्यम् । एवं चैतदुपास्यम् ॥",
+          "iast": "eṣa ādeśaḥ. eṣa upadeśaḥ. etad anuśāsanam. evaṁ upāsitavyam. evaṁ caitad upāsyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "eṣaḥ",
+              "english": "this"
+            },
+            {
+              "sanskrit": "ādeśaḥ",
+              "english": "injunction; command"
+            },
+            {
+              "sanskrit": "upadeśaḥ",
+              "english": "instruction; counsel"
+            },
+            {
+              "sanskrit": "anuśāsanam",
+              "english": "discipline; ordinance"
+            },
+            {
+              "sanskrit": "evam",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "upāsitavyam",
+              "english": "is to be practiced; worshiped"
+            },
+            {
+              "sanskrit": "evaṁ ca etat",
+              "english": "and thus indeed this"
+            },
+            {
+              "sanskrit": "upāsyam",
+              "english": "worthy of worship; to be lived by"
+            }
+          ],
+          "translation": "This is the command; this, the counsel. This is the discipline. Thus it should be embraced and lived; thus indeed is it to be worshipfully practiced.",
+          "meter": "prose",
+          "context": "Seal of the convocation instruction."
+        },
+        {
+          "number": 28,
+          "ref": "1.28",
+          "devanagari": "सत्यं वद।",
+          "iast": "satyaṃ vada.",
+          "word_by_word": [
+            {
+              "sanskrit": "satyaṃ",
+              "english": "truth"
+            },
+            {
+              "sanskrit": "vada",
+              "english": "speak"
+            }
+          ],
+          "translation": "Speak the truth."
+        },
+        {
+          "number": 29,
+          "ref": "1.29",
+          "devanagari": "धर्मं चर।",
+          "iast": "dharmaṃ cara.",
+          "word_by_word": [
+            {
+              "sanskrit": "dharmaṃ",
+              "english": "righteous duty"
+            },
+            {
+              "sanskrit": "cara",
+              "english": "practice; live by"
+            }
+          ],
+          "translation": "Live by dharma."
+        },
+        {
+          "number": 30,
+          "ref": "1.30",
+          "devanagari": "स्वाध्यायान् मा प्रमदः।",
+          "iast": "svādhyāyān mā pramadaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "svādhyāyān",
+              "english": "self-study (of the Veda)"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "pramadaḥ",
+              "english": "be negligent"
+            }
+          ],
+          "translation": "Do not neglect your own sacred study."
+        },
+        {
+          "number": 31,
+          "ref": "1.31",
+          "devanagari": "आचार्याय प्रियम् धनम् आहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः।",
+          "iast": "ācāryāya priyam dhanam āhṛtya prajātantuṃ mā vyavacchetsīḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "ācāryāya",
+              "english": "for the teacher"
+            },
+            {
+              "sanskrit": "priyam",
+              "english": "pleasing"
+            },
+            {
+              "sanskrit": "dhanam",
+              "english": "gift"
+            },
+            {
+              "sanskrit": "āhṛtya",
+              "english": "having brought"
+            },
+            {
+              "sanskrit": "prajātantuṃ",
+              "english": "the thread of lineage"
+            },
+            {
+              "sanskrit": "mā",
+              "english": "do not"
+            },
+            {
+              "sanskrit": "vyavacchetsīḥ",
+              "english": "sever; break"
+            }
+          ],
+          "translation": "Having brought a pleasing gift to the ācārya, do not cut off the thread of family life."
+        },
+        {
+          "number": 32,
+          "ref": "1.32",
+          "devanagari": "सत्यान् न प्रमदितव्यम्।",
+          "iast": "satyān na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "satyān",
+              "english": "truths; truthfulness"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "is to be neglected"
+            }
+          ],
+          "translation": "Regarding truth—never be careless."
+        },
+        {
+          "number": 33,
+          "ref": "1.33",
+          "devanagari": "धर्मान् न प्रमदितव्यम्।",
+          "iast": "dharmān na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "dharmān",
+              "english": "duties of righteousness"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "is to be neglected"
+            }
+          ],
+          "translation": "Regarding righteous duties—do not be negligent."
+        },
+        {
+          "number": 34,
+          "ref": "1.34",
+          "devanagari": "कुशलान् न प्रमदितव्यम्।",
+          "iast": "kuśalān na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "kuśalān",
+              "english": "wholesome acts; virtues"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "is to be neglected"
+            }
+          ],
+          "translation": "Beneficial works—do not neglect them."
+        },
+        {
+          "number": 35,
+          "ref": "1.35",
+          "devanagari": "भूत्यै न प्रमदितव्यम्।",
+          "iast": "bhūtyai na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "bhūtyai",
+              "english": "for well-being; prosperity"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "is to be neglected"
+            }
+          ],
+          "translation": "For true welfare—do not be slack."
+        },
+        {
+          "number": 36,
+          "ref": "1.36",
+          "devanagari": "स्वाध्याय-प्रवचने च न प्रमदितव्यम्।",
+          "iast": "svādhyāya-pravacane ca na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "svādhyāya-pravacane",
+              "english": "study and teaching (of scripture)"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "is to be neglected"
+            }
+          ],
+          "translation": "In study and in teaching, do not allow negligence."
+        },
+        {
+          "number": 37,
+          "ref": "1.37",
+          "devanagari": "देवपितृकार्याभ्यां न प्रमदितव्यम्।",
+          "iast": "devapitṛkāryābhyāṃ na pramaditavyam.",
+          "word_by_word": [
+            {
+              "sanskrit": "devapitṛkāryābhyām",
+              "english": "duties to gods and ancestors"
+            },
+            {
+              "sanskrit": "na",
+              "english": "not"
+            },
+            {
+              "sanskrit": "pramaditavyam",
+              "english": "is to be neglected"
+            }
+          ],
+          "translation": "Do not neglect the duties owed to the gods and to the forefathers."
+        }
+      ]
+    }
+  ]
+}

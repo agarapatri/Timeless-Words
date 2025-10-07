@@ -1,0 +1,1050 @@
+{
+  "id": "hamsa-up",
+  "short": "HaU",
+  "title": "Hamsa Upanishad",
+  "author": "Śruti (Śukla Yajurveda tradition)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 12th–15th century CE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "ॐ सोऽहमित्यजपा विद्या परमा ब्रह्मरूपिणी ।\nहृदि पद्मे निवसति सुषुम्णायां सुधामयी ॥",
+          "iast": "oṁ so'ham ity ajapā vidyā paramā brahmarūpiṇī |\nhṛdi padme nivasati suṣumṇāyāṁ sudhāmayī ||",
+          "word_by_word": [
+            {
+              "sanskrit": "oṁ",
+              "english": "the sacred syllable Oṁ"
+            },
+            {
+              "sanskrit": "so'ham",
+              "english": "'I am He'"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "ajapā",
+              "english": "unchanted (automatic)"
+            },
+            {
+              "sanskrit": "vidyā",
+              "english": "knowledge"
+            },
+            {
+              "sanskrit": "paramā",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "brahmarūpiṇī",
+              "english": "of the nature of Brahman"
+            },
+            {
+              "sanskrit": "hṛdi",
+              "english": "in the heart"
+            },
+            {
+              "sanskrit": "padme",
+              "english": "lotus"
+            },
+            {
+              "sanskrit": "nivasati",
+              "english": "dwells"
+            },
+            {
+              "sanskrit": "suṣumṇāyām",
+              "english": "in the suṣumnā"
+            },
+            {
+              "sanskrit": "sudhāmayī",
+              "english": "nectar-filled"
+            }
+          ],
+          "translation": "Oṁ. The ajapā science of so'ham is supreme, revealing Brahman. She abides within the heart-lotus, in the suṣumnā, nectarean and self-luminous."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "देही प्राणापानयोर्मध्ये हंसः संचरते सदा ।\nनिःश्वासे 'ह' ध्वनिः स्याद् स्वासे 'स' इति कीर्त्यते ॥",
+          "iast": "dehī prāṇāpānayor madhye haṁsaḥ sañcarate sadā |\nniḥśvāse 'ha' dhvaniḥ syād svāse 'sa' iti kīrtyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "dehī",
+              "english": "the embodied soul"
+            },
+            {
+              "sanskrit": "prāṇāpānayoḥ",
+              "english": "between prāṇa and apāna"
+            },
+            {
+              "sanskrit": "madhye",
+              "english": "in the middle"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "the haṁsa (mantra)"
+            },
+            {
+              "sanskrit": "sañcarate",
+              "english": "moves"
+            },
+            {
+              "sanskrit": "sadā",
+              "english": "always"
+            },
+            {
+              "sanskrit": "niḥśvāse",
+              "english": "on exhalation"
+            },
+            {
+              "sanskrit": "ha",
+              "english": "the sound 'ha'"
+            },
+            {
+              "sanskrit": "dhvaniḥ",
+              "english": "sound"
+            },
+            {
+              "sanskrit": "syāt",
+              "english": "is"
+            },
+            {
+              "sanskrit": "svāse",
+              "english": "on inhalation"
+            },
+            {
+              "sanskrit": "sa",
+              "english": "the sound 'sa'"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "kīrtyate",
+              "english": "is described"
+            }
+          ],
+          "translation": "Within the embodied being, between prāṇa and apāna, the haṁsa ever moves. At exhalation the sound is 'ha', at inhalation 'sa'—so the sages declare."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "एवं दिनस्य काले प्राणचेष्टा व्यवस्थिताः ।\nएकविंशतिसहस्रं षट्शतसंयुतं स्मृतम् ॥",
+          "iast": "evaṁ dinasya kāle prāṇaceṣṭā vyavasthitāḥ |\nekaviṁśatisahasraṁ ṣaṭśatasaṁyutaṁ smṛtam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "evaṁ",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "dinasya",
+              "english": "of a day"
+            },
+            {
+              "sanskrit": "kāle",
+              "english": "in the time"
+            },
+            {
+              "sanskrit": "prāṇaceṣṭāḥ",
+              "english": "breath-movements"
+            },
+            {
+              "sanskrit": "vyavasthitāḥ",
+              "english": "are arranged"
+            },
+            {
+              "sanskrit": "ekaviṁśatisahasram",
+              "english": "twenty-one thousand"
+            },
+            {
+              "sanskrit": "ṣaṭśatasaṁyutam",
+              "english": "joined with six hundred"
+            },
+            {
+              "sanskrit": "smṛtam",
+              "english": "is reckoned"
+            }
+          ],
+          "translation": "Thus, within the span of a day, the movements of breath proceed; by their own course they amount to twenty-one thousand six hundred recitations."
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "अजपायाः परिज्ञानात् मोक्षो निःश्रेयसः ध्रुवः ।\nनित्यं सोऽहमिति ध्यायन् पावनीं गतिमश्नुते ॥",
+          "iast": "ajapāyāḥ parijñānāt mokṣo niḥśreyasaḥ dhruvaḥ |\nnityaṁ so'ham iti dhyāyan pāvanīṁ gatim aśnute ||",
+          "word_by_word": [
+            {
+              "sanskrit": "ajapāyāḥ",
+              "english": "of the ajapā"
+            },
+            {
+              "sanskrit": "parijñānāt",
+              "english": "by thorough realization"
+            },
+            {
+              "sanskrit": "mokṣaḥ",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "niḥśreyasaḥ",
+              "english": "the highest good"
+            },
+            {
+              "sanskrit": "dhruvaḥ",
+              "english": "certain"
+            },
+            {
+              "sanskrit": "nityam",
+              "english": "constantly"
+            },
+            {
+              "sanskrit": "so'ham",
+              "english": "so'ham (I am He)"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "dhyāyan",
+              "english": "meditating"
+            },
+            {
+              "sanskrit": "pāvanīm",
+              "english": "purifying"
+            },
+            {
+              "sanskrit": "gatim",
+              "english": "destination"
+            },
+            {
+              "sanskrit": "aśnute",
+              "english": "attains"
+            }
+          ],
+          "translation": "By realizing this ajapā, sure deliverance, the highest welfare, is obtained. One who always meditates upon so'ham reaches a pure and holy destination."
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "हृत्पद्मेऽष्टदलामध्ये बिन्दुनादसमन्वितः ।\nहंसः प्रबुद्धचिद्रश्मिः शान्तो योगिना दृश्यते ॥",
+          "iast": "hṛtpadme'ṣṭadalāmadhye bindunādasamanvitaḥ |\nhaṁsaḥ prabuddhacidraśmiḥ śānto yoginā dṛśyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "hṛtpadme",
+              "english": "in the heart-lotus"
+            },
+            {
+              "sanskrit": "aṣṭadalāmadhye",
+              "english": "in the eight-petaled center"
+            },
+            {
+              "sanskrit": "bindunādasamanvitaḥ",
+              "english": "endowed with bindu and nāda"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "the haṁsa"
+            },
+            {
+              "sanskrit": "prabuddha",
+              "english": "awakened"
+            },
+            {
+              "sanskrit": "cidraśmiḥ",
+              "english": "ray of consciousness"
+            },
+            {
+              "sanskrit": "śāntaḥ",
+              "english": "peaceful"
+            },
+            {
+              "sanskrit": "yoginā",
+              "english": "by the yogī"
+            },
+            {
+              "sanskrit": "dṛśyate",
+              "english": "is seen"
+            }
+          ],
+          "translation": "In the eight-petaled heart-lotus, joined with bindu and nāda, the haṁsa shines as an awakened ray of consciousness—peaceful, beheld by the yogī."
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "सुषुम्णामार्गमुत्क्रान्तो नादबिन्दुसमन्वितः ।\nऊर्ध्वं ब्रह्मरन्ध्रमध्ये सोऽहंभावं प्रपद्यते ॥",
+          "iast": "suṣumṇāmārgam utkrānto nādabindusamanvitaḥ |\nūrdhvaṁ brahmarandhramadhye so'haṁbhāvaṁ prapadyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "suṣumṇāmārgaṁ",
+              "english": "the suṣumnā path"
+            },
+            {
+              "sanskrit": "utkrāntaḥ",
+              "english": "having ascended"
+            },
+            {
+              "sanskrit": "nādabindusamanvitaḥ",
+              "english": "together with nāda and bindu"
+            },
+            {
+              "sanskrit": "ūrdhvam",
+              "english": "upward"
+            },
+            {
+              "sanskrit": "brahmarandhramadhye",
+              "english": "in the crown aperture"
+            },
+            {
+              "sanskrit": "so'haṁbhāvam",
+              "english": "the so'ham mood"
+            },
+            {
+              "sanskrit": "prapadyate",
+              "english": "attains"
+            }
+          ],
+          "translation": "Rising along the suṣumnā, accompanied by nāda and bindu, one goes upward to the brahmarandhra and enters the so'ham disposition."
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "हंसाय विद्महे परमहंसाय धीमहि ।\nतन्नो हंसः प्रचोदयात् ॥",
+          "iast": "haṁsāya vidmahe paramahaṁsāya dhīmahi |\ntanno haṁsaḥ pracodayāt ||",
+          "word_by_word": [
+            {
+              "sanskrit": "haṁsāya",
+              "english": "unto Haṁsa"
+            },
+            {
+              "sanskrit": "vidmahe",
+              "english": "may we know"
+            },
+            {
+              "sanskrit": "paramahaṁsāya",
+              "english": "unto the supreme Haṁsa"
+            },
+            {
+              "sanskrit": "dhīmahi",
+              "english": "we meditate"
+            },
+            {
+              "sanskrit": "tanno",
+              "english": "may that (He)"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "Haṁsa"
+            },
+            {
+              "sanskrit": "pracodayāt",
+              "english": "impel; inspire"
+            }
+          ],
+          "translation": "May we know Haṁsa; upon the Paramahaṁsa we meditate. May that Haṁsa enlighten and impel us."
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "यः साक्षी सर्वभूतानां हंसरूपेण तिष्ठति ।\nतमेकं परमं ब्रह्म निरलेपं नमाम्यहम् ॥",
+          "iast": "yaḥ sākṣī sarvabhūtānāṁ haṁsarūpeṇa tiṣṭhati |\ntamekaṁ paramaṁ brahma niralepaṁ namāmy aham ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "sākṣī",
+              "english": "the witness"
+            },
+            {
+              "sanskrit": "sarvabhūtānām",
+              "english": "of all beings"
+            },
+            {
+              "sanskrit": "haṁsarūpeṇa",
+              "english": "in the form of Haṁsa"
+            },
+            {
+              "sanskrit": "tiṣṭhati",
+              "english": "abides"
+            },
+            {
+              "sanskrit": "tam",
+              "english": "that one"
+            },
+            {
+              "sanskrit": "ekam",
+              "english": "one, singular"
+            },
+            {
+              "sanskrit": "paramam",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "Brahman"
+            },
+            {
+              "sanskrit": "niralepam",
+              "english": "unstained"
+            },
+            {
+              "sanskrit": "namāmi",
+              "english": "I bow"
+            },
+            {
+              "sanskrit": "aham",
+              "english": "I"
+            }
+          ],
+          "translation": "He, the witness of all beings, abiding as Haṁsa—I bow to that one Supreme, Brahman, untouched by matter."
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "स्वासे 'स' स्मरन् भक्त्या निःश्वासे 'ह' निरन्तरम् ।\nअजपां यः समायुक्तः स पापैः प्रमुच्यते ॥",
+          "iast": "svāse 'sa' smaran bhaktyā niḥśvāse 'ha' nirantaram |\najapāṁ yaḥ samāyuktaḥ sa pāpaiḥ pramucyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "svāse",
+              "english": "on inhalation"
+            },
+            {
+              "sanskrit": "sa",
+              "english": "the sound 'sa'"
+            },
+            {
+              "sanskrit": "smaran",
+              "english": "remembering"
+            },
+            {
+              "sanskrit": "bhaktyā",
+              "english": "with devotion"
+            },
+            {
+              "sanskrit": "niḥśvāse",
+              "english": "on exhalation"
+            },
+            {
+              "sanskrit": "ha",
+              "english": "the sound 'ha'"
+            },
+            {
+              "sanskrit": "nirantaram",
+              "english": "without break"
+            },
+            {
+              "sanskrit": "ajapām",
+              "english": "the ajapā (unspoken japa)"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "samāyuktaḥ",
+              "english": "is engaged"
+            },
+            {
+              "sanskrit": "sa",
+              "english": "he"
+            },
+            {
+              "sanskrit": "pāpaiḥ",
+              "english": "from sins"
+            },
+            {
+              "sanskrit": "pramucyate",
+              "english": "is delivered"
+            }
+          ],
+          "translation": "He who, with devotion, remembers 'sa' on the in-breath and 'ha' on the out-breath—ever fixed in this ajapā—becomes released from sins."
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "हंसाश्रयः परां शान्तिं मायाजालं निरस्यति ।\nततो भक्तः परे नाथे सेवते नित्यनिर्वृतिम् ॥",
+          "iast": "haṁsāśrayaḥ parāṁ śāntiṁ māyājālaṁ nirasyati |\ntato bhaktaḥ pare nāthe sevate nityanirvṛtim ||",
+          "word_by_word": [
+            {
+              "sanskrit": "haṁsāśrayaḥ",
+              "english": "one who takes shelter of Haṁsa"
+            },
+            {
+              "sanskrit": "parām",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "śāntim",
+              "english": "peace"
+            },
+            {
+              "sanskrit": "māyājālam",
+              "english": "the net of illusion"
+            },
+            {
+              "sanskrit": "nirasyati",
+              "english": "casts off"
+            },
+            {
+              "sanskrit": "tataḥ",
+              "english": "then"
+            },
+            {
+              "sanskrit": "bhaktaḥ",
+              "english": "the devotee"
+            },
+            {
+              "sanskrit": "pare",
+              "english": "in the Supreme"
+            },
+            {
+              "sanskrit": "nāthe",
+              "english": "Lord; Master"
+            },
+            {
+              "sanskrit": "sevate",
+              "english": "renders service"
+            },
+            {
+              "sanskrit": "nityanirvṛtim",
+              "english": "eternal fulfillment"
+            }
+          ],
+          "translation": "Taking shelter of Haṁsa, one dispels the net of illusion. Thereafter the devotee serves the Supreme Lord and relishes constant, everlasting satisfaction."
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "निःश्वासश्वासयोरन्तः सहजोऽयं परो जपः। हंसो मन्त्रः परं ब्रह्म सोऽहंभावः प्रबोधकः॥",
+          "iast": "niḥśvāsa-śvāsayor antaḥ sahajo'yaṁ paro japaḥ। haṁso mantraḥ paraṁ brahma so'haṁ-bhāvaḥ prabodhakaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "niḥśvāsa",
+              "english": "exhalation"
+            },
+            {
+              "sanskrit": "śvāsa",
+              "english": "inhalation"
+            },
+            {
+              "sanskrit": "antaḥ",
+              "english": "within"
+            },
+            {
+              "sanskrit": "sahajaḥ",
+              "english": "natural"
+            },
+            {
+              "sanskrit": "japaḥ",
+              "english": "recitation"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "the mantra ‘haṁsa’"
+            },
+            {
+              "sanskrit": "param",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "Absolute"
+            },
+            {
+              "sanskrit": "so'ham-bhāvaḥ",
+              "english": "the disposition ‘so'ham’"
+            },
+            {
+              "sanskrit": "prabodhakaḥ",
+              "english": "awakening"
+            }
+          ],
+          "translation": "Within inhalation and exhalation the natural, supreme japa moves. The Haṁsa mantra points to the Supreme Brahman; by the mood of so'ham, knowledge awakens."
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "अहोरात्रे जपोऽस्य नियतः प्रकीर्तितः। एकविंशतिसहस्रैः षट्शतैः सहितो ध्रुवः॥",
+          "iast": "ahorātre japo'sya niyataḥ prakīrtitaḥ। ekaviṁśati-sahasraiḥ ṣaṭśataiḥ sahito dhruvaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "ahorātra",
+              "english": "day and night"
+            },
+            {
+              "sanskrit": "japaḥ",
+              "english": "recitation"
+            },
+            {
+              "sanskrit": "asya",
+              "english": "of this"
+            },
+            {
+              "sanskrit": "niyataḥ",
+              "english": "fixed"
+            },
+            {
+              "sanskrit": "prakīrtitaḥ",
+              "english": "declared"
+            },
+            {
+              "sanskrit": "ekaviṁśati-sahasraiḥ",
+              "english": "with twenty-one thousand"
+            },
+            {
+              "sanskrit": "ṣaṭ-śataiḥ",
+              "english": "and six hundred"
+            },
+            {
+              "sanskrit": "sahitaḥ",
+              "english": "together"
+            },
+            {
+              "sanskrit": "dhruvaḥ",
+              "english": "constant"
+            }
+          ],
+          "translation": "Through the whole day and night, this japa runs in a fixed count—twenty-one thousand with six hundred—unceasing by the Lord’s arrangement."
+        },
+        {
+          "number": 13,
+          "ref": "1.13",
+          "devanagari": "इडापिङ्गलयोर्मध्ये सुषुम्णायां विनिर्मितः। हंसो विहारि निर्लेपो हृदम्बुजे विराजते॥",
+          "iast": "iḍā-piṅgalayor madhye suṣumṇāyāṁ vinirmitaḥ। haṁso vihāri nirlepo hṛd-ambuje virājate॥",
+          "word_by_word": [
+            {
+              "sanskrit": "iḍā",
+              "english": "Iḍā channel"
+            },
+            {
+              "sanskrit": "piṅgala",
+              "english": "Piṅgalā channel"
+            },
+            {
+              "sanskrit": "madhye",
+              "english": "between"
+            },
+            {
+              "sanskrit": "suṣumṇāyām",
+              "english": "in Suṣumṇā"
+            },
+            {
+              "sanskrit": "vinirmitaḥ",
+              "english": "established"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "the Haṁsa"
+            },
+            {
+              "sanskrit": "vihāri",
+              "english": "wandering"
+            },
+            {
+              "sanskrit": "nirlepaḥ",
+              "english": "unstained"
+            },
+            {
+              "sanskrit": "hṛd-ambuje",
+              "english": "in the heart-lotus"
+            },
+            {
+              "sanskrit": "virājate",
+              "english": "shines"
+            }
+          ],
+          "translation": "Situated between Iḍā and Piṅgalā, in Suṣumṇā, the stainless Haṁsa moves and shines within the lotus of the heart."
+        },
+        {
+          "number": 14,
+          "ref": "1.14",
+          "devanagari": "श्वासे सो ध्वनिरन्तःस्थो निःश्वासे हं प्रकीर्त्यते। एवं सोऽहं जपेद्धीरः कैवल्यं लभते ध्रुवम्॥",
+          "iast": "śvāse so dhvanir antaḥstho niḥśvāse haṁ prakīrtyate। evaṁ so'haṁ japeddhīraḥ kaivalyaṁ labhate dhruvam॥",
+          "word_by_word": [
+            {
+              "sanskrit": "śvāse",
+              "english": "in inhalation"
+            },
+            {
+              "sanskrit": "so",
+              "english": "the syllable ‘so’"
+            },
+            {
+              "sanskrit": "dhvaniḥ",
+              "english": "sound"
+            },
+            {
+              "sanskrit": "antaḥ-sthaḥ",
+              "english": "situated within"
+            },
+            {
+              "sanskrit": "niḥśvāse",
+              "english": "in exhalation"
+            },
+            {
+              "sanskrit": "haṁ",
+              "english": "the syllable ‘haṁ’"
+            },
+            {
+              "sanskrit": "prakīrtyate",
+              "english": "is uttered"
+            },
+            {
+              "sanskrit": "evaṁ",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "so'ham",
+              "english": "‘so'ham’"
+            },
+            {
+              "sanskrit": "japet",
+              "english": "one should chant"
+            },
+            {
+              "sanskrit": "dhīraḥ",
+              "english": "the sober one"
+            },
+            {
+              "sanskrit": "kaivalyam",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "labhate",
+              "english": "attains"
+            },
+            {
+              "sanskrit": "dhruvam",
+              "english": "surely"
+            }
+          ],
+          "translation": "In inhalation the sound ‘so’ resides; in exhalation ‘haṁ’ is declared. Thus the sober chanter repeats so'ham and surely attains liberation."
+        },
+        {
+          "number": 15,
+          "ref": "1.15",
+          "devanagari": "हृदयाम्भोजमध्यस्थं दीपकल्पं स्वयंज्वलम्। हंसनाम्नि परे ज्योतिṣi पश्येदात्मानमव्ययम्॥",
+          "iast": "hṛdayāmbhoja-madhyasthaṁ dīpa-kalpaṁ svayaṁ-jvalam। haṁsa-nāmni pare jyotiṣi paśyed ātmānam avyayam॥",
+          "word_by_word": [
+            {
+              "sanskrit": "hṛdaya-ambhoja",
+              "english": "heart-lotus"
+            },
+            {
+              "sanskrit": "madhyastham",
+              "english": "situated in the center"
+            },
+            {
+              "sanskrit": "dīpa-kalpam",
+              "english": "lamp-like"
+            },
+            {
+              "sanskrit": "svayaṁ-jvalam",
+              "english": "self-luminous"
+            },
+            {
+              "sanskrit": "haṁsa-nāmni",
+              "english": "named Haṁsa"
+            },
+            {
+              "sanskrit": "pare",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "jyotiṣi",
+              "english": "light"
+            },
+            {
+              "sanskrit": "paśyet",
+              "english": "one should behold"
+            },
+            {
+              "sanskrit": "ātmānam",
+              "english": "the self"
+            },
+            {
+              "sanskrit": "avyayam",
+              "english": "imperishable"
+            }
+          ],
+          "translation": "In the heart-lotus is a self-luminous flame like a lamp. In that supreme light called Haṁsa one beholds the imperishable self."
+        },
+        {
+          "number": 16,
+          "ref": "1.16",
+          "devanagari": "गुरोः प्रसादमासाद्य हंसमन्त्रमनुच्चरन्। बन्धनानि क्षणेनैव भिनत्ति ज्ञानकेशरी॥",
+          "iast": "guroḥ prasādam āsādya haṁsa-mantram anuccaran। bandhanāni kṣaṇenaiva bhinatti jñāna-keśarī॥",
+          "word_by_word": [
+            {
+              "sanskrit": "guroḥ",
+              "english": "of the guru"
+            },
+            {
+              "sanskrit": "prasādam",
+              "english": "grace"
+            },
+            {
+              "sanskrit": "āsādya",
+              "english": "obtaining"
+            },
+            {
+              "sanskrit": "haṁsa-mantram",
+              "english": "the Haṁsa mantra"
+            },
+            {
+              "sanskrit": "anuccaran",
+              "english": "reciting properly"
+            },
+            {
+              "sanskrit": "bandhanāni",
+              "english": "bondages"
+            },
+            {
+              "sanskrit": "kṣaṇena",
+              "english": "in a moment"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "bhinatti",
+              "english": "cuts"
+            },
+            {
+              "sanskrit": "jñāna-keśarī",
+              "english": "the lion of knowledge"
+            }
+          ],
+          "translation": "By the mercy of the spiritual master, one chants the haṁsa-mantra; the lion of knowledge at once cuts the bonds."
+        },
+        {
+          "number": 17,
+          "ref": "1.17",
+          "devanagari": "मूलाधारादारभ्य नाभौ हृदि च मस्तके। ब्रह्मरन्ध्रे विलीयेत हंसो निर्गुणलक्षितः॥",
+          "iast": "mūlādhārād ārabhya nābhau hṛdi ca mastake। brahma-randhre vilīyeta haṁso nirguṇa-lakṣitaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "mūlādhāra",
+              "english": "Mūlādhāra"
+            },
+            {
+              "sanskrit": "ārabhya",
+              "english": "beginning from"
+            },
+            {
+              "sanskrit": "nābhau",
+              "english": "at the navel"
+            },
+            {
+              "sanskrit": "hṛdi",
+              "english": "in the heart"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "mastake",
+              "english": "at the head"
+            },
+            {
+              "sanskrit": "brahma-randhre",
+              "english": "at the Brahma-randhra"
+            },
+            {
+              "sanskrit": "vilīyeta",
+              "english": "dissolves"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "the Haṁsa"
+            },
+            {
+              "sanskrit": "nirguṇa",
+              "english": "beyond the guṇas"
+            },
+            {
+              "sanskrit": "lakṣitaḥ",
+              "english": "characterized"
+            }
+          ],
+          "translation": "Beginning at Mūlādhāra, passing the navel and heart up to the crown, the Haṁsa dissolves in the Brahma-randhra, marked by transcendence of the modes."
+        },
+        {
+          "number": 18,
+          "ref": "1.18",
+          "devanagari": "हंकारं दक्षिणे पक्षे साकारं वामपक्षके। वर्णद्वयं समायोज्य हंसो देहे व्यवस्थितः॥",
+          "iast": "haṁkāraṁ dakṣiṇe pakṣe sākāraṁ vāma-pakṣake। varṇa-dvayaṁ samāyojya haṁso dehe vyavasthitaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "haṁkāram",
+              "english": "the syllable ‘haṁ’"
+            },
+            {
+              "sanskrit": "dakṣiṇe",
+              "english": "on the right"
+            },
+            {
+              "sanskrit": "pakṣe",
+              "english": "wing/side"
+            },
+            {
+              "sanskrit": "sākāram",
+              "english": "the syllable ‘sa’"
+            },
+            {
+              "sanskrit": "vāma",
+              "english": "left"
+            },
+            {
+              "sanskrit": "pakṣake",
+              "english": "on the wing"
+            },
+            {
+              "sanskrit": "varṇa-dvayam",
+              "english": "the two letters"
+            },
+            {
+              "sanskrit": "samāyojya",
+              "english": "uniting"
+            },
+            {
+              "sanskrit": "haṁsaḥ",
+              "english": "the Haṁsa"
+            },
+            {
+              "sanskrit": "dehe",
+              "english": "in the body"
+            },
+            {
+              "sanskrit": "vyavasthitaḥ",
+              "english": "is situated"
+            }
+          ],
+          "translation": "Place ‘haṁ’ on the right and ‘sa’ on the left; uniting the two letters, the Haṁsa is established within the body."
+        },
+        {
+          "number": 19,
+          "ref": "1.19",
+          "devanagari": "हंसजापपरः सततं निरहंकार एव च। यः पश्यति स्वमात्मानं तस्य मोक्षो न संशयः॥",
+          "iast": "haṁsa-jāpa-paraḥ satataṁ nirahaṁkāra eva ca। yaḥ paśyati svam ātmānaṁ tasya mokṣo na saṁśayaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "haṁsa-jāpa-paraḥ",
+              "english": "intent on the Haṁsa-japa"
+            },
+            {
+              "sanskrit": "satatam",
+              "english": "constantly"
+            },
+            {
+              "sanskrit": "nirahaṁkāraḥ",
+              "english": "free from ego"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "paśyati",
+              "english": "sees"
+            },
+            {
+              "sanskrit": "svam",
+              "english": "one’s own"
+            },
+            {
+              "sanskrit": "ātmānam",
+              "english": "self"
+            },
+            {
+              "sanskrit": "tasya",
+              "english": "of him"
+            },
+            {
+              "sanskrit": "mokṣaḥ",
+              "english": "liberation"
+            },
+            {
+              "sanskrit": "na saṁśayaḥ",
+              "english": "no doubt"
+            }
+          ],
+          "translation": "He who is always engaged in haṁsa-japa, free from false ego, sees his own self; his liberation is assured, without doubt."
+        },
+        {
+          "number": 20,
+          "ref": "1.20",
+          "devanagari": "एतद् रहस्यं परमं प्रोक्तं हंसविद्यया। यः वेद सोऽमृतं याति जीवन्मुक्तो न संशयः॥",
+          "iast": "etad rahasyaṁ paramaṁ proktaṁ haṁsa-vidyayā। yaḥ veda so'mṛtaṁ yāti jīvanmukto na saṁśayaḥ॥",
+          "word_by_word": [
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "rahasyam",
+              "english": "secret"
+            },
+            {
+              "sanskrit": "paramam",
+              "english": "supreme"
+            },
+            {
+              "sanskrit": "proktam",
+              "english": "has been spoken"
+            },
+            {
+              "sanskrit": "haṁsa-vidyayā",
+              "english": "by the science of Haṁsa"
+            },
+            {
+              "sanskrit": "yaḥ",
+              "english": "who"
+            },
+            {
+              "sanskrit": "veda",
+              "english": "knows"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "amṛtam",
+              "english": "immortality"
+            },
+            {
+              "sanskrit": "yāti",
+              "english": "attains"
+            },
+            {
+              "sanskrit": "jīvan-muktaḥ",
+              "english": "liberated while living"
+            },
+            {
+              "sanskrit": "na saṁśayaḥ",
+              "english": "without doubt"
+            }
+          ],
+          "translation": "Thus the supreme secret of the haṁsa-vidyā is declared. Whoever knows it attains immortality—liberated even while living, without doubt."
+        }
+      ]
+    }
+  ]
+}
