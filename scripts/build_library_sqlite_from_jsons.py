@@ -13,6 +13,10 @@ You can load **multiple JSON files into the same SQLite DB**—two key points:
 ### Workflow
 
 ```bash
+# 0) Default paths
+
+python json_to_sqlite_cli.py
+
 # 1) Multiple specific files → one DB (create new DB)
 
 python json_to_sqlite_cli.py \
@@ -71,11 +75,15 @@ import argparse, os, sqlite3, re, json, glob
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+ROOT = Path(__file__).resolve().parent.parent  # -> docs/
+DEFAULT_DB_PATH = ROOT / "assets" / "data" / "library.{{DB_VERSION}}.sqlite"
+DEFAULT_JSON_DIR = ROOT / "scripts" / "json_samples"
+
 def parse_args(argv=None):
     p = argparse.ArgumentParser(description="Convert VP-style JSON files into a single SQLite DB.")
-    p.add_argument("--db", required=True, help="Output SQLite path (created if missing).")
+    p.add_argument("--db", default=DEFAULT_DB_PATH, help="Output SQLite path (created if missing).")
     p.add_argument("--json", nargs="*", default=[], help="One or more JSON files of the VP style.")
-    p.add_argument("--dir", dest="indir", help="Directory to scan for JSON files.")
+    p.add_argument("--dir", dest="indir", default=DEFAULT_JSON_DIR, help="Directory to scan for JSON files.")
     p.add_argument("--pattern", default="*.json", help="Glob pattern within --dir (default: *.json).")
     p.add_argument("--no_reset", action="store_true", help="Append into existing DB (do not delete).")
     return p.parse_args(argv)

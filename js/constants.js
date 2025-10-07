@@ -1,6 +1,6 @@
-export const APP_VERSION = "17e6a869";
-export const DB_VERSION = "2e31c40c80bf";
-export const SEM_VERSION = "8f53e56f374e";
+export const APP_VERSION = "c38fe4b8";
+export const DB_VERSION = "a92481a93ce3";
+export const SEM_VERSION = "82343bf73d0c";
 
 const MOD = new URL(".", import.meta.url); // /docs/js/
 export const DATA_ROOT = new URL("../assets/data/", MOD);
@@ -11,7 +11,7 @@ export const SEM_ONNX_ROOT = new URL("../assets/data/semantic/onnx_model/", impo
 export const ENABLE_SEMANTIC = false;
 
 export const DB = {
-  DB_NAME: "library.2e31c40c80bf.sqlite",
+  DB_NAME: "library.a92481a93ce3.sqlite",
   VEC_DB_NAME: "library.semantic.v01.sqlite", // check manifest.json
   SQL_WASM_PATH: `sql_helpers/sql-wasm.wasm?v=${APP_VERSION}`,
 };
