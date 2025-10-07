@@ -6,6 +6,8 @@
 
 # Automates cache busting and deployment of the documentation site.
 # Replaces placeholders with hashed versions before publishing to GitHub Pages.
+# ignore in scripts, fonts, onnx_model and images directories, and .md files.
+# exclude scripts, markdown, fonts, models, and images from both replacement and verification.
 
 name: Cache Busting & Deploy
 
@@ -62,17 +64,61 @@ jobs:
         run: |
           set -euo pipefail
 
+          EXCLUDES='
+            -path docs/scripts -prune -o
+            -path docs/assets/fonts -prune -o
+            -path docs/assets/images -prune -o
+            -path docs/assets/data/semantic/onnx_model -prune -o
+            -path docs/js/onyx -prune -o
+            -path docs/js/sql_helpers -prune -o
+            -name "*.md" -prune -o
+          '
+
           replace_all() {
             local placeholder="$1" value="$2"
             shift 2
-            for pattern in "$@"; do
-              find docs -type f -name "$pattern" -exec sed -i "s|${placeholder}|${value}|g" {} +
-            done
+            eval find docs \( $EXCLUDES -type f -name "\"$1\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
+            eval find docs \( $EXCLUDES -type f -name "\"$2\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
+            eval find docs \( $EXCLUDES -type f -name "\"$3\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
+            eval find docs \( $EXCLUDES -type f -name "\"$4\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
           }
 
           replace_all '{{VERSION}}'     "$APP_VERSION" '*.html' '*.css' '*.js' '*.json'
           replace_all '{{DB_VERSION}}'  "$DB_VERSION"  '*.html' '*.css' '*.js' '*.json'
           replace_all '{{SEM_VERSION}}' "$SEM_VERSION" '*.html' '*.css' '*.js' '*.json'
+
+      - name: Verify replacements
+        run: |
+          set -euo pipefail
+          grep -R -I "{{VERSION}}" docs \
+            --exclude='*.md' \
+            --exclude-dir=docs/scripts \
+            --exclude-dir=docs/assets/fonts \
+            --exclude-dir=docs/assets/images \
+            --exclude-dir=docs/assets/data/semantic/onnx_model \
+            --exclude-dir=docs/js/onyx \
+            --exclude-dir=docs/js/sql_helpers \
+            && { echo "Unreplaced {{VERSION}}"; exit 1; } || true
+
+          grep -R -I "{{DB_VERSION}}" docs \
+            --exclude='*.md' \
+            --exclude-dir=docs/scripts \
+            --exclude-dir=docs/assets/fonts \
+            --exclude-dir=docs/assets/images \
+            --exclude-dir=docs/assets/data/semantic/onnx_model \
+            --exclude-dir=docs/js/onyx \
+            --exclude-dir=docs/js/sql_helpers \
+            && { echo "Unreplaced {{DB_VERSION}}"; exit 1; } || true
+
+          grep -R -I "{{SEM_VERSION}}" docs \
+            --exclude='*.md' \
+            --exclude-dir=docs/scripts \
+            --exclude-dir=docs/assets/fonts \
+            --exclude-dir=docs/assets/images \
+            --exclude-dir=docs/assets/data/semantic/onnx_model \
+            --exclude-dir=docs/js/onyx \
+            --exclude-dir=docs/js/sql_helpers \
+            && { echo "Unreplaced {{SEM_VERSION}}"; exit 1; } || true
 
       - name: Stage versioned DB copy (optional immutable hosting)
         run: |
@@ -83,13 +129,6 @@ jobs:
             [ -f "$DEST" ] || cp "$SRC" "$DEST"
             echo "Staged $DEST"
           fi
-
-      - name: Verify replacements
-        run: |
-          set -euo pipefail
-          ! grep -R "{{VERSION}}" docs --exclude='*.md' || { echo "Unreplaced {{VERSION}}"; exit 1; }
-          ! grep -R "{{DB_VERSION}}" docs --exclude='*.md' || { echo "Unreplaced {{DB_VERSION}}"; exit 1; }
-          ! grep -R "{{SEM_VERSION}}" docs --exclude='*.md' || { echo "Unreplaced {{SEM_VERSION}}"; exit 1; }
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
