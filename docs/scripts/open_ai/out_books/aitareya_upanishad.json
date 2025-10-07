@@ -1,0 +1,474 @@
+{
+  "id": "aitareya-upanishad",
+  "short": "AU",
+  "title": "Aitareya Upanishad",
+  "author": "Traditionally attributed to Āitareya Ṛṣi (Ṛgvedic lineage)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 9th–6th century BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 1,
+      "section_title": "Khaṇḍa 1",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "आत्मा वा इदमेक एवाग्रे आसीत्। नान्यत् किञ्चन मिषत्। स ईक्षत—लोकान् नु सृजा इति॥",
+          "iast": "ātmā vā idam eka evāgre āsīt. nānyat kiñcana miṣat. sa īkṣata—lokān nu sṛjā iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "ātmā",
+              "english": "the Self"
+            },
+            {
+              "sanskrit": "vā",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this (universe)"
+            },
+            {
+              "sanskrit": "eka eva",
+              "english": "one alone"
+            },
+            {
+              "sanskrit": "agre/evāgre",
+              "english": "in the beginning"
+            },
+            {
+              "sanskrit": "āsīt",
+              "english": "existed"
+            },
+            {
+              "sanskrit": "na anyat kiñcana",
+              "english": "nothing else whatsoever"
+            },
+            {
+              "sanskrit": "miṣat",
+              "english": "winked; moved"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "He (the Self)"
+            },
+            {
+              "sanskrit": "īkṣata",
+              "english": "considered"
+            },
+            {
+              "sanskrit": "lokān",
+              "english": "the worlds"
+            },
+            {
+              "sanskrit": "nu",
+              "english": "indeed/then"
+            },
+            {
+              "sanskrit": "sṛjā",
+              "english": "let me create"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            }
+          ],
+          "translation": "In the beginning the Supreme Self alone existed—one without a second. Nothing else even blinked. He then deliberated, “Let Me bring forth the worlds.”",
+          "meter": "prose",
+          "variants": [
+            "evāgre/evāgra"
+          ],
+          "source": "Aitareya Āraṇyaka of the Ṛgveda (Aitareya Upaniṣad), 1.1",
+          "commentary": "The opening declares the primacy of the Self as the sole reality before manifestation; creation begins as His conscious intent."
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "स इमान् लोकान् असृजत—अम्भः, मरीचीः, मरः, आपः॥",
+          "iast": "sa imān lokān asṛjata—ambhaḥ, marīcīḥ, maraḥ, āpaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "saḥ",
+              "english": "He"
+            },
+            {
+              "sanskrit": "imān",
+              "english": "these"
+            },
+            {
+              "sanskrit": "lokān",
+              "english": "worlds"
+            },
+            {
+              "sanskrit": "asṛjata",
+              "english": "created"
+            },
+            {
+              "sanskrit": "ambhaḥ",
+              "english": "Ambhas (the watery world above heaven)"
+            },
+            {
+              "sanskrit": "marīcīḥ",
+              "english": "Marīcī (the realm of light, mid-region)"
+            },
+            {
+              "sanskrit": "maraḥ",
+              "english": "Mara (the mortal earth)"
+            },
+            {
+              "sanskrit": "āpaḥ",
+              "english": "Āpaḥ (the waters below)"
+            }
+          ],
+          "translation": "Thus He brought forth these realms: Ambhas—the waters above; Marīcī—the luminous mid-region; Mara—the mortal earth; and Āpaḥ—the waters below.",
+          "meter": "prose",
+          "notes": "Ambhas is glossed as the world above the heavens; Marīcī as the sphere of rays; Mara as the mortal plane; Āpaḥ as the lower waters.",
+          "variants": [
+            "marīcīḥ/marīciḥ",
+            "maraḥ/maram"
+          ],
+          "source": "Aitareya Āraṇyaka of the Ṛgveda (Aitareya Upaniṣad), 1.2",
+          "commentary": "The fourfold cosmos is laid out as spheres above, mid-space, earth, and the waters beneath—establishing the field for the Self’s further entry."
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "तस्य मुखं निरभिद्यत। मुखाद् वाक्, वाग् अग्निः।",
+          "iast": "tasya mukhaṁ nirabhidyata. mukhād vāk, vāg agniḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "tasya",
+              "english": "of him"
+            },
+            {
+              "sanskrit": "mukham",
+              "english": "mouth"
+            },
+            {
+              "sanskrit": "nirabhidyata",
+              "english": "was opened"
+            },
+            {
+              "sanskrit": "mukhāt",
+              "english": "from the mouth"
+            },
+            {
+              "sanskrit": "vāk",
+              "english": "speech"
+            },
+            {
+              "sanskrit": "vāg",
+              "english": "speech (nom.)"
+            },
+            {
+              "sanskrit": "agniḥ",
+              "english": "Agni"
+            }
+          ],
+          "translation": "His mouth split open. From the mouth came speech, and speech is Agni.",
+          "meter": "prose"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "नासिके निरभिद्येताम्। नासिकाभ्यां प्राणः, प्राणो वायुः।",
+          "iast": "nāsike nirabhidyetām. nāsikābhyāṁ prāṇaḥ, prāṇo vāyuḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "nāsike",
+              "english": "the two nostrils"
+            },
+            {
+              "sanskrit": "nirabhidyetām",
+              "english": "were opened (dual)"
+            },
+            {
+              "sanskrit": "nāsikābhyām",
+              "english": "from the two nostrils"
+            },
+            {
+              "sanskrit": "prāṇaḥ",
+              "english": "breath"
+            },
+            {
+              "sanskrit": "prāṇaḥ (nom.)",
+              "english": "the vital air"
+            },
+            {
+              "sanskrit": "vāyuḥ",
+              "english": "Vāyu"
+            }
+          ],
+          "translation": "The two nostrils split open. From the nostrils came prāṇa, and prāṇa is Vāyu.",
+          "meter": "prose"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "अक्षिणी निरभिद्येताम्। अक्षिणाभ्यां चक्षुः, चक्षुरादित्यः।",
+          "iast": "akṣiṇī nirabhidyetām. akṣiṇābhyām cakṣuḥ, cakṣur ādityaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "akṣiṇī",
+              "english": "the two eyes"
+            },
+            {
+              "sanskrit": "nirabhidyetām",
+              "english": "were opened (dual)"
+            },
+            {
+              "sanskrit": "akṣiṇābhyām",
+              "english": "from the two eyes"
+            },
+            {
+              "sanskrit": "cakṣuḥ",
+              "english": "sight"
+            },
+            {
+              "sanskrit": "cakṣur",
+              "english": "sight (before vowel)"
+            },
+            {
+              "sanskrit": "ādityaḥ",
+              "english": "the Sun"
+            }
+          ],
+          "translation": "The two eyes split open. From the eyes came sight, and sight is the Sun.",
+          "meter": "prose"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "कर्णौ निरभिद्येताम्। कर्णाभ्यां श्रोत्रम्, श्रोत्रं दिशः।",
+          "iast": "karṇau nirabhidyetām. karṇābhyām śrotram, śrotraṁ diśaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "karṇau",
+              "english": "the two ears"
+            },
+            {
+              "sanskrit": "nirabhidyetām",
+              "english": "were opened (dual)"
+            },
+            {
+              "sanskrit": "karṇābhyām",
+              "english": "from the two ears"
+            },
+            {
+              "sanskrit": "śrotram",
+              "english": "hearing"
+            },
+            {
+              "sanskrit": "diśaḥ",
+              "english": "the quarters (directions)"
+            }
+          ],
+          "translation": "The two ears split open. From the ears came hearing, and hearing is the quarters.",
+          "meter": "prose"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "त्वक् निरभिद्यत। त्वचो लोमानि, लोमानि वनस्पतयः।",
+          "iast": "tvak nirabhidyata. tvaco lomāni, lomāni vanaspatayaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "tvak",
+              "english": "skin"
+            },
+            {
+              "sanskrit": "nirabhidyata",
+              "english": "was opened"
+            },
+            {
+              "sanskrit": "tvaco",
+              "english": "from the skin"
+            },
+            {
+              "sanskrit": "lomāni",
+              "english": "hairs"
+            },
+            {
+              "sanskrit": "vanaspatayaḥ",
+              "english": "trees (vegetation)"
+            }
+          ],
+          "translation": "The skin split open. From the skin came hairs, and hairs correspond to the trees.",
+          "meter": "prose"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "हृदयं निरभिद्यत। हृदयात् मनः, मनो चन्द्रमाः।",
+          "iast": "hṛdayaṁ nirabhidyata. hṛdayāt manaḥ, mano candramāḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "hṛdayam",
+              "english": "heart"
+            },
+            {
+              "sanskrit": "nirabhidyata",
+              "english": "was opened"
+            },
+            {
+              "sanskrit": "hṛdayāt",
+              "english": "from the heart"
+            },
+            {
+              "sanskrit": "manaḥ",
+              "english": "mind"
+            },
+            {
+              "sanskrit": "mano",
+              "english": "mind (before vowel)"
+            },
+            {
+              "sanskrit": "candramāḥ",
+              "english": "the Moon"
+            }
+          ],
+          "translation": "The heart split open. From the heart came mind, and mind is the Moon.",
+          "meter": "prose"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "नाभिः निरभिद्यत। नाभेर् अपानः, अपानो मृत्यु:।",
+          "iast": "nābhiḥ nirabhidyata. nābher apānaḥ, apāno mṛtyuḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "nābhiḥ",
+              "english": "navel"
+            },
+            {
+              "sanskrit": "nirabhidyata",
+              "english": "was opened"
+            },
+            {
+              "sanskrit": "nābheḥ/nābher",
+              "english": "from the navel"
+            },
+            {
+              "sanskrit": "apānaḥ",
+              "english": "down-breath (apāna)"
+            },
+            {
+              "sanskrit": "apānaḥ (nom.)",
+              "english": "the apāna"
+            },
+            {
+              "sanskrit": "mṛtyuḥ",
+              "english": "Death"
+            }
+          ],
+          "translation": "The navel split open. From the navel came apāna, and apāna is Death.",
+          "meter": "prose"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "शिश्नं निरभिद्यत। शिश्नाद् रेतः, रेतोऽपाः।",
+          "iast": "śiśnaṁ nirabhidyata. śiśnād retaḥ, reto 'pāḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "śiśnam",
+              "english": "generative organ"
+            },
+            {
+              "sanskrit": "nirabhidyata",
+              "english": "was opened"
+            },
+            {
+              "sanskrit": "śiśnāt",
+              "english": "from the generative organ"
+            },
+            {
+              "sanskrit": "retaḥ",
+              "english": "seed, semen"
+            },
+            {
+              "sanskrit": "apāḥ",
+              "english": "waters"
+            }
+          ],
+          "translation": "The generative organ split open. From the organ came seed, and seed belongs to the waters.",
+          "meter": "prose"
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "एवं देवाः स्वस्वेषु स्थानेषु विविशुः।",
+          "iast": "evaṁ devāḥ svasveṣu sthāneṣu viviśuḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "evam",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "devāḥ",
+              "english": "the deities"
+            },
+            {
+              "sanskrit": "svasveṣu",
+              "english": "in their respective"
+            },
+            {
+              "sanskrit": "sthāneṣu",
+              "english": "locations"
+            },
+            {
+              "sanskrit": "viviśuḥ",
+              "english": "entered"
+            }
+          ],
+          "translation": "Thus the gods entered, each into their own appointed stations.",
+          "meter": "prose"
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "स एष आत्मा देहेऽनुप्राविशत्। तेन प्राणितः पुरुषोऽभवत्।",
+          "iast": "sa eṣa ātmā dehe 'nuprāviśat. tena prāṇitaḥ puruṣo 'bhavat.",
+          "word_by_word": [
+            {
+              "sanskrit": "sa eṣa",
+              "english": "this very (He)"
+            },
+            {
+              "sanskrit": "ātmā",
+              "english": "Self"
+            },
+            {
+              "sanskrit": "dehe",
+              "english": "into the body"
+            },
+            {
+              "sanskrit": "anuprāviśat",
+              "english": "entered"
+            },
+            {
+              "sanskrit": "tena",
+              "english": "by that (entry)"
+            },
+            {
+              "sanskrit": "prāṇitaḥ",
+              "english": "made alive"
+            },
+            {
+              "sanskrit": "puruṣaḥ",
+              "english": "the person"
+            },
+            {
+              "sanskrit": "abhavat",
+              "english": "became"
+            }
+          ],
+          "translation": "Then that very Self entered into the body; by His entry the person came to life.",
+          "meter": "prose"
+        }
+      ]
+    }
+  ]
+}

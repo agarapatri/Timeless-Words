@@ -1,0 +1,610 @@
+{
+  "id": "mu",
+  "short": "MuU",
+  "title": "Munda Upanishad",
+  "author": "Śruti (Atharva-Veda tradition)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 600–300 BCE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "First Mundaka",
+      "section": 1,
+      "section_title": "Khanda 1",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "ब्रह्मा देवानां प्रथमः सम्बभूव—विश्वस्य कर्ता भुवनस्य गोप्ता। स ब्रह्मविद्यां सर्वविद्याप्रतिष्ठाम् अथर्वाय ज्येष्ठपुत्राय प्राह॥१॥",
+          "iast": "brahmā devānāṁ prathamaḥ sambabhūva—viśvasya kartā bhuvanasya goptā. sa brahmavidyāṁ sarvavidyāpratiṣṭhām atharvāya jyeṣṭhaputrāya prāha.",
+          "word_by_word": [
+            {
+              "sanskrit": "brahmā",
+              "english": "Brahmā"
+            },
+            {
+              "sanskrit": "devānām",
+              "english": "of the demigods"
+            },
+            {
+              "sanskrit": "prathamaḥ",
+              "english": "the first"
+            },
+            {
+              "sanskrit": "viśvasya kartā",
+              "english": "maker of the universe"
+            },
+            {
+              "sanskrit": "bhuvanasya goptā",
+              "english": "protector of the world"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he"
+            },
+            {
+              "sanskrit": "brahmavidyām",
+              "english": "knowledge of Brahman"
+            },
+            {
+              "sanskrit": "sarvavidyā-pratiṣṭhām",
+              "english": "foundation of all knowledge"
+            },
+            {
+              "sanskrit": "atharvāya",
+              "english": "to Atharvā"
+            },
+            {
+              "sanskrit": "jyeṣṭha-putrāya",
+              "english": "his eldest son"
+            },
+            {
+              "sanskrit": "prāha",
+              "english": "spoke"
+            }
+          ],
+          "translation": "Brahmā, foremost among the gods, the creator of the universe and guardian of the worlds, spoke to Atharvā, his eldest son, the science of Brahman, the bedrock of all knowledge.",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "अथर्वा अङ्गिरसे परावरां ब्रह्मविद्यां प्राह; अङ्गिरा सत्यवाहाय भरद्वाजाय प्राह; भरद्वाजोऽङ्गिरसे प्राह॥२॥",
+          "iast": "atharvā aṅgirase parāvarāṁ brahmavidyāṁ prāha; aṅgirā satyavāhāya bharadvājāya prāha; bharadvājo'ṅgirase prāha.",
+          "word_by_word": [
+            {
+              "sanskrit": "atharvā",
+              "english": "Atharvā"
+            },
+            {
+              "sanskrit": "aṅgirase",
+              "english": "to Aṅgiras"
+            },
+            {
+              "sanskrit": "parāvarām",
+              "english": "of higher and lower (aspects)"
+            },
+            {
+              "sanskrit": "brahmavidyām",
+              "english": "Brahman-knowledge"
+            },
+            {
+              "sanskrit": "prāha",
+              "english": "declared"
+            },
+            {
+              "sanskrit": "aṅgirā",
+              "english": "Aṅgirā"
+            },
+            {
+              "sanskrit": "satyavāhāya",
+              "english": "to Satyavāha"
+            },
+            {
+              "sanskrit": "bharadvājāya",
+              "english": "the Bharadvāja (to Bharadvāja)"
+            },
+            {
+              "sanskrit": "bharadvājaḥ",
+              "english": "Bharadvāja"
+            },
+            {
+              "sanskrit": "aṅgirase",
+              "english": "to Aṅgiras"
+            },
+            {
+              "sanskrit": "prāha",
+              "english": "said"
+            }
+          ],
+          "translation": "Atharvā imparted that Brahman-science, concerning higher and lower, to Aṅgiras; Aṅgirā then spoke it to Satyavāha, of the Bharadvāja line; and Bharadvāja in turn conveyed it to Aṅgiras.",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "शौनको ह वै महाशालोऽङ्गिरसं विदिवदुपसन्नः पप्रच्छ—कस्मिन्नु भगवो विज्ञाते सर्वमिदं विज्ञातं भवतीति॥३॥",
+          "iast": "śaunako ha vai mahāśālo'ṅgirasaṁ vidivad upasannaḥ papraccha—kasminnu bhagavo vijñāte sarvam idaṁ vijñātaṁ bhavatīti.",
+          "word_by_word": [
+            {
+              "sanskrit": "śaunakaḥ",
+              "english": "Śaunaka"
+            },
+            {
+              "sanskrit": "mahāśālaḥ",
+              "english": "a great householder"
+            },
+            {
+              "sanskrit": "aṅgirasam",
+              "english": "Aṅgiras"
+            },
+            {
+              "sanskrit": "vidivad upasannaḥ",
+              "english": "approached properly"
+            },
+            {
+              "sanskrit": "papraccha",
+              "english": "asked"
+            },
+            {
+              "sanskrit": "kasmin",
+              "english": "by knowing what"
+            },
+            {
+              "sanskrit": "bhagavaḥ",
+              "english": "O revered sir"
+            },
+            {
+              "sanskrit": "vijñāte",
+              "english": "when known"
+            },
+            {
+              "sanskrit": "sarvam idam",
+              "english": "all this"
+            },
+            {
+              "sanskrit": "vijñātam",
+              "english": "is known"
+            },
+            {
+              "sanskrit": "bhavati",
+              "english": "becomes"
+            }
+          ],
+          "translation": "Śaunaka, a great householder, duly approached Aṅgiras and inquired: O venerable one, by knowing what does everything else become known?",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad",
+          "speaker": "Narrator",
+          "addressed_to": "Aṅgiras"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "तस्मै स होवाच—द्वे विद्ये वेदितव्ये इति ह स्म यद् ब्रह्मविदो वदन्ति, परा चैवापरा च॥४॥",
+          "iast": "tasmai sa hovāca—dve vidye veditavye iti ha sma yad brahmavido vadanti, parā caivāparā ca.",
+          "word_by_word": [
+            {
+              "sanskrit": "tasmai",
+              "english": "to him"
+            },
+            {
+              "sanskrit": "saḥ",
+              "english": "he (Aṅgiras)"
+            },
+            {
+              "sanskrit": "uvāca",
+              "english": "said"
+            },
+            {
+              "sanskrit": "dve vidye",
+              "english": "two kinds of knowledge"
+            },
+            {
+              "sanskrit": "veditavye",
+              "english": "are to be known"
+            },
+            {
+              "sanskrit": "brahmavidaḥ",
+              "english": "knowers of Brahman"
+            },
+            {
+              "sanskrit": "vadanti",
+              "english": "declare"
+            },
+            {
+              "sanskrit": "parā",
+              "english": "higher"
+            },
+            {
+              "sanskrit": "aparā",
+              "english": "lower"
+            }
+          ],
+          "translation": "He said to him: The sages who know Brahman declare that two kinds of knowledge are to be learned—the higher and the lower.",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "तत्रापरा ऋग्वेदो यजुर्वेदः सामवेदोऽथर्ववेदः; शिक्षा कल्पः व्याकरणं निरुक्तं छन्दः ज्योतिषम् इति। अथ परा यया तदक्षरम् अधिगम्यते॥५॥",
+          "iast": "tatrāparā ṛgvedo yajurvedaḥ sāmavedo'tharvavedaḥ; śikṣā kalpaḥ vyākaraṇaṁ niruktaṁ chandaḥ jyotiṣam iti. atha parā yayā tad akṣaram adhigamyate.",
+          "word_by_word": [
+            {
+              "sanskrit": "tatra",
+              "english": "therein"
+            },
+            {
+              "sanskrit": "aparā",
+              "english": "the lower"
+            },
+            {
+              "sanskrit": "ṛg-vedaḥ...",
+              "english": "Ṛg, Yajur, Sāma, Atharva (Vedas)"
+            },
+            {
+              "sanskrit": "śikṣā",
+              "english": "phonetics"
+            },
+            {
+              "sanskrit": "kalpaḥ",
+              "english": "ritual"
+            },
+            {
+              "sanskrit": "vyākaraṇam",
+              "english": "grammar"
+            },
+            {
+              "sanskrit": "niruktam",
+              "english": "etymology"
+            },
+            {
+              "sanskrit": "chandaḥ",
+              "english": "meter"
+            },
+            {
+              "sanskrit": "jyotiṣam",
+              "english": "astronomy"
+            },
+            {
+              "sanskrit": "parā",
+              "english": "the higher"
+            },
+            {
+              "sanskrit": "yayā",
+              "english": "by which"
+            },
+            {
+              "sanskrit": "tat akṣaram",
+              "english": "that Imperishable"
+            },
+            {
+              "sanskrit": "adhigamyate",
+              "english": "is realized"
+            }
+          ],
+          "translation": "Of these, the lower comprises Ṛg, Yajur, Sāma and Atharva, along with phonetics, ritual, grammar, etymology, meter, and astronomy. The higher is that by which the Imperishable is attained.",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "यत्तददृश्यं अग्राह्यम् अगोत्रम् अवर्णम् अचक्षुःश्रोत्रं तदपाणिपादं नित्यं विभुं सर्वगतं सूक्ष्मं तदव्ययं यद्भूतयोनिं परिपश्यन्ति धीराः॥६॥",
+          "iast": "yat tad adṛśyam agrāhyam agotram avarṇam acakṣuḥ-śrotraṁ tad apāṇi-pādaṁ nityaṁ vibhuṁ sarvagataṁ sūkṣmaṁ tad avyayaṁ yad bhūta-yonim paripaśyanti dhīrāḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "yat",
+              "english": "that which"
+            },
+            {
+              "sanskrit": "adṛśyam",
+              "english": "unseen"
+            },
+            {
+              "sanskrit": "agrāhyam",
+              "english": "ungraspable"
+            },
+            {
+              "sanskrit": "agotram",
+              "english": "without lineage"
+            },
+            {
+              "sanskrit": "avarṇam",
+              "english": "without attribute"
+            },
+            {
+              "sanskrit": "acakṣuḥ-śrotram",
+              "english": "without eyes or ears"
+            },
+            {
+              "sanskrit": "apāṇi-pādam",
+              "english": "without hands or feet"
+            },
+            {
+              "sanskrit": "nityam",
+              "english": "eternal"
+            },
+            {
+              "sanskrit": "vibhum",
+              "english": "all-pervading"
+            },
+            {
+              "sanskrit": "sarvagatam",
+              "english": "present everywhere"
+            },
+            {
+              "sanskrit": "sūkṣmam",
+              "english": "subtle"
+            },
+            {
+              "sanskrit": "avyayam",
+              "english": "unchanging"
+            },
+            {
+              "sanskrit": "bhūta-yonim",
+              "english": "source of beings"
+            },
+            {
+              "sanskrit": "paripaśyanti",
+              "english": "behold"
+            },
+            {
+              "sanskrit": "dhīrāḥ",
+              "english": "the wise"
+            }
+          ],
+          "translation": "That Imperishable is unseen and ungraspable, without lineage or distinguishing mark, without eyes or ears, without hands or feet—eternal, all-pervading, omnipresent, most subtle, undecaying—the sober seers behold it as the womb of all beings.",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "यथोर्णनाभिः सृजते गृह्णते च; यथा पृथिव्याम् ओषधयः सम्भवन्ति; यथा सतः पुरुषात् केशलोमानि; तथाक्षरात् सम्भवति ह विश्वम्॥७॥",
+          "iast": "yathorṇanābhiḥ sṛjate gṛhṇate ca; yathā pṛthivyām oṣadhayaḥ sambhavanti; yathā sataḥ puruṣāt keśalomāni; tathākṣarāt sambhavati ha viśvam.",
+          "word_by_word": [
+            {
+              "sanskrit": "yathā",
+              "english": "as"
+            },
+            {
+              "sanskrit": "ūrṇanābhiḥ",
+              "english": "the spider"
+            },
+            {
+              "sanskrit": "sṛjate gṛhṇate ca",
+              "english": "casts forth and draws in"
+            },
+            {
+              "sanskrit": "pṛthivyām",
+              "english": "on the earth"
+            },
+            {
+              "sanskrit": "oṣadhayaḥ",
+              "english": "plants"
+            },
+            {
+              "sanskrit": "sambhavanti",
+              "english": "arise"
+            },
+            {
+              "sanskrit": "sataḥ puruṣāt",
+              "english": "from a living person"
+            },
+            {
+              "sanskrit": "keśa-lomāni",
+              "english": "hair and down"
+            },
+            {
+              "sanskrit": "tathā",
+              "english": "so"
+            },
+            {
+              "sanskrit": "akṣarāt",
+              "english": "from the Imperishable"
+            },
+            {
+              "sanskrit": "sambhavati",
+              "english": "proceeds"
+            },
+            {
+              "sanskrit": "ha",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "viśvam",
+              "english": "the universe"
+            }
+          ],
+          "translation": "As a spider sends forth and withdraws its web; as herbs spring up from the earth; as hair and down grow from a living person—so, indeed, this universe issues forth from the Imperishable.",
+          "source": "Atharva Veda, Muṇḍaka Upaniṣad"
+        },
+        {
+          "number": 8,
+          "ref": "1.1.8",
+          "devanagari": "यथोर्णनाभिः सृजते गृह्णते च\nयथा पृथिव्यां ओषधयः सम्भवन्ति ।\nयथा सतः पुरुषात् केश-लोमानि\nतथाक्षरात् सम्भवति ह विश्वम् ॥",
+          "iast": "yathorṇanābhiḥ sṛjate gṛhṇate ca\nyathā pṛthivyām oṣadhayaḥ sambhavanti |\nyathā sataḥ puruṣāt keśa-lomāni\ntathākṣarāt sambhavati ha viśvam ||",
+          "word_by_word": [
+            {
+              "sanskrit": "yathā",
+              "english": "just as"
+            },
+            {
+              "sanskrit": "ūrṇanābhiḥ",
+              "english": "the spider"
+            },
+            {
+              "sanskrit": "sṛjate",
+              "english": "produces"
+            },
+            {
+              "sanskrit": "gṛhṇate",
+              "english": "withdraws"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "yathā",
+              "english": "as"
+            },
+            {
+              "sanskrit": "pṛthivyām",
+              "english": "in the earth"
+            },
+            {
+              "sanskrit": "oṣadhayaḥ",
+              "english": "herbs/plants"
+            },
+            {
+              "sanskrit": "sambhavanti",
+              "english": "arise"
+            },
+            {
+              "sanskrit": "yathā",
+              "english": "as"
+            },
+            {
+              "sanskrit": "sataḥ",
+              "english": "from a living (being)"
+            },
+            {
+              "sanskrit": "puruṣāt",
+              "english": "person"
+            },
+            {
+              "sanskrit": "keśa-lomāni",
+              "english": "hairs (of the head and body)"
+            },
+            {
+              "sanskrit": "tathā",
+              "english": "so"
+            },
+            {
+              "sanskrit": "akṣarāt",
+              "english": "from the Imperishable"
+            },
+            {
+              "sanskrit": "sambhavati",
+              "english": "comes forth"
+            },
+            {
+              "sanskrit": "ha",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "viśvam",
+              "english": "the universe"
+            }
+          ],
+          "translation": "Just as a spider brings forth and draws back its threads; as plants spring from the earth; and as hair grows from a living person—so, from the Imperishable, the whole universe is manifest, indeed.",
+          "padaccheda": "yathā ūrṇanābhiḥ sṛjate gṛhṇate ca | yathā pṛthivyām oṣadhayaḥ sambhavanti | yathā sataḥ puruṣāt keśa-lomāni | tathā akṣarāt sambhavati ha viśvam ||",
+          "anvaya": "yathā ūrṇanābhiḥ sṛjate ca gṛhṇate, yathā pṛthivyām oṣadhayaḥ sambhavanti, yathā sataḥ puruṣāt keśa-lomāni (sambhavanti), tathā akṣarāt viśvam ha sambhavati.",
+          "meter": "Jagatī (atiprasanna)",
+          "synonyms": [
+            {
+              "sanskrit": "akṣara",
+              "english": "the imperishable Absolute"
+            },
+            {
+              "sanskrit": "viśva",
+              "english": "the cosmos; all that exists"
+            },
+            {
+              "sanskrit": "ūrṇanābhi",
+              "english": "spider (lit., wool-naveled)"
+            }
+          ],
+          "notes": "The three similes—spider/web, plants/earth, and hair/living person—affirm spontaneous, effortless emanation from the Imperishable, without external agency.",
+          "speaker": "Aṅgiras",
+          "addressed_to": "Śaunaka",
+          "context": "Aṅgiras illustrates how all manifestation proceeds from the Imperishable Brahman, clarifying the purport of the higher knowledge (parā-vidyā)."
+        },
+        {
+          "number": 9,
+          "ref": "1.1.9",
+          "devanagari": "सर्वज्ञः सर्ववित् यस्य ज्ञानमयं तपः । तस्मादेतद् ब्रह्मा नाम रूपम् अन्नं च जायते ॥",
+          "iast": "sarvajñaḥ sarvavit yasya jñānamayaṁ tapaḥ | tasmād etad brahmā nāma rūpam annaṁ ca jāyate ||",
+          "word_by_word": [
+            {
+              "sanskrit": "sarvajñaḥ",
+              "english": "all-knowing"
+            },
+            {
+              "sanskrit": "sarvavit",
+              "english": "knower of everything"
+            },
+            {
+              "sanskrit": "yasya",
+              "english": "of whom"
+            },
+            {
+              "sanskrit": "jñāna-mayam",
+              "english": "consisting of knowledge"
+            },
+            {
+              "sanskrit": "tapaḥ",
+              "english": "austerity; creative potency"
+            },
+            {
+              "sanskrit": "tasmāt",
+              "english": "from Him; therefore"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this (all)"
+            },
+            {
+              "sanskrit": "brahmā",
+              "english": "Brahmā, the creator"
+            },
+            {
+              "sanskrit": "nāma",
+              "english": "names"
+            },
+            {
+              "sanskrit": "rūpam",
+              "english": "forms"
+            },
+            {
+              "sanskrit": "annam",
+              "english": "food; sustenance"
+            },
+            {
+              "sanskrit": "ca",
+              "english": "and"
+            },
+            {
+              "sanskrit": "jāyate",
+              "english": "arises; is born"
+            }
+          ],
+          "translation": "He is the all-knower, the omniscient, whose potency is knowledge as tapas. From Him are born Brahmā, together with names and forms and the sustenance of all.",
+          "padaccheda": "sarva-jñaḥ sarva-vit yasya jñāna-mayaṁ tapaḥ | tasmāt etat brahmā nāma rūpam annaṁ ca jāyate ||",
+          "anvaya": "yasya jñānamayaṁ tapaḥ saḥ sarvajñaḥ sarvavit; tasmāt etat brahmā nāma-rūpam annaṁ ca jāyate.",
+          "meter": "triṣṭubh",
+          "synonyms": [
+            {
+              "sanskrit": "sarvajñaḥ",
+              "english": "omniscient"
+            },
+            {
+              "sanskrit": "tapas",
+              "english": "spiritual heat; creative vigor"
+            },
+            {
+              "sanskrit": "brahmā",
+              "english": "Hiraṇyagarbha; cosmic creator"
+            }
+          ],
+          "variants": [
+            "tasmād etad brahma nāma rūpam annaṁ ca jāyate"
+          ],
+          "source": "Muṇḍaka Upaniṣad 1.1.9 (Atharva-Veda)",
+          "commentary": "The Supreme Lord is perfect in knowledge and potency; by His intrinsic tapas, the creative will, flows forth the secondary creator Brahmā, and with him the manifold world of names, forms, and their maintenance.",
+          "speaker": "Aṅgiras",
+          "addressed_to": "Śaunaka",
+          "context": "Aṅgiras describes the all-knowing Supreme, from whom the entire creation proceeds."
+        }
+      ]
+    }
+  ]
+}

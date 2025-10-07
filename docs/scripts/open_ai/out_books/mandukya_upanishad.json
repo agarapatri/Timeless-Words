@@ -1,0 +1,724 @@
+{
+  "id": "mu",
+  "short": "MuU",
+  "title": "Mandukya Upanishad",
+  "author": "Atharva-Veda tradition (Māṇḍūkya-śākhā)",
+  "type": "Upaniṣad",
+  "date_of_origin": "c. 500 BCE–200 CE",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "",
+      "section": 0,
+      "section_title": "",
+      "verses": [
+        {
+          "number": 1,
+          "ref": "1.1",
+          "devanagari": "ॐ इत्येतदक्षरम् इदं सर्वम्। तस्योपव्याख्यानं भूतं भवत् भविष्यत् इति सर्वम् ओंकार एव। यच्चान्यत् त्रिकालातीतं तत् अपि ओंकार एव॥",
+          "iast": "oṁ ity etad akṣaram idaṁ sarvam. tasyopavyākhyānaṁ bhūtaṁ bhavat bhaviṣyat iti sarvam oṁkāra eva. yac cānyat trikālātītaṁ tat api oṁkāra eva.",
+          "word_by_word": [
+            {
+              "sanskrit": "oṁ",
+              "english": "the sacred syllable OM"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "akṣaram",
+              "english": "imperishable syllable"
+            },
+            {
+              "sanskrit": "idam",
+              "english": "this (all)"
+            },
+            {
+              "sanskrit": "sarvam",
+              "english": "everything"
+            },
+            {
+              "sanskrit": "upavyākhyānam",
+              "english": "explanation"
+            },
+            {
+              "sanskrit": "bhūtam",
+              "english": "past"
+            },
+            {
+              "sanskrit": "bhavat",
+              "english": "present"
+            },
+            {
+              "sanskrit": "bhaviṣyat",
+              "english": "future"
+            },
+            {
+              "sanskrit": "trikālātītam",
+              "english": "beyond the three times"
+            },
+            {
+              "sanskrit": "oṁkāraḥ",
+              "english": "the sound OM"
+            },
+            {
+              "sanskrit": "eva",
+              "english": "indeed"
+            }
+          ],
+          "translation": "OM—this imperishable sound is the whole of all that exists. Past, present, and future—everything is but Oṁkāra, and whatever surpasses time’s three divisions is also Oṁkāra.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 2,
+          "ref": "1.2",
+          "devanagari": "सर्वं ह्येतत् ब्रह्म। अयम् आत्मा ब्रह्म। सोऽयम् आत्मा चतुष्पात्॥",
+          "iast": "sarvaṁ hy etat brahma. ayam ātmā brahma. so’yam ātmā catuṣpāt.",
+          "word_by_word": [
+            {
+              "sanskrit": "sarvam",
+              "english": "all"
+            },
+            {
+              "sanskrit": "hi",
+              "english": "indeed"
+            },
+            {
+              "sanskrit": "etat",
+              "english": "this"
+            },
+            {
+              "sanskrit": "brahma",
+              "english": "the Absolute"
+            },
+            {
+              "sanskrit": "ayam",
+              "english": "this"
+            },
+            {
+              "sanskrit": "ātmā",
+              "english": "Self"
+            },
+            {
+              "sanskrit": "catuṣpāt",
+              "english": "having four quarters"
+            }
+          ],
+          "translation": "All this is Brahman. This very Self is Brahman. And this same Self appears in four quarters.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 3,
+          "ref": "1.3",
+          "devanagari": "जागरितस्थानः बहिःप्रज्ञः सप्ताङ्ग एकोनविंशतिमुखः स्थूलभुग् वैश्वानरः प्रथमः पादः॥",
+          "iast": "jāgaritasthānaḥ bahiḥprajñaḥ saptāṅga ekonaviṁśatimukhaḥ sthūlabhug vaiśvānaraḥ prathamaḥ pādaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "jāgarita-sthānaḥ",
+              "english": "situated in waking"
+            },
+            {
+              "sanskrit": "bahiḥ-prajñaḥ",
+              "english": "outwardly aware"
+            },
+            {
+              "sanskrit": "saptāṅga",
+              "english": "seven-limbed"
+            },
+            {
+              "sanskrit": "ekonaviṁśati-mukhaḥ",
+              "english": "having nineteen mouths (openings/functions)"
+            },
+            {
+              "sanskrit": "sthūla-bhuk",
+              "english": "enjoyer of the gross"
+            },
+            {
+              "sanskrit": "vaiśvānaraḥ",
+              "english": "the universal person"
+            },
+            {
+              "sanskrit": "prathamaḥ pādaḥ",
+              "english": "the first quarter"
+            }
+          ],
+          "translation": "The first quarter is Vaiśvānara: abiding in the waking state, conscious of externals, seven-limbed, with nineteen doors, the enjoyer of gross objects.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 4,
+          "ref": "1.4",
+          "devanagari": "स्वप्नस्थानोऽन्तःप्रज्ञः सप्ताङ्ग एकोनविंशतिमुखः प्रविविक्तभुक् तैजसः द्वितीयः पादः॥",
+          "iast": "svapnasthāno’ntaḥprajñaḥ saptāṅga ekonaviṁśatimukhaḥ praviviktabhuk taijasaḥ dvitīyaḥ pādaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "svapna-sthānaḥ",
+              "english": "situated in dream"
+            },
+            {
+              "sanskrit": "antaḥ-prajñaḥ",
+              "english": "inwardly aware"
+            },
+            {
+              "sanskrit": "saptāṅga",
+              "english": "seven-limbed"
+            },
+            {
+              "sanskrit": "ekonaviṁśati-mukhaḥ",
+              "english": "with nineteen mouths"
+            },
+            {
+              "sanskrit": "praviviktabhuk",
+              "english": "enjoyer of subtle (refined) objects"
+            },
+            {
+              "sanskrit": "taijasaḥ",
+              "english": "the luminous (dream-self)"
+            },
+            {
+              "sanskrit": "dvitīyaḥ pādaḥ",
+              "english": "the second quarter"
+            }
+          ],
+          "translation": "The second quarter is Taijasa: dwelling in dream, conscious within, likewise seven-limbed and nineteen-mouthed, the taster of subtle objects.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 5,
+          "ref": "1.5",
+          "devanagari": "यत्र सुप्तो न किञ्चन कामं कामयते न किञ्चन स्वप्नं पश्यति तत् सुषुप्तम्। सुषुप्तस्थानः एकीभूतः प्रज्ञ्नानघनः एव आनन्दमयः हि आनन्दभुक् चेतोमुखः प्राज्ञः तृतीयः पादः॥",
+          "iast": "yatra supto na kiñcana kāmaṁ kāmayate na kiñcana svapnaṁ paśyati tat suṣuptam. suṣuptasthānaḥ ekībhūtaḥ prajñānaghanaḥ eva ānandamayaḥ hi ānandabhuk cetomukhaḥ prājñaḥ tṛtīyaḥ pādaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "yatra",
+              "english": "where"
+            },
+            {
+              "sanskrit": "suptaḥ",
+              "english": "one asleep"
+            },
+            {
+              "sanskrit": "na kiñcana",
+              "english": "no (not) anything"
+            },
+            {
+              "sanskrit": "kāmam kāmayate",
+              "english": "desires desire"
+            },
+            {
+              "sanskrit": "na kiñcana svapnam paśyati",
+              "english": "does not see any dream"
+            },
+            {
+              "sanskrit": "tat",
+              "english": "that"
+            },
+            {
+              "sanskrit": "suṣuptam",
+              "english": "deep sleep"
+            },
+            {
+              "sanskrit": "ekībhūtaḥ",
+              "english": "become one (undifferentiated)"
+            },
+            {
+              "sanskrit": "prajñānaghanaḥ",
+              "english": "a mass of consciousness"
+            },
+            {
+              "sanskrit": "ānandamayaḥ",
+              "english": "full of bliss"
+            },
+            {
+              "sanskrit": "ānanda-bhuk",
+              "english": "enjoyer of bliss"
+            },
+            {
+              "sanskrit": "ceto-mukhaḥ",
+              "english": "having mind as doorway"
+            },
+            {
+              "sanskrit": "prājñaḥ",
+              "english": "the Prājña (deep-sleep self)"
+            },
+            {
+              "sanskrit": "tṛtīyaḥ pādaḥ",
+              "english": "the third quarter"
+            }
+          ],
+          "translation": "Where, being asleep, one neither pursues desire nor beholds a dream—that is deep sleep. There, the third quarter, called Prājña, is undivided, a mass of awareness, by nature blissful, the enjoyer of bliss, with the mind as the doorway.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 6,
+          "ref": "1.6",
+          "devanagari": "एष सर्वेश्वरः एष सर्वज्ञः एषोऽन्तर्यामी एष योनिः सर्वस्य प्रभवाप्ययौ हि भूतानाम्॥",
+          "iast": "eṣa sarveśvaraḥ eṣa sarvajñaḥ eṣo’ntaryāmī eṣa yoniḥ sarvasya prabhavāpyayau hi bhūtānām.",
+          "word_by_word": [
+            {
+              "sanskrit": "eṣaḥ",
+              "english": "this (indeed)"
+            },
+            {
+              "sanskrit": "sarveśvaraḥ",
+              "english": "Lord of all"
+            },
+            {
+              "sanskrit": "sarvajñaḥ",
+              "english": "all-knowing"
+            },
+            {
+              "sanskrit": "antaryāmī",
+              "english": "the indwelling controller"
+            },
+            {
+              "sanskrit": "yoniḥ",
+              "english": "source"
+            },
+            {
+              "sanskrit": "sarvasya",
+              "english": "of everything"
+            },
+            {
+              "sanskrit": "prabhava-apyayau",
+              "english": "origin and dissolution"
+            },
+            {
+              "sanskrit": "bhūtānām",
+              "english": "of beings"
+            }
+          ],
+          "translation": "He is the Lord of all, the omniscient indwelling guide, the very source from whom all beings arise and into whom they rest again.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 7,
+          "ref": "1.7",
+          "devanagari": "नान्तःप्रज्ञं न बहिःप्रज्ञं नोभयतःप्रज्ञं न प्रज्ञानघनं न प्रज्ञं नाप्रज्ञम्। अदृष्टम् अव्यवहार्यम् अग्राह्यम् अलक्षणम् अचिन्त्यम् अव्यपदेश्यम् एकात्मप्रत्ययसारं प्रपञ्चोपशमं शान्तं शिवम् अद्वैतं चतुर्थं मन्यन्ते स आत्मा स विज्ञेयः॥",
+          "iast": "nāntaḥprajñaṁ na bahiḥprajñaṁ nobhayataḥprajñaṁ na prajñānaghanaṁ na prajñaṁ nāprajñam. adṛṣṭam avyavahāryam agrāhyam alakṣaṇam acintyam avyapadeśyam ekātmapratyayasāraṁ prapañcopaśamaṁ śāntaṁ śivam advaitaṁ caturthaṁ manyante sa ātmā sa vijñeyaḥ.",
+          "word_by_word": [
+            {
+              "sanskrit": "na antaḥ-prajñam",
+              "english": "not inwardly conscious"
+            },
+            {
+              "sanskrit": "na bahiḥ-prajñam",
+              "english": "not outwardly conscious"
+            },
+            {
+              "sanskrit": "na ubhayataḥ-prajñam",
+              "english": "not conscious of both"
+            },
+            {
+              "sanskrit": "na prajñānaghanam",
+              "english": "not a mere mass of cognition"
+            },
+            {
+              "sanskrit": "na prajñam",
+              "english": "not (ordinary) consciousness"
+            },
+            {
+              "sanskrit": "na aprajñam",
+              "english": "not unconsciousness"
+            },
+            {
+              "sanskrit": "adṛṣṭam",
+              "english": "unseen"
+            },
+            {
+              "sanskrit": "avyavahāryam",
+              "english": "beyond transaction"
+            },
+            {
+              "sanskrit": "agrāhyam",
+              "english": "not graspable"
+            },
+            {
+              "sanskrit": "alakṣaṇam",
+              "english": "without marks"
+            },
+            {
+              "sanskrit": "acintyam",
+              "english": "inconceivable"
+            },
+            {
+              "sanskrit": "avyapadeśyam",
+              "english": "not definable"
+            },
+            {
+              "sanskrit": "ekātma-pratyaya-sāram",
+              "english": "essence of the intuition of one Self"
+            },
+            {
+              "sanskrit": "prapañca-upaśamam",
+              "english": "cessation of manifoldness"
+            },
+            {
+              "sanskrit": "śāntam",
+              "english": "peaceful"
+            },
+            {
+              "sanskrit": "śivam",
+              "english": "auspicious"
+            },
+            {
+              "sanskrit": "advaitam",
+              "english": "nondual"
+            },
+            {
+              "sanskrit": "caturtham",
+              "english": "the fourth"
+            },
+            {
+              "sanskrit": "manyante",
+              "english": "they regard"
+            },
+            {
+              "sanskrit": "sa ātma",
+              "english": "that is the Self"
+            },
+            {
+              "sanskrit": "sa vijñeyaḥ",
+              "english": "that is to be realized"
+            }
+          ],
+          "translation": "Neither inward-knowing nor outward-knowing, nor knowing both; not a mere mass of cognition; not simple knowing, nor non-knowing—unseen, ungraspable, beyond dealings, without mark, unthinkable, indescribable; the essence of the one Self’s certitude; the hush of phenomena; peace, auspiciousness, nondual. This they call the fourth. That is the Self—He is to be realized.",
+          "meter": "prose mantra",
+          "speaker": "Śruti"
+        },
+        {
+          "number": 8,
+          "ref": "1.8",
+          "devanagari": "सोऽयमात्मा अक्षरः ओंकारः अधिमात्रः; पादाः मात्राः, मात्राश्च पादाः; अकार उकार मकार इति।",
+          "iast": "so 'yam ātmā akṣaraḥ oṁkāraḥ adhimātraḥ; pādāḥ mātrāḥ, mātrāś ca pādāḥ; akāra ukāra makāra iti.",
+          "word_by_word": [
+            {
+              "sanskrit": "saḥ",
+              "english": "this"
+            },
+            {
+              "sanskrit": "ayam",
+              "english": "here/this"
+            },
+            {
+              "sanskrit": "ātmā",
+              "english": "Self"
+            },
+            {
+              "sanskrit": "akṣaraḥ",
+              "english": "imperishable syllable"
+            },
+            {
+              "sanskrit": "oṁkāraḥ",
+              "english": "the sound Oṁ"
+            },
+            {
+              "sanskrit": "adhimātraḥ",
+              "english": "to be understood by measures"
+            },
+            {
+              "sanskrit": "pādāḥ",
+              "english": "quarters"
+            },
+            {
+              "sanskrit": "mātrāḥ",
+              "english": "measures (phonetic units)"
+            },
+            {
+              "sanskrit": "akāra",
+              "english": "the sound a"
+            },
+            {
+              "sanskrit": "ukāra",
+              "english": "the sound u"
+            },
+            {
+              "sanskrit": "makāra",
+              "english": "the sound m"
+            },
+            {
+              "sanskrit": "iti",
+              "english": "thus"
+            }
+          ],
+          "translation": "This very Self is the imperishable Oṁ. It is to be grasped by its measures: the quarters are the measures, and the measures are the quarters—namely a, u, and m.",
+          "padaccheda": "saḥ ayam ātmā akṣaraḥ oṁkāraḥ adhi-mātraḥ; pādāḥ mātrāḥ, mātrāḥ ca pādāḥ; akāraḥ ukāraḥ makāraḥ iti.",
+          "anvaya": "ayam ātmā oṁkāraḥ (asti); tasya adhi-mātraḥ vicāraḥ—pādāḥ eva mātrāḥ, mātrāḥ ca pādāḥ; te ca akāra-ukāra-makāra-rūpāḥ.",
+          "meter": "prose",
+          "variants": [
+            "oṁkāraḥ/oṅkāraḥ",
+            "adhimātraḥ/adhimātra"
+          ],
+          "source": "Muktikā canon; traditional Māṇḍūkya text"
+        },
+        {
+          "number": 9,
+          "ref": "1.9",
+          "devanagari": "जागरितस्थानो वैश्वानरोऽकारः प्रथमामात्रा; आप्तिरादिमत्त्वाद्वा आप्नोति ह सर्वान् कामान्, आदिश्च भवति य एवं वेद।",
+          "iast": "jāgarita-sthāno vaiśvānaro 'kāraḥ prathamā mātrā; āptir ādimattvād vā āpnoti ha sarvān kāmān, ādiś ca bhavati ya evaṁ veda.",
+          "word_by_word": [
+            {
+              "sanskrit": "jāgarita-sthānaḥ",
+              "english": "the waking state"
+            },
+            {
+              "sanskrit": "vaiśvānaraḥ",
+              "english": "the universal person (in waking)"
+            },
+            {
+              "sanskrit": "'kāraḥ (akāraḥ)",
+              "english": "the sound a"
+            },
+            {
+              "sanskrit": "prathamā mātrā",
+              "english": "the first measure"
+            },
+            {
+              "sanskrit": "āptiḥ",
+              "english": "attainment"
+            },
+            {
+              "sanskrit": "ādimattvāt",
+              "english": "because of primacy"
+            },
+            {
+              "sanskrit": "vā",
+              "english": "or"
+            },
+            {
+              "sanskrit": "āpnoti",
+              "english": "obtains"
+            },
+            {
+              "sanskrit": "sarvān kāmān",
+              "english": "all desires"
+            },
+            {
+              "sanskrit": "ādiḥ ca",
+              "english": "and becomes a leader/origin"
+            },
+            {
+              "sanskrit": "bhavati",
+              "english": "becomes"
+            },
+            {
+              "sanskrit": "yaḥ evaṃ veda",
+              "english": "one who thus knows"
+            }
+          ],
+          "translation": "The waking station, called Vaiśvānara, is A—the first measure. Because it pervades and stands first, one who understands this attains his desires and becomes a foremost leader.",
+          "padaccheda": "jāgarita-sthānaḥ vaiśvānaraḥ akāraḥ prathamā mātrā; āptiḥ ādi-mattvāt vā, āpnoti ha sarvān kāmān, ādiḥ ca bhavati yaḥ evaṁ veda.",
+          "anvaya": "yaḥ evaṁ veda—jāgarita-sthānaḥ vaiśvānaraḥ prathamā mātrā akāraḥ (iti), saḥ ādi-mattvāt vā āptiḥ (bhavati), sarvān kāmān āpnoti, ādiḥ ca bhavati.",
+          "meter": "prose",
+          "variants": [
+            "ādimattvād/ādimattvāt",
+            "vaiśvānaro 'kāraḥ/vaiśvānaraḥ akāraḥ"
+          ],
+          "source": "Muktikā canon; traditional Māṇḍūkya text"
+        },
+        {
+          "number": 10,
+          "ref": "1.10",
+          "devanagari": "स्वप्नस्थानस् तैजसो उकारो द्वितीया मात्रा; उत्कर्षादुभयत्वाद्वा, उत्तिष्ठति ज्ञानसन्ततिं, समानश्च भवति, नास्य अब्रह्मवित्कुले भवति य एवं वेद।",
+          "iast": "svapna-sthānas taijaso ukāro dvitīyā mātrā; utkarṣād ubhayatvād vā, uttiṣṭhati jñāna-santatiṁ, samānaś ca bhavati, nāsya abrahmavit kule bhavati ya evaṁ veda.",
+          "word_by_word": [
+            {
+              "sanskrit": "svapna-sthānaḥ",
+              "english": "the dream state"
+            },
+            {
+              "sanskrit": "taijasaḥ",
+              "english": "the radiant (dreamer)"
+            },
+            {
+              "sanskrit": "ukāraḥ",
+              "english": "the sound u"
+            },
+            {
+              "sanskrit": "dvitīyā mātrā",
+              "english": "the second measure"
+            },
+            {
+              "sanskrit": "utkarṣāt",
+              "english": "by elevation"
+            },
+            {
+              "sanskrit": "ubhaya-tvāt",
+              "english": "by being intermediate to both"
+            },
+            {
+              "sanskrit": "uttiṣṭhati",
+              "english": "arises/expands"
+            },
+            {
+              "sanskrit": "jñāna-santatim",
+              "english": "a stream of knowledge"
+            },
+            {
+              "sanskrit": "samānaḥ ca bhavati",
+              "english": "and becomes balanced/equalized"
+            },
+            {
+              "sanskrit": "na asya abrahmavit kule bhavati",
+              "english": "no non-knower of Brahman is born in his lineage"
+            },
+            {
+              "sanskrit": "yaḥ evaṃ veda",
+              "english": "one who thus knows"
+            }
+          ],
+          "translation": "The dream station, Taijasa, is U—the second measure. By its elevation and its being between the two, one who knows thus rises in a flow of knowledge, becomes equipoised, and in his line no one ignorant of Brahman takes birth.",
+          "padaccheda": "svapna-sthānaḥ taijasaḥ ukāraḥ dvitīyā mātrā; utkarṣāt ubhaya-tvāt vā, uttiṣṭhati jñāna-santatim, samānaḥ ca bhavati, na asya abrahmavit kule bhavati yaḥ evaṁ veda.",
+          "anvaya": "yaḥ evaṁ veda—svapna-sthānaḥ taijasaḥ dvitīyā mātrā ukāraḥ (iti), saḥ utkarṣāt ubhaya-tvāt vā jñāna-santatim uttiṣṭhati, samānaḥ ca bhavati; asya kule abrahmavit na bhavati.",
+          "meter": "prose",
+          "variants": [
+            "nāsya abrahmavit/nāsya abhrahmavit",
+            "jñāna-santatiṁ/jñānasantatim"
+          ],
+          "source": "Muktikā canon; traditional Māṇḍūkya text"
+        },
+        {
+          "number": 11,
+          "ref": "1.11",
+          "devanagari": "सुषुप्तस्थानः प्राज्ञो मकारस्तृतीया मात्रा; मितेरपीतेर्वा, मिनोति ह वा इदं सर्वम्, आपीतिश्च भवति य एवं वेद।",
+          "iast": "suṣupta-sthānaḥ prājño makāras tṛtīyā mātrā; miter apīter vā, minoti ha vā idaṁ sarvam, apītiś ca bhavati ya evaṁ veda.",
+          "word_by_word": [
+            {
+              "sanskrit": "suṣupta-sthānaḥ",
+              "english": "the deep sleep state"
+            },
+            {
+              "sanskrit": "prājñaḥ",
+              "english": "the wise (sleeper)"
+            },
+            {
+              "sanskrit": "makāraḥ",
+              "english": "the sound m"
+            },
+            {
+              "sanskrit": "tṛtīyā mātrā",
+              "english": "the third measure"
+            },
+            {
+              "sanskrit": "miter",
+              "english": "by measure (from miti)"
+            },
+            {
+              "sanskrit": "apīter",
+              "english": "by dissolution/absorption"
+            },
+            {
+              "sanskrit": "vā",
+              "english": "or"
+            },
+            {
+              "sanskrit": "minoti",
+              "english": "encloses/contains"
+            },
+            {
+              "sanskrit": "idaṁ sarvam",
+              "english": "all this"
+            },
+            {
+              "sanskrit": "apītiḥ ca",
+              "english": "and becomes absorption"
+            },
+            {
+              "sanskrit": "bhavati",
+              "english": "becomes"
+            },
+            {
+              "sanskrit": "yaḥ evaṃ veda",
+              "english": "one who thus knows"
+            }
+          ],
+          "translation": "The deep-sleep station, Prājña, is M—the third measure. By measure or by absorption, he encompasses all this; and such a knower rests in absorption.",
+          "padaccheda": "suṣupta-sthānaḥ prājñaḥ makāraḥ tṛtīyā mātrā; miter apīter vā, minoti ha vā idaṁ sarvam, apītiḥ ca bhavati, yaḥ evaṁ veda.",
+          "anvaya": "yaḥ evaṁ veda—suṣupta-sthānaḥ prājñaḥ tṛtīyā mātrā makāraḥ (iti), saḥ miter vā apīter vā hetunā idaṁ sarvaṁ minoti; apītiḥ ca bhavati.",
+          "meter": "prose",
+          "variants": [
+            "miter apīter/miteḥ apīteḥ",
+            "apītiś/apītiḥ"
+          ],
+          "source": "Muktikā canon; traditional Māṇḍūkya text"
+        },
+        {
+          "number": 12,
+          "ref": "1.12",
+          "devanagari": "अमात्रश् चतुर्थोऽव्यवहार्यः, प्रपञ्चोपशमः, शिवोऽद्वैतः; एवं ओंकार आत्मैव; संविशत्यात्मनाऽत्मानं य एवं वेद।",
+          "iast": "amātraś caturtho 'vyavahāryaḥ, prapañcopaśamaḥ, śivo 'dvaitaḥ; evaṁ oṁkāra ātmaiva; saṁviśaty ātmanā 'tmānaṁ ya evaṁ veda.",
+          "word_by_word": [
+            {
+              "sanskrit": "amātraḥ",
+              "english": "without measure"
+            },
+            {
+              "sanskrit": "caturthaḥ",
+              "english": "the fourth"
+            },
+            {
+              "sanskrit": "avyavahāryaḥ",
+              "english": "inaccessible to transactions"
+            },
+            {
+              "sanskrit": "prapañca-upaśamaḥ",
+              "english": "the cessation of phenomena"
+            },
+            {
+              "sanskrit": "śivaḥ",
+              "english": "auspicious"
+            },
+            {
+              "sanskrit": "advaitaḥ",
+              "english": "nondual"
+            },
+            {
+              "sanskrit": "evaṁ",
+              "english": "thus"
+            },
+            {
+              "sanskrit": "oṁkāraḥ",
+              "english": "the Oṁ-syllable"
+            },
+            {
+              "sanskrit": "ātmā eva",
+              "english": "is verily the Self"
+            },
+            {
+              "sanskrit": "saṁviśati",
+              "english": "enters/abides"
+            },
+            {
+              "sanskrit": "ātmanā",
+              "english": "by the Self"
+            },
+            {
+              "sanskrit": "ātmānam",
+              "english": "the Self (as object)"
+            },
+            {
+              "sanskrit": "yaḥ evaṁ veda",
+              "english": "one who thus knows"
+            }
+          ],
+          "translation": "The fourth is measureless—beyond dealings, the quieting of all projection, auspicious and nondual. Thus Oṁ is truly the Self; one who knows so enters the Self by the Self.",
+          "padaccheda": "amātraḥ caturthaḥ avyavahāryaḥ, prapañca-upaśamaḥ, śivaḥ advaitaḥ; evaṁ oṁkāraḥ ātmā eva; saṁviśati ātmanā ātmānam yaḥ evaṁ veda.",
+          "anvaya": "evaṁ yaḥ oṁkāram ātmānam veda, saḥ ātmanā ātmānam saṁviśati; caturthaḥ amātraḥ—saḥ avyavahāryaḥ, prapañcopaśamaḥ, śivaḥ, advaitaḥ.",
+          "meter": "prose",
+          "variants": [
+            "saṁviśaty ātmanā'ātmānaṁ/saṁviśaty ātmanātmānaṁ",
+            "oṁkāra/omkāra"
+          ],
+          "source": "Muktikā canon; traditional Māṇḍūkya text"
+        }
+      ]
+    }
+  ]
+}

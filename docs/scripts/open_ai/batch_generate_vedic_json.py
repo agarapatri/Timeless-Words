@@ -27,17 +27,19 @@ titles = [
         "Prasna Upanishad",
         "Munda Upanishad",
         "Mandukya Upanishad",
+
         "Taittiri Upanishad",
         "Aitareya Upanishad",
         "Chandogya Upanishad",
         "Brihadaranyaka Upanishad",
-
         "Brahma Upanishad",
+
         "Kaivalya Upanishad",
         "Jabala Upanishad",
         "Svetasva Upanishad",
         "Hamsa Upanishad",
         "Aruni Upanishad",
+
         "Garbha Upanishad",
         "Narayana Upanishad",
         "Paramahamsa Upanishad",
@@ -47,8 +49,10 @@ titles = [
         "Yajur Veda",
         "Sama Veda",
         "Atharva Veda",
+
         "Valmiki Ramayana",
         "Mahabharata",
+        
         "Vishnu Purana",
         "Shiva Purana",
         "Devi Bhagavata Purana",
@@ -93,7 +97,10 @@ MAX_RETRIES = 2
 RETRY_BACKOFF = 1.8
 OUT_DIR = "out_books"
 BOOKS = [
-        "Isa Upanishad",
+        "Garbha Upanishad",
+        "Narayana Upanishad",
+        "Paramahamsa Upanishad",
+        "Amritabindu Upanishad",
     ]
 
 # -------------------- client --------------------
@@ -405,7 +412,7 @@ You are generating Sanskrit verses with strict JSON output. Return ONLY valid JS
 No commentary. No markdown. No preface or suffix text. No code fences.
 Preserve key order, punctuation, diacritics, and whitespace precisely. Do not escape Unicode. Use UTF-8.
 
-If no further verses exist at or after the requested position, return:
+If no further sanskrit verses or english translations exist at or after the requested position, return:
 {{"status":"END BOOK"}}
 
 Otherwise return a JSON object with this schema (include only chapters/verses produced in this chunk):
