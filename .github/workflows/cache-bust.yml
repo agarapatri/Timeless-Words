@@ -61,33 +61,30 @@ jobs:
           echo "SEM_VERSION=$SEM_VERSION" >> "$GITHUB_ENV"
 
       - name: Replace placeholders in assets
+        shell: bash
         run: |
           set -euo pipefail
 
-          EXCLUDES='
-            -path docs/scripts -prune -o
-            -path docs/assets/fonts -prune -o
-            -path docs/assets/images -prune -o
-            -path docs/assets/data/semantic/onnx_model -prune -o
-            -path docs/js/onyx -prune -o
-            -path docs/js/sql_helpers -prune -o
-            -name "*.md" -prune -o
-          '
-
           replace_all() {
             local placeholder="$1" value="$2"
-            shift 2
-            eval find docs \( $EXCLUDES -type f -name "\"$1\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
-            eval find docs \( $EXCLUDES -type f -name "\"$2\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
-            eval find docs \( $EXCLUDES -type f -name "\"$3\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
-            eval find docs \( $EXCLUDES -type f -name "\"$4\"" -print \) -o -false | xargs -r sed -i "s|${placeholder}|${value}|g"
+            # Prune unwanted paths and only touch text-like assets
+            find docs \
+              \( -path docs/scripts \
+                 -o -path docs/assets/fonts \
+                 -o -path docs/assets/images \
+                 -o -path docs/assets/data/semantic/onnx_model \
+                 -o -name "*.md" \) -prune -o \
+              -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" \) \
+              -print0 \
+            | xargs -0 -r sed -i "s|${placeholder}|${value}|g"
           }
 
-          replace_all '{{VERSION}}'     "$APP_VERSION" '*.html' '*.css' '*.js' '*.json'
-          replace_all '{{DB_VERSION}}'  "$DB_VERSION"  '*.html' '*.css' '*.js' '*.json'
-          replace_all '{{SEM_VERSION}}' "$SEM_VERSION" '*.html' '*.css' '*.js' '*.json'
+          replace_all '{{VERSION}}'     "$APP_VERSION"
+          replace_all '{{DB_VERSION}}'  "$DB_VERSION"
+          replace_all '{{SEM_VERSION}}' "$SEM_VERSION"
 
       - name: Verify replacements
+        shell: bash
         run: |
           set -euo pipefail
           grep -R -I "{{VERSION}}" docs \
@@ -96,8 +93,6 @@ jobs:
             --exclude-dir=docs/assets/fonts \
             --exclude-dir=docs/assets/images \
             --exclude-dir=docs/assets/data/semantic/onnx_model \
-            --exclude-dir=docs/js/onyx \
-            --exclude-dir=docs/js/sql_helpers \
             && { echo "Unreplaced {{VERSION}}"; exit 1; } || true
 
           grep -R -I "{{DB_VERSION}}" docs \
@@ -106,8 +101,6 @@ jobs:
             --exclude-dir=docs/assets/fonts \
             --exclude-dir=docs/assets/images \
             --exclude-dir=docs/assets/data/semantic/onnx_model \
-            --exclude-dir=docs/js/onyx \
-            --exclude-dir=docs/js/sql_helpers \
             && { echo "Unreplaced {{DB_VERSION}}"; exit 1; } || true
 
           grep -R -I "{{SEM_VERSION}}" docs \
@@ -116,11 +109,10 @@ jobs:
             --exclude-dir=docs/assets/fonts \
             --exclude-dir=docs/assets/images \
             --exclude-dir=docs/assets/data/semantic/onnx_model \
-            --exclude-dir=docs/js/onyx \
-            --exclude-dir=docs/js/sql_helpers \
             && { echo "Unreplaced {{SEM_VERSION}}"; exit 1; } || true
 
       - name: Stage versioned DB copy (optional immutable hosting)
+        shell: bash
         run: |
           set -euo pipefail
           SRC="docs/assets/data/library.sqlite"
