@@ -23,7 +23,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Verify artifacts exist
+        shell: bash
         run: |
+          set -euo pipefail
           test -f docs/assets/data/library.{{DB_VERSION}}.sqlite || true
           test -f docs/assets/data/library.sqlite || true
           test -d docs/assets/data/semantic || { echo "docs/assets/data/semantic not found"; exit 1; }
@@ -56,27 +58,31 @@ jobs:
             | cut -c1-12
           )"
 
-          echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_ENV"
-          echo "DB_VERSION=$DB_VERSION"   >> "$GITHUB_ENV"
-          echo "SEM_VERSION=$SEM_VERSION" >> "$GITHUB_ENV"
+          {
+            echo "APP_VERSION=$APP_VERSION"
+            echo "DB_VERSION=$DB_VERSION"
+            echo "SEM_VERSION=$SEM_VERSION"
+          } >> "$GITHUB_ENV"
 
       - name: Replace placeholders in assets
         shell: bash
         run: |
           set -euo pipefail
 
-          replace_all() {
-            local placeholder="$1" value="$2"
-            # Prune unwanted paths and only touch text-like assets
+          prune_and_targets() {
+            # Prune excluded directories. Only target text-like assets.
             find docs \
               \( -path docs/scripts \
                  -o -path docs/assets/fonts \
                  -o -path docs/assets/images \
-                 -o -path docs/assets/data/semantic/onnx_model \
-                 -o -name "*.md" \) -prune -o \
+                 -o -path docs/assets/data/semantic/onnx_model \) -prune -o \
               -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" \) \
-              -print0 \
-            | xargs -0 -r sed -i "s|${placeholder}|${value}|g"
+              -print0
+          }
+
+          replace_all() {
+            local placeholder="$1" value="$2"
+            prune_and_targets | xargs -0 -r sed -i "s|${placeholder}|${value}|g"
           }
 
           replace_all '{{VERSION}}'     "$APP_VERSION"
@@ -87,29 +93,28 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -R -I "{{VERSION}}" docs \
-            --exclude='*.md' \
-            --exclude-dir=docs/scripts \
-            --exclude-dir=docs/assets/fonts \
-            --exclude-dir=docs/assets/images \
-            --exclude-dir=docs/assets/data/semantic/onnx_model \
-            && { echo "Unreplaced {{VERSION}}"; exit 1; } || true
 
-          grep -R -I "{{DB_VERSION}}" docs \
-            --exclude='*.md' \
-            --exclude-dir=docs/scripts \
-            --exclude-dir=docs/assets/fonts \
-            --exclude-dir=docs/assets/images \
-            --exclude-dir=docs/assets/data/semantic/onnx_model \
-            && { echo "Unreplaced {{DB_VERSION}}"; exit 1; } || true
+          prune_and_scan() {
+            # Same pruning as replace step; also exclude *.md implicitly by not targeting it.
+            find docs \
+              \( -path docs/scripts \
+                 -o -path docs/assets/fonts \
+                 -o -path docs/assets/images \
+                 -o -path docs/assets/data/semantic/onnx_model \) -prune -o \
+              -type f ! -name "*.md" -print0
+          }
 
-          grep -R -I "{{SEM_VERSION}}" docs \
-            --exclude='*.md' \
-            --exclude-dir=docs/scripts \
-            --exclude-dir=docs/assets/fonts \
-            --exclude-dir=docs/assets/images \
-            --exclude-dir=docs/assets/data/semantic/onnx_model \
-            && { echo "Unreplaced {{SEM_VERSION}}"; exit 1; } || true
+          check_placeholder() {
+            local ph="$1"
+            if prune_and_scan | xargs -0 grep -I -n -H -- "$ph" >/dev/null; then
+              echo "Unreplaced $ph"
+              exit 1
+            fi
+          }
+
+          check_placeholder '{{VERSION}}'
+          check_placeholder '{{DB_VERSION}}'
+          check_placeholder '{{SEM_VERSION}}'
 
       - name: Stage versioned DB copy (optional immutable hosting)
         shell: bash
