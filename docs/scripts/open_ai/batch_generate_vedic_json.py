@@ -417,7 +417,7 @@ If no further sanskrit verses or english translations exist at or after the requ
 
 Otherwise return a JSON object with this schema (include only chapters/verses produced in this chunk):
 {{
-  "id": "<short identifier>",
+  "id": "<book title in lowercase with spaces replaced by underscores>",
   "short": "<abbreviation>",
   "title": "{book_title}",
   "author": "<author attribution if applicable>",

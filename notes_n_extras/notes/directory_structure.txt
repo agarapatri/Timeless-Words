@@ -43,6 +43,7 @@
 │   │   ├── db.js
 │   │   ├── debug.js
 │   │   ├── footer.js
+│   │   ├── lockdown_warning.js
 │   │   ├── onyx
 │   │   │   ├── ort-wasm-simd-threaded.jsep.mjs
 │   │   │   ├── ort-wasm-simd-threaded.jsep.wasm
@@ -63,25 +64,67 @@
 │   │   │       └── index.js
 │   │   ├── transformer_encoder.js
 │   │   ├── vec_db.js
-│   │   └── vendor
-│   │       └── transformers
-│   │           └── transformers.min.js
+│   │   ├── vendor
+│   │   │   └── transformers
+│   │   │       └── transformers.min.js
+│   │   └── wasm_no_threads_fallback.js
 │   ├── scripts
+│   │   ├── QA
+│   │   │   ├── example_cosine_search.py
+│   │   │   ├── quick_checks.py
+│   │   │   └── sanity_report.py
+│   │   ├── README.md
+│   │   ├── build_library_sqlite_from_jsons.py
 │   │   ├── build_semantic_manifest.py
 │   │   ├── build_semantic_pack.py
-│   │   ├── compare_fp32_vs_int8.py
+│   │   ├── chatgpt_ocr_to_text
+│   │   │   ├── README.md
+│   │   │   ├── pdf_to_long_image.py
+│   │   │   ├── step1_rename_clean_filenames.py
+│   │   │   ├── step2_pdfs_to_images.py
+│   │   │   └── step3_sanskrit_images_to_md.py
 │   │   ├── encode_semantic.py
-│   │   ├── example_cosine_search.py
-│   │   ├── how_to_run.md
-│   │   ├── inspect_embeddings.py
-│   │   ├── optimize_onnx.py
-│   │   ├── quantize_dynamic.py
-│   │   ├── quick_checks.py
-│   │   ├── sanity_report.py
-│   │   ├── script_docs.md
-│   │   ├── simplify_light.py
-│   │   ├── smoke_int8.py
-│   │   └── verify_quantized.py
+│   │   ├── json_samples
+│   │   │   ├── aitareya_upanishad.json
+│   │   │   ├── amritabindu_upanishad.json
+│   │   │   ├── aruni_upanishad.json
+│   │   │   ├── brahma_upanishad.json
+│   │   │   ├── chandogya_upanishad.json
+│   │   │   ├── garbha_upanishad.json
+│   │   │   ├── hamsa_upanishad.json
+│   │   │   ├── isa_upanishad.json
+│   │   │   ├── jabala_upanishad.json
+│   │   │   ├── kaivalya_upanishad.json
+│   │   │   ├── kena_upanishad.json
+│   │   │   ├── mahabharata.json
+│   │   │   ├── mandukya_upanishad.json
+│   │   │   ├── munda_upanishad.json
+│   │   │   ├── narayana_upanishad.json
+│   │   │   ├── paramahamsa_upanishad.json
+│   │   │   ├── prasna_upanishad.json
+│   │   │   ├── rig_veda.json
+│   │   │   ├── sama_veda.json
+│   │   │   ├── shiva_purana.json
+│   │   │   ├── svetasva_upanishad.json
+│   │   │   ├── taittiri_upanishad.json
+│   │   │   ├── valmiki_ramayana.json
+│   │   │   └── vishnu_puran.json
+│   │   ├── non_transformer_ops
+│   │   │   ├── compare_fp32_vs_int8.py
+│   │   │   ├── smoke_int8.py
+│   │   │   └── verify_quantized.py
+│   │   ├── old_docs
+│   │   │   └── how_to_run.md
+│   │   ├── open_ai
+│   │   │   ├── batch_generate_vedic_json.py
+│   │   │   ├── list_open_ai_models.py
+│   │   │   └── out_books
+│   │   ├── optional
+│   │   │   ├── inspect_embeddings.py
+│   │   │   ├── optimize_onnx.py
+│   │   │   ├── quantize_dynamic.py
+│   │   │   └── simplify_light.py
+│   │   └── run.py
 │   ├── tests
 │   │   ├── serve.js
 │   │   └── vec-poc.html
@@ -95,31 +138,14 @@
 │       ├── search.html
 │       ├── semantic_download.html
 │       └── verse.html
-└── tools_notes_extras
+└── notes_n_extras
     ├── banner.png
-    ├── chatgpt_ocr_to_text
-    │   ├── README.md
-    │   ├── pdf_to_long_image.py
-    │   ├── step1_rename_clean_filenames.py
-    │   ├── step2_pdfs_to_images.py
-    │   └── step3_sanskrit_images_to_md.py
-    ├── multi_json_to_sqlite
-    │   ├── README.md
-    │   ├── json_to_sqlite_cli.py
-    │   └── jsons
-    │       ├── isha_upanishad.json
-    │       ├── kena_upanishad.json
-    │       ├── mahabharata.json
-    │       ├── rig_veda.json
-    │       ├── sama_veda.json
-    │       ├── shiva_purana.json
-    │       ├── valmiki_ramayana.json
-    │       └── vishnu_puran.json
     ├── notes
     │   ├── Console Tests.md
     │   ├── Notes.md
     │   ├── PROJECT_DOCS.md
-    │   └── Semantic Search Issues.md
+    │   ├── Semantic Search Issues.md
+    │   └── directory_structure.txt
     └── ui_tests
         └── eternal_wiz
             ├── README.md
@@ -139,4 +165,4 @@
             │   └── manifest.json
             └── tailwind.config.js
 
-30 directories, 110 files
+35 directories, 131 files

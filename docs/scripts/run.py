@@ -1,4 +1,13 @@
-# Run from docs/scripts/. No args needed. python run_transformer_pack.py
+"""
+cd TimelessWords/docs/scripts
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -U pip
+pip install numpy
+pip install onnxruntime
+pip install tokenizers
+python run.py
+"""
 
 import sqlite3, subprocess, sys
 from pathlib import Path
@@ -44,6 +53,9 @@ def set_meta(db_path: Path, dim: int) -> None:
     con.close()
 
 def main():
+
+    run([sys.executable, "build_library_sqlite_from_jsons.py"])
+
     # Verify required files live under docs/assets/data/semantic/onnx_model
     required = ["tokenizer.json", "model.onnx"]
     missing = [f for f in required if not (ONNX / f).exists()]

@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "library.semantic.v01.sqlite",
-      "size": 425984,
-      "sha256": "92aa63ceac8ed5b424afc946f3411a7bbbc121c56709b5f34fd0238b3146f910"
+      "size": 1249280,
+      "sha256": "b60d9409c20503f76f0eeaec181a3c0d0be18c8ca759a11c7ca8e20a6744ee71"
     },
     {
       "path": "onnx_model/config.json",
