@@ -105,7 +105,7 @@ Sql.js runtime bundle pulled from upstream:
 - `sql-wasm.js`, `sql-wasm.wasm`, `sqlite.worker.js`, `sqlite3.mjs`, `sqlite3.wasm`
   – Provide SQLite-in-the-browser support. No manual edits needed.
 
-#### `js/onyx/`
+#### `js/onnx_web/`
 ONNX Runtime Web build (v1.22).
 - `ort.wasm.mjs`, `ort.wasm.min.mjs`, `ort.wasm.bundle.min.mjs` – Loader entrypoints.
 - `ort-wasm-simd-threaded.mjs`, `ort-wasm-simd-threaded.wasm` – SIMD build.
@@ -165,7 +165,7 @@ All icons and illustrations are single-purpose static assets:
 | ONNX model + tokenizer | Stored in repo under `assets/data/semantic/onnx_model/`. | To refresh, follow the scripts pipeline in §6. |
 | Semantic pack (OPFS) | Installed client-side using `semantic_downloader.js`. | Files listed in `manifest.json` are fetched relative to the site root. |
 | SQLite WASM runtime | Already bundled inside `js/sql_helpers/`. | No additional download needed. |
-| ONNX Runtime Web | Bundled in `js/onyx/`. | Worker threads disabled by default (proxy=false) for GitHub Pages compatibility. |
+| ONNX Runtime Web | Bundled in `js/onnx_web/`. | Worker threads disabled by default (proxy=false) for GitHub Pages compatibility. |
 
 To re-download or refresh the semantic assets on a machine, run:
 ```bash
@@ -281,3 +281,4 @@ if you publish the INT8 path.
 _Questions or patch notes? Add them beneath this section so future maintainers
 see the timeline of changes._
 
+---

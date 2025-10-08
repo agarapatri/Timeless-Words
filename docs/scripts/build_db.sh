@@ -1,6 +1,6 @@
 
 # RUN from TimelessWords/docs/scripts: 
-# chmod +x build_and_clean.sh && ./build_and_clean.sh
+# chmod +x build_db.sh && ./build_db.sh
 
 #!/usr/bin/env bash
 set -euo pipefail

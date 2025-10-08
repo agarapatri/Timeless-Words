@@ -2,7 +2,6 @@
 ├── README.md
 ├── directory_structure.txt
 ├── docs
-│   ├── DOCUMENTATION_v2.md
 │   ├── assets
 │   │   ├── css
 │   │   │   └── styles.css
@@ -14,10 +13,7 @@
 │   │   │       └── onnx_model
 │   │   │           ├── config.json
 │   │   │           ├── model.onnx
-│   │   │           ├── model_simplified.onnx
-│   │   │           ├── model_simplified_typed.onnx
-│   │   │           ├── onnx
-│   │   │           │   └── model_quantized.onnx
+│   │   │           ├── model_quantized.onnx
 │   │   │           ├── ort_config.json
 │   │   │           ├── special_tokens_map.json
 │   │   │           ├── tokenizer.json
@@ -44,7 +40,7 @@
 │   │   ├── debug.js
 │   │   ├── footer.js
 │   │   ├── lockdown_warning.js
-│   │   ├── onyx
+│   │   ├── onnx_web
 │   │   │   ├── ort-wasm-simd-threaded.jsep.mjs
 │   │   │   ├── ort-wasm-simd-threaded.jsep.wasm
 │   │   │   ├── ort-wasm-simd-threaded.mjs
@@ -69,11 +65,7 @@
 │   │   │       └── transformers.min.js
 │   │   └── wasm_no_threads_fallback.js
 │   ├── scripts
-│   │   ├── QA
-│   │   │   ├── example_cosine_search.py
-│   │   │   ├── quick_checks.py
-│   │   │   └── sanity_report.py
-│   │   ├── README.md
+│   │   ├── build_db.sh
 │   │   ├── build_library_sqlite_from_jsons.py
 │   │   ├── build_semantic_manifest.py
 │   │   ├── build_semantic_pack.py
@@ -85,46 +77,16 @@
 │   │   │   └── step3_sanskrit_images_to_md.py
 │   │   ├── encode_semantic.py
 │   │   ├── json_samples
-│   │   │   ├── aitareya_upanishad.json
-│   │   │   ├── amritabindu_upanishad.json
-│   │   │   ├── aruni_upanishad.json
-│   │   │   ├── brahma_upanishad.json
-│   │   │   ├── chandogya_upanishad.json
-│   │   │   ├── garbha_upanishad.json
-│   │   │   ├── hamsa_upanishad.json
-│   │   │   ├── isa_upanishad.json
-│   │   │   ├── jabala_upanishad.json
-│   │   │   ├── kaivalya_upanishad.json
-│   │   │   ├── kena_upanishad.json
-│   │   │   ├── mahabharata.json
-│   │   │   ├── mandukya_upanishad.json
-│   │   │   ├── munda_upanishad.json
-│   │   │   ├── narayana_upanishad.json
-│   │   │   ├── paramahamsa_upanishad.json
-│   │   │   ├── prasna_upanishad.json
-│   │   │   ├── rig_veda.json
-│   │   │   ├── sama_veda.json
-│   │   │   ├── shiva_purana.json
-│   │   │   ├── svetasva_upanishad.json
-│   │   │   ├── taittiri_upanishad.json
-│   │   │   ├── valmiki_ramayana.json
-│   │   │   └── vishnu_puran.json
-│   │   ├── non_transformer_ops
-│   │   │   ├── compare_fp32_vs_int8.py
-│   │   │   ├── smoke_int8.py
-│   │   │   └── verify_quantized.py
-│   │   ├── old_docs
-│   │   │   └── how_to_run.md
 │   │   ├── open_ai
 │   │   │   ├── batch_generate_vedic_json.py
 │   │   │   ├── list_open_ai_models.py
 │   │   │   └── out_books
-│   │   ├── optional
-│   │   │   ├── inspect_embeddings.py
-│   │   │   ├── optimize_onnx.py
-│   │   │   ├── quantize_dynamic.py
-│   │   │   └── simplify_light.py
-│   │   └── run.py
+│   │   ├── run.py
+│   │   └── semantic_db_tests
+│   │       ├── quick_checks.py
+│   │       ├── run_semantic_tests.py
+│   │       ├── run_tests.sh
+│   │       └── sanity_report.py
 │   ├── tests
 │   │   ├── serve.js
 │   │   └── vec-poc.html
@@ -140,29 +102,69 @@
 │       └── verse.html
 └── notes_n_extras
     ├── banner.png
+    ├── json_samples
+    │   ├── aitareya_upanishad.json
+    │   ├── amritabindu_upanishad.json
+    │   ├── aruni_upanishad.json
+    │   ├── brahma_upanishad.json
+    │   ├── chandogya_upanishad.json
+    │   ├── garbha_upanishad.json
+    │   ├── hamsa_upanishad.json
+    │   ├── isa_upanishad.json
+    │   ├── jabala_upanishad.json
+    │   ├── kaivalya_upanishad.json
+    │   ├── kena_upanishad.json
+    │   ├── mahabharata.json
+    │   ├── mandukya_upanishad.json
+    │   ├── munda_upanishad.json
+    │   ├── narayana_upanishad.json
+    │   ├── paramahamsa_upanishad.json
+    │   ├── prasna_upanishad.json
+    │   ├── rig_veda.json
+    │   ├── sama_veda.json
+    │   ├── shiva_purana.json
+    │   ├── svetasva_upanishad.json
+    │   ├── taittiri_upanishad.json
+    │   ├── valmiki_ramayana.json
+    │   └── vishnu_puran.json
     ├── notes
     │   ├── Console Tests.md
     │   ├── Notes.md
     │   ├── PROJECT_DOCS.md
     │   ├── Semantic Search Issues.md
     │   └── directory_structure.txt
-    └── ui_tests
-        └── eternal_wiz
-            ├── README.md
-            ├── css
-            │   ├── main.css
-            │   └── tailwind.css
-            ├── index.html
-            ├── package.json
-            ├── pages
-            │   ├── deep_search.html
-            │   ├── homepage.html
-            │   ├── library.html
-            │   ├── search_results.html
-            │   ├── verse_reader.html
-            │   └── work_overview.html
-            ├── public
-            │   └── manifest.json
-            └── tailwind.config.js
+    ├── ui_experiments
+    │   └── eternal_wiz
+    │       ├── README.md
+    │       ├── css
+    │       │   ├── main.css
+    │       │   └── tailwind.css
+    │       ├── index.html
+    │       ├── package.json
+    │       ├── pages
+    │       │   ├── deep_search.html
+    │       │   ├── homepage.html
+    │       │   ├── library.html
+    │       │   ├── search_results.html
+    │       │   ├── verse_reader.html
+    │       │   └── work_overview.html
+    │       ├── public
+    │       │   └── manifest.json
+    │       └── tailwind.config.js
+    └── unnecessary_stuff
+        ├── DOCUMENTATION_v2.md
+        ├── how_to_run.md
+        ├── model_simplified.onnx
+        ├── model_simplified_typed.onnx
+        ├── non_transformer_ops
+        │   ├── compare_fp32_vs_int8.py
+        │   ├── smoke_int8.py
+        │   └── verify_quantized.py
+        └── optional
+            ├── example_cosine_search.py
+            ├── inspect_embeddings.py
+            ├── optimize_onnx.py
+            ├── quantize_dynamic.py
+            └── simplify_light.py
 
-35 directories, 131 files
+35 directories, 133 files

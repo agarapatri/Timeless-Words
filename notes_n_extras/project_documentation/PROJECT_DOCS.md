@@ -239,5 +239,34 @@ Typical update flow:
 
 ---
 
-Happy hacking!
+
+ORT runs ONNX models in the browser. The SQL helpers stream and query SQLite in the browser.
+
+Difference:
+
+* **`onyx/ort-*.{mjs,wasm}`** = ONNX Runtime Web.
+
+  * Runs ONNX models client-side.
+  * Files:
+
+    * `ort-wasm-simd-threaded.*` uses WebAssembly SIMD + Web Workers for speed.
+    * `.jsep.*` = JS Execution Provider fallback for ops not in WASM.
+    * `ort.wasm.mjs` / `ort.wasm.min.mjs` = module loader.
+    * `ort.wasm.bundle.min.mjs` = self-contained bundle.
+  * Use when you must compute embeddings or any model inference in the browser.
+
+* **`sql_helpers/sqljs-httpvfs/*` and `sql-*.{js,wasm}` / `sqlite*.{mjs,wasm}`** = SQLite-in-browser.
+
+  * Streams a remote `.sqlite` over HTTP range requests and queries it locally via WebAssembly.
+  * `sql-wasm.{js,wasm}` = sql.js build.
+  * `sqlite3.{mjs,wasm}` = official SQLite WASM build.
+  * `sqlite.worker.js` = runs DB in a worker.
+  * `index.js` = HTTPVFS glue to mount the remote DB.
+  * Use to read your 1 GB embedding DB on GitHub Pages without full download.
+
+Implication:
+
+* If you **only search with precomputed embeddings**, you need the SQL helpers, not ORT.
+* If you **compute query embeddings in the browser**, you need ORT (plus the ONNX model). You still need the SQL helpers to fetch vectors efficiently.
+
 

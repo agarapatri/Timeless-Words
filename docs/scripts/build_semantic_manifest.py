@@ -16,7 +16,7 @@ REL_PATHS = [
     "library.semantic.v01.sqlite",
     "onnx_model/config.json",
     "onnx_model/model.onnx",
-    "onnx_model/onnx/model_quantized.onnx",
+    "onnx_model/model_quantized.onnx",
     "onnx_model/ort_config.json",
     "onnx_model/special_tokens_map.json",
     "onnx_model/tokenizer.json",
