@@ -250,8 +250,8 @@ import { DB } from "./constants.js";
     }
     if (!window.__twEncoder || !window.__twSemdb) {
       const [{ TransformerEncoder }, { SemanticDB }] = await Promise.all([
-        import("./transformer_encoder.js?v=c38fe4b8"),
-        import("./vec_db.js?v=c38fe4b8"),
+        import("./transformer_encoder.js?v=f1dc0093"),
+        import("./vec_db.js?v=f1dc0093"),
       ]);
       const semdb = new SemanticDB({
         opfsDir: "tw-semantic",

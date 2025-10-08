@@ -1,7 +1,7 @@
 // Transformer-based query encoder using Xenova transformers.js and local ONNX assets.
 // Produces pooled (mean) and L2-normalized sentence embeddings.
 
-import { pipeline, env } from "./vendor/transformers/transformers.min.js?v=c38fe4b8";
+import { pipeline, env } from "./vendor/transformers/transformers.min.js?v=f1dc0093";
 import { SEM_VERSION, APP_VERSION } from "./constants.js";
 
 // Configure to load local model assets only (GitHub Pages friendly)
@@ -12,7 +12,7 @@ env.useBrowserCache = true;
 env.localModelPath = new URL("../assets/data/semantic/", import.meta.url).href;
 // Ensure ORT wasm resolves from our bundled path
 const TRANSFORMER_ROOT = new URL("./vendor/transformers/", import.meta.url);
-const ONNX_RUNTIME_ROOT = new URL("./onyx/", import.meta.url);
+const ONNX_RUNTIME_ROOT = new URL("./onnx_web/", import.meta.url);
 const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
 const MODEL_REDIRECT_FROM = new URL(
   "../assets/data/semantic/onnx_model/onnx/model.onnx",
@@ -23,18 +23,18 @@ const MODEL_REDIRECT_TO = new URL(
   import.meta.url
 );
 const ORT_REDIRECTS = new Map([
-  ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.mjs", "./onyx/ort-wasm-simd-threaded.jsep.mjs"],
-  ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.wasm", "./onyx/ort-wasm-simd-threaded.jsep.wasm"],
-  ["/js/vendor/transformers/ort-wasm-simd-threaded.mjs", "./onyx/ort-wasm-simd-threaded.mjs"],
-  ["/js/vendor/transformers/ort-wasm-simd-threaded.wasm", "./onyx/ort-wasm-simd-threaded.wasm"],
-  ["/js/vendor/transformers/ort.wasm.bundle.min.mjs", "./onyx/ort.wasm.bundle.min.mjs"],
-  ["/js/vendor/transformers/ort.wasm.min.mjs", "./onyx/ort.wasm.min.mjs"],
-  ["/js/vendor/transformers/ort.wasm.mjs", "./onyx/ort.wasm.mjs"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.mjs", "./onnx_web/ort-wasm-simd-threaded.jsep.mjs"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.wasm", "./onnx_web/ort-wasm-simd-threaded.jsep.wasm"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.mjs", "./onnx_web/ort-wasm-simd-threaded.mjs"],
+  ["/js/vendor/transformers/ort-wasm-simd-threaded.wasm", "./onnx_web/ort-wasm-simd-threaded.wasm"],
+  ["/js/vendor/transformers/ort.wasm.bundle.min.mjs", "./onnx_web/ort.wasm.bundle.min.mjs"],
+  ["/js/vendor/transformers/ort.wasm.min.mjs", "./onnx_web/ort.wasm.min.mjs"],
+  ["/js/vendor/transformers/ort.wasm.mjs", "./onnx_web/ort.wasm.mjs"],
 ]);
 
 try {
   if (env.backends?.onnx?.wasm) {
-    const wasmBase = new URL("./onyx/", import.meta.url).href;
+    const wasmBase = new URL("./onnx_web/", import.meta.url).href;
     env.backends.onnx.wasm.wasmPaths = wasmBase;
     env.backends.onnx.wasm.numThreads = 1;
     env.backends.onnx.wasm.simd = true;

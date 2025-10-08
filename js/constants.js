@@ -1,6 +1,6 @@
-export const APP_VERSION = "c38fe4b8";
+export const APP_VERSION = "f1dc0093";
 export const DB_VERSION = "a92481a93ce3";
-export const SEM_VERSION = "82343bf73d0c";
+export const SEM_VERSION = "e952cb2b31f1";
 
 const MOD = new URL(".", import.meta.url); // /docs/js/
 export const DATA_ROOT = new URL("../assets/data/", MOD);
