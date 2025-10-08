@@ -14,14 +14,28 @@ env.localModelPath = new URL("../assets/data/semantic/", import.meta.url).href;
 const TRANSFORMER_ROOT = new URL("./vendor/transformers/", import.meta.url);
 const ONNX_RUNTIME_ROOT = new URL("./onnx_web/", import.meta.url);
 const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
-const MODEL_REDIRECT_FROM = new URL(
-  "../assets/data/semantic/onnx_model/model.onnx",
-  import.meta.url
-);
-const MODEL_REDIRECT_TO = new URL(
-  "../assets/data/semantic/onnx_model/model.onnx",
-  import.meta.url
-);
+// Normalize all legacy/expected transformer paths to our flattened onnx_model directory.
+const MODEL_REDIRECTS = new Map([
+  [
+    new URL("../assets/data/semantic/onnx_model/onnx/model.onnx", import.meta.url),
+    new URL("../assets/data/semantic/onnx_model/model.onnx", import.meta.url),
+  ],
+  [
+    new URL(
+      "../assets/data/semantic/onnx_model/onnx/model_quantized.onnx",
+      import.meta.url
+    ),
+    new URL("../assets/data/semantic/onnx_model/model_quantized.onnx", import.meta.url),
+  ],
+  [
+    new URL("../assets/data/semantic/model.onnx", import.meta.url),
+    new URL("../assets/data/semantic/onnx_model/model.onnx", import.meta.url),
+  ],
+  [
+    new URL("../assets/data/semantic/model_quantized.onnx", import.meta.url),
+    new URL("../assets/data/semantic/onnx_model/model_quantized.onnx", import.meta.url),
+  ],
+]);
 const ORT_REDIRECTS = new Map([
   ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.mjs", "./onnx_web/ort-wasm-simd-threaded.jsep.mjs"],
   ["/js/vendor/transformers/ort-wasm-simd-threaded.jsep.wasm", "./onnx_web/ort-wasm-simd-threaded.jsep.wasm"],
@@ -47,10 +61,15 @@ try {
 const originalFetch = globalThis.fetch?.bind(globalThis);
 function versionedUrl(url) {
   let u = new URL(url, globalThis.location?.href ?? ONNX_RUNTIME_ROOT.href);
-  if (u.pathname === MODEL_REDIRECT_FROM.pathname) {
-    const params = new URLSearchParams(u.search);
-    u = new URL(MODEL_REDIRECT_TO.href);
-    u.search = params.toString();
+  for (const [from, to] of MODEL_REDIRECTS.entries()) {
+    if (u.pathname === from.pathname) {
+      const params = new URLSearchParams(u.search);
+      u = new URL(to.href);
+      if (params.toString()) {
+        u.search = params.toString();
+      }
+      break;
+    }
   }
   for (const [from, to] of ORT_REDIRECTS.entries()) {
     if (u.pathname.endsWith(from)) {
