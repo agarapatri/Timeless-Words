@@ -1,7 +1,7 @@
 // Transformer-based query encoder using Xenova transformers.js and local ONNX assets.
 // Produces pooled (mean) and L2-normalized sentence embeddings.
 
-import { pipeline, env } from "./vendor/transformers/transformers.min.js?v=34f4471c";
+import { pipeline, env } from "./vendor/transformers/transformers.min.js?v=549c2f57";
 import { SEM_VERSION, APP_VERSION } from "./constants.js";
 
 // Configure to load local model assets only (GitHub Pages friendly)
@@ -15,7 +15,7 @@ const TRANSFORMER_ROOT = new URL("./vendor/transformers/", import.meta.url);
 const ONNX_RUNTIME_ROOT = new URL("./onnx_web/", import.meta.url);
 const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
 const MODEL_REDIRECT_FROM = new URL(
-  "../assets/data/semantic/onnx_model/onnx/model.onnx",
+  "../assets/data/semantic/onnx_model/model.onnx",
   import.meta.url
 );
 const MODEL_REDIRECT_TO = new URL(
