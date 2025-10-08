@@ -15,7 +15,7 @@ const TRANSFORMER_ROOT = new URL("./vendor/transformers/", import.meta.url);
 const ONNX_RUNTIME_ROOT = new URL("./onnx_web/", import.meta.url);
 const SEMANTIC_ROOT = new URL("../assets/data/semantic/", import.meta.url);
 const MODEL_REDIRECT_FROM = new URL(
-  "../assets/data/semantic/onnx_model/onnx/model.onnx",
+  "../assets/data/semantic/onnx_model/model.onnx",
   import.meta.url
 );
 const MODEL_REDIRECT_TO = new URL(
