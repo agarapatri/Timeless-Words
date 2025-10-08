@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search – Timeless Words</title>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=f1dc0093">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=34f4471c">
   <meta id="favicon-slot">
 </head>
 
@@ -164,18 +164,18 @@
   <script src="../js/wasm_no_threads_fallback.js"></script>
   <script src="../js/lockdown_warning.js"></script>
   <!-- sql.js loader (classic, must come first) -->
-  <script src="../js/sql_helpers/sql-wasm.js?v=f1dc0093"></script>
+  <script src="../js/sql_helpers/sql-wasm.js?v=34f4471c"></script>
 
-  <script type="module" src="../js/app.js?v=f1dc0093"></script>
+  <script type="module" src="../js/app.js?v=34f4471c"></script>
   <script type="module">
     window.Library?.injectMenu("#menuSlot-search");
   </script>
 
   <!-- search logic is an ES module because it imports ./db.js -->
-  <script type="module" src="../js/search.js?v=f1dc0093"></script>
+  <script type="module" src="../js/search.js?v=34f4471c"></script>
 
   <!-- Semantic search support (also modules) -->
-  <script type="module" src="../js/semantic_downloader.js?v=f1dc0093"></script>
+  <script type="module" src="../js/semantic_downloader.js?v=34f4471c"></script>
 
   <script type="module">
     import { SemanticInstall, isSemanticEnabled, setSemanticEnabled } from '../js/semantic_downloader.js';
