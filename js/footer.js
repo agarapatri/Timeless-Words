@@ -3,9 +3,9 @@ export async function injectFooter(slot = '#footerSlot') {
   if (!mount) return;
 
   try {
-    // Keep your cache-busting cb9cde0d pattern if you use it elsewhere
+    // Keep your cache-busting 803c9879 pattern if you use it elsewhere
     const url = new URL('../views/partials/footer.html', import.meta.url);
-    url.searchParams.set('v', 'cb9cde0d');
+    url.searchParams.set('v', '803c9879');
     const res = await fetch(url, { credentials: 'same-origin' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const html = await res.text();
