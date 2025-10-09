@@ -21,13 +21,13 @@ Art by: [Yuqing Sheng](x.com/merasgar)
 ## How to create or update local database?
 * Below are steps to create or update `library.{{DB_VERSION}}.sqlite` and `library.semantic.v01.sqlite`
 * Before running the script, add json files into `TimelessWords/docs/scripts/json_samples`. Then run below command. The json data is present in `TimelessWords/extras/json_samples`. If you have your own data, you must follow the same json format and put them in this directory.
-* RUN from TimelessWords/docs/scripts: 
+* Run below command from `TimelessWords/docs/scripts` directory: 
 ```bash
 chmod +x build_db.sh && ./build_db.sh
 ```
 * This will create a new library sqlite db and the semantic sqlite db with the new data that is present in `scripts/json_samples`. 
 * Below steps are just info. This is the only step needed to add new data to the sqlite db.
-* Verify sqlite with tests. RUN from `TimelessWords/docs/scripts`:
+* Verify sqlite with tests. Run below command from `TimelessWords/docs/scripts` directory:
 ```bash
 chmod +x semantic_db_tests/run_tests.sh && ./semantic_db_tests/run_tests.sh
 ```
