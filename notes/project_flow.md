@@ -1,4 +1,4 @@
-# Timeless Words — Project Documentation
+# Timeless Words — Project Flow
 
 This document explains the structure of the site under `docs/`, how the two search modes work, and all steps and assets involved in enabling semantic (meaning‑based) search. It’s written to help both maintainers and contributors.
 

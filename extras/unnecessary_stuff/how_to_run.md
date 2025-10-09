@@ -291,94 +291,27 @@ python sanity_report.py --models models/work/model_optimized_fp32.onnx models/wo
 
 ---
 
-# Assessment of above steps
 
-The above steps are broadly correct for a transformers-based semantic search pipeline.  
+## What’s inside
+- Pure HTML/CSS + tiny vanilla JS (no libraries)
+- Pages: `index.html`, `search.html`, `book.html`, `verse.html`
+- Data: `data/books.json` (sample)
+- Responsive, mobile‑first layout. Font stack uses Helvetica Neue.
 
-Correctness rating: 8/10
-Reason: The doc covers the end-to-end ONNX flow: simplify → optimize → quantize → verify → embed → index/search. It also includes cosine scoring and packaging. Gaps: tokenizer and pooling details are implicit, INT8 use for embedding quality needs caution, and large-scale ANN indexing choices are not specified.
+## Structure
+- `index.html`: Home with search bar and list of books
+- `search.html`: Advanced search with six filters
+- `book.html`: Book overview; expandable chapters; verse list
+- `verse.html`: Verse detail with Devanāgarī, IAST, word‑for‑word, translation
+- `assets/styles.css`: Styles
+- `assets/app.js`: Data loader and helpers
+- `assets/search.js`: Search logic
+- `data/books.json`: Example data format
 
-Key confirmations
-
-* Tokenizer artifacts exist and align with the model. 
-* Cosine similarity is the right metric with L2-normalized embeddings. 
-* The encode → inspect → search steps reflect a standard semantic search loop. 
-
-High-impact fixes and additions
-
-1. Make pooling explicit
-   Specify how sentence embeddings are formed: CLS pooling vs mean pooling over token embeddings after attention mask. Ensure the script matches the model’s recommended pooling.
-
-2. Be strict about preprocessing
-   State that text must be tokenized with the exact tokenizer files shipped alongside the ONNX model (no manual lowercasing or stripping unless the tokenizer does it). 
-
-3. Quantization guidance
-   Prefer FP32 (or FP16) for offline corpus embedding to preserve quality. Use INT8 mainly for online query encoding if latency is critical. If INT8 is required end-to-end, consider QDQ with calibration and per-channel weight quant, and verify semantic drift with a retrieval benchmark. 
-
-4. Dimensions and metadata
-   Regarding step 10. **Build semantic manifest**, Do not hardcode `--dim 768` unless confirmed from the model outputs. Read the ONNX graph or config to set embedding size correctly in the manifest. 
-
-5. Indexing at scale
-   The example uses brute-force cosine. Add FAISS or HNSW (IVF-PQ/HNSW) for large corpora, and persist the index with the same metric and normalization settings used at build time. 
-
-6. Max sequence length and truncation
-   Document `max_length`, truncation, and padding strategy so query and corpus follow identical rules. Validate with a smoke test over long texts. 
-
-7. Validation beyond numeric tolerance
-   Add retrieval-level checks: NDCG / Recall@K before and after quantization to catch semantic drift not visible in tensor MSE. 
-
-8. Browser/ONNX-WASM specifics (if applicable)
-   Confirm attention masks, past-key-values support, and WASM build in the docs assets align with the model exported. 
-
-Reference equation
-[
-\cos(\theta)=\frac{\mathbf{a}\cdot \mathbf{b}}{\lVert \mathbf{a}\rVert,\lVert \mathbf{b}\rVert}
-]
-Read as: “cosine of theta equals the dot product of vector a and vector b divided by the product of their magnitudes.” With L2-normalized embeddings, cosine equals the dot product. 
-
-
----
-
-# From config.json
-
-Correctness rating: 7/10
-Reason: Sound slim BERT encoder for embeddings. Missing explicit sentence-level pooling and L2-normalization in the model stack. Tokenizer casing behavior not declared. ANN/index dim must be 384, not 768. Some fields are inert for BERT encoders.
-
-Assessment and fixes
-
-* Embedding size: 384. Set your index dim to 384.
-* Heads: 12 heads → 32 dims/head. Valid.
-* Depth: 6 layers. Fine for speed/latency tradeoff.
-* Pooling: `architectures: ["BertModel"]` exposes only token embeddings. For semantic search add explicit pooling. Prefer mean pooling with attention mask over last hidden state.
-* Normalization: L2-normalize pooled vectors before cosine search.
-* Tokenizer: `vocab_size: 30522` implies BERT base uncased. Confirm `do_lower_case=true` in tokenizer config and use the exact tokenizer that trained this model.
-* Max length: 512. Document truncation.
-* Dropouts and dtype: fine. `use_cache` is ignored for encoder-only models.
-* Quantization: if using INT8, validate retrieval metrics pre/post quantization.
-
-Equations
-
-* Mean pooling with mask (m_i\in{0,1}):
-  [
-  \mathbf{e}=\frac{\sum_{i=1}^{T} m_i,\mathbf{h}*i}{\sum*{i=1}^{T} m_i}
-  ]
-  Read as: the embedding ( \mathbf{e} ) equals the sum of token vectors ( \mathbf{h}_i ) where the mask ( m_i=1 ), divided by the count of unmasked tokens.
-* L2 normalization:
-  [
-  \hat{\mathbf{e}}=\frac{\mathbf{e}}{\lVert \mathbf{e}\rVert_2}
-  ]
-  Read as: the normalized vector equals the vector divided by its Euclidean norm.
-* Cosine similarity:
-  [
-  \cos(\theta)=\frac{\hat{\mathbf{e}}_q\cdot \hat{\mathbf{e}}_d}{\lVert \hat{\mathbf{e}}_q\rVert,\lVert \hat{\mathbf{e}}_d\rVert}= \hat{\mathbf{e}}_q\cdot \hat{\mathbf{e}}_d
-  ]
-  Read as: cosine equals the dot product of the normalized query and document vectors. Since both are unit length, cosine equals their dot product.
-
-Actionable checklist
-
-1. Add mean-pooling over the final hidden state with attention mask.
-2. Apply L2 normalization to pooled vectors.
-3. Set ANN index metric to cosine (or dot if you pre-normalize). Dim = 384.
-4. Confirm tokenizer casing and special tokens; keep it identical at train and serve.
-5. Document max_length, truncation, and padding.
-6. If you quantize, recheck Recall@K/NDCG to detect semantic drift.
+## Data model
+Each book contains chapters and verses. Verse fields map to your required sections:
+- `number`, `ref` (e.g., "1.1")
+- `devanagari` (Sanskrit Devanāgarī)
+- `iast` (transliteration)
+- `word_by_word`: array of `{ sanskrit, english }`
+- `translation`
