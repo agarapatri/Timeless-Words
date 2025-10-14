@@ -8,7 +8,12 @@ import { DB } from "./constants.js";
 
 /* Deep Search with substring + optional regex */
 (function () {
-  let STATE = { results: [], page: 1, perPage: 25 }; // default page size
+  let STATE = {
+    results: [],
+    page: 1,
+    perPage: 25,
+    scopes: { deva: true, iast: true, trans: true, wfw: true },
+  }; // default page size
   let ALL = { types: [], books: [], verses: [], wfwByVerse: new Map() };
 
   function ensurePager() {
@@ -120,13 +125,27 @@ import { DB } from "./constants.js";
     document.getElementById("fBooks").addEventListener("change", run);
 
     const bar = document.getElementById("chipbar");
-    bar.addEventListener("click", (e) => {
-      const btn = e.target.closest("button[data-scope]");
-      if (!btn) return;
-      const active = btn.classList.toggle("active");
-      btn.setAttribute("aria-pressed", active ? "true" : "false");
-      run();
-    });
+    if (bar) {
+      // sync initial state with DOM (allows authoring defaults via markup)
+      ["deva", "iast", "trans", "wfw"].forEach((scope) => {
+        const btn = bar.querySelector(`button[data-scope="${scope}"]`);
+        if (!btn) return;
+        const isActive = btn.classList.contains("active");
+        STATE.scopes[scope] = isActive;
+        btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+      bar.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-scope]");
+        if (!btn) return;
+        const scope = btn.getAttribute("data-scope");
+        const next = !STATE.scopes[scope];
+        STATE.scopes[scope] = next;
+        btn.classList.toggle("active", next);
+        btn.setAttribute("aria-pressed", next ? "true" : "false");
+        renderPage();
+        run();
+      });
+    }
 
     // Click anywhere on result row
     const resEl = document.getElementById("results");
@@ -215,13 +234,7 @@ import { DB } from "./constants.js";
     const allowedIds = Array.from(
       document.querySelectorAll('#fBooks input[type="checkbox"]:checked')
     ).map((i) => i.value);
-    const scopes = { deva: false, iast: false, trans: false, wfw: false };
-    const actives = document.querySelectorAll("#chipbar button.active");
-    if (actives.length > 0) {
-      actives.forEach((b) => {
-        scopes[b.getAttribute("data-scope")] = true;
-      });
-    }
+    const scopes = { ...STATE.scopes };
     // if none active => all scopes false (show none)
     const anyScope = scopes.deva || scopes.iast || scopes.trans || scopes.wfw;
     return {
@@ -336,7 +349,8 @@ import { DB } from "./constants.js";
         if (f.scopes.deva) ACTIVE.push(verseRow.deva);
         if (f.scopes.iast) ACTIVE.push(verseRow.iast);
         if (f.scopes.trans) ACTIVE.push(verseRow.trans);
-        if (f.scopes.wfw) ACTIVE.push(ALL.wfwByVerse.get(verseRow.verse_id) || "");
+        if (f.scopes.wfw)
+          ACTIVE.push(ALL.wfwByVerse.get(verseRow.verse_id) || "");
         const qn = norm(q);
         if (!qn) return 0;
         const qset = new Set(qn.split(/\s+/).filter(Boolean));

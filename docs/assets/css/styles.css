@@ -404,11 +404,13 @@ html.theme-dark .icon-btn:hover {
   font-size: 13px;
   cursor: pointer;
 }
-.chipbar button.active,
-.chipbar button:hover {
+.chipbar button.active {
   background: #111;
   color: #fff;
   border-color: #111;
+}
+/* Give similar attributes as above to get hover effect on chipbar */
+.chipbar button:hover {
 }
 
 /* Results */
