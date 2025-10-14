@@ -1,4 +1,4 @@
-export const APP_VERSION = "00a322e1";
+export const APP_VERSION = "cadeb923";
 export const DB_VERSION = "a92481a93ce3";
 export const SEM_VERSION = "e952cb2b31f1";
 
