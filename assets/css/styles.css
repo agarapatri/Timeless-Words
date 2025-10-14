@@ -1,28 +1,28 @@
 /* ---------- Tokens ---------- */
 @font-face {
   font-family: "Inter";
-  src: url("../fonts/inter-400.woff2?v=cadeb923") format("woff2");
+  src: url("../fonts/inter-400.woff2?v=4815ded1") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Inter";
-  src: url("../fonts/inter-700.woff2?v=cadeb923") format("woff2");
+  src: url("../fonts/inter-700.woff2?v=4815ded1") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Noto Serif";
-  src: url("../fonts/noto-serif-400.woff2?v=cadeb923") format("woff2");
+  src: url("../fonts/noto-serif-400.woff2?v=4815ded1") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Noto Serif";
-  src: url("../fonts/noto-serif-700.woff2?v=cadeb923") format("woff2");
+  src: url("../fonts/noto-serif-700.woff2?v=4815ded1") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -403,11 +403,31 @@ html.theme-dark .icon-btn:hover {
   color: #374151;
   font-size: 13px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
 .chipbar button.active {
   background: #111;
   color: #fff;
   border-color: #111;
+}
+.chipbar button .chip-icon {
+  width: 0;
+  height: 12px;
+  margin-right: 0;
+  background: currentColor;
+  mask: url("../images/check.svg") no-repeat center / contain;
+  -webkit-mask: url("../images/check.svg") no-repeat center / contain;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease, transform 0.15s ease, width 0.15s ease, margin-right 0.15s ease;
+  flex-shrink: 0;
+}
+.chipbar button.active .chip-icon {
+  width: 12px;
+  margin-right: 6px;
+  opacity: 1;
+  transform: scale(1);
 }
 /* Give similar attributes as above to get hover effect on chipbar */
 .chipbar button:hover {
