@@ -1,0 +1,204 @@
+/* ---------- Books grid & cards ---------- */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.book-card {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+.book-card:hover {
+  box-shadow: var(--shadow-1);
+}
+.book-card .cover {
+  width: 76px;
+  height: 100px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  font-weight: 700;
+  font-size: 28px;
+  color: #475569;
+}
+.book-card .cover.has-image {
+  background: #ddd center/cover no-repeat;
+  color: transparent;
+}
+.book-card .book-title {
+  font-weight: 600;
+}
+.book-card .book-sub {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- Banner ---------- */
+.banner {
+  width: 100%;
+  margin: 0 auto 8px;
+}
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+/* ===== Library header row (search + type) ===== */
+.home-filter {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 12px;
+  align-items: stretch;
+  width: 100%;
+  margin: 0 0 16px;
+}
+
+.home-filter-input {
+  width: 100%;
+  color: var(--fg);
+}
+
+/* Make the "Type" trigger match input height */
+.type-filter {
+  position: relative;
+}
+.type-trigger {
+  height: 100%;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ===== Popover styled like your Search tips panel ===== */
+.type-popover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 320px;
+  max-width: 420px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-2, 0 8px 24px rgba(0, 0, 0, 0.08));
+  z-index: 40;
+}
+
+/* Panel scaffold to mirror your tips modal */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-header2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px 0px 14px;
+}
+.panel-header3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 14px;
+}
+.panel-title {
+  font-weight: 700;
+}
+.panel-body {
+  padding: 12px 14px 14px;
+}
+
+/* Checkbox list */
+.type-list {
+  display: grid;
+  gap: 10px;
+  max-height: 320px;
+  overflow: auto;
+}
+.type-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.type-item input {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== Reuse of your button system ===== */
+.btn.pill {
+  border-radius: 999px;
+}
+.btn.small {
+  font-size: 0.875rem;
+  padding: 6px 12px;
+}
+
+/* Checkbox list → stacked rows with separators and muted labels */
+.type-popover .panel-body {
+  padding: 8px 12px 12px;
+}
+
+.type-list {
+  display: block;
+  max-height: 320px;
+  overflow: auto;
+  padding: 4px 0;
+}
+
+.type-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 2px;
+  border: 0;
+  border-radius: 0;
+}
+
+.type-item + .type-item {
+  border-top: 1px solid var(--border);
+}
+
+.type-item input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.type-item span {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* OVERRIDE: make the trigger a white circular icon button */
+.home-filter .type-trigger {
+  height: 100%;
+  width: 44px;
+  padding: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fg);
+  border: 1px solid var(--fg);
+  color: var(--border);
+}
+
+/* ensure the icon uses the button color */
+.home-filter .type-trigger svg {
+  stroke: currentColor;
+}

@@ -75,6 +75,15 @@ import { DB } from "./constants.js";
     return x.replace(/[\u0300-\u036f]/g, "").replace(/[\u2013\u2014]/g, "-");
   }
 
+  function escapeHtml(input) {
+    return String(input || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   // match helpers
   function matchText(hay, query) {
     if (!query) return false;
@@ -249,11 +258,15 @@ import { DB } from "./constants.js";
     if (f.allowedIds.length && !f.allowedIds.includes(row.work_id))
       return false;
     if (!f.q) return false;
-    const haystacks = [];
-    if (f.scopes.deva) haystacks.push(row.deva);
-    if (f.scopes.iast) haystacks.push(row.iast);
-    if (f.scopes.trans) haystacks.push(row.trans);
-    if (f.scopes.wfw) haystacks.push(ALL.wfwByVerse.get(row.verse_id) || "");
+    // Always evaluate the full verse payload for matching. The scope chips
+    // merely govern which snippets we render, so toggling one should not make
+    // the others disappear from the results when the query still matches.
+    const haystacks = [
+      row.deva,
+      row.iast,
+      row.trans,
+      ALL.wfwByVerse.get(row.verse_id) || "",
+    ];
     return haystacks.some((h) => matchText(h || "", f.q));
   }
 
@@ -263,8 +276,8 @@ import { DB } from "./constants.js";
     }
     if (!window.__twEncoder || !window.__twSemdb) {
       const [{ TransformerEncoder }, { SemanticDB }] = await Promise.all([
-        import("./transformer_encoder.js?v=4815ded1"),
-        import("./vec_db.js?v=4815ded1"),
+        import("./transformer_encoder.js?v=403baa7b"),
+        import("./vec_db.js?v=403baa7b"),
       ]);
       const semdb = new SemanticDB({
         opfsDir: "tw-semantic",
@@ -488,39 +501,41 @@ import { DB } from "./constants.js";
       )}&d=${encodeURIComponent(row.division_id)}&v=${encodeURIComponent(
         row.vord
       )}`;
+      const bookLabel = (row.title || "").trim();
+      const verseLabel = (() => {
+        const fromRef = String(row.ref || "").trim();
+        if (fromRef) return fromRef;
+        const parts = [];
+        if (row.cord !== undefined && row.cord !== null)
+          parts.push(String(row.cord).trim());
+        if (row.vord !== undefined && row.vord !== null)
+          parts.push(String(row.vord).trim());
+        return parts.join(".").trim();
+      })();
+      const headingHtml = escapeHtml(
+        [bookLabel, verseLabel].filter(Boolean).join(" ")
+      );
       li.dataset.href = href;
 
       const a = document.createElement("a");
       a.href = href;
 
       const snippets = pickSnippetsRow(row, f, qVal);
-      const semanticLines = [];
-      if (row.__semantic_text) {
-        semanticLines.push(
-          `<div class="line muted">${highlight(
-            row.__semantic_text,
-            qVal
-          )}</div>`
-        );
-      }
-      const lines =
-        snippets
-          .slice(0, 3)
-          .map(
-            (snp) => `
+      const lines = snippets
+        .slice(0, 3)
+        .map(
+          (snp) => `
         <div class="line">
           ${snp.label ? `<span class="ref">${snp.label}</span> · ` : ""}
           ${highlight(snp.text, qVal)}
         </div>
       `
-          )
-          .join("") + semanticLines.join("");
+        )
+        .join("");
 
       a.innerHTML = `
         <div class="line">
-          <span class="ref notranslate" translate="no">${initials(row.title)} ${
-        row.cord
-      }.${row.vord}</span>
+          <span class="ref notranslate" translate="no">${headingHtml}</span>
         </div>
         ${lines}
       `;
@@ -550,16 +565,6 @@ import { DB } from "./constants.js";
       );
       window.scrollTo({ top, behavior: "smooth" });
     }
-  }
-
-  function initials(title) {
-    return String(title || "")
-      .trim()
-      .split(/\s+/)
-      .slice(0, 2)
-      .map((s) => s[0])
-      .join("")
-      .toUpperCase();
   }
 
   function pickSnippetsRow(row, f, q) {

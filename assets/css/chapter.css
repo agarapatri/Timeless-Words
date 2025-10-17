@@ -1,0 +1,65 @@
+/* Chapter page layout */
+.chapter-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.titlebar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titlebar .title {
+  margin: 8px 0;
+}
+
+.view-select {
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}
+
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 40px;
+  display: grid;
+  gap: 12px;
+}
+
+.results-list > li a {
+  display: block;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+}
+
+.results-list .line + .line {
+  margin-top: 6px;
+}
+
+.ref {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 0;
+}

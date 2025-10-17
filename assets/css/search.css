@@ -1,0 +1,229 @@
+/* Chip bar */
+.chipbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0px 0 12px;
+  align-items: center;
+  grid-column: span 12;
+}
+.chipbar button {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  color: #374151;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+.chipbar button.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+.chipbar button .chip-icon {
+  width: 0;
+  height: 12px;
+  margin-right: 0;
+  background: currentColor;
+  mask: url("../images/check.svg") no-repeat center / contain;
+  -webkit-mask: url("../images/check.svg") no-repeat center / contain;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease, transform 0.15s ease, width 0.15s ease, margin-right 0.15s ease;
+  flex-shrink: 0;
+}
+.chipbar button.active .chip-icon {
+  width: 12px;
+  margin-right: 6px;
+  opacity: 1;
+  transform: scale(1);
+}
+.chipbar button:hover {
+}
+
+/* Deep Search layout */
+.search-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 1000px) {
+  .search-layout {
+    grid-template-columns: 1fr 280px;
+    align-items: start;
+  }
+  .search-main {
+    order: 1;
+  }
+  .search-side {
+    order: 2;
+    position: sticky;
+    top: 64px;
+    margin: 0 0 24px;
+  }
+}
+
+/* Search page right sidebar: Filter by specific books */
+#fBooks .book-box,
+#fTypes .book-box {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px 10px 4px;
+  background: var(--bg);
+  overflow: hidden;
+}
+#fBooks .filter,
+#fTypes .filter {
+  position: relative;
+  padding: 2px 0 6px;
+  background: transparent !important;
+  border-bottom: 1px solid var(--border);
+}
+#fBooks .filter input[type="search"],
+#fBooks .filter input[type="text"],
+#fBooks .filter .search-input {
+  display: block;
+  width: 100%;
+  background: var(--bg) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 999px;
+  height: 34px;
+  padding: 0 10px 0 36px;
+  min-width: 0;
+  font-size: 15px;
+}
+#fBooks .filter input::placeholder {
+  color: #9aa3ad;
+}
+#fBooks .filter input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+}
+
+#fBooks .checklist,
+#fTypes .checklist {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+#fBooks .checklist label,
+#fTypes .checklist label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+#fBooks .checklist label + label,
+#fTypes .checklist label + label {
+  border-top: 1px solid var(--border);
+}
+#fBooks .checklist input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+#fBooks .checklist span,
+#fTypes .checklist span {
+  font-size: 14px;
+}
+
+#fBooks .filter::before,
+#fTypes .filter::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: url("../images/search.svg") no-repeat center / 18px 18px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+html.theme-dark #fBooks .filter::before,
+html.theme-dark #fTypes .filter::before {
+  background-image: url("../images/search-dark.svg");
+  opacity: 0.6;
+}
+#fBooks,
+#fTypes {
+  grid-column: span 6;
+  margin-bottom: 24px;
+}
+
+/* --- Full-screen blocker overlay --- */
+.tw-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: saturate(140%) blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.tw-overlay[hidden] {
+  display: none;
+}
+.tw-overlay__panel {
+  width: min(640px, 92vw);
+  background: var(--surface-1, #fff);
+  color: var(--text, #111);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+.tw-overlay__title {
+  margin: 0 0 8px 0;
+}
+.tw-overlay__progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+.tw-overlay__progress progress {
+  width: 100%;
+  height: 10px;
+}
+.tw-overlay__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Panel scaffold to mirror your tips modal */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-header2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px 0px 14px;
+}
+.panel-header3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 14px;
+}
+.panel-title {
+  font-weight: 700;
+}
+.panel-body {
+  padding: 12px 14px 14px;
+}
