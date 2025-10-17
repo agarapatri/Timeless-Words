@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Verse — Timeless Words</title>
   <link rel="stylesheet" href="../assets/css/styles.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/partials/menu.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/partials/footer.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/verse.css?v={{VERSION}}">
   <meta id="favicon-slot">
 </head>
 
@@ -152,7 +155,7 @@
 
         // Render header + crumbs
         const short = (title || '').split(/\s+/).map(s => s[0]).join('').slice(0, 2).toUpperCase();
-        document.getElementById('ref').textContent = `${short} ${ref}`;
+        document.getElementById('ref').textContent = `${title} ${ref}`;
         const crumbs = document.getElementById('crumbs');
         const chapterLabel = division_label ? division_label : `Chapter ${division_ord}`;
         crumbs.innerHTML = `

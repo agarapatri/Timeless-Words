@@ -15,6 +15,7 @@ Art by: [Yuqing Sheng](x.com/merasgar)
 * If you are in Lockdown mode on iOS or something similar, please disable Lockdown Mode for this site on your device and reload the page. You might face issues with Opera browser as well as it doesn't seem to detect Lockdown Mode on iOS.
 * Check project documentation [here](https://github.com/agarapatri/Timeless-Words/tree/main/notes/project_docs.md) and [here](https://github.com/agarapatri/Timeless-Words/tree/main/notes/project_flow.md). For more info, check [notes](https://github.com/agarapatri/Timeless-Words/tree/main/notes) directory.
 * This project used Web Assembly. Check browser support [here](https://github.com/agarapatri/Timeless-Words/tree/main/notes/web_assembly_support.md). Check DB Schema [here](https://github.com/agarapatri/Timeless-Words/tree/main/notes/db_schema.md).
+* To get better accuracy in semantic search, replace the existing model with more powerful models available on Huggingface. However, you will face size limitations hosting it on github as the more accurate models seem to be larger in size. You can try testing it on localhost. Check [here](https://github.com/agarapatri/Timeless-Words/tree/main/notes/vec_search_model_update.md) for more details.
 
 
 
@@ -25,8 +26,7 @@ Art by: [Yuqing Sheng](x.com/merasgar)
 ```bash
 chmod +x build_db.sh && ./build_db.sh
 ```
-* This will create a new library sqlite db and the semantic sqlite db with the new data that is present in `scripts/json_samples`. 
-* Below steps are just info. This is the only step needed to add new data to the sqlite db.
+* This will create a new library sqlite db and the semantic sqlite db with the new data that is present in `scripts/json_samples`. This is the only step needed to add new data to the sqlite db.
 * Verify sqlite with tests. Run below command from `TimelessWords/docs/scripts` directory:
 ```bash
 chmod +x semantic_db_tests/run_tests.sh && ./semantic_db_tests/run_tests.sh

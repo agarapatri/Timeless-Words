@@ -1,0 +1,210 @@
+/* ---------- Menu / Dropdown ---------- */
+.menu-wrap {
+  position: relative;
+}
+.menu-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 40;
+  min-width: 260px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow-2);
+}
+.menu-item {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.menu-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+html.theme-dark .menu-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.menu-panel .menu-item:focus-visible {
+  outline: none;
+  background: rgba(0, 0, 0, 0.04);
+}
+html.theme-dark .menu-panel .menu-item:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+}
+.menu-item.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.menu-item.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.menu-sep {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
+.menu-toggle span:first-child {
+  flex: 1 1 auto;
+}
+.row.gap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button.menu-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+button.menu-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+html.theme-dark button.menu-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+button.menu-item:focus-visible {
+  outline: none;
+  background: rgba(0, 0, 0, 0.04);
+}
+html.theme-dark button.menu-item:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Font-size controls */
+.menu-panel .menu-row {
+  display: flex;
+  align-items: center;
+}
+.menu-panel .menu-row.head {
+  justify-content: space-between;
+}
+#fontSizeCurrent {
+  margin-left: auto;
+  color: var(--muted);
+}
+.menu-panel .menu-row.controls {
+  gap: 10px;
+}
+#fontSizeRange {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+#fontSizeReset {
+  flex: 0 0 auto;
+}
+
+/* Mobile-specific: show Deep Search item inside the menu */
+.mobile-only {
+  display: none;
+}
+@media (max-width: 600px) {
+  .hero-actions .btn-deep {
+    display: none;
+  }
+  .menu-panel .mobile-only {
+    display: block;
+  }
+}
+
+/* Optional: make the icon-only menu button a consistent touch target */
+.icon-btn {
+  height: 36px;
+  min-width: 44px;
+  padding: 0 10px;
+}
+
+/* Fix: menu should float above everything on mobile */
+@media (max-width: 600px) {
+  .hero-actions {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    z-index: 1000;
+  }
+  .menu-panel {
+    z-index: 1100;
+  }
+}
+
+/* Center the menu vertically to match the 44px title height */
+@media (max-width: 600px) {
+  .hero-actions {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  .icon-btn {
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* --- Pill switch (text + knob inside a capsule) --- */
+.tw-pill-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  cursor: pointer;
+  user-select: none;
+}
+.tw-pill-switch--bare {
+  padding: 0;
+  border: none;
+  background: transparent;
+  gap: 0;
+}
+.tw-pill-switch__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.tw-pill-switch__text {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.tw-pill-switch__track {
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  position: relative;
+  box-shadow: inset 0 0 0 1px var(--border);
+  transition: background 0.18s ease;
+}
+.tw-pill-switch__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: transform 0.18s ease;
+}
+
+/* ON state */
+.tw-pill-switch__input:checked ~ .tw-pill-switch__text {
+  color: var(--text);
+}
+.tw-pill-switch__input:checked ~ .tw-pill-switch__track {
+  background: var(--fg);
+  box-shadow: none;
+}
+.tw-pill-switch__input:checked ~ .tw-pill-switch__track .tw-pill-switch__knob {
+  transform: translateX(20px);
+}

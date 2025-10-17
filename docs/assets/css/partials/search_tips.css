@@ -1,0 +1,59 @@
+
+/* ----- Inline Search Tips ----- */
+.tips-panel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+  padding: 12px 14px;
+  margin: 8px 0 12px;
+}
+.tips-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 800px) {
+  .tips-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.tips-col p {
+  margin: 8px 0;
+}
+.tips-panel code {
+  background: var(--surface-2);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font: 400 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.tips-panel[data-mode='regex'] .tips-grid[data-mode='semantic'] {
+  display: none;
+}
+.tips-panel[data-mode='semantic'] .tips-grid[data-mode='regex'] {
+  display: none;
+}
+.tips-adv-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+.tip-basic {
+  color: var(--muted);
+}
+.cheatsheet {
+  columns: 1;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 820px) {
+  .cheatsheet {
+    columns: 1;
+  }
+}

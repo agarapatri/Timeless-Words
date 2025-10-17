@@ -1,0 +1,48 @@
+<h2 class="tips-title">Search tips</h2>
+
+<div class="tips-grid" data-mode="regex">
+  <div class="tips-col">
+    <p><strong class="tip-basic">Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
+    <p><strong class="tip-basic">Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
+    <p><strong class="tip-basic">Wildcards</strong><br>Prefix: <code>rudr*</code></p>
+    <p><strong class="tip-basic">Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; <br>Alt: <code>/śiva|śambhu/</code></p>
+  </div>
+  <div class="tips-col">
+    <div class="tips-advanced">
+      <div class="tips-adv-title">Advanced tips</div>
+      <ul class="cheatsheet">
+        <li><code>śiva</code> – literal</li>
+        <li><code>ś.va</code> – dot = any char</li>
+        <li><code>viṣṇu.*parama</code> – any chars between</li>
+        <li><code>rudr+a</code> – one or more</li>
+        <li><code>śiv?a</code> – zero or one</li>
+        <li><code>śiva|śambhu</code> – alternation</li>
+        <li><code>(hari|viṣṇu)nāma</code> – grouping</li>
+        <li><code>[sr]āma</code> – character class</li>
+        <li><code>[0-9]+</code> – numbers</li>
+        <li><code>[^a-zA-Z]</code> – not a letter</li>
+        <li><code>^namaḥ</code> – start of line</li>
+        <li><code>śivāya$</code> – end of line</li>
+        <li><code>\bparama\b</code> – whole word</li>
+        <li><code>\Bparama</code> – inside word</li>
+        <li><code>a{2,4}</code> – 2 to 4 times</li>
+        <li><code>(śrī\s)?kṛṣṇa</code> – optional group</li>
+        <li><code>\(1\.2\.19\)</code> – escape specials</li>
+        <li><code>śiva(?=.*parama)</code> – lookahead</li>
+        <li><code>śiva(?! paramātmā)</code> – neg. lookahead</li>
+        <li><code>(?i)viṣṇu</code> – case-insensitive</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tips-grid tips-grid--semantic" data-mode="semantic" hidden>
+  <div class="tips-col">
+    <p><strong class="tip-basic">Ask full questions</strong><br>Try natural language like <code>Who was the mother of Lord Krishna?</code></p>
+    <p><strong class="tip-basic">Describe concepts</strong><br>Use short phrases such as <code>teachings on compassion</code> or <code>Krishna guidance on duty</code>.</p>
+  </div>
+  <div class="tips-col">
+    <p><strong class="tip-basic">Mix key ideas</strong><br>Combine people, places, and topics: <code>Arjuna advice battlefield courage</code>.</p>
+    <p><strong class="tip-basic">Need exact matches?</strong><br>Toggle off “by meaning” to return to regex, wildcards, and precise search tools.</p>
+  </div>
+</div>

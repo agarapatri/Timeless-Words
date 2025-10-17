@@ -1,0 +1,55 @@
+/* ---------- Verse page ---------- */
+
+.verse-page .verse-ref {
+  text-align: left;
+  font-size: clamp(22px, 3vw, 32px);
+  max-width: 780px;
+  margin: 8px auto 16px;
+}
+.verse-page .crumbs {
+  max-width: 780px;
+  margin: 12px auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.verse-head {
+  max-width: 780px;
+  margin: 8px auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.verse-block {
+  max-width: 780px;
+  margin: 0 auto 16px;
+}
+.verse-block h2 {
+  font-size: 16px;
+  text-transform: none;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+pre {
+  background: var(--surface);
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+.wfw {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+.wfw .sk {
+  font-weight: 600;
+}
+.translation {
+  font-size: 18px;
+  line-height: 1.7;
+}

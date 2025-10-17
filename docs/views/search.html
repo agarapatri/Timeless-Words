@@ -6,13 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search – Timeless Words</title>
   <link rel="stylesheet" href="../assets/css/styles.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/partials/menu.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/partials/footer.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/search.css?v={{VERSION}}">
+  <link rel="stylesheet" href="../assets/css/partials/search_tips.css?v={{VERSION}}">
   <meta id="favicon-slot">
 </head>
 
 <body>
   <main class="container search-page">
 
-    <a class="back-link" href="../index.html">← Back</a>
+    <a class="crumbs" href="../index.html">← Back</a>
 
     <div class="titlebar">
       <h1 id="search-title" class="title">Deep Search</h1>
@@ -78,56 +82,7 @@
 
 
         <!-- Inline Search Tips -->
-        <section id="searchTips" class="tips-panel" aria-live="polite">
-          <h2 class="tips-title">Search tips</h2>
-
-          <div class="tips-grid" data-mode="regex">
-            <div class="tips-col">
-              <p><strong class="tip-basic">Basics</strong><br>Type words anywhere: <code>vishnu paramatma</code></p>
-              <p><strong class="tip-basic">Phrases</strong><br>Exact sequence: <code>"śiva paramātmā"</code></p>
-              <p><strong class="tip-basic">Wildcards</strong><br>Prefix: <code>rudr*</code></p>
-              <p><strong class="tip-basic">Regex (advanced)</strong><br>Wrap in slashes: <code>/viṣṇu.*nārāyaṇa/</code> &nbsp; <br>Alt: <code>/śiva|śambhu/</code></p>
-            </div>
-            <div class="tips-col">
-              <div class="tips-advanced">
-                <div class="tips-adv-title">Advanced tips</div>
-                <ul class="cheatsheet">
-                  <li><code>śiva</code> – literal</li>
-                  <li><code>ś.va</code> – dot = any char</li>
-                  <li><code>viṣṇu.*parama</code> – any chars between</li>
-                  <li><code>rudr+a</code> – one or more</li>
-                  <li><code>śiv?a</code> – zero or one</li>
-                  <li><code>śiva|śambhu</code> – alternation</li>
-                  <li><code>(hari|viṣṇu)nāma</code> – grouping</li>
-                  <li><code>[sr]āma</code> – character class</li>
-                  <li><code>[0-9]+</code> – numbers</li>
-                  <li><code>[^a-zA-Z]</code> – not a letter</li>
-                  <li><code>^namaḥ</code> – start of line</li>
-                  <li><code>śivāya$</code> – end of line</li>
-                  <li><code>\bparama\b</code> – whole word</li>
-                  <li><code>\Bparama</code> – inside word</li>
-                  <li><code>a{2,4}</code> – 2 to 4 times</li>
-                  <li><code>(śrī\s)?kṛṣṇa</code> – optional group</li>
-                  <li><code>\(1\.2\.19\)</code> – escape specials</li>
-                  <li><code>śiva(?=.*parama)</code> – lookahead</li>
-                  <li><code>śiva(?! paramātmā)</code> – neg. lookahead</li>
-                  <li><code>(?i)viṣṇu</code> – case-insensitive</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="tips-grid tips-grid--semantic" data-mode="semantic" hidden>
-            <div class="tips-col">
-              <p><strong class="tip-basic">Ask full questions</strong><br>Try natural language like <code>Who was the mother of Lord Krishna?</code></p>
-              <p><strong class="tip-basic">Describe concepts</strong><br>Use short phrases such as <code>teachings on compassion</code> or <code>Krishna guidance on duty</code>.</p>
-            </div>
-            <div class="tips-col">
-              <p><strong class="tip-basic">Mix key ideas</strong><br>Combine people, places, and topics: <code>Arjuna advice battlefield courage</code>.</p>
-              <p><strong class="tip-basic">Need exact matches?</strong><br>Toggle off “by meaning” to return to regex, wildcards, and precise search tools.</p>
-            </div>
-          </div>
-        </section>
+        <section id="searchTips" class="tips-panel" aria-live="polite"></section>
 
         <div id="resultsInfo" class="results-info" aria-live="polite"></div>
         <ol id="results" class="results-list" aria-live="polite"></ol>
@@ -193,16 +148,23 @@
     if (input) input.placeholder = SEARCH.SEARCH_HINT_REGEX;
 
     const checkbox = document.getElementById('sem-check');
-    const tipsSection = document.getElementById('searchTips');
-    const regexTips = tipsSection && tipsSection.querySelector('[data-mode="regex"]');
-    const semanticTips = tipsSection && tipsSection.querySelector('[data-mode="semantic"]');
+    let lastTipsMode = false;
 
     const setTipsMode = (semanticOn) => {
-      if (!tipsSection || !regexTips || !semanticTips) return;
+      lastTipsMode = !!semanticOn;
+      const tipsSection = document.getElementById('searchTips');
+      if (!tipsSection) return;
+      const regexTips = tipsSection.querySelector('[data-mode="regex"]');
+      const semanticTips = tipsSection.querySelector('[data-mode="semantic"]');
+      if (!regexTips || !semanticTips) return;
       tipsSection.setAttribute('data-mode', semanticOn ? 'semantic' : 'regex');
       regexTips.hidden = !!semanticOn;
       semanticTips.hidden = !semanticOn;
     };
+
+    document.addEventListener('searchTips:ready', () => {
+      setTipsMode(lastTipsMode);
+    });
 
     // Blocker-based downloader
     const panel = new SemanticInstall({
@@ -295,6 +257,22 @@
     });
   </script>
 
+  <script type="module">
+    (async () => {
+      const slot = document.getElementById('searchTips');
+      if (!slot) return;
+      try {
+        const url = new URL('./partials/search_tips.html', import.meta.url);
+        url.searchParams.set('v', '{{VERSION}}');
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        slot.innerHTML = await res.text();
+        document.dispatchEvent(new Event('searchTips:ready'));
+      } catch (err) {
+        console.error('Failed to load search tips partial', err);
+      }
+    })();
+  </script>
 
 
   <!-- INLINE_TIPS_TOGGLE -->
